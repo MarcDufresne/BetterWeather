@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<resources>
+    <string name="cond_na">לא זמין</string>
+    <string name="cond_tornado">טורונטו</string>
+    <string name="cond_tropical_storm">סופה טרופית</string>
+    <string name="cond_hurricane">הוריקן</string>
+    <string name="cond_severe_thunderstorms">סופות רעמים חמורות</string>
+    <string name="cond_thunderstorms">סופות רעמים</string>
+    <string name="cond_mixed_rain_and_snow">גשם מעורב בשלג</string>
+    <string name="cond_mixed_rain_and_sleet">גשם מעורב בברד</string>
+    <string name="cond_mixed_snow_and_sleet">שלג מעורב בברד</string>
+    <string name="cond_freezing_drizzle">טפטוף מקפיא</string>
+    <string name="cond_drizzle">טפטוף</string>
+    <string name="cond_freezing_rain">גשם מקפיא</string>
+    <string name="cond_showers">ממטרים</string>
+    <string name="cond_snow_flurries">פתיתי שלג</string>
+    <string name="cond_light_snow_showers">ממטרי שלג קלים</string>
+    <string name="cond_blowing_snow">משבי שלג</string>
+    <string name="cond_snow">שלג</string>
+    <string name="cond_hail">ברד</string>
+    <string name="cond_sleet">גשם קרחי</string>
+    <string name="cond_dust">אבק</string>
+    <string name="cond_foggy">ערפילי</string>
+    <string name="cond_haze">אובך</string>
+    <string name="cond_smoky">מעושן</string>
+    <string name="cond_blustery">סוער</string>
+    <string name="cond_windy">סוער</string>
+    <string name="cond_cold">קר</string>
+    <string name="cond_cloudy">מעונן</string>
+    <string name="cond_mostly_cloudy">מעונן ברובו</string>
+    <string name="cond_partly_cloudy">מעונן חלקית</string>
+    <string name="cond_clear">בהיר</string>
+    <string name="cond_sunny">שמשי</string>
+    <string name="cond_fair">נאה</string>
+    <string name="cond_mixed_rain_and_hail">גשם מעורב באבני ברד</string>
+    <string name="cond_hot">חם</string>
+    <string name="cond_isolated_thunderstorms">סופות רעמים בודדות</string>
+    <string name="cond_scattered_thunderstorms">סופות רעמים פזורות</string>
+    <string name="cond_scattered_showers">ממטרים פזורים</string>
+    <string name="cond_heavy_snow">שלג כבד</string>
+    <string name="cond_scattered_snow_showers">ממטרי שלג פזורים</string>
+    <string name="cond_thundershowers">גשם שוטף עם סופות רעמים</string>
+    <string name="cond_snow_showers">ממטרי שלג</string>
+    <string name="cond_isolated_thundershowers">גשם שוטף עם סופות רעמים בודדות</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">צ</string>
+    <string name="wind_northeast">צמ"ז</string>
+    <string name="wind_east">מ</string>
+    <string name="wind_southeast">דמ"ז</string>
+    <string name="wind_south">ד</string>
+    <string name="wind_soutwest">דמ"ע</string>
+    <string name="wind_west">מ</string>
+    <string name="wind_northwest">צמ"ע</string>
+</resources>

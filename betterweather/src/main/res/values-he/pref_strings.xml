@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">קיצור דרך</string>
+    <string name="pref_shortcut_default">(ברירת מחדל)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">הגדרות כלליות</string>
+    <string name="pref_header_appearance">מראה</string>
+    <string name="pref_header_behaviour">התנהגות</string>
+    <string name="pref_header_donate">תרומה</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">יחידות מזג האוויר</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">שימוש במיקום הנוכחי</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather ישתמש במיקום הנוכחי שלך</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather ישתמש במיקום המוגדר מתחת</string>
+
+    <string name="pref_weather_location_title">מיקום</string>
+    <string name="pref_weather_location_automatic">אוטומטי</string>
+    <string name="pref_weather_location_query_hint">מצא את מיקום</string>
+    <string name="pref_weather_location_automatic_description">בהתבסס על המיקום הנוכחי שלך.</string>
+
+    <string name="pref_weather_show_today_forecast_title">הצגת התחזית להיום</string>
+    <string name="pref_weather_show_today_forecast_on">התחזית להיום תוצג בתצוגה המורחבת</string>
+    <string name="pref_weather_show_today_forecast_off">התחזית להיום לא תוצג</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">הצגת התחזית למחר</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">התחזית למחר תוצג בתצוגה המורחבת</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">התחזית למחר לא תוצג</string>
+
+    <string name="pref_weather_refresh_on_touch_title">רענון מזג האוויר בנגיעה</string>
+    <string name="pref_weather_refresh_on_touch_on">מזג האוויר ירוענן בלחיצה על ההרחבה (מנוטרל עבור קיצור דרך)</string>
+    <string name="pref_weather_refresh_on_touch_off">קיצור הדרך הנבחר יופעל בלחיצה על ההרחבה</string>
+
+    <string name="pref_weather_refresh_interval_title">מרווחי רענון</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 דקות</item>
+        <item>30 דקות</item>
+        <item>45 דקות</item>
+        <item>1 שעה</item>
+        <item>2 שעות</item>
+        <item>3 שעות</item>
+        <item>4 שעות</item>
+        <item>כיבוי רענון אוטומטי</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">הצגת משוב ברענון</string>
+    <string name="pref_weather_show_refresh_toast_on">משוב יוצג ברענון</string>
+    <string name="pref_weather_show_refresh_toast_off">משוב לא יוצג ברענון</string>
+
+    <string name="pref_weather_show_highlow_title">הצגת גבוה/נמוך במצב</string>
+    <string name="pref_weather_show_highlow_on">טמפרטורות גבוהות/נמוכות יוצגו במצב</string>
+    <string name="pref_weather_show_highlow_off">טמפרטורות גבוהות/נמוכות לא יוצגו במצב</string>
+
+    <string name="pref_weather_icon_theme_title">ערכות נושא לאייקוני המצב</string>
+
+    <string name="pref_weather_hide_location_name_title">הסתרת שם המיקום</string>
+    <string name="pref_weather_hide_location_name_summary_on">שם המיקום לא יוצג בתצוגה המורחבת</string>
+    <string name="pref_weather_hide_location_name_summary_off">שם המיקום יוצג בתצוגה המורחבת</string>
+
+    <string name="pref_weather_show_humidity_title">הצגת רמת הלחות</string>
+    <string name="pref_weather_show_humidity_summary_on">רמת הלחות תוצג בתצוגה המורחבת</string>
+    <string name="pref_weather_show_humidity_summary_off">רמת הלחות לא תוצג בתצוגה המורחבת</string>
+
+    <string name="pref_weather_show_wind_details_title">הצגת פרטי הרוח</string>
+    <string name="pref_weather_show_wind_details_summary_on">פרטי הרוח יוצגו בתצוגה המורחבת</string>
+    <string name="pref_weather_show_wind_details_summary_off">פרטי הרוח לא יוצגו בתצוגה המורחבת</string>
+
+    <string name="pref_weather_show_wind_chill_title">הצגת צינת הרוח</string>
+    <string name="pref_weather_show_wind_chill_summary_on">צינת הרוח תוצג בתצוגה המורחבת כאשר היא זמינה</string>
+    <string name="pref_weather_show_wind_chill_summary_off">צינת הרוח לא תוצג</string>
+
+    <string name="pref_alert_network_location_message">עליך לאפשר מיקום רשת לתוצאה טובה יותר; וחיי סוללה טובים יותר!</string>
+    <string name="pref_alert_network_location_open_settings">פתיחת הגדרות מיקום</string>
+
+    <string name="pref_donate_title">אוהבים מה שאתם רואים?</string>
+    <string name="pref_donate_summary">למה שלא תיקנו לי כוס קפה? :)</string>
+
+</resources>

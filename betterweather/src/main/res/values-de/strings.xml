@@ -1,0 +1,33 @@
+<resources>
+
+    <string name="app_name">BetterWeather</string>
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description">Zeigt aktuelle Wetter Informationen für Ihren derzeitigen Standort, oder einen
+        bereits festgelegten Standort an. Informationen werden von Yahoo! Weather bezogen.
+    </string>
+    <string name="title_settings">BetterWeather Einstellungen</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">Apps</string>
+    <string name="title_shortcuts">Schnellzugriffe</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">Aktualisieren&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">Heute: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">Morgen: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">Wind: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">Wind Chill: %1$s°</string>
+    <string name="humidity_template">Luftfeuchtigkeit: %1$s</string>
+    <string name="wind_speed_kmh">km/h</string>
+    <string name="wind_speed_mph">mph</string>
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[Erstellt von : <br><i>Marc-André Dufresne</i><br><br>Vielen Dank an Roman Nurik für das DashClock Widget!<br>Übersetzt ins Deutsche von Pascal Mesias Jimenez]]></string>
+    <string name="close">Schließen</string>
+    <string name="about_title">Über</string>
+
+</resources>

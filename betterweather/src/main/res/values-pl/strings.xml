@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">BetterWeather</string>
+
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description">Wyświetla aktualną prognozę pogody dla twojej lub określonej w ustawieniach lokalizacji.
+        Prognoza pogody dzięki Yahoo! Weather.
+    </string>
+    <string name="title_settings">Ustawienia BetterWeather</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">Aplikacje</string>
+    <string name="title_shortcuts">Skróty</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">Odświeżam&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">Dzisiaj: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">Jutro: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">Wiatr: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">Temp. odczuwalna: %1$s°</string>
+    <string name="humidity_template">Wilgotność: %1$s</string>
+
+    <string name="wind_speed_kmh">km/h</string>
+    <string name="wind_speed_mph">mph</string>
+
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[Created By: <br><i>Marc-André Dufresne</i><br><br>Thanks to Roman Nurik for DashClock!<br><br>Tłumaczenie na język polski: <a href="https://github.com/jakubsynowiec" title="Jakub Synowiec" style="text-decoration: none;">Jakub Synowiec</a><br>]]></string>
+    <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
+    <string name="close">Zamknij</string>
+    <string name="about_title">O rozszerzeniu</string>
+</resources>

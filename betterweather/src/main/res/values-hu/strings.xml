@@ -1,0 +1,52 @@
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+    <string name="app_name">BetterWeather</string>
+
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description">A legfrissebb időjárási információkat jeleníti meg a tartózkodási vagy beállított helyed alapján.
+        Üzemelteti a Yahoo! Weather.
+    </string>
+    <string name="title_settings">BetterWeather beállítások</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">Alkalmazások</string>
+    <string name="title_shortcuts">Parancsikonok</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">Frissítés&#8230;</string>
+
+
+    <string name="today_forecast_template">Ma: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">Holnap: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">Szél: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">Wind chill: %1$s°</string>
+    <string name="humidity_template">Páratartalom: %1$s</string>
+
+    <string name="wind_speed_kmh">km/h</string>
+    <string name="wind_speed_mph">mph</string>
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[Készítette: <br><i>Marc-André Dufresne</i><br><br>Köszönet Roman Nurik-nak a DashClock-ért!<br><br>Fordította <a href="https://plus.google.com/u/0/106278794296417431670/">Berta Dávid</a><br>]]></string>
+    <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
+
+    <string name="close">Mégse</string>
+    <string name="about_title">Névjegy</string>
+
+
+</resources>

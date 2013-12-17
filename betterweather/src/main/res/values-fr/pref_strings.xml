@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Raccourci</string>
+    <string name="pref_shortcut_default">(Défaut)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">Général</string>
+    <string name="pref_header_appearance">Apparence</string>
+    <string name="pref_header_behaviour">Comportement</string>
+    <string name="pref_header_donate">Dons</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Unités de température</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Utiliser la position actuelle</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather va utiliser votre emplacement actuel</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather va utiliser la location définie ci-dessous
+    </string>
+
+    <string name="pref_weather_location_title">Location</string>
+    <string name="pref_weather_location_automatic">Automatique</string>
+    <string name="pref_weather_location_query_hint">Trouver une location</string>
+    <string name="pref_weather_location_automatic_description">Basée sur votre location actuelle.</string>
+
+    <string name="pref_weather_show_today_forecast_title">Prévisions pour aujourd\'hui</string>
+    <string name="pref_weather_show_today_forecast_on">Les prévisions pour aujourd\'hui seront affichées en mode
+        étendu
+    </string>
+    <string name="pref_weather_show_today_forecast_off">Les prévisions pour aujourd\'hui ne seront pas affichées
+    </string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Prévisions pour demain</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">Les prévisions pour demain seront affichées en mode étendu
+    </string>
+    <string name="pref_weather_show_tomorrow_forecast_off">Les prévisions pour demain ne seront pas affichées</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Cliquer pour rafraîchir</string>
+    <string name="pref_weather_refresh_on_touch_on">La météo sera mise à jour lors d\'un clique (désactiver pour utiliser le raccourci)</string>
+    <string name="pref_weather_refresh_on_touch_off">Le raccourci sélectionné sera lancé lors d\'un clique</string>
+
+    <string name="pref_weather_refresh_interval_title">Intervalle de rafraîchissement</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>45 minutes</item>
+        <item>1 heure</item>
+        <item>2 heures</item>
+        <item>3 heures</item>
+        <item>4 heures</item>
+        <item>Ne pas rafraîchir</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Afficher un message de mise à jour</string>
+    <string name="pref_weather_show_refresh_toast_on">Un message sera affiché lors de la mise à jour</string>
+    <string name="pref_weather_show_refresh_toast_off">Aucun message ne sera affiché lors d\'une mise à jour</string>
+
+    <string name="pref_weather_show_highlow_title">Max./Min. dans le status</string>
+    <string name="pref_weather_show_highlow_on">Les temperatures Max./Min. seront affichées dans le status</string>
+    <string name="pref_weather_show_highlow_off">Les temperatures Max./Min. ne seront pas affichées dans le status
+    </string>
+
+    <string name="pref_weather_icon_theme_title">Thème des icônes de status</string>
+
+    <string name="pref_weather_hide_location_name_title">Cacher la location</string>
+    <string name="pref_weather_hide_location_name_summary_on">La location ne sera pas affichée en mode étendu</string>
+    <string name="pref_weather_hide_location_name_summary_off">La location sera affichée en mode étendu</string>
+
+    <string name="pref_weather_show_humidity_title">Afficher le niveau d\'humidité</string>
+    <string name="pref_weather_show_humidity_summary_on">Le niveau d\'humidité sera affiché en mode étendu</string>
+    <string name="pref_weather_show_humidity_summary_off">Le niveau d\'humidité de sera pas affiché</string>
+
+    <string name="pref_weather_show_wind_details_title">Afficher les détails du vent</string>
+    <string name="pref_weather_show_wind_details_summary_on">Les détails seront affichés en mode étendu</string>
+    <string name="pref_weather_show_wind_details_summary_off">Les détails ne seront pas affichés</string>
+
+    <string name="pref_weather_show_wind_chill_title">Refroidissement éolien</string>
+    <string name="pref_weather_show_wind_chill_summary_on">Le refroidissement sera affiché en mode étendu lorsque disponible</string>
+    <string name="pref_weather_show_wind_chill_summary_off">Le refroidissement ne sera pas affiché</string>
+
+    <string name="pref_weather_use_only_network_title">Utiliser la localisation réseau</string>
+    <string name="pref_weather_use_only_network_summary_on">L\'application utilisera seulement la localisation réseau (Économise la batterie)</string>
+    <string name="pref_weather_use_only_network_summary_off">L\'application utilisera le GPS si la localisation réseau n\'est pas disponible</string>
+
+    <string name="pref_donate_title">Vous aimez ce que vous voyez?</string>
+    <string name="pref_donate_summary">Pourquoi pas m\'acheter un café? :)</string>
+</resources>

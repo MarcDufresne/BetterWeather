@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Συντόμευση</string>
+    <string name="pref_shortcut_default">(Προεπιλογή)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">Γενικές Ρυθμίσεις</string>
+    <string name="pref_header_appearance">Εμφάνιση</string>
+    <string name="pref_header_behaviour">Συμπεριφορά</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Weather units</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Χρήση τρέχουσας τοποθεσίας</string>
+    <string name="pref_weather_location_use_current_on">Το BetterWeather θα χρησιμοποιήσει την τρεχουσα τοποθεσία σας</string>
+    <string name="pref_weather_location_use_current_off">Το BetterWeather θα χρησιμοποιήσει τη τοποθεσία που ορίσατε παρακάτω</string>
+
+    <string name="pref_weather_location_title">Τοποθεσία</string>
+    <string name="pref_weather_location_automatic">αυτόματο</string>
+    <string name="pref_weather_location_query_hint">Βρείτε μια θέση</string>
+    <string name="pref_weather_location_automatic_description">Με βάση την τρέχουσα τοποθεσία σας.</string>
+
+    <string name="pref_weather_show_today_forecast_title">Εμφάνιση σημερινής πρόγνωσης</string>
+    <string name="pref_weather_show_today_forecast_on">Η σημερινή πρόγνωση θα εμφανίζεται σε επεκτάσιμη προβολή</string>
+    <string name="pref_weather_show_today_forecast_off">Η σημερινή πρόγνωση δεν θα εμφανίζεται</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Εμφάνιση αυριανής πρόγνωσης</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">Η αυριανή πρόγνωση θα εμφανίζεται σε επεκτάσιμη προβολή</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">Η αυριανή πρόγνωση δεν θα εμφανίζεται</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Ανανέωση καιρού κατά το άγγιγμα</string>
+    <string name="pref_weather_refresh_on_touch_on">Ο καιρός θα ανανεώνεται κατά το πάτημα της επέκτασης (Απενεργοποίηση αυτής της ρύθμισης για χρήση προσαρμοσμένης συντόμευσης)</string>
+    <string name="pref_weather_refresh_on_touch_off">Η επιλεγμένη συντόμευση θα εκτελείται κατά το πάτημα της επέκτασης</string>
+
+    <string name="pref_weather_refresh_interval_title">Διάστημα ανανέωσης</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 λεπτά</item>
+        <item>30 λεπτά</item>
+        <item>45 λεπτά</item>
+        <item>1 ώρα</item>
+        <item>2 ώρες</item>
+        <item>3 ώρες</item>
+        <item>4 ώρες</item>
+        <item>Απενεργοποίηση αυτόματης ανανέωσης</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Εμφάνιση σχολίων κατά την ανανέωση</string>
+    <string name="pref_weather_show_refresh_toast_on">Τα σχόλια θα εμφανίζονται κατά την ανανέωση</string>
+    <string name="pref_weather_show_refresh_toast_off">Τα σχόλια δεν θα εμφανίζονται κατά την ανανέωση</string>
+
+    <string name="pref_weather_show_highlow_title">Εμφάνιση Υψηλή/Χαμηλή στην κατάσταση</string>
+    <string name="pref_weather_show_highlow_on">Οι θερμοκρασίες, Υψηλή/Χαμήλη, θα εμφανίζονται στην κατάσταση</string>
+    <string name="pref_weather_show_highlow_off">Οι θερμοκρασίες, Υψηλή/Χαμήλη, δε θα εμφανίζονται στην κατάσταση</string>
+
+    <string name="pref_weather_icon_theme_title">Θέμα εικονιδίων κατάστασης</string>
+
+    <string name="pref_weather_hide_location_name_title">Απόκρυψη ονόματος τοποθεσίας</string>
+    <string name="pref_weather_hide_location_name_summary_on">Το όνομα της τοποθεσίας δεν θα εμφανίζετε σε επεκτάσιμη προβολή</string>
+    <string name="pref_weather_hide_location_name_summary_off">Το όνομα της τοποθεσίας θα εμφανίζετε σε επεκτάσιμη προβολή</string>
+
+    <string name="pref_weather_show_humidity_title">Εμφάνιση επιπέδου υγρασίας</string>
+    <string name="pref_weather_show_humidity_summary_on">Το επίπεδο υγρασίας θα είναι ορατό σε επεκτάσιμη προβολή</string>
+    <string name="pref_weather_show_humidity_summary_off">Το επίπεδο υγρασίας δεν θα είναι ορατό</string>
+
+    <string name="pref_weather_show_wind_details_title">Εμφάνιση λεπτομερειών ανέμου</string>
+    <string name="pref_weather_show_wind_details_summary_on">Οι λεπτομέρειες ανέμου θα είναι ορατές σε επεκτάσιμη προβολή</string>
+    <string name="pref_weather_show_wind_details_summary_off">Οι λεπτομέρειες ανέμου δεν θα είναι ορατές</string>
+
+    <string name="pref_weather_show_wind_chill_title">Εμφάνιση ψύχος αέρα</string>
+    <string name="pref_weather_show_wind_chill_summary_on">Το ψύχος αέρα θα είναι ορατό σε επεκτάσιμη προβολή όταν είναι διαθέσιμο</string>
+    <string name="pref_weather_show_wind_chill_summary_off">Το ψύχος αέρα δεν θα είναι ορατό</string>
+</resources>

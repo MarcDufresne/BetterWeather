@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cond_na">Niet beschikbaar</string>
+    <string name="cond_tornado">Tornado</string>
+    <string name="cond_tropical_storm">Tropische Storm</string>
+    <string name="cond_hurricane">Orkaan</string>
+    <string name="cond_severe_thunderstorms">Hevig onweer</string>
+    <string name="cond_thunderstorms">Onweer</string>
+    <string name="cond_mixed_rain_and_snow">Regen en sneeuw</string>
+    <string name="cond_mixed_rain_and_sleet">Regen en ijzel</string>
+    <string name="cond_mixed_snow_and_sleet">Sneeuw en ijzel</string>
+    <string name="cond_freezing_drizzle">IJzel</string>
+    <string name="cond_drizzle">Motregen</string>
+    <string name="cond_freezing_rain">IJzel</string>
+    <string name="cond_showers">Regen</string>
+    <string name="cond_snow_flurries">Lichte sneeuw</string>
+    <string name="cond_light_snow_showers">Lichte sneeuwbuien</string>
+    <string name="cond_blowing_snow">Stuifsneeuw</string>
+    <string name="cond_snow">Sneeuw</string>
+    <string name="cond_hail">Hagel</string>
+    <string name="cond_sleet">IJsregen</string>
+    <string name="cond_dust">Stof</string>
+    <string name="cond_foggy">Mistig</string>
+    <string name="cond_haze">Heiig</string>
+    <string name="cond_smoky">Smog</string>
+    <string name="cond_blustery">Windvlagen</string>
+    <string name="cond_windy">Winderig</string>
+    <string name="cond_cold">Koud</string>
+    <string name="cond_cloudy">Bewolkt</string>
+    <string name="cond_mostly_cloudy">Overwegend bewolkt</string>
+    <string name="cond_partly_cloudy">Licht bewolkt</string>
+    <string name="cond_clear">Helder</string>
+    <string name="cond_sunny">Zonnig</string>
+    <string name="cond_fair">Helder</string>
+    <string name="cond_mixed_rain_and_hail">Regen en hagel</string>
+    <string name="cond_hot">Warm</string>
+    <string name="cond_isolated_thunderstorms">Plaatselijk onweer</string>
+    <string name="cond_scattered_thunderstorms">Plaatselijk onweer</string>
+    <string name="cond_scattered_showers">Plaatselijk regen</string>
+    <string name="cond_heavy_snow">Zware sneeuw</string>
+    <string name="cond_scattered_snow_showers">Plaatselijke sneeuwbuien</string>
+    <string name="cond_thundershowers">Onweer met regen</string>
+    <string name="cond_snow_showers">Sneeuw</string>
+    <string name="cond_isolated_thundershowers">Plaatselijk onweer met regen</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">N</string>
+    <string name="wind_northeast">NO</string>
+    <string name="wind_east">O</string>
+    <string name="wind_southeast">ZO</string>
+    <string name="wind_south">Z</string>
+    <string name="wind_soutwest">ZW</string>
+    <string name="wind_west">W</string>
+    <string name="wind_northwest">NW</string>
+</resources>

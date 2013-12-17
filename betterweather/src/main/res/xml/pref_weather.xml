@@ -1,0 +1,129 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res/net.imatruck.betterweather">
+
+    <PreferenceCategory
+            android:key="pref_weather_general"
+            android:title="@string/pref_header_general">
+        <ListPreference
+                android:defaultValue="f"
+                android:entries="@array/pref_weather_units_display_names"
+                android:entryValues="@array/pref_weather_units_values"
+                android:key="pref_weather_units"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_weather_units_title"/>
+
+        <net.imatruck.betterweather.WeatherLocationPreference
+                android:key="pref_weather_location"
+                android:title="@string/pref_weather_location_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_weather_use_only_network"
+            android:summaryOn="@string/pref_weather_use_only_network_summary_on"
+            android:summaryOff="@string/pref_weather_use_only_network_summary_off"
+            android:title="@string/pref_weather_use_only_network_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:key="pref_weather_appearance"
+            android:title="@string/pref_header_appearance">
+        <ListPreference
+                android:defaultValue="climacons"
+                android:entries="@array/pref_weather_icon_theme_entries"
+                android:entryValues="@array/pref_weather_icon_theme_values"
+                android:key="pref_weather_icon_theme"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_weather_icon_theme_title"/>
+
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="pref_weather_show_highlow"
+                android:summaryOff="@string/pref_weather_show_highlow_off"
+                android:summaryOn="@string/pref_weather_show_highlow_on"
+                android:title="@string/pref_weather_show_highlow_title"/>
+        <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="pref_weather_show_today_forecast"
+                android:summaryOff="@string/pref_weather_show_today_forecast_off"
+                android:summaryOn="@string/pref_weather_show_today_forecast_on"
+                android:title="@string/pref_weather_show_today_forecast_title"/>
+        <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="pref_weather_show_tomorrow_forecast"
+                android:summaryOff="@string/pref_weather_show_tomorrow_forecast_off"
+                android:summaryOn="@string/pref_weather_show_tomorrow_forecast_on"
+                android:title="@string/pref_weather_show_tomorrow_forecast_title"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="pref_weather_hide_location_name"
+                android:summaryOn="@string/pref_weather_hide_location_name_summary_on"
+                android:summaryOff="@string/pref_weather_hide_location_name_summary_off"
+                android:title="@string/pref_weather_hide_location_name_title"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="pref_weather_show_humidity"
+                android:summaryOn="@string/pref_weather_show_humidity_summary_on"
+                android:summaryOff="@string/pref_weather_show_humidity_summary_off"
+                android:title="@string/pref_weather_show_humidity_title"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="pref_weather_show_wind_details"
+                android:summaryOn="@string/pref_weather_show_wind_details_summary_on"
+                android:summaryOff="@string/pref_weather_show_wind_details_summary_off"
+                android:title="@string/pref_weather_show_wind_details_title"/>
+        <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="pref_weather_show_wind_chill"
+                android:summaryOn="@string/pref_weather_show_wind_chill_summary_on"
+                android:summaryOff="@string/pref_weather_show_wind_chill_summary_off"
+                android:title="@string/pref_weather_show_wind_chill_title"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:key="pref_weather_behaviour"
+            android:title="@string/pref_header_behaviour">
+        <ListPreference
+                android:defaultValue="60"
+                android:entries="@array/pref_weather_refresh_interval_entries"
+                android:entryValues="@array/pref_weather_refresh_interval_values"
+                android:key="pref_weather_refresh_interval"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_weather_refresh_interval_title"/>
+
+        <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="pref_weather_refresh_on_touch"
+                android:summaryOff="@string/pref_weather_refresh_on_touch_off"
+                android:summaryOn="@string/pref_weather_refresh_on_touch_on"
+                android:title="@string/pref_weather_refresh_on_touch_title"/>
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="pref_weather_show_refresh_toast"
+                android:summaryOff="@string/pref_weather_show_refresh_toast_off"
+                android:summaryOn="@string/pref_weather_show_refresh_toast_on"
+                android:title="@string/pref_weather_show_refresh_toast_title"/>
+
+        <net.imatruck.betterweather.AppChooserPreference
+                android:key="pref_weather_shortcut"
+                android:title="@string/pref_shortcut_title"
+                app:allowUseDefault="true"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="pref_donate"
+            android:title="@string/pref_header_donate">
+
+        <Preference
+                android:title="@string/pref_donate_title"
+                android:summary="@string/pref_donate_summary"
+                android:key="pref_donate">
+            <intent
+                    android:action="android.intent.action.VIEW"
+                    android:data="@string/donate_link"/>
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

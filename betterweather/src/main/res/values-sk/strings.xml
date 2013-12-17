@@ -1,0 +1,31 @@
+﻿<resources>
+    <string name="app_name">BetterWeather</string>
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description">Zobrazí aktuálne informácie o počasí pre Vašu polohu alebo pre nastavenú polohu. Dáta sú získavané zo služby Yahoo! Weather.</string>
+    <string name="title_settings">Nastavenia BetterWeather</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">Aplikácie</string>
+    <string name="title_shortcuts">Skratky</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">Aktualizácia počasia&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">Dnes: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">Zajtra: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">Vietor: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">Pocitová teplota: %1$s°</string>
+    <string name="humidity_template">Vlhkosť: %1$s</string>
+
+    <string name="wind_speed_kmh">km/h</string>
+    <string name="wind_speed_mph">mph</string>
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[Autor: <br><i>Marc-André Dufresne</i><br><br>Ďakujem Romanovi Nurikovi za DashClock!<br>Do slovenčiny preložil pyler.<br>]]></string>
+    <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
+    <string name="close">Zavrieť</string>
+    <string name="about_title">O programe</string>
+</resources>

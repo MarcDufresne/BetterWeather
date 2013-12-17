@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">BetterWeather</string>
+
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description">Отображает информацию о погоде для вашего местоположения или о наборе
+        местоположений. Данные предоставлены Yahoo! Weather.
+    </string>
+    <string name="title_settings">Настройки BetterWeather</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">Приложения</string>
+    <string name="title_shortcuts">Ярлыки</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">Обновление&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">Сегодня: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">Завтра: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">Ветер: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">Ощущается: %1$s°</string>
+    <string name="humidity_template">Влажность: %1$s</string>
+
+    <string name="wind_speed_kmh">км/ч</string>
+    <string name="wind_speed_mph">м/ч</string>
+
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[Автор: <br><i>Marc-André Dufresne</i><br><br>Отдельная благодарность Roman Nurik за создание DashClock!<br>Перевод Константин Шупленков]]></string>
+    <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
+    <string name="close">Закрыть</string>
+    <string name="about_title">О программе</string>
+</resources>

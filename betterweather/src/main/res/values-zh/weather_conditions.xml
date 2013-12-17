@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cond_na">Not Available</string>
+    <string name="cond_tornado">Tornado</string>
+    <string name="cond_tropical_storm">Tropical Storm</string>
+    <string name="cond_hurricane">Hurricane</string>
+    <string name="cond_severe_thunderstorms">Severe thunderstorms</string>
+    <string name="cond_thunderstorms">Thunderstorms</string>
+    <string name="cond_mixed_rain_and_snow">Mixed rain and snow</string>
+    <string name="cond_mixed_rain_and_sleet">Mixed rain and sleet</string>
+    <string name="cond_mixed_snow_and_sleet">Mixed snow and sleet</string>
+    <string name="cond_freezing_drizzle">Freezing drizzle</string>
+    <string name="cond_drizzle">Drizzle</string>
+    <string name="cond_freezing_rain">Freezing rain</string>
+    <string name="cond_showers">Showers</string>
+    <string name="cond_snow_flurries">Snow flurries</string>
+    <string name="cond_light_snow_showers">Light snow showers</string>
+    <string name="cond_blowing_snow">Blowing snow</string>
+    <string name="cond_snow">Snow</string>
+    <string name="cond_hail">Hail</string>
+    <string name="cond_sleet">Sleet</string>
+    <string name="cond_dust">Dust</string>
+    <string name="cond_foggy">Foggy</string>
+    <string name="cond_haze">Haze</string>
+    <string name="cond_smoky">Smoky</string>
+    <string name="cond_blustery">Blustery</string>
+    <string name="cond_windy">Windy</string>
+    <string name="cond_cold">Cold</string>
+    <string name="cond_cloudy">Cloudy</string>
+    <string name="cond_mostly_cloudy">Mostly cloudy</string>
+    <string name="cond_partly_cloudy">Partly cloudy</string>
+    <string name="cond_clear">Clear</string>
+    <string name="cond_sunny">Sunny</string>
+    <string name="cond_fair">Fair</string>
+    <string name="cond_mixed_rain_and_hail">Mixed rain and hail</string>
+    <string name="cond_hot">Hot</string>
+    <string name="cond_isolated_thunderstorms">Isolated thunderstorms</string>
+    <string name="cond_scattered_thunderstorms">Scattered thunderstorms</string>
+    <string name="cond_scattered_showers">Scattered showers</string>
+    <string name="cond_heavy_snow">Heavy snow</string>
+    <string name="cond_scattered_snow_showers">Scattered snow showers</string>
+    <string name="cond_thundershowers">Thundershowers</string>
+    <string name="cond_snow_showers">Snow showers</string>
+    <string name="cond_isolated_thundershowers">Isolated thundershowers</string>
+</resources>

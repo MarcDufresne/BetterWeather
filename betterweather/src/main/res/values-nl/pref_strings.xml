@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Snelkoppeling</string>
+    <string name="pref_shortcut_default">(Standaard)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">Algemene instellingen</string>
+    <string name="pref_header_appearance">Uiterlijk</string>
+    <string name="pref_header_behaviour">Gedrag</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Eenheden</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Gebruik huidige locatie</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather zal je huidige locatie gebruiken</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather zal de hieronder aangegeven locatie gebruiken</string>
+
+    <string name="pref_weather_location_title">Locatie</string>
+    <string name="pref_weather_location_automatic">Automatische</string>
+    <string name="pref_weather_location_query_hint">Zoek een locatie</string>
+    <string name="pref_weather_location_automatic_description">Basis van uw huidige locatie.</string>
+
+    <string name="pref_weather_show_today_forecast_title">Toon voorspelling van vandaag</string>
+    <string name="pref_weather_show_today_forecast_on">Voorspelling van vandaag zal worden getoond in uitgebreide weergave</string>
+    <string name="pref_weather_show_today_forecast_off">Voorspelling van vandaag zal niet worden getoond</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Toon voorspelling van morgen</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">Voorspelling van morgen zal worden getoond in uitgebreide weergave</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">Voorspelling van morgen zal niet worden getoond</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Ververs gegevens bij het aanraken van de extensie</string>
+    <string name="pref_weather_refresh_on_touch_on">Bij het aantaken van de extensie zullen de gegevens worden ververst (Zet deze optie uit om de instelbare snelkoppeling te activeren)</string>
+    <string name="pref_weather_refresh_on_touch_off">Aangegeven snelkoppeling zal worden gestart bij het aanraken van de extensie</string>
+
+    <string name="pref_weather_refresh_interval_title">Verversingsfrequentie</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 minuten</item>
+        <item>30 minuten</item>
+        <item>45 minuten</item>
+        <item>1 uur</item>
+        <item>2 uur</item>
+        <item>3 uur</item>
+        <item>4 uur</item>
+        <item>Zet automatisch updaten uit</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Geef feedback bij het verversen</string>
+    <string name="pref_weather_show_refresh_toast_on">Feedback zal worden getoond bij het verversen</string>
+    <string name="pref_weather_show_refresh_toast_off">Feedback zal niet worden getoond bij het verversen</string>
+
+    <string name="pref_weather_show_highlow_title">Toon Max/Min in status</string>
+    <string name="pref_weather_show_highlow_on">Max/Min zal worden getoond in status</string>
+    <string name="pref_weather_show_highlow_off">Max/Min zal niet worden getoond in status</string>
+
+    <string name="pref_weather_icon_theme_title">Iconen thema</string>
+
+    <string name="pref_weather_hide_location_name_title">Verberg locatie naam</string>
+    <string name="pref_weather_hide_location_name_summary_on">Locatie zal niet worden getoond in uitgebreide weergave</string>
+    <string name="pref_weather_hide_location_name_summary_off">Locatie zal worden getoond in uitgebreide weergave</string>
+
+    <string name="pref_weather_show_humidity_title">Toon luchtvochtigheid</string>
+    <string name="pref_weather_show_humidity_summary_on">Luchtvochtigheid zal worden weergegeven in uitgebreide weergave</string>
+    <string name="pref_weather_show_humidity_summary_off">Luchtvochtigheid zal niet worden weergegeven in uitgebreide weergave</string>
+
+    <string name="pref_weather_show_wind_details_title">Toon wind details</string>
+    <string name="pref_weather_show_wind_details_summary_on">Wind details zullen worden weergegeven in uitgebreide weergave</string>
+    <string name="pref_weather_show_wind_details_summary_off">Wind details zullen niet worden weergegeven in uitgebreide weergave</string>
+
+    <string name="pref_weather_show_wind_chill_title">Toon gevoelstemperatuur</string>
+    <string name="pref_weather_show_wind_chill_summary_on">Gevoelstemperatuur zal worden weergegeven in uitgebreide weergave (indien beschikbaar) </string>
+    <string name="pref_weather_show_wind_chill_summary_off">Gevoelstemperatuur zal niet worden weergegeven in uitgebreide weergave</string>
+</resources>

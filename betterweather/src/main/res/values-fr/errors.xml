@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_status">--</string>
+    <!-- Unknown error -->
+    <string name="error_unknown">Une erreur inconnue s\'est produite.</string>
+    <string name="error_unknown_expandedBody">Veuillez vérifier vos paramètres et rafraîchir l\'extension, nous réessaierons dans quelques minutes.</string>
+    <!-- Couldn't get location error -->
+    <string name="error_location">Location introuvable.</string>
+    <string name="error_location_expandedBody">Il semblerait que nous ne trouvions pas votre emplacement, veuillez vérifier vos paramètres de localisation Android et réessayer.</string>
+    <!-- No internet connection -->
+    <string name="error_internet">Aucune connexion Internet.</string>
+    <string name="error_internet_expandedBody">Impossible de se connecter à Internet, veuillez vérifier vos paramètres réseau et réessayer.</string>
+</resources>

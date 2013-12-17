@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Acceso Directo</string>
+    <string name="pref_shortcut_default">(Default)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">Configuraciones generales</string>
+    <string name="pref_header_appearance">Apariencia</string>
+    <string name="pref_header_behaviour">Comportamiento</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Unidad de temperatura</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Usar ubicación actual</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather usará su ubicación actual</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather usará la ubicación definida a continuación
+    </string>
+
+    <string name="pref_weather_location_title">Localización</string>
+    <string name="pref_weather_location_automatic">Automático</string>
+    <string name="pref_weather_location_query_hint">Encuentre una ubicación</string>
+    <string name="pref_weather_location_automatic_description">En base a su ubicación actual.</string>
+
+    <string name="pref_weather_show_today_forecast_title">Mostrar el pronóstico de hoy</string>
+    <string name="pref_weather_show_today_forecast_on">El pronóstico de hoy se mostrará en vista expandida</string>
+    <string name="pref_weather_show_today_forecast_off">El pronóstico de hoy no se mostrará</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Mostrar el pronóstico de mañana</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">El pronóstico de mañana se mostrará en vista expandida
+    </string>
+    <string name="pref_weather_show_tomorrow_forecast_off">El pronóstico de mañana no se mostrará</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Actualizar información meteorológica al tocar</string>
+    <string name="pref_weather_refresh_on_touch_on">La información meteorológica se actualizará al tocar la extensión (Deshabilite esta opción para activar el acceso directo personalizado)</string>
+    <string name="pref_weather_refresh_on_touch_off">El acceso directo seleccionado se abrirá al tocar la extensión</string>
+
+    <string name="pref_weather_refresh_interval_title">Frecuencia de actualización</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 minutos</item>
+        <item>30 minutos</item>
+        <item>45 minutos</item>
+        <item>1 hora</item>
+        <item>2 horas</item>
+        <item>3 horas</item>
+        <item>4 horas</item>
+        <item>Apagar actualización automática</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Mostrar aviso al actualizar</string>
+    <string name="pref_weather_show_refresh_toast_on">Se mostrará un aviso al actualizar</string>
+    <string name="pref_weather_show_refresh_toast_off">No se mostrará ningún aviso al actualizar</string>
+
+    <string name="pref_weather_show_highlow_title">Mostrar temperatura Más Alta/Más Baja</string>
+    <string name="pref_weather_show_highlow_on">Se mostrará la temperatura Más Alta/Más Baja</string>
+    <string name="pref_weather_show_highlow_off">No se mostrará la temperatura Más Alta/Más Baja</string>
+
+    <string name="pref_weather_icon_theme_title">Tipos de tema de los íconos</string>
+
+    <string name="pref_weather_hide_location_name_title">Ocultar nombre de la ubicación</string>
+    <string name="pref_weather_hide_location_name_summary_on">La ubicación no se mostrará en vista expandida</string>
+    <string name="pref_weather_hide_location_name_summary_off">La ubicación se mostrará en vista expandida</string>
+
+    <string name="pref_weather_show_humidity_title">Mostrar nivel de humedad</string>
+    <string name="pref_weather_show_humidity_summary_on">El nivel de humedad se mostrará en vista extendida</string>
+    <string name="pref_weather_show_humidity_summary_off">El nivel de humedad no se mostrará</string>
+
+    <string name="pref_weather_show_wind_details_title">Mostrar detalles del viento</string>
+    <string name="pref_weather_show_wind_details_summary_on">Los detalles del viento se mostrarán en vista extendida</string>
+    <string name="pref_weather_show_wind_details_summary_off">Los detalles del viento no se mostrarán</string>
+
+    <string name="pref_weather_show_wind_chill_title">Mostrar la sensación térmica del viento</string>
+    <string name="pref_weather_show_wind_chill_summary_on">La sensación térmica se mostrarán en vista extendida cuando esté disponible</string>
+    <string name="pref_weather_show_wind_chill_summary_off">La sensación térmica no se mostrará</string>
+</resources>

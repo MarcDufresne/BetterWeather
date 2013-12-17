@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cond_na">No disponible</string>
+    <string name="cond_tornado">Tornado</string>
+    <string name="cond_tropical_storm">Tormenta Tropical</string>
+    <string name="cond_hurricane">Huracán</string>
+    <string name="cond_severe_thunderstorms">Tormenta eléctrica severa</string>
+    <string name="cond_thunderstorms">Tormenta eléctrica</string>
+    <string name="cond_mixed_rain_and_snow">Mezcla de lluvia con nieve</string>
+    <string name="cond_mixed_rain_and_sleet">Mezcla de lluvia con aguanieve</string>
+    <string name="cond_mixed_snow_and_sleet">Mezcla de nieve con aguanieve</string>
+    <string name="cond_freezing_drizzle">Llovizna helada</string>
+    <string name="cond_drizzle">Llovizna</string>
+    <string name="cond_freezing_rain">Lluvia helada</string>
+    <string name="cond_showers">Lluvia</string>
+    <string name="cond_snow_flurries">Nieve intermitente</string>
+    <string name="cond_light_snow_showers">Nieve ligera</string>
+    <string name="cond_blowing_snow">Viento nevado</string>
+    <string name="cond_snow">Nieve</string>
+    <string name="cond_hail">Granizo</string>
+    <string name="cond_sleet">Aguanieve</string>
+    <string name="cond_dust">Polvoriento</string>
+    <string name="cond_foggy">Neblina</string>
+    <string name="cond_haze">Calina</string>
+    <string name="cond_smoky">Ahumado</string>
+    <string name="cond_blustery">Tempestuoso</string>
+    <string name="cond_windy">Ventoso</string>
+    <string name="cond_cold">Frío</string>
+    <string name="cond_cloudy">Nublado</string>
+    <string name="cond_mostly_cloudy">Muy nublado</string>
+    <string name="cond_partly_cloudy">Parcialmente nublado</string>
+    <string name="cond_clear">Despejado</string>
+    <string name="cond_sunny">Soleado</string>
+    <string name="cond_fair">Buen clima</string>
+    <string name="cond_mixed_rain_and_hail">Mezcla de lluvia y granizo</string>
+    <string name="cond_hot">Caliente</string>
+    <string name="cond_isolated_thunderstorms">Tormenta eléctrica aislada</string>
+    <string name="cond_scattered_thunderstorms">Tormenta eléctrica dispersa</string>
+    <string name="cond_scattered_showers">Lluvias dispersas</string>
+    <string name="cond_heavy_snow">Nieve intensa</string>
+    <string name="cond_scattered_snow_showers">Chubascos de nieve dispersos</string>
+    <string name="cond_thundershowers">Tormenta</string>
+    <string name="cond_snow_showers">Nieve intermitente</string>
+    <string name="cond_isolated_thundershowers">Tormentas aisladas</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">N</string>
+    <string name="wind_northeast">N.E</string>
+    <string name="wind_east">E</string>
+    <string name="wind_southeast">S.E</string>
+    <string name="wind_south">S</string>
+    <string name="wind_soutwest">S.O</string>
+    <string name="wind_west">O</string>
+    <string name="wind_northwest">N.O</string>
+</resources>

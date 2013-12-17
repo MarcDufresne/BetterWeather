@@ -1,0 +1,33 @@
+﻿<resources>
+    <string name="app_name">BetterWeather</string>
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description">Εμφανίζει τις πιο ενημερωμένες πληροφορίες για τον καιρό της τοποθεσίας σας ή της τοποθεσίας που έχετε ορίσει.
+        Με τη συμβολή του Yahoo! Weather.
+    </string>
+    <string name="title_settings">Ρυθμίσεις BetterWeather</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">Εφαρμογές</string>
+    <string name="title_shortcuts">Συντομεύσεις</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">Ανανέωση&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">Σήμερα: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">Αύριο: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">Άνεμοι: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">Ψύχος Αέρα: %1$s°</string>
+    <string name="humidity_template">Υγρασία: %1$s</string>
+
+    <string name="wind_speed_kmh">χμ/ω</string>
+    <string name="wind_speed_mph">μ.α.ω</string>
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[Δημιουργήθηκε από: <br><i>Marc-André Dufresne</i><br><br>Ευχαριστώ τον Roman Nurik για το DashClock!<br>Μετάφραση στα Ελληνικά από Γιάννης Φτάρας]]></string>
+    <!-- Add "Μετάφραση στα Ελληνικά από Γιάννης Φτάρας" after the last "<br>" in "about_extension_text" -->
+    <string name="close">Κλείσιμο</string>
+    <string name="about_title">Σχετικά</string>
+</resources>

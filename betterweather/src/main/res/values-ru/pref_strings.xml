@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Ярлык</string>
+    <string name="pref_shortcut_default">(По-умолчанию)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">Настройки</string>
+    <string name="pref_header_appearance">Внешний вид</string>
+    <string name="pref_header_behaviour">Поведение</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Единицы измерения</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Использовать текущее местоположение</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather будет использовать текущее местоположение</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather будет использовать местоположение, определенное
+        ниже
+    </string>
+
+    <string name="pref_weather_location_title">Местоположение</string>
+    <string name="pref_weather_location_automatic">автоматический</string>
+    <string name="pref_weather_location_query_hint">Поиск местоположения</string>
+    <string name="pref_weather_location_automatic_description">На основе вашего текущего местоположения.</string>
+
+    <string name="pref_weather_show_today_forecast_title">Отображать прогноз на сегодня</string>
+    <string name="pref_weather_show_today_forecast_on">Прогноз на сегодня будет отображаться в развернутом виде</string>
+    <string name="pref_weather_show_today_forecast_off">Прогноз на сегодня не будет отображаться</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Отображать прогноз на завтра</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">Прогноз на завтра будет отображаться в развернутом виде
+    </string>
+    <string name="pref_weather_show_tomorrow_forecast_off">Прогноз на завтра не будет отображаться</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Обновлять погоду при клике</string>
+    <string name="pref_weather_refresh_on_touch_on">Погода будет обновлена по клику на расширение (Отключите чтобы использовать собственный ярлык)</string>
+    <string name="pref_weather_refresh_on_touch_off">Выбранный ярлык будет запущен при клике на расширение</string>
+
+    <string name="pref_weather_refresh_interval_title">Интервал обновления</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 минут</item>
+        <item>30 минут</item>
+        <item>45 минут</item>
+        <item>1 час</item>
+        <item>2 часа</item>
+        <item>3 часа</item>
+        <item>4 часа</item>
+        <item>Выключить автообновление</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Отображать уведомление при обновлении</string>
+    <string name="pref_weather_show_refresh_toast_on">Уведомление будет отображаться при обновлении</string>
+    <string name="pref_weather_show_refresh_toast_off">Уведомление не будет отображаться при обновлении</string>
+
+    <string name="pref_weather_show_highlow_title">Отображать макс./мин. темпрературу в статусе</string>
+    <string name="pref_weather_show_highlow_on">Макс./мин. температура будет отображена в статусе</string>
+    <string name="pref_weather_show_highlow_off">Макс./мин. температура не будет отображена в статусе</string>
+
+    <string name="pref_weather_icon_theme_title">Тема иконок</string>
+
+    <string name="pref_weather_hide_location_name_title">Скрыть название местоположения</string>
+    <string name="pref_weather_hide_location_name_summary_on">Название местоположения не будет показано в расширенном виде</string>
+    <string name="pref_weather_hide_location_name_summary_off">Название местоположения будет показано в расширенном виде</string>
+
+    <string name="pref_weather_show_humidity_title">Отображать уровень влажности</string>
+    <string name="pref_weather_show_humidity_summary_on">Уровень влажности будет отображаться в развернутом виде</string>
+    <string name="pref_weather_show_humidity_summary_off">Уровень влажности не будет отображаться</string>
+
+    <string name="pref_weather_show_wind_details_title">Отображать информацию о ветре</string>
+    <string name="pref_weather_show_wind_details_summary_on">Информация о ветре будет отображаться в развернутом виде</string>
+    <string name="pref_weather_show_wind_details_summary_off">Информацию о ветре не будет отображаться</string>
+
+    <string name="pref_weather_show_wind_chill_title">Отображать ощущаемую температуру</string>
+    <string name="pref_weather_show_wind_chill_summary_on">Ощущаемая температура будет отображаться в развернутом виде (если доступно)</string>
+    <string name="pref_weather_show_wind_chill_summary_off">Ощущаемая температура не будет отображаться</string>
+</resources>

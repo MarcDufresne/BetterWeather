@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cond_na">Non disponible</string>
+    <string name="cond_tornado">Tornade</string>
+    <string name="cond_tropical_storm">Tempête tropicale</string>
+    <string name="cond_hurricane">Ouragan</string>
+    <string name="cond_severe_thunderstorms">Orages violents</string>
+    <string name="cond_thunderstorms">Orages</string>
+    <string name="cond_mixed_rain_and_snow">Pluie et neige</string>
+    <string name="cond_mixed_rain_and_sleet">Pluie et grésil</string>
+    <string name="cond_mixed_snow_and_sleet">Neige et grésil</string>
+    <string name="cond_freezing_drizzle">Bruine verglaçante</string>
+    <string name="cond_drizzle">Bruine</string>
+    <string name="cond_freezing_rain">Pluie verglaçante</string>
+    <string name="cond_showers">Pluie</string>
+    <string name="cond_snow_flurries">Averses de neige</string>
+    <string name="cond_light_snow_showers">Légères averses de neige</string>
+    <string name="cond_blowing_snow">Poudrerie</string>
+    <string name="cond_snow">Neige</string>
+    <string name="cond_hail">Grêle</string>
+    <string name="cond_sleet">Grésil</string>
+    <string name="cond_dust">Poussière</string>
+    <string name="cond_foggy">Brumeux</string>
+    <string name="cond_haze">Brume</string>
+    <string name="cond_smoky">Brumeux</string>
+    <string name="cond_blustery">Vents forts</string>
+    <string name="cond_windy">Venteux</string>
+    <string name="cond_cold">Froid</string>
+    <string name="cond_cloudy">Nuageux</string>
+    <string name="cond_mostly_cloudy">Partiellement nuageux</string>
+    <string name="cond_partly_cloudy">Partiellement nuageux</string>
+    <string name="cond_clear">Clair</string>
+    <string name="cond_sunny">Ensoleillé</string>
+    <string name="cond_fair">Beau</string>
+    <string name="cond_mixed_rain_and_hail">Pluie et grêle</string>
+    <string name="cond_hot">Chaud</string>
+    <string name="cond_isolated_thunderstorms">Orages isolés</string>
+    <string name="cond_scattered_thunderstorms">Orages dispersés</string>
+    <string name="cond_scattered_showers">Averses dispersées</string>
+    <string name="cond_heavy_snow">Neige abondante</string>
+    <string name="cond_scattered_snow_showers">Chutes de neige dispersées</string>
+    <string name="cond_thundershowers">Orages</string>
+    <string name="cond_snow_showers">Averses de neige</string>
+    <string name="cond_isolated_thundershowers">Orages dispersés</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">N</string>
+    <string name="wind_northeast">NE</string>
+    <string name="wind_east">E</string>
+    <string name="wind_southeast">SE</string>
+    <string name="wind_south">S</string>
+    <string name="wind_soutwest">SO</string>
+    <string name="wind_west">O</string>
+    <string name="wind_northwest">NO</string>
+</resources>

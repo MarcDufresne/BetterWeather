@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_status">--</string>
+    <!-- Unknown error -->
+    <string name="error_unknown">An unknown error occurred.</string>
+    <string name="error_unknown_expandedBody">Please try to refresh the widget or change your settings. We\'ll try to refresh in a couple of minutes.</string>
+    <!-- Couldn't get location error -->
+    <string name="error_location">Location not found.</string>
+    <string name="error_location_expandedBody">It seems we could not get your location, you can check your Android location access settings and try to refresh.</string>
+    <!-- No internet connection -->
+    <string name="error_internet">No internet connection.</string>
+    <string name="error_internet_expandedBody">Looks like we can\'t connect to the internet, check your settings and try to refresh.</string>
+</resources>

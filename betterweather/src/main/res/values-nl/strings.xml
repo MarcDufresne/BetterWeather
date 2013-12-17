@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">BetterWeather</string>
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description">Toont actuele weersinformatie voor de huidige of gekozen locatie.
+        Powered by Yahoo! Weather.
+    </string>
+    <string name="title_settings">BetterWeather Instellingen</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">Toepassingen</string>
+    <string name="title_shortcuts">Snelkoppelingen</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">Verversen&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">Vandaag: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">Morgen: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">Wind: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">Gevoelstemperatuur: %1$s°</string>
+    <string name="humidity_template">Vochtigheid: %1$s</string>
+
+    <string name="wind_speed_kmh">km/h</string>
+    <string name="wind_speed_mph">mph</string>
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[Created By: <br><i>Marc-André Dufresne</i><br><br>Thanks to Roman Nurik for DashClock!<br> Translaten in Dutch by Rob Goossens]]></string>
+    <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
+    <string name="close">Afsluiten</string>
+    <string name="about_title">Over</string>
+</resources>

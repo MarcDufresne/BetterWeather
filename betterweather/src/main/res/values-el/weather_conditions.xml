@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cond_na">Μη Διαθέσιμο</string>
+    <string name="cond_tornado">Ανεμοστρόβιλος</string>
+    <string name="cond_tropical_storm">Τροπική Καταιγίδα</string>
+    <string name="cond_hurricane">Τυφώνας</string>
+    <string name="cond_severe_thunderstorms">Έντονες Καταιγίδες</string>
+    <string name="cond_thunderstorms">Καταιγίδες</string>
+    <string name="cond_mixed_rain_and_snow">Μικτή βροχή και χιόνι</string>
+    <string name="cond_mixed_rain_and_sleet">Μικτή βροχή και χιονόνερο</string>
+    <string name="cond_mixed_snow_and_sleet">Μικτό χιόνι και χιονόνερο</string>
+    <string name="cond_freezing_drizzle">Παγωμένο Ψιλόβροχο</string>
+    <string name="cond_drizzle">Ψιλόβροχο</string>
+    <string name="cond_freezing_rain">Παγωμένη Βροχή</string>
+    <string name="cond_showers">Βροχές</string>
+    <string name="cond_snow_flurries">Χιονώδης Αναταραχές</string>
+    <string name="cond_light_snow_showers">Αραιή χιονόπτωση</string>
+    <string name="cond_blowing_snow">Αέρας με χιόνι</string>
+    <string name="cond_snow">Χιόνι</string>
+    <string name="cond_hail">Χαλάζι</string>
+    <string name="cond_sleet">Χιονόνερο</string>
+    <string name="cond_dust">Σκόνη</string>
+    <string name="cond_foggy">Ομιχλώδης</string>
+    <string name="cond_haze">Καταχνιά</string>
+    <string name="cond_smoky">Καπνώδης</string>
+    <string name="cond_blustery">Θορυβώδης</string>
+    <string name="cond_windy">Θυελώδης</string>
+    <string name="cond_cold">Ψύχος</string>
+    <string name="cond_cloudy">Νεφελώδης</string>
+    <string name="cond_mostly_cloudy">Γενικά Νεφελώδης</string>
+    <string name="cond_partly_cloudy">Μερικώς Νεφελώδης</string>
+    <string name="cond_clear">Καθαρός</string>
+    <string name="cond_sunny">Ηλιόλουστος</string>
+    <string name="cond_fair">Αίθριος</string>
+    <string name="cond_mixed_rain_and_hail">Μικτή βροχή και χαλάζι</string>
+    <string name="cond_hot">Καυτός</string>
+    <string name="cond_isolated_thunderstorms">Τοπικές καταιγίδες</string>
+    <string name="cond_scattered_thunderstorms">Αραιές καταιγίδες</string>
+    <string name="cond_scattered_showers">Αιραιές βροχοπτώσεις</string>
+    <string name="cond_heavy_snow">Βαρύ χιόνι</string>
+    <string name="cond_scattered_snow_showers">Αραιές χιονοπτώσεις</string>
+    <string name="cond_thundershowers">Βροχοπτώσεις με κεραυνούς</string>
+    <string name="cond_snow_showers">Χιονοπτώσεις</string>
+    <string name="cond_isolated_thundershowers">Τοπικές βροχοπτώσεις με κεραυνούς</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">Β</string>
+    <string name="wind_northeast">ΒΑ</string>
+    <string name="wind_east">Α</string>
+    <string name="wind_southeast">ΝΑ</string>
+    <string name="wind_south">Ν</string>
+    <string name="wind_soutwest">ΝΔ</string>
+    <string name="wind_west">Δ</string>
+    <string name="wind_northwest">ΒΔ</string>
+</resources>

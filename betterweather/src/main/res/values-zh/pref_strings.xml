@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding= "utf-8"?>
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">快捷操作</string>
+    <string name="pref_shortcut_default">(默认)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">设定</string>
+    <string name="pref_header_appearance">界面</string>
+    <string name="pref_header_behaviour">使用方式</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">气温单位</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>华氏度 F</item>
+        <item>摄氏度 C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">基于位置信息</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather 将会使用您的位置信息</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather 将会使用如下位置信息</string>
+
+    <string name="pref_weather_location_title">位置</string>
+    <string name="pref_weather_location_automatic">自动</string>
+    <string name="pref_weather_location_query_hint">查找位置</string>
+    <string name="pref_weather_location_automatic_description">根据您当前的位置</string>
+
+    <string name="pref_weather_show_today_forecast_title">显示今天的预报</string>
+    <string name="pref_weather_show_today_forecast_on">今天的预报将会显示在扩展界面</string>
+    <string name="pref_weather_show_today_forecast_off">今天的预报将不会显示</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">显示明天的预报</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">明天的预报将会显示在扩展界面</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">明天的预报将不会显示</string>
+
+    <string name="pref_weather_refresh_on_touch_title">点击刷新天气</string>
+    <string name="pref_weather_refresh_on_touch_on">点击图标时刷新天气 (禁用此设置启用快捷方式)</string>
+    <string name="pref_weather_refresh_on_touch_off">点击图标是将会执行所选操作</string>
+
+    <string name="pref_weather_refresh_interval_title">刷新间隔</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 分钟</item>
+        <item>30 分钟</item>
+        <item>45 分钟</item>
+        <item>1 小时</item>
+        <item>2 小时</item>
+        <item>3 小时</item>
+        <item>4 小时</item>
+        <item>关闭自动更新</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">刷新显示反馈</string>
+    <string name="pref_weather_show_refresh_toast_on">刷新后将会显示反馈</string>
+    <string name="pref_weather_show_refresh_toast_off">刷新后将不显示反馈</string>
+
+    <string name="pref_weather_show_highlow_title">在状态中显示高低温</string>
+    <string name="pref_weather_show_highlow_on">高低温将在状态中显示</string>
+    <string name="pref_weather_show_highlow_off">高低温将不会再状态中显示</string>
+
+    <string name="pref_weather_icon_theme_title">状态图标主题</string>
+
+    <string name="pref_weather_hide_location_name_title">隐藏位置</string>
+    <string name="pref_weather_hide_location_name_summary_on">位置将不会显示在扩展界面</string>
+    <string name="pref_weather_hide_location_name_summary_off">位置将会显示在扩展界面</string>
+</resources>

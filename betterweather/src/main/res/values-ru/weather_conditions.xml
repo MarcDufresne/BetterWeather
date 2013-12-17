@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cond_na">Не доступно</string>
+    <string name="cond_tornado">Торнадо</string>
+    <string name="cond_tropical_storm">Тропический шторм</string>
+    <string name="cond_hurricane">Ураган</string>
+    <string name="cond_severe_thunderstorms">Сильные грозы</string>
+    <string name="cond_thunderstorms">Гроза</string>
+    <string name="cond_mixed_rain_and_snow">Дождь со снегом</string>
+    <string name="cond_mixed_rain_and_sleet">Дождь и мокрый снег</string>
+    <string name="cond_mixed_snow_and_sleet">Снег и мокрый снег</string>
+    <string name="cond_freezing_drizzle">Изморозь</string>
+    <string name="cond_drizzle">Мелкий дождь</string>
+    <string name="cond_freezing_rain">Ледяной дождь</string>
+    <string name="cond_showers">Дождь</string>
+    <string name="cond_snow_flurries">Снегопад</string>
+    <string name="cond_light_snow_showers">Небольшой снег</string>
+    <string name="cond_blowing_snow">Метель</string>
+    <string name="cond_snow">Снег</string>
+    <string name="cond_hail">Град</string>
+    <string name="cond_sleet">Мокрый снег</string>
+    <string name="cond_dust">Пыль</string>
+    <string name="cond_foggy">Туман</string>
+    <string name="cond_haze">Туман</string>
+    <string name="cond_smoky">Дымка</string>
+    <string name="cond_blustery">Буря</string>
+    <string name="cond_windy">Ветрено</string>
+    <string name="cond_cold">Холодно</string>
+    <string name="cond_cloudy">Облачно</string>
+    <string name="cond_mostly_cloudy">Пасмурно</string>
+    <string name="cond_partly_cloudy">Переменная облачность</string>
+    <string name="cond_clear">Ясно</string>
+    <string name="cond_sunny">Солнечно</string>
+    <string name="cond_fair">Ясно</string>
+    <string name="cond_mixed_rain_and_hail">Дождь с градом</string>
+    <string name="cond_hot">Жарко</string>
+    <string name="cond_isolated_thunderstorms">Местами грозы</string>
+    <string name="cond_scattered_thunderstorms">Редкие грозы</string>
+    <string name="cond_scattered_showers">Снегопад</string>
+    <string name="cond_heavy_snow">Метель</string>
+    <string name="cond_scattered_snow_showers">Местами снегопад</string>
+    <string name="cond_thundershowers">Грозы</string>
+    <string name="cond_snow_showers">Сильный снегопад</string>
+    <string name="cond_isolated_thundershowers">Местами ливень</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">С</string>
+    <string name="wind_northeast">СВ</string>
+    <string name="wind_east">В</string>
+    <string name="wind_southeast">ЮВ</string>
+    <string name="wind_south">Ю</string>
+    <string name="wind_soutwest">ЮЗ</string>
+    <string name="wind_west">З</string>
+    <string name="wind_northwest">СЗ</string>
+</resources>

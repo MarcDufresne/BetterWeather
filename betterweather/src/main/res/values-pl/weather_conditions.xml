@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cond_na">Niedostępna</string>
+    <string name="cond_tornado">Tornado</string>
+    <string name="cond_tropical_storm">Tropikalny sztorm</string>
+    <string name="cond_hurricane">Huragan</string>
+    <string name="cond_severe_thunderstorms">Gwałtowna burza z piorunami</string>
+    <string name="cond_thunderstorms">Burza z piorunami</string>
+    <string name="cond_mixed_rain_and_snow">Deszcz i śnieg</string>
+    <string name="cond_mixed_rain_and_sleet">Deszcz i deszcz ze śniegiem</string>
+    <string name="cond_mixed_snow_and_sleet">Śnieg i deszcz ze śniegiem</string>
+    <string name="cond_freezing_drizzle">Marznąca mżawka</string>
+    <string name="cond_drizzle">Mżawka</string>
+    <string name="cond_freezing_rain">Marznący deszcz</string>
+    <string name="cond_showers">Przelotne opady deszczu</string>
+    <string name="cond_snow_flurries">Przelotne opady śniegu</string>
+    <string name="cond_light_snow_showers">Przelotne, miejscowe opady śniegu</string>
+    <string name="cond_blowing_snow">Zadymka</string>
+    <string name="cond_snow">Śnieg</string>
+    <string name="cond_hail">Grad</string>
+    <string name="cond_sleet">Deszcz ze śniegiem</string>
+    <string name="cond_dust">Kurzawa</string>
+    <string name="cond_foggy">Mgła</string>
+    <string name="cond_haze">Mglisto</string>
+    <string name="cond_smoky">Smog</string>
+    <string name="cond_blustery">Zawierucha</string>
+    <string name="cond_windy">Wietrznie</string>
+    <string name="cond_cold">Zimno</string>
+    <string name="cond_cloudy">Pochmurnie</string>
+    <string name="cond_mostly_cloudy">Przewaga chmur</string>
+    <string name="cond_partly_cloudy">Częściowe zachmurzenie</string>
+    <string name="cond_clear">Pogodnie</string>
+    <string name="cond_sunny">Słonecznie</string>
+    <string name="cond_fair">Pogodnie</string>
+    <string name="cond_mixed_rain_and_hail">Deszcz i grad</string>
+    <string name="cond_hot">Gorąco</string>
+    <string name="cond_isolated_thunderstorms">Miejscowe burze z piorunami</string>
+    <string name="cond_scattered_thunderstorms">Przejściowe burze z piorunami</string>
+    <string name="cond_scattered_showers">Przejściowe opady deszczu</string>
+    <string name="cond_heavy_snow">Śnieżyca</string>
+    <string name="cond_scattered_snow_showers">Przejściowe opady śniegu</string>
+    <string name="cond_thundershowers">Przejściowe opady deszczu i pioruny</string>
+    <string name="cond_snow_showers">Przelotne, miejscowe opady śniegu</string>
+    <string name="cond_isolated_thundershowers">Miejscowe burze z piorunami</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">pn.</string>
+    <string name="wind_northeast">pn.-wsch.</string>
+    <string name="wind_east">wsch.</string>
+    <string name="wind_southeast">pd.-wsch.</string>
+    <string name="wind_south">pd.</string>
+    <string name="wind_soutwest">pd.-zach.</string>
+    <string name="wind_west">zach.</string>
+    <string name="wind_northwest">pn.-zach.</string>
+</resources>

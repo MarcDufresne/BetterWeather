@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Shortcut</string>
+    <string name="pref_shortcut_default">(Default)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">General Settings</string>
+    <string name="pref_header_appearance">Appearance</string>
+    <string name="pref_header_behaviour">Behaviour</string>
+    <string name="pref_header_donate">Donate</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Weather units</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+    <string-array name="pref_weather_units_values" translatable="false">
+        <item>f</item>
+        <item>c</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Use current location</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather will use your current location</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather will use the location defined below</string>
+
+    <string name="pref_weather_location_title">Location</string>
+    <string name="pref_weather_location_automatic">Automatic</string>
+    <string name="pref_weather_location_query_hint">Find a location</string>
+    <string name="pref_weather_location_automatic_description">Based on your current location.</string>
+
+    <string name="pref_weather_show_today_forecast_title">Show today\'s forecast</string>
+    <string name="pref_weather_show_today_forecast_on">Today\'s forecast will be shown in expanded view</string>
+    <string name="pref_weather_show_today_forecast_off">Today\'s forecast will not be shown</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Show tomorrow\'s forecast</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">Tomorrow\'s forecast will be shown in expanded view</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">Tomorrow\'s forecast will not be shown</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Refresh weather on touch</string>
+    <string name="pref_weather_refresh_on_touch_on">Weather will refresh when clicking the extension (disable for shortcut)</string>
+    <string name="pref_weather_refresh_on_touch_off">Selected shortcut will launch when clicking the extension</string>
+
+    <string name="pref_weather_refresh_interval_title">Refresh interval</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>45 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>3 hours</item>
+        <item>4 hours</item>
+        <item>Turn off auto-refresh</item>
+    </string-array>
+    <string-array name="pref_weather_refresh_interval_values" translatable="false">
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>120</item>
+        <item>180</item>
+        <item>240</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Show feedback on refresh</string>
+    <string name="pref_weather_show_refresh_toast_on">Feedback will be shown on refresh</string>
+    <string name="pref_weather_show_refresh_toast_off">Feedback will not be shown on refresh</string>
+
+    <string name="pref_weather_show_highlow_title">Show High/Low in status</string>
+    <string name="pref_weather_show_highlow_on">High/Low temperatures will be shown in status</string>
+    <string name="pref_weather_show_highlow_off">High/Low temperatures will not be shown in status</string>
+
+    <string name="pref_weather_icon_theme_title">Status icons theme</string>
+    <string-array name="pref_weather_icon_theme_entries" translatable="false">
+        <item>Climacons</item>
+        <item>Weathercons</item>
+        <item>Chameleon</item>
+        <item>Google Now</item>
+    </string-array>
+    <string-array name="pref_weather_icon_theme_values" translatable="false">
+        <item>climacons</item>
+        <item>weathercons</item>
+        <item>chameleon</item>
+        <item>googlenow</item>
+    </string-array>
+
+    <string name="pref_weather_hide_location_name_title">Hide location name</string>
+    <string name="pref_weather_hide_location_name_summary_on">Location name will not be shown in expanded view</string>
+    <string name="pref_weather_hide_location_name_summary_off">Location name will be shown in expanded view</string>
+
+    <string name="pref_weather_show_humidity_title">Show humidity level</string>
+    <string name="pref_weather_show_humidity_summary_on">Humidity level will be shown in expanded view</string>
+    <string name="pref_weather_show_humidity_summary_off">Humidity level will not be shown</string>
+
+    <string name="pref_weather_show_wind_details_title">Show wind details</string>
+    <string name="pref_weather_show_wind_details_summary_on">Wind details will be shown in expended view</string>
+    <string name="pref_weather_show_wind_details_summary_off">Wind details will not be shown</string>
+
+    <string name="pref_weather_show_wind_chill_title">Show wind chill</string>
+    <string name="pref_weather_show_wind_chill_summary_on">Wind chill will be shown in expended view when available</string>
+    <string name="pref_weather_show_wind_chill_summary_off">Wind chill will not be shown</string>
+
+    <string name="pref_weather_use_only_network_title">Use only Network Location</string>
+    <string name="pref_weather_use_only_network_summary_on">The app will only use Network to get your location (Saves battery)</string>
+    <string name="pref_weather_use_only_network_summary_off">The app will fallback on GPS if Network location is not available</string>
+
+    <string name="pref_donate_title">Like what you see?</string>
+    <string name="pref_donate_summary">Why not buy me a cup of coffee? :)</string>
+
+</resources>

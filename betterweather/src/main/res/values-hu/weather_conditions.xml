@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<resources>
+    <string name="cond_na">Nem elérhető</string>
+    <string name="cond_tornado">tornádó</string>
+    <string name="cond_tropical_storm">trópusi vihar</string>
+    <string name="cond_hurricane">hurrikán</string>
+    <string name="cond_severe_thunderstorms">erős viharok</string>
+    <string name="cond_thunderstorms">viharok</string>
+    <string name="cond_mixed_rain_and_snow">eső és hó</string>
+    <string name="cond_mixed_rain_and_sleet">eső és dara</string>
+    <string name="cond_mixed_snow_and_sleet">hó és dara</string>
+    <string name="cond_freezing_drizzle">ónos szitálás</string>
+    <string name="cond_drizzle">szitálás</string>
+    <string name="cond_freezing_rain">ónos eső</string>
+    <string name="cond_showers">záporok</string>
+    <string name="cond_snow_flurries">hózápor</string>
+    <string name="cond_light_snow_showers">enyhe havazás</string>
+    <string name="cond_blowing_snow">hófúvás</string>
+    <string name="cond_snow">havazás</string>
+    <string name="cond_hail">jégeső</string>
+    <string name="cond_sleet">dara</string>
+    <string name="cond_dust">por</string>
+    <string name="cond_foggy">köd</string>
+    <string name="cond_haze">pára</string>
+    <string name="cond_smoky">füstös</string>
+    <string name="cond_blustery">viharos</string>
+    <string name="cond_windy">szeles</string>
+    <string name="cond_cold">hideg</string>
+    <string name="cond_cloudy">felhős</string>
+    <string name="cond_mostly_cloudy">többnyire felhős</string>
+    <string name="cond_partly_cloudy">részben felhős</string>
+    <string name="cond_clear">tiszta</string>
+    <string name="cond_sunny">napos</string>
+    <string name="cond_fair">derült</string>
+    <string name="cond_mixed_rain_and_hail">eső és jégeső</string>
+    <string name="cond_hot">forró</string>
+    <string name="cond_isolated_thunderstorms">izolált zivatarok</string>
+    <string name="cond_scattered_thunderstorms">szorványos zivatarok</string>
+    <string name="cond_scattered_showers">szorványos záporok</string>
+    <string name="cond_heavy_snow">erős havazás</string>
+    <string name="cond_scattered_snow_showers">szorványos hózáporok</string>
+    <string name="cond_thundershowers">felhőszakadások</string>
+    <string name="cond_snow_showers">hózáporok</string>
+    <string name="cond_isolated_thundershowers">izolált felhőszakadások</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">É</string>
+    <string name="wind_northeast">ÉK</string>
+    <string name="wind_east">K</string>
+    <string name="wind_southeast">DK</string>
+    <string name="wind_south">D</string>
+    <string name="wind_soutwest">DNY</string>
+    <string name="wind_west">NY</string>
+    <string name="wind_northwest">ÉNY</string>
+</resources>

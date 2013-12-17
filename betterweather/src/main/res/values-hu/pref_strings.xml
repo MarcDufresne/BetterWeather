@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Parancsikon</string>
+    <string name="pref_shortcut_default">(Alapértelmezett)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">Általános</string>
+    <string name="pref_header_appearance">Megjelenítés</string>
+    <string name="pref_header_behaviour">Működés</string>
+    <string name="pref_header_donate">Adományozás</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Mértékegység</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Tartózkodási hely</string>
+    <string name="pref_weather_location_use_current_on">Tartózkodási hely használata</string>
+    <string name="pref_weather_location_use_current_off">Egy előre beállított hely használata</string>
+
+    <string name="pref_weather_location_title">Hely</string>
+    <string name="pref_weather_location_automatic">Automatikus</string>
+    <string name="pref_weather_location_query_hint">Hely keresése</string>
+    <string name="pref_weather_location_automatic_description">Tartózkodási helyed alapján</string>
+
+    <string name="pref_weather_show_today_forecast_title">Mai előrejelzés</string>
+    <string name="pref_weather_show_today_forecast_on">Mai előrejelzés mutatása kiterjesztett nézetben</string>
+    <string name="pref_weather_show_today_forecast_off">Mai előrejelzés elrejtve kiterjesztett nézetben</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Holnapi előrejelzés</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">Holnapi előrejelzés mutatása kiterjesztett nézetben</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">Holnapi előrejelzés elrejtve kiterjesztett nézetben</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Kiterjesztett nézet</string>
+    <string name="pref_weather_refresh_on_touch_on">Az időjárás frissítése (parancsikon letiltva)</string>
+    <string name="pref_weather_refresh_on_touch_off">A kiválasztott parancsikon indul el</string>
+
+    <string name="pref_weather_refresh_interval_title">Frissítés gyakorisága</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 perc</item>
+        <item>30 perc</item>
+        <item>45 perc</item>
+        <item>1 óra</item>
+        <item>2 óra</item>
+        <item>3 óra</item>
+        <item>4 óra</item>
+        <item>Auto-frissítés kikapcsolása</item>
+        <item>3 perc</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Visszajelzés</string>
+    <string name="pref_weather_show_refresh_toast_on">Visszajelzés mutatása frissítéskor</string>
+    <string name="pref_weather_show_refresh_toast_off">Visszajelzés elrejtve frissítéskor</string>
+
+    <string name="pref_weather_show_highlow_title">Max/min</string>
+    <string name="pref_weather_show_highlow_on">Max/min hőmérséklet mutatása kiterjesztett nézetben</string>
+    <string name="pref_weather_show_highlow_off">Max/min hőmérséklet elrejtve kiterjesztett nézetben</string>
+
+    <string name="pref_weather_hide_location_name_title">Hely elrejtése</string>
+    <string name="pref_weather_hide_location_name_summary_on">Hely neve elrejtve kiterjesztett nézetben</string>
+    <string name="pref_weather_hide_location_name_summary_off">Hely nevének mutatása kiterjesztett nézetben</string>
+
+    <string name="pref_weather_show_humidity_title">Páratartalom</string>
+    <string name="pref_weather_show_humidity_summary_on">Páratartalom mutatása kiterjesztett nézetben</string>
+    <string name="pref_weather_show_humidity_summary_off">Páratartalom elrejtve kiterjesztett nézetben</string>
+
+    <string name="pref_weather_show_wind_details_title">Szél</string>
+    <string name="pref_weather_show_wind_details_summary_on">Szél mutatása kiterjesztett nézetben</string>
+    <string name="pref_weather_show_wind_details_summary_off">Szél elrejtve kiterjesztett nézetben</string>
+
+    <string name="pref_weather_show_wind_chill_title">Wind chill</string>
+    <string name="pref_weather_show_wind_chill_summary_on">Wind chill mutatása kiterjesztett nézetben</string>
+    <string name="pref_weather_show_wind_chill_summary_off">Wind chill elrejtve kiterjesztett nézetben</string>
+
+    <string name="pref_donate_title">Tetszik az alkalmazás?</string>
+    <string name="pref_donate_summary">Miért nem hívsz meg egy bögre kávéra? :)</string>
+
+</resources>

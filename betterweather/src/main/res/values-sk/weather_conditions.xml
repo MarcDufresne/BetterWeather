@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cond_na">Nie je k dispozícii</string>
+    <string name="cond_tornado">Tornádo</string>
+    <string name="cond_tropical_storm">Tropická búrka</string>
+    <string name="cond_hurricane">Hurikán</string>
+    <string name="cond_severe_thunderstorms">Silné búrky</string>
+    <string name="cond_thunderstorms">Búrky s bleskami</string>
+    <string name="cond_mixed_rain_and_snow">Dážď so snehom</string>
+    <string name="cond_mixed_rain_and_sleet">Dážď/dážď so snehom</string>
+    <string name="cond_mixed_snow_and_sleet">Sneh/dážď so snehom</string>
+    <string name="cond_freezing_drizzle">Mrznúce mrholenie</string>
+    <string name="cond_drizzle">Mrholenie</string>
+    <string name="cond_freezing_rain">Mrznúci dážď</string>
+    <string name="cond_showers">Dažďové prehánky</string>
+    <string name="cond_snow_flurries">Snehové prehánky</string>
+    <string name="cond_light_snow_showers">Slabé snehové prehánky</string>
+    <string name="cond_blowing_snow">Vietor so snehom</string>
+    <string name="cond_snow">Sneženie</string>
+    <string name="cond_hail">Krupobitie</string>
+    <string name="cond_sleet">Dážď so snehom</string>
+    <string name="cond_dust">Prašno</string>
+    <string name="cond_foggy">Hmlisto</string>
+    <string name="cond_haze">Opar/hmla</string>
+    <string name="cond_smoky">Nejasno</string>
+    <string name="cond_blustery">Búrlivo</string>
+    <string name="cond_windy">Veterno</string>
+    <string name="cond_cold">Chladno</string>
+    <string name="cond_cloudy">Oblačno</string>
+    <string name="cond_mostly_cloudy">Prevažne oblačno</string>
+    <string name="cond_partly_cloudy">Čiastočne oblačno</string>
+    <string name="cond_clear">Jasno</string>
+    <string name="cond_sunny">Slnečno</string>
+    <string name="cond_fair">Mierne</string>
+    <string name="cond_mixed_rain_and_hail">Dážď s krupobitím</string>
+    <string name="cond_hot">Teplo</string>
+    <string name="cond_isolated_thunderstorms">Ojedinelé búrky</string>
+    <string name="cond_scattered_thunderstorms">Rozptýlené búrky</string>
+    <string name="cond_scattered_showers">Rozptýlené dažďové prehánky</string>
+    <string name="cond_heavy_snow">Silné sneženie</string>
+    <string name="cond_scattered_snow_showers">Rozptýlené snehové prehánky</string>
+    <string name="cond_thundershowers">Dažďové prehánky</string>
+    <string name="cond_snow_showers">Snehové prehánky</string>
+    <string name="cond_isolated_thundershowers">Ojedinelé dažďové prehánky</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">S</string>
+    <string name="wind_northeast">SV</string>
+    <string name="wind_east">V</string>
+    <string name="wind_southeast">JV</string>
+    <string name="wind_south">J</string>
+    <string name="wind_soutwest">JZ</string>
+    <string name="wind_west">Z</string>
+    <string name="wind_northwest">SZ</string>
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Skratka</string>
+    <string name="pref_shortcut_default">(Predvolené)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">Všeobecné nastavenia</string>
+    <string name="pref_header_appearance">Vzhľad</string>
+    <string name="pref_header_behaviour">Správanie</string>
+    <string name="pref_header_donate">Dar</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Jednotka teploty</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Použiť aktuálnu polohu</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather bude používať Vašu aktuálnu polohu</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather bude používať polohu, ktorú môžte nastaviť nižšie</string>
+
+    <string name="pref_weather_location_title">Poloha</string>
+    <string name="pref_weather_location_automatic">Automatická</string>
+    <string name="pref_weather_location_query_hint">Nájsť miesto</string>
+    <string name="pref_weather_location_automatic_description">Na základe vašej aktuálnej polohy.</string>
+
+    <string name="pref_weather_show_today_forecast_title">Zobraziť predpoveď počasia na dnes</string>
+    <string name="pref_weather_show_today_forecast_on">Predpoveď počasia na dnes bude zobrazená</string>
+    <string name="pref_weather_show_today_forecast_off">Predpoveď počasia na dnes nebude zobrazená</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Zobraziť predpoveď počasia na zajtra</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">Predpoveď počasia na zajtra bude zobrazená</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">Predpoveď počasia na zajtra nebude zobrazená</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Aktualizácia počasia po dotyku</string>
+    <string name="pref_weather_refresh_on_touch_on">Počasie bude aktualizovaní po kliknutí na rozšírenie (Zakázať toto nastavenie pre povolenie vlastnej skratky)</string>
+    <string name="pref_weather_refresh_on_touch_off">Vybraná skratka bude spustená po kliknutí na rozšírenie</string>
+
+    <string name="pref_weather_refresh_interval_title">Interval aktualizácie počasia</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 minút</item>
+        <item>30 minút</item>
+        <item>45 minút</item>
+        <item>1 hodina</item>
+        <item>2 hodiny</item>
+        <item>3 hodiny</item>
+        <item>4 hodiny</item>
+        <item>Vypnúť</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Zobraziť spätnú väzbu po aktualizácii</string>
+    <string name="pref_weather_show_refresh_toast_on">Spätná väzba bude zobrazená po aktualizácii</string>
+    <string name="pref_weather_show_refresh_toast_off">Spätná väzba nebude zobrazená po aktualizácii</string>
+
+    <string name="pref_weather_show_highlow_title">Zobraziť vysoké/nízke teploty</string>
+    <string name="pref_weather_show_highlow_on">Vysoké/nízke teploty budú zobrazené</string>
+    <string name="pref_weather_show_highlow_off">Vysoké/nízke teploty nebudú zobrazené</string>
+
+    <string name="pref_weather_icon_theme_title">Téma ikon poveternostných podmienok</string>
+
+    <string name="pref_weather_hide_location_name_title">Skryť názov polohy</string>
+    <string name="pref_weather_hide_location_name_summary_on">Názov polohy nebude zobrazený v rozšírenom zobrazení</string>
+    <string name="pref_weather_hide_location_name_summary_off">Názov polohy bude zobrazený v rozšírenom zobrazení</string>
+
+    <string name="pref_weather_show_humidity_title">Zobraziť úroveň vlhkosti</string>
+    <string name="pref_weather_show_humidity_summary_on">Úroveň vlhkosti bude zobrazená v rozšírenom zobrazení</string>
+    <string name="pref_weather_show_humidity_summary_off">Úroveň vlhkosti nebude zobrazená</string>
+
+    <string name="pref_weather_show_wind_details_title">Zobraziť podrobnosti o vetre</string>
+    <string name="pref_weather_show_wind_details_summary_on">Podrobnosti o vetre budú zobrazené v rozšírenom zobrazení</string>
+    <string name="pref_weather_show_wind_details_summary_off">Podrobnosti o vetre nebudú zobrazené</string>
+
+    <string name="pref_weather_show_wind_chill_title">Zobraziť pocitovú teplotu</string>
+    <string name="pref_weather_show_wind_chill_summary_on">Pocitová teplota bude zobrazená v rozšírenom zobrazení</string>
+    <string name="pref_weather_show_wind_chill_summary_off">Pocitová teplota nebude zobrazená</string>
+
+    <string name="pref_donate_title">Páči sa Vám čo vidíte?</string>
+    <string name="pref_donate_summary">Prečo mi nekúpite šálku kávy? :)</string>
+
+</resources>

@@ -1,0 +1,49 @@
+﻿<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+    <string name="app_name">BetterWeather</string>
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description"> הצגת מידע מזג אוויר מעודכן עבור מיקומכם או עבור מיקום מוגדר. באמצעות Yahoo! Weather. 
+    </string>
+    <string name="title_settings">הגדרות BetterWeather</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">אפליקציות</string>
+    <string name="title_shortcuts">קיצורי דרך</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">רענון&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">היום: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">מחר: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">רוח: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">צינת הרוח: %1$s°</string>
+    <string name="humidity_template">לחות: %1$s</string>
+
+    <string name="wind_speed_kmh">קמ"ש</string>
+    <string name="wind_speed_mph">מ"ש</string>
+
+    <!-- About -->
+    <string name="about_extension_text"><![CDATA[נוצר ע"י: <br><i>Marc-André Dufresne</i><br><br>תודות ל-Roman Nurik עבור DashClock!<br>תורגם לשפה העברית על-ידי SiiiE]]></string>
+    <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
+
+    <string name="close">סגירה</string>
+    <string name="about_title">אודות</string>
+
+
+</resources>

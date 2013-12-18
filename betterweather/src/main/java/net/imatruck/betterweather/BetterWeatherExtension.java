@@ -66,6 +66,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static Intent REFRESH_INTENT = new Intent(REFRESH_INTENT_FILTER);
 
     public static final String PREF_WEATHER_UNITS = "pref_weather_units";
+    public static final String PREF_WEATHER_SPEED_UNITS = "pref_weather_speed_units";
     public static final String PREF_WEATHER_LOCATION = "pref_weather_location";
     public static final String PREF_WEATHER_USE_ONLY_NETWORK = "pref_weather_use_only_network";
     public static final String PREF_WEATHER_SHOW_TODAY_FORECAST = "pref_weather_show_today_forecast";
@@ -80,6 +81,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String PREF_WEATHER_SHOW_WIND_DETAILS = "pref_weather_show_wind_details";
     public static final String PREF_WEATHER_SHOW_WIND_CHILL = "pref_weather_show_wind_chill";
     public static final String PREF_WEATHER_SHOW_HUMIDITY = "pref_weather_show_humidity";
+    public static final String PREF_WEATHER_INVERT_HIGHLOW = "pref_weather_invert_highlow";
 
     public static final Uri DEFAULT_WEATHER_INTENT_URI = Uri.parse("http://www.google.com/search?q=weather");
     public static final Intent DEFAULT_WEATHER_INTENT = new Intent(Intent.ACTION_VIEW, DEFAULT_WEATHER_INTENT_URI);
@@ -94,7 +96,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     private static final Criteria sLocationCriteria;
 
     private static String sWeatherUnits = "f";
-    private static String sSpeedUnits = "mph";
+    private static int sSpeedUnits = 0;
     private static String sSetLocation = "";
     private static boolean sUseCurrentLocation = false;
     private static boolean sShowTodayForecast = false;
@@ -108,6 +110,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     private static boolean sShowWindChill = false;
     private static boolean sShowHumidity = false;
     private static boolean sUseOnlyNetworkLocation = false;
+    private static boolean sInvertHighLowTemps = false;
 
     public static long lastUpdateTime;
 
@@ -121,8 +124,6 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static enum ErrorCodes {
         NONE, UNKNOWN, LOCATION, INTERNET
     }
-
-    private static ErrorCodes mErrorCode = ErrorCodes.NONE;
 
     static {
         sLocationCriteria = new Criteria();
@@ -189,8 +190,6 @@ public class BetterWeatherExtension extends DashClockExtension {
         }
 
         LOGD(TAG, "Updating data");
-
-        mErrorCode = ErrorCodes.NONE;
 
         getCurrentPreferences();
 
@@ -260,7 +259,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         }
 
         LocationInfo locationInfo;
-        if(!sUseCurrentLocation) {
+        if (!sUseCurrentLocation) {
             locationInfo = new LocationInfo();
             locationInfo.woeid = getSetLocationWoeid();
         } else {
@@ -340,7 +339,8 @@ public class BetterWeatherExtension extends DashClockExtension {
     private void showRefreshToast() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         boolean showRefreshToast = sp.getBoolean(PREF_WEATHER_SHOW_REFRESH_TOAST, false);
-        if (showRefreshToast) Toast.makeText(this, getString(R.string.toast_refreshing), Toast.LENGTH_SHORT).show();
+        if (showRefreshToast)
+            Toast.makeText(this, getString(R.string.toast_refreshing), Toast.LENGTH_SHORT).show();
     }
 
     /*
@@ -369,17 +369,13 @@ public class BetterWeatherExtension extends DashClockExtension {
         return "Unknown reason :/";
     }
 
-    public String getCurrentTime() {
-        return SimpleDateFormat.getDateTimeInstance().format(new Date());
-    }
-
     /*
      * Methods used to get current app settings
      */
     private void getCurrentPreferences() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         sWeatherUnits = sp.getString(PREF_WEATHER_UNITS, sWeatherUnits);
-        sSpeedUnits = ((sWeatherUnits.equals("f")) ? "mph" : "km/h");
+        sSpeedUnits = Integer.parseInt(sp.getString(PREF_WEATHER_SPEED_UNITS, Integer.toString(sSpeedUnits)));
         sSetLocation = sp.getString(PREF_WEATHER_LOCATION, sSetLocation).trim().toLowerCase(Locale.getDefault());
         sUseCurrentLocation = TextUtils.isEmpty(sSetLocation);
         sUseOnlyNetworkLocation = sp.getBoolean(PREF_WEATHER_USE_ONLY_NETWORK, sUseOnlyNetworkLocation);
@@ -392,15 +388,15 @@ public class BetterWeatherExtension extends DashClockExtension {
         sShowHumidity = sp.getBoolean(PREF_WEATHER_SHOW_HUMIDITY, sShowHumidity);
         sShowWindChill = sp.getBoolean(PREF_WEATHER_SHOW_WIND_CHILL, sShowWindChill);
         sShowWindDetails = sp.getBoolean(PREF_WEATHER_SHOW_WIND_DETAILS, sShowWindDetails);
+        sInvertHighLowTemps = sp.getBoolean(PREF_WEATHER_INVERT_HIGHLOW, sInvertHighLowTemps);
 
         LOGD(TAG, "Location from settings is: " + ((sUseCurrentLocation) ? "Automatic" : sSetLocation));
     }
 
     public static String getSetLocationWoeid() {
-        try{
+        try {
             return sSetLocation.substring(0, sSetLocation.indexOf(","));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return sSetLocation;
         }
     }
@@ -414,7 +410,7 @@ public class BetterWeatherExtension extends DashClockExtension {
      */
     private ExtensionData renderExtensionData(BetterWeatherData weatherData, ErrorCodes errorCode) {
 
-        if(errorCode != ErrorCodes.NONE) {
+        if (errorCode != ErrorCodes.NONE) {
 
             int[] errorStrings = BetterWeatherData.getErrorTitle(errorCode);
 
@@ -429,8 +425,7 @@ public class BetterWeatherExtension extends DashClockExtension {
             LOGD(TAG, "Created error data, " + extensionData.expandedTitle());
 
             return extensionData;
-        }
-        else {
+        } else {
 
             String temperature = weatherData.hasValidTemperature()
                     ? getString(R.string.temperature_template, weatherData.temperature)
@@ -488,9 +483,11 @@ public class BetterWeatherExtension extends DashClockExtension {
             }
 
             if (BuildConfig.DEBUG) {
+                assert intentURI != null;
                 LOGD(TAG, "Action URI: " + intentURI.toASCIIString());
             }
 
+            assert intentURI != null;
             clickIntent.setData(Uri.parse(intentURI.toASCIIString()));
             LOGD(TAG, "Intent URI: " + clickIntent.getData());
         }
@@ -509,7 +506,9 @@ public class BetterWeatherExtension extends DashClockExtension {
             StringBuilder detailsLine = new StringBuilder();
             if (sShowWindDetails && !"".equals(weatherData.windSpeed)) {
                 detailsLine.append(getString(R.string.wind_details_template,
-                        getString(BetterWeatherData.getWindDirectionText(weatherData.windDirection)), weatherData.windSpeed, sSpeedUnits));
+                        getString(BetterWeatherData.getWindDirectionText(weatherData.windDirection)),
+                        BetterWeatherData.convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits),
+                        getSpeedUnitDisplayValue(sSpeedUnits)));
                 if (sShowHumidity)
                     detailsLine.append(", ");
             }
@@ -523,7 +522,8 @@ public class BetterWeatherExtension extends DashClockExtension {
             if (sShowHumidity || sShowWindDetails) expandedBody.append("\n");
             int todayForecastTextId = BetterWeatherData.getStatusTextId(weatherData.todayForecastConditionCode);
             String todayForecastText = getString(todayForecastTextId);
-            expandedBody.append(
+            expandedBody.append((sInvertHighLowTemps) ?
+                    getString(R.string.today_forecast_template, todayForecastText, weatherData.todayHigh, weatherData.todayLow) :
                     getString(R.string.today_forecast_template, todayForecastText, weatherData.todayLow, weatherData.todayHigh));
         }
 
@@ -531,13 +531,16 @@ public class BetterWeatherExtension extends DashClockExtension {
             if (sShowTodayForecast || sShowHumidity || sShowWindDetails) expandedBody.append("\n");
             int tomorrowForecastTextId = BetterWeatherData.getStatusTextId(weatherData.conditionCode);
             String tomorrowForecastText = getString(tomorrowForecastTextId);
-
-            expandedBody.append(
+            expandedBody.append((sInvertHighLowTemps) ?
+                    getString(R.string.tomorrow_forecast_template, tomorrowForecastText, weatherData.tomorrowHigh, weatherData.tomorrowLow) :
                     getString(R.string.tomorrow_forecast_template, tomorrowForecastText, weatherData.tomorrowLow, weatherData.tomorrowHigh));
         }
 
-        if (!sHideLocationName)
-            expandedBody.append("\n").append(weatherData.location);
+        if (!sHideLocationName) {
+            if (sShowHumidity || sShowTodayForecast || sShowTomorrowForecast || sShowWindDetails)
+                expandedBody.append("\n");
+            expandedBody.append(weatherData.location);
+        }
 
         return expandedBody;
     }
@@ -549,7 +552,9 @@ public class BetterWeatherExtension extends DashClockExtension {
         String status = temperature;
 
         if (sShowHighlow) {
-            status += "\n" + getString(R.string.highlow_template, weatherData.todayLow, weatherData.todayHigh);
+            status += "\n" + ((!sInvertHighLowTemps) ?
+                    getString(R.string.highlow_template, weatherData.todayLow, weatherData.todayHigh) :
+                    getString(R.string.highlow_template, weatherData.todayHigh, weatherData.todayLow));
         }
         return status;
     }
@@ -558,7 +563,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         String sIconTheme = sp.getString(PREF_WEATHER_ICON_THEME, CLIMACONS_ICON_THEME);
 
-        if        (sIconTheme.equals(CLIMACONS_ICON_THEME)) {
+        if (sIconTheme.equals(CLIMACONS_ICON_THEME)) {
             return BetterWeatherData.getClimaconsConditionIconId(conditionCode);
         } else if (sIconTheme.equals(WEATHERCONS_ICON_THEME)) {
             return BetterWeatherData.getWeatherconsConditionIconId(conditionCode);
@@ -566,10 +571,17 @@ public class BetterWeatherExtension extends DashClockExtension {
             return BetterWeatherData.getChameleonConditionIconId(conditionCode);
         } else if (sIconTheme.equals(GOOGLENOW_ICON_THEME)) {
             return BetterWeatherData.getGoogleNowConditionIconId(conditionCode);
-         }else {
+        } else {
             LOGD(TAG, "Using default theme");
             return BetterWeatherData.getClimaconsConditionIconId(conditionCode);
         }
+    }
+
+    private String getSpeedUnitDisplayValue(int speedUnitIndex) {
+        String[] units = getResources().getStringArray(R.array.pref_weather_speed_units_display_names);
+        if (speedUnitIndex >= 0 && speedUnitIndex < units.length)
+            return units[speedUnitIndex];
+        return units[0];
     }
 
     /*

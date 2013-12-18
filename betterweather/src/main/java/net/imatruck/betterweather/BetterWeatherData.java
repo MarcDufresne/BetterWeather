@@ -21,6 +21,8 @@
 
 package net.imatruck.betterweather;
 
+import java.util.Locale;
+
 /**
  * A helper class representing weather data, for use with {@link BetterWeatherExtension}.
  */
@@ -50,23 +52,23 @@ public class BetterWeatherData {
         return temperature > Integer.MIN_VALUE;
     }
 
-    public static int getWindDirectionText(int wDir){
+    public static int getWindDirectionText(int wDir) {
 
-        if(wDir >= 337 || wDir < 23)
+        if (wDir >= 337 || wDir < 23)
             return R.string.wind_north;
         if (wDir >= 23 && wDir < 67)
             return R.string.wind_northeast;
-        if(wDir >= 67 && wDir < 113)
+        if (wDir >= 67 && wDir < 113)
             return R.string.wind_east;
-        if(wDir >= 113 && wDir < 157)
+        if (wDir >= 113 && wDir < 157)
             return R.string.wind_southeast;
-        if(wDir >= 157 && wDir < 203)
+        if (wDir >= 157 && wDir < 203)
             return R.string.wind_south;
-        if(wDir >= 203 && wDir < 247)
+        if (wDir >= 203 && wDir < 247)
             return R.string.wind_soutwest;
-        if(wDir >= 247 && wDir < 293)
+        if (wDir >= 247 && wDir < 293)
             return R.string.wind_west;
-        if(wDir >= 293 && wDir < 337)
+        if (wDir >= 293 && wDir < 337)
             return R.string.wind_northwest;
 
         return R.string.wind_north;
@@ -460,16 +462,32 @@ public class BetterWeatherData {
         return R.drawable.googlenow_unknown;
     }
 
+    public static String convertSpeedUnits(String weatherUnit, String windSpeedString, int wantedUnit) {
+        float windSpeed = Float.parseFloat(windSpeedString);
+        if (weatherUnit.equals("c")) {
+            switch (wantedUnit) {
+                case 0: windSpeed = windSpeed / 1.609344f; break; // Km/h -> Mph
+                case 2: windSpeed = windSpeed * 0.2778f; break; // Km/h -> M/s
+            }
+        } else {
+            switch (wantedUnit) {
+                case 1: windSpeed = windSpeed * 1.609344f; break; // Mph -> Km/h
+                case 2: windSpeed = windSpeed * 0.44704f; break; // Mph -> M/s
+            }
+        }
+        return String.format(Locale.getDefault(), "%.2f", windSpeed);
+    }
+
     public static int[] getErrorTitle(BetterWeatherExtension.ErrorCodes errorCode) {
         switch (errorCode) {
             case UNKNOWN:
-                return new int[] {R.string.error_unknown, R.string.error_unknown_expandedBody};
+                return new int[]{R.string.error_unknown, R.string.error_unknown_expandedBody};
             case LOCATION:
-                return new int[] {R.string.error_location, R.string.error_location_expandedBody};
+                return new int[]{R.string.error_location, R.string.error_location_expandedBody};
             case INTERNET:
-                return new int[] {R.string.error_internet, R.string.error_internet_expandedBody};
+                return new int[]{R.string.error_internet, R.string.error_internet_expandedBody};
         }
 
-        return new int[]  {R.string.error_unknown, R.string.error_unknown_expandedBody};
+        return new int[]{R.string.error_unknown, R.string.error_unknown_expandedBody};
     }
 }

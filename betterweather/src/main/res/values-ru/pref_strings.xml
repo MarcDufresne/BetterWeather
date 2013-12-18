@@ -7,7 +7,7 @@
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Настройки</string>
-    <string name="pref_header_appearance">Внешний вид</string>
+    <string name="pref_header_status_appearance">Внешний вид</string>
     <string name="pref_header_behaviour">Поведение</string>
 
     <!-- Weather -->

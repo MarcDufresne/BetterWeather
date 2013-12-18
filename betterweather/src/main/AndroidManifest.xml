@@ -1,11 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="net.imatruck.betterweather"
-          android:versionCode="30"
-          android:versionName="2.1.4">
+          android:versionCode="31"
+          android:versionName="2.2">
 
     <!--
-    To-Do:
-        > Add Chinese weather conditions (Still waiting...)
+    Version 2.2 (31):
+        - Fix moon icon in Climacons Pack
+        - SK translation
+        - Wind in M/s
+            - Speed conversion functions depends on weather unit (from Mph or Km/h)
+            - Setting for Mph, Km/h and m/s
+            - Set sSpeedUnit accordingly
+        - Fix Whitespace when only location is shown
+        - Invert Low/High temps
+            - Add setting and strings
 
     Version 2.1.4 (27):
         - Added translations
@@ -16,7 +24,7 @@
     Version 2.1 (26):
         - Add option to choose from GPS+Network or only Network
         - Google Now icon pack
-        > Fix null weather data
+        - Fix null weather data
         - Fix WOEID in the settings
         - Add error reporting on widget
         - Fixed interaction between Shortcut and Touch to refresh

@@ -66,6 +66,7 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
         // When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
         bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_UNITS));
+        bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_SPEED_UNITS));
         bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_LOCATION));
         bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_SHORTCUT));
         bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_REFRESH_INTERVAL));

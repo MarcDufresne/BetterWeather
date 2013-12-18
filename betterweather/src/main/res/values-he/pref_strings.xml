@@ -22,7 +22,7 @@ limitations under the License.
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">הגדרות כלליות</string>
-    <string name="pref_header_appearance">מראה</string>
+    <string name="pref_header_status_appearance">מראה</string>
     <string name="pref_header_behaviour">התנהגות</string>
     <string name="pref_header_donate">תרומה</string>
 

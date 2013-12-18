@@ -22,7 +22,7 @@ limitations under the License.
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Általános</string>
-    <string name="pref_header_appearance">Megjelenítés</string>
+    <string name="pref_header_status_appearance">Megjelenítés</string>
     <string name="pref_header_behaviour">Működés</string>
     <string name="pref_header_donate">Adományozás</string>
 

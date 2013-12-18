@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
 <resources>
 
     <!-- App Chooser -->
@@ -36,7 +52,7 @@
     <string name="pref_weather_show_tomorrow_forecast_off">Predpoveď počasia na zajtra nebude zobrazená</string>
 
     <string name="pref_weather_refresh_on_touch_title">Aktualizácia počasia po dotyku</string>
-    <string name="pref_weather_refresh_on_touch_on">Počasie bude aktualizovaní po kliknutí na rozšírenie (Zakázať toto nastavenie pre povolenie vlastnej skratky)</string>
+    <string name="pref_weather_refresh_on_touch_on">Počasie bude aktualizované po kliknutí na rozšírenie (zakážte toto nastavenie pre povolenie vlastnej skratky)</string>
     <string name="pref_weather_refresh_on_touch_off">Vybraná skratka bude spustená po kliknutí na rozšírenie</string>
 
     <string name="pref_weather_refresh_interval_title">Interval aktualizácie počasia</string>
@@ -76,6 +92,10 @@
     <string name="pref_weather_show_wind_chill_title">Zobraziť pocitovú teplotu</string>
     <string name="pref_weather_show_wind_chill_summary_on">Pocitová teplota bude zobrazená v rozšírenom zobrazení</string>
     <string name="pref_weather_show_wind_chill_summary_off">Pocitová teplota nebude zobrazená</string>
+
+    <string name="pref_weather_use_only_network_title">Používať len sieť na určenie polohy</string>
+    <string name="pref_weather_use_only_network_summary_on">Aplikácia bude používať len sieť na určenie Vašej polohy (šetrí batériu)</string>
+    <string name="pref_weather_use_only_network_summary_off">Aplikácia bude používať GPS (ak sieť nie je dostupná)</string>
 
     <string name="pref_donate_title">Páči sa Vám čo vidíte?</string>
     <string name="pref_donate_summary">Prečo mi nekúpite šálku kávy? :)</string>

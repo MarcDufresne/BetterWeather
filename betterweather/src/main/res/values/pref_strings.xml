@@ -22,7 +22,8 @@ limitations under the License.
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">General Settings</string>
-    <string name="pref_header_appearance">Appearance</string>
+    <string name="pref_header_appearance">General Appearance</string>
+    <string name="pref_header_expanded_appearance">Expanded View Appearance</string>
     <string name="pref_header_behaviour">Behaviour</string>
     <string name="pref_header_donate">Donate</string>
 
@@ -35,6 +36,18 @@ limitations under the License.
     <string-array name="pref_weather_units_values" translatable="false">
         <item>f</item>
         <item>c</item>
+    </string-array>
+
+    <string name="pref_weather_speed_unit_title">Speed units</string>
+    <string-array name="pref_weather_speed_units_display_names">
+        <item>mph</item>
+        <item>km/h</item>
+        <item>m/s</item>
+    </string-array>
+    <string-array name="pref_weather_speed_units_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
 
     <string name="pref_weather_location_choice_title">Use current location</string>
@@ -87,6 +100,10 @@ limitations under the License.
     <string name="pref_weather_show_highlow_title">Show High/Low in status</string>
     <string name="pref_weather_show_highlow_on">High/Low temperatures will be shown in status</string>
     <string name="pref_weather_show_highlow_off">High/Low temperatures will not be shown in status</string>
+
+    <string name="pref_weather_invert_highlow_title">Invert High/Low</string>
+    <string name="pref_weather_invert_highlow_on">High temperature will come first</string>
+    <string name="pref_weather_invert_highlow_off">Low temperature will come first</string>
 
     <string name="pref_weather_icon_theme_title">Status icons theme</string>
     <string-array name="pref_weather_icon_theme_entries" translatable="false">

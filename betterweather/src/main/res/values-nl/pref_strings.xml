@@ -7,7 +7,7 @@
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Algemene instellingen</string>
-    <string name="pref_header_appearance">Uiterlijk</string>
+    <string name="pref_header_status_appearance">Uiterlijk</string>
     <string name="pref_header_behaviour">Gedrag</string>
 
     <!-- Weather -->

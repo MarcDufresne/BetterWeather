@@ -176,6 +176,9 @@
             <meta-data
                     android:name="settingsActivity"
                     android:value=".BetterWeatherSettingsActivity"/>
+            <meta-data
+                    android:name="worldReadable"
+                    android:value="true"/>
         </service>
 
         <activity

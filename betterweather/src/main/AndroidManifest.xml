@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="net.imatruck.betterweather"
-          android:versionCode="31"
+          android:versionCode="32"
           android:versionName="2.2">
 
     <!--

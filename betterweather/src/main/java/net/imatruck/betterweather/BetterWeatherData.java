@@ -463,19 +463,22 @@ public class BetterWeatherData {
     }
 
     public static String convertSpeedUnits(String weatherUnit, String windSpeedString, int wantedUnit) {
-        float windSpeed = Float.parseFloat(windSpeedString);
-        if (weatherUnit.equals("c")) {
-            switch (wantedUnit) {
-                case 0: windSpeed = windSpeed / 1.609344f; break; // Km/h -> Mph
-                case 2: windSpeed = windSpeed * 0.2778f; break; // Km/h -> M/s
+        if (windSpeedString != null) {
+            float windSpeed = Float.parseFloat(windSpeedString);
+            if (weatherUnit.equals("c")) {
+                switch (wantedUnit) {
+                    case 0: windSpeed = windSpeed / 1.609344f; break; // Km/h -> Mph
+                    case 2: windSpeed = windSpeed * 0.2778f; break; // Km/h -> M/s
+                }
+            } else {
+                switch (wantedUnit) {
+                    case 1: windSpeed = windSpeed * 1.609344f; break; // Mph -> Km/h
+                    case 2: windSpeed = windSpeed * 0.44704f; break; // Mph -> M/s
+                }
             }
-        } else {
-            switch (wantedUnit) {
-                case 1: windSpeed = windSpeed * 1.609344f; break; // Mph -> Km/h
-                case 2: windSpeed = windSpeed * 0.44704f; break; // Mph -> M/s
-            }
+            return String.format(Locale.getDefault(), "%.2f", windSpeed);
         }
-        return String.format(Locale.getDefault(), "%.2f", windSpeed);
+        return "0";
     }
 
     public static int[] getErrorTitle(BetterWeatherExtension.ErrorCodes errorCode) {

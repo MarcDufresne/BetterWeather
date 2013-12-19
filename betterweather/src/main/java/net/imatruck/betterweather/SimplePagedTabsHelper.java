@@ -72,6 +72,7 @@ public class SimplePagedTabsHelper {
 
     public void addTab(int labelResId, int contentViewId) {
         addTab(mContext.getString(labelResId), contentViewId);
+        mPager.getAdapter().notifyDataSetChanged();
     }
 
     public void addTab(CharSequence label, int contentViewId) {

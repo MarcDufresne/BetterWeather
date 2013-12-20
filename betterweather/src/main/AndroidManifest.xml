@@ -1,10 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="net.imatruck.betterweather"
-          android:versionCode="32"
-          android:versionName="2.2">
+          android:versionCode="33"
+          android:versionName="2.2.1">
 
     <!--
-    Version 2.2 (31):
+    Version 2.2.1 (33):
+        - Added SK translations
+        - Fixed wind speed display, removed decimals
+
+    Version 2.2 (31/32):
         - Fix moon icon in Climacons Pack
         - SK translation
         - Wind in M/s

@@ -18,21 +18,19 @@ limitations under the License.
 <resources>
 
     <!-- App Chooser -->
-    <string name="pref_shortcut_title">Skratka</string>
+    <string name="pref_shortcut_title">Odkaz</string>
     <string name="pref_shortcut_default">(Predvolené)</string>
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Všeobecné nastavenia</string>
-    <string name="pref_header_appearance">Vzhľad</string>
+    <string name="pref_header_appearance">Všeobecný vzhľad</string>
+    <string name="pref_header_expanded_appearance">Vzhľad rozšíreného zobrazenia</string>
     <string name="pref_header_behaviour">Správanie</string>
     <string name="pref_header_donate">Dar</string>
 
     <!-- Weather -->
     <string name="pref_weather_units_title">Jednotka teploty</string>
-    <string-array name="pref_weather_units_display_names">
-        <item>°F</item>
-        <item>°C</item>
-    </string-array>
+    <string name="pref_weather_speed_unit_title">Jednotka rýchlosti</string>
 
     <string name="pref_weather_location_choice_title">Použiť aktuálnu polohu</string>
     <string name="pref_weather_location_use_current_on">BetterWeather bude používať Vašu aktuálnu polohu</string>
@@ -74,6 +72,10 @@ limitations under the License.
     <string name="pref_weather_show_highlow_title">Zobraziť vysoké/nízke teploty</string>
     <string name="pref_weather_show_highlow_on">Vysoké/nízke teploty budú zobrazené</string>
     <string name="pref_weather_show_highlow_off">Vysoké/nízke teploty nebudú zobrazené</string>
+    
+    <string name="pref_weather_invert_highlow_title">Obrátiť vysoké/nízke teploty</string>
+    <string name="pref_weather_invert_highlow_on">Vysoká teplota bude na prvom mieste</string>
+    <string name="pref_weather_invert_highlow_off">Nízka teplota bude na prvom mieste</string>
 
     <string name="pref_weather_icon_theme_title">Téma ikon poveternostných podmienok</string>
 

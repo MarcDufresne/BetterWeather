@@ -23,7 +23,7 @@ limitations under the License.
 
     <!-- App Chooser -->
     <string name="title_apps">Aplikácie</string>
-    <string name="title_shortcuts">Skratky</string>
+    <string name="title_shortcuts">Odkazy</string>
 
     <!-- Toasts -->
     <string name="toast_refreshing">Aktualizácia počasia&#8230;</string>
@@ -39,7 +39,7 @@ limitations under the License.
     <string name="wind_speed_kmh">km/h</string>
     <string name="wind_speed_mph">mph</string>
 
-    <string name="shortcut_pref_help_text">Pre použitie zakážte "Aktualizácia počasia po dotyku"</string>
+    <string name="shortcut_pref_help_text">Pre použitie zakážte možnosť "Aktualizácia počasia po dotyku"</string>
 
     <!-- About -->
     <string name="about_extension_text">

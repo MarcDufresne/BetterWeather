@@ -476,7 +476,7 @@ public class BetterWeatherData {
                     case 2: windSpeed = windSpeed * 0.44704f; break; // Mph -> M/s
                 }
             }
-            return String.format(Locale.getDefault(), "%.2f", windSpeed);
+            return Integer.toString(Math.round(windSpeed));
         }
         return "0";
     }

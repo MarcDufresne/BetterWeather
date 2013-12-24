@@ -82,6 +82,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String PREF_WEATHER_SHOW_WIND_CHILL = "pref_weather_show_wind_chill";
     public static final String PREF_WEATHER_SHOW_HUMIDITY = "pref_weather_show_humidity";
     public static final String PREF_WEATHER_INVERT_HIGHLOW = "pref_weather_invert_highlow";
+    public static final String PREF_PEBBLE_ENABLE = "pref_pebble_enable";
 
     public static final Uri DEFAULT_WEATHER_INTENT_URI = Uri.parse("http://www.google.com/search?q=weather");
     public static final Intent DEFAULT_WEATHER_INTENT = new Intent(Intent.ACTION_VIEW, DEFAULT_WEATHER_INTENT_URI);
@@ -111,6 +112,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     private static boolean sShowHumidity = false;
     private static boolean sUseOnlyNetworkLocation = false;
     private static boolean sInvertHighLowTemps = false;
+    private static boolean sEnablePebble = false;
 
     public static long lastUpdateTime;
 
@@ -190,6 +192,11 @@ public class BetterWeatherExtension extends DashClockExtension {
         }
 
         LOGD(TAG, "Updating data");
+
+        if(sEnablePebble) {
+            LOGD(TAG, "Registered Pebble Data Receiver");
+            Pebble.registerPebbleDataReceived(getApplicationContext());
+        }
 
         getCurrentPreferences();
 
@@ -273,6 +280,11 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     private void publishUpdate(BetterWeatherData weatherData, ErrorCodes errorCode) {
         publishUpdate(renderExtensionData(weatherData, errorCode));
+
+        if(sEnablePebble) {
+            Pebble.sendWeather(getApplicationContext(), weatherData);
+        }
+
         LOGD(TAG, "Published new data to extension");
         lastUpdateTime = System.currentTimeMillis();
         scheduleRefresh(0);
@@ -389,6 +401,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         sShowWindChill = sp.getBoolean(PREF_WEATHER_SHOW_WIND_CHILL, sShowWindChill);
         sShowWindDetails = sp.getBoolean(PREF_WEATHER_SHOW_WIND_DETAILS, sShowWindDetails);
         sInvertHighLowTemps = sp.getBoolean(PREF_WEATHER_INVERT_HIGHLOW, sInvertHighLowTemps);
+        sEnablePebble = sp.getBoolean(PREF_PEBBLE_ENABLE, sEnablePebble);
 
         LOGD(TAG, "Location from settings is: " + ((sUseCurrentLocation) ? "Automatic" : sSetLocation));
     }

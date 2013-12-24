@@ -134,6 +134,19 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="pref_header_pebble"
+        android:title="@string/pref_header_pebble">
+
+        <CheckBoxPreference
+            android:key="pref_pebble_enable"
+            android:title="@string/pref_pebble_enable_title"
+            android:summaryOff="@string/pref_pebble_enable_summary_off"
+            android:summaryOn="@string/pref_pebble_enable_summary_on"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="pref_donate"
         android:title="@string/pref_header_donate">
 

@@ -68,7 +68,7 @@ public class Pebble {
         appContext.sendBroadcast(new Intent(BetterWeatherExtension.REFRESH_INTENT_FILTER));
     }
 
-    public static void sendWeather(Context appContext, BetterWeatherData weatherData) {
+    public static void sendWeather(Context appContext, BetterWeatherData weatherData, boolean showWindChill) {
 
         if(PebbleKit.isWatchConnected(appContext)) {
             if(PebbleKit.areAppMessagesSupported(appContext)) {
@@ -76,7 +76,7 @@ public class Pebble {
 
                 PebbleDictionary pebbleData = new PebbleDictionary();
                 pebbleData.addInt8(0, (byte) getWeatherIconId(weatherData.conditionCode));
-                pebbleData.addString(1, Integer.toString(weatherData.temperature) + "\u00B0" + BetterWeatherExtension.getWeatherUnits().toUpperCase());
+                pebbleData.addString(1, getDisplayTemperature(weatherData, showWindChill));
 
                 PebbleKit.sendDataToPebble(appContext, APP_UUID, pebbleData);
                 LogUtils.LOGD(TAG, "Data sent to Pebble.");
@@ -89,6 +89,17 @@ public class Pebble {
             LogUtils.LOGD(TAG, "Pebble not connected.");
         }
 
+    }
+
+    private static String getDisplayTemperature(BetterWeatherData weatherData, boolean showWindChill) {
+        StringBuilder displayTemp = new StringBuilder();
+        if(weatherData.windChill < weatherData.temperature && showWindChill) {
+            displayTemp.append(Integer.toString(weatherData.windChill)).append("\u002A");
+        }
+        else {
+            displayTemp.append(Integer.toString(weatherData.temperature)).append("\u00B0");
+        }
+        return displayTemp.append(BetterWeatherExtension.getWeatherUnits().toUpperCase()).toString();
     }
 
     private static int getWeatherIconId(int conditionCode) {

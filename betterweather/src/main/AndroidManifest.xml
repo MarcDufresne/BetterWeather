@@ -154,7 +154,7 @@
 
     <uses-sdk
             android:minSdkVersion="17"
-            android:targetSdkVersion="17"/>
+            android:targetSdkVersion="19"/>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>

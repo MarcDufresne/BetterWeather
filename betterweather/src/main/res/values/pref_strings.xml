@@ -25,6 +25,7 @@ limitations under the License.
     <string name="pref_header_appearance">General Appearance</string>
     <string name="pref_header_expanded_appearance">Expanded View Appearance</string>
     <string name="pref_header_behaviour">Behaviour</string>
+    <string name="pref_header_pebble">Pebble Watch</string>
     <string name="pref_header_donate">Donate</string>
 
     <!-- Weather -->
@@ -141,5 +142,13 @@ limitations under the License.
 
     <string name="pref_donate_title">Like what you see?</string>
     <string name="pref_donate_summary">Why not buy me a cup of coffee? :)</string>
+
+    <string name="pref_pebble_enable_title">Enable Pebble integration</string>
+    <string name="pref_pebble_enable_summary_on">The app will send data to the connected Pebble Watch</string>
+    <string name="pref_pebble_enable_summary_off">Pebble integration is disabled</string>
+
+    <string name="pref_pebble_show_wind_chill_title">Show wind chill</string>
+    <string name="pref_pebble_show_wind_chill_summary_on">Wind chill will be shown on Pebble Watch</string>
+    <string name="pref_pebble_show_wind_chill_summary_off">Real temperature will be shown on Pebble Watch</string>
 
 </resources>

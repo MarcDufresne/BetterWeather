@@ -134,6 +134,27 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="pref_header_pebble"
+        android:title="@string/pref_header_pebble">
+
+        <CheckBoxPreference
+            android:key="pref_pebble_enable"
+            android:title="@string/pref_pebble_enable_title"
+            android:summaryOff="@string/pref_pebble_enable_summary_off"
+            android:summaryOn="@string/pref_pebble_enable_summary_on"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_pebble_show_wind_chill"
+            android:title="@string/pref_pebble_show_wind_chill_title"
+            android:summaryOff="@string/pref_pebble_show_wind_chill_summary_off"
+            android:summaryOn="@string/pref_pebble_show_wind_chill_summary_on"
+            android:defaultValue="true"
+            android:dependency="pref_pebble_enable"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="pref_donate"
         android:title="@string/pref_header_donate">
 

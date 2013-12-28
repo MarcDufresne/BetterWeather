@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_status">--</string>
+    <!-- Unknown error -->
+    <string name="error_unknown">Hi ha hagut un error desconegut.</string>
+    <string name="error_unknown_expandedBody">Intenteu actualitzar l'estri o canvieu la configuració. S'intentarà actualitzar en un parell de minuts.</string>
+    <!-- Couldn't get location error -->
+    <string name="error_location">No s'ha trobat la ubicació.</string>
+    <string name="error_location_expandedBody">Sembla que no es pot obtenir la ubicació, comproveu la configuració d'accés a la ubicació d\'Android i intenteu actualitzar.</string>
+    <!-- No internet connection -->
+    <string name="error_internet">No hi ha connexió a Internet.</string>
+    <string name="error_internet_expandedBody">Sembla que no es pot connectar a Internet, comproveu la configuració i intenteu actualitzar.</string>
+</resources>

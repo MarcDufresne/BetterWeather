@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">Drecera</string>
+    <string name="pref_shortcut_default">(Per defecte)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">Configuració general</string>
+    <string name="pref_header_appearance">Aparença general</string>
+    <string name="pref_header_expanded_appearance">Aparença en vista expandida</string>
+    <string name="pref_header_behaviour">Comportament</string>
+    <string name="pref_header_pebble">Rellotge Pebble</string>
+    <string name="pref_header_donate">Donació</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">Unitats del temps</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F</item>
+        <item>°C</item>
+    </string-array>
+    <string-array name="pref_weather_units_values" translatable="false">
+        <item>f</item>
+        <item>c</item>
+    </string-array>
+
+    <string name="pref_weather_speed_unit_title">Unitats de velocitat</string>
+    <string-array name="pref_weather_speed_units_display_names">
+        <item>mph</item>
+        <item>km/h</item>
+        <item>m/s</item>
+    </string-array>
+    <string-array name="pref_weather_speed_units_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">Utilitza la ubicació actual</string>
+    <string name="pref_weather_location_use_current_on">El BetterWeather utilitzarà la ubicació actual</string>
+    <string name="pref_weather_location_use_current_off">El BetterWeather utilitzarà la ubicació definida a sota</string>
+
+    <string name="pref_weather_location_title">Ubicació</string>
+    <string name="pref_weather_location_automatic">Automàtica</string>
+    <string name="pref_weather_location_query_hint">Cerca una ubicació</string>
+    <string name="pref_weather_location_automatic_description">Basat en la ubicació actual.</string>
+
+    <string name="pref_weather_show_today_forecast_title">Mostra la previsió d\'avui</string>
+    <string name="pref_weather_show_today_forecast_on">La previsió d\'avui es mostrarà a la vista expandida</string>
+    <string name="pref_weather_show_today_forecast_off">No es mostrarà la previsió d\'avui</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">Mostra la previsió de demà</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">La previsió de demà es mostrarà a la vista expandida</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">No es mostrarà la previsió de demà</string>
+
+    <string name="pref_weather_refresh_on_touch_title">Actualitza el temps en tocar</string>
+    <string name="pref_weather_refresh_on_touch_on">En fer clic a l\'extensió s\'actualitzarà el temps (inhabiliteu-ho per a la drecera)</string>
+    <string name="pref_weather_refresh_on_touch_off">La drecera seleccionada s\'executarà en fer clic a l\'extensió</string>
+
+    <string name="pref_weather_refresh_interval_title">Interval d\'actualització</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 minuts</item>
+        <item>30 minuts</item>
+        <item>45 minuts</item>
+        <item>1 hora</item>
+        <item>2 hores</item>
+        <item>3 hores</item>
+        <item>4 hores</item>
+        <item>Desactiva l\'actualització automàtica</item>
+    </string-array>
+    <string-array name="pref_weather_refresh_interval_values" translatable="false">
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>120</item>
+        <item>180</item>
+        <item>240</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">Mostra comentaris en actualitzar</string>
+    <string name="pref_weather_show_refresh_toast_on">Es mostraran comentaris en actualitzar</string>
+    <string name="pref_weather_show_refresh_toast_off">No es mostraran comentaris en actualitzar</string>
+
+    <string name="pref_weather_show_highlow_title">Mostra màxima/mínima a l\'estat</string>
+    <string name="pref_weather_show_highlow_on">Es mostrara la temperatura màxima/mínima a l\'estat</string>
+    <string name="pref_weather_show_highlow_off">No es mostrarà la temperatura màxima/mínima a l\'estat</string>
+
+    <string name="pref_weather_invert_highlow_title">Inverteix màxima/mínima</string>
+    <string name="pref_weather_invert_highlow_on">La temperaturà màxima anirà primer</string>
+    <string name="pref_weather_invert_highlow_off">La temperatura mínima anirà primer</string>
+
+    <string name="pref_weather_icon_theme_title">Tema d\'icones d\'estat</string>
+    <string-array name="pref_weather_icon_theme_entries" translatable="false">
+        <item>Climacons</item>
+        <item>Weathercons</item>
+        <item>Chameleon</item>
+        <item>Google Now</item>
+    </string-array>
+    <string-array name="pref_weather_icon_theme_values" translatable="false">
+        <item>climacons</item>
+        <item>weathercons</item>
+        <item>chameleon</item>
+        <item>googlenow</item>
+    </string-array>
+
+    <string name="pref_weather_hide_location_name_title">Oculta el nom de la ubicació</string>
+    <string name="pref_weather_hide_location_name_summary_on">No es mostrarà el nom de la ubicació a la vista expandida</string>
+    <string name="pref_weather_hide_location_name_summary_off">Es mostrarà el nom de la ubicació a la vista expandida</string>
+
+    <string name="pref_weather_show_humidity_title">Mostra el nivell d\'humitat</string>
+    <string name="pref_weather_show_humidity_summary_on">Es mostrarà el nivell d\'humitat a la vista expandida</string>
+    <string name="pref_weather_show_humidity_summary_off">No es mostrarà el nivell d\'humitat</string>
+
+    <string name="pref_weather_show_wind_details_title">Mostra els detalls del vent</string>
+    <string name="pref_weather_show_wind_details_summary_on">Es mostraran els detalls del vent a la vista expandida</string>
+    <string name="pref_weather_show_wind_details_summary_off">No es mostraran els detalls del vent a la vista expandida</string>
+
+    <string name="pref_weather_show_wind_chill_title">Mostra la sensació de fredor</string>
+    <string name="pref_weather_show_wind_chill_summary_on">Es mostrarà la sensació de fredor a la vista expandida si està disponible</string>
+    <string name="pref_weather_show_wind_chill_summary_off">No es mostrarà la sensació de fredor</string>
+
+    <string name="pref_weather_use_only_network_title">Utilitza només la ubicació per xarxa</string>
+    <string name="pref_weather_use_only_network_summary_on">L\'aplicació només utilitzarà la xarxa per obtenir la ubicació (estalvia bateria)</string>
+    <string name="pref_weather_use_only_network_summary_off">L\'aplicació utilitzarà el GPS si la ubicació per xarxa no està disponible</string>
+
+    <string name="pref_donate_title">Us agrada el que veieu?</string>
+    <string name="pref_donate_summary">Perquè no em compreu una tassa de cafè? :)</string>
+
+    <string name="pref_pebble_enable_title">Habilita la integració amb Pebble</string>
+    <string name="pref_pebble_enable_summary_on">L\'aplicació enviarà dades al rellotge Pebble connectat</string>
+    <string name="pref_pebble_enable_summary_off">S\'ha inhabilitat la integració amb Pebble</string>
+
+    <string name="pref_pebble_show_wind_chill_title">Mostra la sensació de fredor</string>
+    <string name="pref_pebble_show_wind_chill_summary_on">Es mostrarà la sensació de fredor al rellotge Pebble</string>
+    <string name="pref_pebble_show_wind_chill_summary_off">Es mostrarà la temperatura real al rellotge Pebble</string>
+
+</resources>

@@ -1,0 +1,52 @@
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+    <string name="app_name">BetterWeather</string>
+    <string name="extension_title">BetterWeather</string>
+    <string name="extension_description">Mostra informació actualitzada del temps per a la vostra ubicació o per una ubicació establerta.
+        Powered by Yahoo! Weather.
+    </string>
+    <string name="title_settings">Configuració del BetterWeather</string>
+
+    <!-- App Chooser -->
+    <string name="title_apps">Aplicacions</string>
+    <string name="title_shortcuts">Dreceres</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">S\'està actualitzant&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">Avui: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">Demà: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">Vent: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">Sensació de fredor: %1$s°</string>
+    <string name="humidity_template">Humitat: %1$s</string>
+
+    <string name="wind_speed_kmh">km/h</string>
+    <string name="wind_speed_mph">mph</string>
+
+    <string name="shortcut_pref_help_text">Per utilitzar-ho, inhabiliteu "Actualitza el temps en tocar"</string>
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[Creat per: <br><i>Marc-André Dufresne</i><br><br>Gràcies a en Roman Nurik pel DashClock!<br>Traduït al català per Ferri64]]></string>
+    <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
+    <string name="close">Tanca</string>
+    <string name="about_title">Quant a</string>
+
+
+</resources>

@@ -26,6 +26,7 @@ limitations under the License.
     <string name="pref_header_appearance">Všeobecný vzhľad</string>
     <string name="pref_header_expanded_appearance">Vzhľad rozšíreného zobrazenia</string>
     <string name="pref_header_behaviour">Správanie</string>
+    <string name="pref_header_pebble">Hodinky Pebble</string>
     <string name="pref_header_donate">Dar</string>
 
     <!-- Weather -->
@@ -101,5 +102,13 @@ limitations under the License.
 
     <string name="pref_donate_title">Páči sa Vám čo vidíte?</string>
     <string name="pref_donate_summary">Prečo mi nekúpite šálku kávy? :)</string>
+    
+    <string name="pref_pebble_enable_title">Povoliť integráciu s hodinkami Pebble</string>
+    <string name="pref_pebble_enable_summary_on">Aplikácia bude odosielať údaje do pripojených hodiniek Pebble</string>
+    <string name="pref_pebble_enable_summary_off">Integrácia s hodinkami Pebble je zakázaná</string>
+    
+    <string name="pref_pebble_show_wind_chill_title">Zobraziť pocitovú teplotu na hodinkách Pebble</string>
+    <string name="pref_pebble_show_wind_chill_summary_on">Pocitová teplota bude zobrazená na hodinkách Pebble</string>
+    <string name="pref_pebble_show_wind_chill_summary_off">Skutočná teplota bude zobrazená na hodinkách Pebble</string>
 
 </resources>

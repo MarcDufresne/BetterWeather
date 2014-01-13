@@ -43,12 +43,12 @@
     <string name="cond_snow_showers">Сильный снегопад</string>
     <string name="cond_isolated_thundershowers">Местами ливень</string>
     <!-- Wind Directions -->
-    <string name="wind_north">С</string>
-    <string name="wind_northeast">СВ</string>
-    <string name="wind_east">В</string>
-    <string name="wind_southeast">ЮВ</string>
-    <string name="wind_south">Ю</string>
-    <string name="wind_soutwest">ЮЗ</string>
-    <string name="wind_west">З</string>
-    <string name="wind_northwest">СЗ</string>
+    <string name="wind_north">С,</string>
+    <string name="wind_northeast">СВ,</string>
+    <string name="wind_east">В,</string>
+    <string name="wind_southeast">ЮВ,</string>
+    <string name="wind_south">Ю,</string>
+    <string name="wind_soutwest">ЮЗ,</string>
+    <string name="wind_west">З,</string>
+    <string name="wind_northwest">СЗ,</string>
 </resources>

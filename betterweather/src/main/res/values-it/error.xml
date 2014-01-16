@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_status">--</string>
+    <!-- Unknown error -->
+    <string name="error_unknown">Errore sconosciuto.</string>
+    <string name="error_unknown_expandedBody">"Per favore prova ad aggiornare il widget o a cambiare impostazioni. Proverò ad aggiornare in un paio di minuti"</string>
+    <!-- Couldn't get location error -->
+    <string name="error_location">Posizione non trovata.</string>
+    <string name="error_location_expandedBody">"Sembra che non riesca a trovare la tua posizione, prova a controllare le tue impostazioni di accesso alla posizione e prova ad aggiornare."</string>
+    <!-- No internet connection -->
+    <string name="error_internet">Nessuna connessione internet.</string>
+    <string name="error_internet_expandedBody">"Sembra che non possa connettermi a internet, controlla le tue impostazioni e prova ad aggiornare."</string>
+</resources>

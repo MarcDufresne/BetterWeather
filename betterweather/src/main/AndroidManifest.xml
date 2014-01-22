@@ -1,9 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="net.imatruck.betterweather"
-          android:versionCode="35"
-          android:versionName="2.3">
+          android:versionCode="36"
+          android:versionName="2.3.1">
 
     <!--
+    Version 2.3.1 (36):
+        - Updated target version to 19
+        - Added Catalan translations
+        - Updated Slovak translations
+        - Fixed Russian wind direction string
+        - Updated Italian translations
+        - Added precision for Show Feedback setting
+
     Version 2.3 (35):
         - Pebble integration
 

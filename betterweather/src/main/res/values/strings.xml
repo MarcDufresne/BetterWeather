@@ -29,7 +29,7 @@ limitations under the License.
     <string name="title_shortcuts">Shortcuts</string>
 
     <!-- Toasts -->
-    <string name="toast_refreshing">Refreshing&#8230;</string>
+    <string name="toast_refreshing">Refreshing BetterWeather&#8230;</string>
 
     <!-- Weather -->
     <string name="temperature_template" translatable="false">%1$s°</string>

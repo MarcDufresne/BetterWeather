@@ -94,9 +94,9 @@ limitations under the License.
         <item>-1</item>
     </string-array>
 
-    <string name="pref_weather_show_refresh_toast_title">Show feedback on refresh</string>
-    <string name="pref_weather_show_refresh_toast_on">Feedback will be shown on refresh</string>
-    <string name="pref_weather_show_refresh_toast_off">Feedback will not be shown on refresh</string>
+    <string name="pref_weather_show_refresh_toast_title">Show toast on refresh</string>
+    <string name="pref_weather_show_refresh_toast_on">Toast will be shown on refresh</string>
+    <string name="pref_weather_show_refresh_toast_off">Toast will not be shown on refresh</string>
 
     <string name="pref_weather_show_highlow_title">Show High/Low in status</string>
     <string name="pref_weather_show_highlow_on">High/Low temperatures will be shown in status</string>

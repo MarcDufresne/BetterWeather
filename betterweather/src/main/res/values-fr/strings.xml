@@ -12,7 +12,7 @@
     <string name="title_shortcuts">Raccourcis</string>
 
     <!-- Toasts -->
-    <string name="toast_refreshing">Mise à jour&#8230;</string>
+    <string name="toast_refreshing">Mise à jour de BetterWeather&#8230;</string>
 
     <!-- Weather -->
     <string name="today_forecast_template">Aujourd\'hui: %1$s, %2$s/%3$s°</string>

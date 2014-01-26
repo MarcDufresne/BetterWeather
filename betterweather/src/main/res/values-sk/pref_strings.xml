@@ -34,7 +34,7 @@ limitations under the License.
     <string name="pref_weather_speed_unit_title">Jednotka rýchlosti</string>
 
     <string name="pref_weather_location_choice_title">Použiť aktuálnu polohu</string>
-    <string name="pref_weather_location_use_current_on">BetterWeather bude používať Vašu aktuálnu polohu</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather bude používať vašu aktuálnu polohu</string>
     <string name="pref_weather_location_use_current_off">BetterWeather bude používať polohu, ktorú môžte nastaviť nižšie</string>
 
     <string name="pref_weather_location_title">Poloha</string>
@@ -66,9 +66,9 @@ limitations under the License.
         <item>Vypnúť</item>
     </string-array>
 
-    <string name="pref_weather_show_refresh_toast_title">Zobraziť spätnú väzbu po aktualizácii</string>
-    <string name="pref_weather_show_refresh_toast_on">Spätná väzba bude zobrazená po aktualizácii</string>
-    <string name="pref_weather_show_refresh_toast_off">Spätná väzba nebude zobrazená po aktualizácii</string>
+    <string name="pref_weather_show_refresh_toast_title">Zobraziť toast po aktualizácii</string>
+    <string name="pref_weather_show_refresh_toast_on">Toast bude zobrazený po aktualizácii</string>
+    <string name="pref_weather_show_refresh_toast_off">Toast väzba nebude zobrazený po aktualizácii</string>
 
     <string name="pref_weather_show_highlow_title">Zobraziť vysoké/nízke teploty</string>
     <string name="pref_weather_show_highlow_on">Vysoké/nízke teploty budú zobrazené</string>
@@ -97,7 +97,7 @@ limitations under the License.
     <string name="pref_weather_show_wind_chill_summary_off">Pocitová teplota nebude zobrazená</string>
 
     <string name="pref_weather_use_only_network_title">Používať len sieť na určenie polohy</string>
-    <string name="pref_weather_use_only_network_summary_on">Aplikácia bude používať len sieť na určenie Vašej polohy (šetrí batériu)</string>
+    <string name="pref_weather_use_only_network_summary_on">Aplikácia bude používať len sieť na určenie vašej polohy (šetrí batériu)</string>
     <string name="pref_weather_use_only_network_summary_off">Aplikácia bude používať GPS (ak sieť nie je dostupná)</string>
 
     <string name="pref_donate_title">Páči sa Vám čo vidíte?</string>

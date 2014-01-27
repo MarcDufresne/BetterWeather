@@ -16,9 +16,20 @@
     <string name="today_forecast_template">今天: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">明天: %1$s, %2$s/%3$s°</string>
 
+    <string name="wind_details_template">风: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">风温: %1$s°</string>
+    <string name="humidity_template">湿度: %1$s</string>
+
+    <string name="status_none" translatable="false">––</string>
+
+    <string name="wind_speed_kmh">km/h</string>
+    <string name="wind_speed_mph">mph</string>
+
+    <string name="shortcut_pref_help_text">已关闭点击刷新</string>
+
     <!-- About -->
     <string name="about_extension_text">
-        <![CDATA[开发者：<i>Marc-André Dufresne</i><br><br>感谢Roman Nurik对DashClock的支持!<br>汉化：<i>BlackFaceSheep</i>]]></string>
+        <![CDATA[开发者：<i>Marc-André Dufresne</i><br><br>感谢Roman Nurik对DashClock的支持!<br>汉化：<i>BlackFaceSheep</i>,<i>NolanChou</i>]]></string>
     <string name="close">关闭</string>
     <string name="about_title">关于</string>
 

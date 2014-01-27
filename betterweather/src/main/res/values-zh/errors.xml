@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_status">--</string>
+    <!-- Unknown error -->
+    <string name="error_unknown">发生未知错误。</string>
+    <string name="error_unknown_expandedBody">请刷新小控件或更改设置，稍后将得到更新。</string>
+    <!-- Couldn't get location error -->
+    <string name="error_location">未找到位置信息。</string>
+    <string name="error_location_expandedBody">可能无法获得您的位置信息，请检查手机设置并重试。</string>
+    <!-- No internet connection -->
+    <string name="error_internet">没有网络连接。</string>
+    <string name="error_internet_expandedBody">无法获得网络连接，请检查手机设置并重试。</string>
+</resources>

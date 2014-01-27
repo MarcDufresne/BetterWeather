@@ -21,8 +21,8 @@ limitations under the License.
     <string name="error_unknown">Došlo k neznámej chybe.</string>
     <string name="error_unknown_expandedBody">Prosím, skúste aktualizovať miniaplikáciu alebo zmeniť nastavenia. Aktualizácia bude vykonaná za niekoľko minút.</string>
     <!-- Couldn't get location error -->
-    <string name="error_location">Poloha nenájdená.</string>
-    <string name="error_location_expandedBody">Zdá sa, že nie je možné určiť Vašu polohu. Prosím, skontrolujte nastavenie prístupu k polohe v Android nastaveniach a následne skúste vykonať aktualizáciu počasia.</string>
+    <string name="error_location">Nenájdená poloha.</string>
+    <string name="error_location_expandedBody">Zdá sa, že nie je možné určiť vašu polohu. Prosím, skontrolujte nastavenie prístupu k polohe v nastaveniach Androidu a následne skúste vykonať aktualizáciu počasia.</string>
     <!-- No internet connection -->
     <string name="error_internet">Žiadne internetové pripojenie.</string>
     <string name="error_internet_expandedBody">Nie je možné sa pripojiť k internetu. Skontrolujte nastavenia a pokúste sa vykonať aktualizáciu.</string>

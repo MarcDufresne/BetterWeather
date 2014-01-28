@@ -6,15 +6,25 @@
     <string name="pref_shortcut_default">(默认)</string>
 
     <!-- Weather Settings Category -->
-    <string name="pref_header_general">设定</string>
-    <string name="pref_header_status_appearance">界面</string>
-    <string name="pref_header_behaviour">使用方式</string>
+    <string name="pref_header_general">设置</string>
+	<string name="pref_header_appearance">界面</string>
+	<string name="pref_header_expanded_appearance">扩展界面</string>
+    <string name="pref_header_behaviour">操作行为</string>
+    <string name="pref_header_pebble">Pebble Watch智能手表</string>
+    <string name="pref_header_donate">捐赠</string>
 
     <!-- Weather -->
     <string name="pref_weather_units_title">气温单位</string>
     <string-array name="pref_weather_units_display_names">
         <item>华氏度 F</item>
         <item>摄氏度 C</item>
+    </string-array>
+
+    <string name="pref_weather_speed_unit_title">风速单位</string>
+    <string-array name="pref_weather_speed_units_display_names">
+        <item>mph</item>
+        <item>km/h</item>
+        <item>m/s</item>
     </string-array>
 
     <string name="pref_weather_location_choice_title">基于位置信息</string>
@@ -27,12 +37,12 @@
     <string name="pref_weather_location_automatic_description">根据您当前的位置</string>
 
     <string name="pref_weather_show_today_forecast_title">显示今天的预报</string>
-    <string name="pref_weather_show_today_forecast_on">今天的预报将会显示在扩展界面</string>
-    <string name="pref_weather_show_today_forecast_off">今天的预报将不会显示</string>
+    <string name="pref_weather_show_today_forecast_on">今日预报将会显示在扩展界面</string>
+    <string name="pref_weather_show_today_forecast_off">今日预报将不会显示在扩展界面</string>
 
     <string name="pref_weather_show_tomorrow_forecast_title">显示明天的预报</string>
-    <string name="pref_weather_show_tomorrow_forecast_on">明天的预报将会显示在扩展界面</string>
-    <string name="pref_weather_show_tomorrow_forecast_off">明天的预报将不会显示</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">明日预报将会显示在扩展界面</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">明日预报将不会显示在扩展界面</string>
 
     <string name="pref_weather_refresh_on_touch_title">点击刷新天气</string>
     <string name="pref_weather_refresh_on_touch_on">点击图标时刷新天气 (禁用此设置启用快捷方式)</string>
@@ -56,11 +66,42 @@
 
     <string name="pref_weather_show_highlow_title">在状态中显示高低温</string>
     <string name="pref_weather_show_highlow_on">高低温将在状态中显示</string>
-    <string name="pref_weather_show_highlow_off">高低温将不会再状态中显示</string>
+    <string name="pref_weather_show_highlow_off">高低温将不会在状态中显示</string>
+
+    <string name="pref_weather_invert_highlow_title">交换温度显示</string>
+    <string name="pref_weather_invert_highlow_on">优先显示最高温度</string>
+    <string name="pref_weather_invert_highlow_off">优先显示最低温度</string>
 
     <string name="pref_weather_icon_theme_title">状态图标主题</string>
 
     <string name="pref_weather_hide_location_name_title">隐藏位置</string>
     <string name="pref_weather_hide_location_name_summary_on">位置将不会显示在扩展界面</string>
     <string name="pref_weather_hide_location_name_summary_off">位置将会显示在扩展界面</string>
+
+    <string name="pref_weather_show_humidity_title">显示湿度</string>
+    <string name="pref_weather_show_humidity_summary_on">湿度信息将会显示在扩展界面</string>
+    <string name="pref_weather_show_humidity_summary_off">湿度信息将不会显示在扩展界面</string>
+
+    <string name="pref_weather_show_wind_details_title">显示详细风速</string>
+    <string name="pref_weather_show_wind_details_summary_on">详细风速将会显示在扩展界面</string>
+    <string name="pref_weather_show_wind_details_summary_off">详细风速将不会显示在扩展界面</string>
+
+    <string name="pref_weather_show_wind_chill_title">显示风感温度</string>
+    <string name="pref_weather_show_wind_chill_summary_on">风感温度将会显示在扩展界面</string>
+    <string name="pref_weather_show_wind_chill_summary_off">风感温度将不会显示在扩展界面</string>
+
+    <string name="pref_weather_use_only_network_title">仅使用网络位置</string>
+    <string name="pref_weather_use_only_network_summary_on">将仅使用网络获取位置信息 (省电)</string>
+    <string name="pref_weather_use_only_network_summary_off">无法通过网络获取位置将使用GPS定位</string>
+
+    <string name="pref_donate_title">喜欢这个应用?</string>
+    <string name="pref_donate_summary">给我买杯咖啡吧? :)</string>
+
+    <string name="pref_pebble_enable_title">Pebble 连接</string>
+    <string name="pref_pebble_enable_summary_on">将发送数据到 Pebble Watch</string>
+    <string name="pref_pebble_enable_summary_off">禁用 Pebble 连接</string>
+
+    <string name="pref_pebble_show_wind_chill_title">显示风感温度</string>
+    <string name="pref_pebble_show_wind_chill_summary_on">在 Pebble Watch 上将显示风感温度</string>
+    <string name="pref_pebble_show_wind_chill_summary_off">在 Pebble Watch 上将显示真实温度</string>
 </resources>

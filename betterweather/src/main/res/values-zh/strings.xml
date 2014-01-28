@@ -1,12 +1,10 @@
 ﻿<resources>
 
-    <string name="app_name">BetterWeather</string>
     <string name="extension_title">BetterWeather 天气</string>
     <string name="extension_description">基于您的位置信息或设定，为您提供即时天气信息。 由雅虎天气提供支持！</string>
     <string name="title_settings">BetterWeather 设定</string>
 
     <!-- App Chooser -->
-    <string name="title_apps">Apps</string>
     <string name="title_shortcuts">快捷操作</string>
 
     <!-- Toasts -->
@@ -20,16 +18,11 @@
     <string name="wind_chill_template">风温: %1$s°</string>
     <string name="humidity_template">湿度: %1$s</string>
 
-    <string name="status_none" translatable="false">––</string>
-
-    <string name="wind_speed_kmh">km/h</string>
-    <string name="wind_speed_mph">mph</string>
-
     <string name="shortcut_pref_help_text">已关闭点击刷新</string>
 
     <!-- About -->
     <string name="about_extension_text">
-        <![CDATA[开发者：<i>Marc-André Dufresne</i><br><br>感谢Roman Nurik对DashClock的支持!<br>汉化：<i>BlackFaceSheep</i>,<i>NolanChou</i>]]></string>
+        <![CDATA[开发者：<i>Marc-André Dufresne</i><br><br>感谢Roman Nurik对DashClock的支持!<br>汉化：<i>BlackFaceSheep</i>,<a href="http://www.nolanchou.com/">NolanChou</a>]]></string>
     <string name="close">关闭</string>
     <string name="about_title">关于</string>
 

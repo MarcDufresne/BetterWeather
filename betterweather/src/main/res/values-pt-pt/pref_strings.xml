@@ -15,10 +15,17 @@
   <string-array name="pref_weather_units_display_names">
     <item>°F</item>
     <item>°C</item>
+    </string-array>
+  <string-array name="pref_weather_units_values" translatable="false">
+    <item>f</item>
+    <item>c</item>
+  </string-array>
+  <string name="pref_weather_speed_unit_title">Unidades de velocidade</string>
   <string name="pref_weather_speed_unit_title">Veloc. do vento</string>
   <string-array name="pref_weather_speed_units_display_names">
     <item>mph</item>
     <item>km/h</item>
+    <item>m/s</item>
   <string name="pref_weather_location_choice_title">Use a localização atual</string>
   <string name="pref_weather_location_use_current_on">BetterWeather usará sua localização atual</string>
   <string name="pref_weather_location_use_current_off">BetterWeather usará o local definido em baixo</string>

@@ -72,14 +72,18 @@ public class Pebble {
 
         if(PebbleKit.isWatchConnected(appContext)) {
             if(PebbleKit.areAppMessagesSupported(appContext)) {
-                LogUtils.LOGD(TAG, "Pebble is connected!");
+                try{
+                    LogUtils.LOGD(TAG, "Pebble is connected!");
 
-                PebbleDictionary pebbleData = new PebbleDictionary();
-                pebbleData.addInt8(0, (byte) getWeatherIconId(weatherData.conditionCode));
-                pebbleData.addString(1, getDisplayTemperature(weatherData, showWindChill));
+                    PebbleDictionary pebbleData = new PebbleDictionary();
+                    pebbleData.addInt8(0, (byte) getWeatherIconId(weatherData.conditionCode));
+                    pebbleData.addString(1, getDisplayTemperature(weatherData, showWindChill));
 
-                PebbleKit.sendDataToPebble(appContext, APP_UUID, pebbleData);
-                LogUtils.LOGD(TAG, "Data sent to Pebble.");
+                    PebbleKit.sendDataToPebble(appContext, APP_UUID, pebbleData);
+                    LogUtils.LOGD(TAG, "Data sent to Pebble.");
+                } catch (NullPointerException npe) {
+                    npe.printStackTrace();
+                }
             }
             else {
                 LogUtils.LOGD(TAG, "Pebble doesn't support AppMessage.");

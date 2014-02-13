@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="net.imatruck.betterweather"
-          android:versionCode="36"
-          android:versionName="2.3.1">
+          android:versionCode="37"
+          android:versionName="2.3.2">
 
     <!--
+    Version 2.3.2 (37):
+        - Updated translations for multiple languages
+        - Fixed NPE on Pebble.sendWeather
+
     Version 2.3.1 (36):
         - Updated target version to 19
         - Added Catalan translations

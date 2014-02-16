@@ -74,7 +74,7 @@
   <string name="pref_weather_use_only_network_title">Utilizar apenas localização por rede</string>
   <string name="pref_weather_use_only_network_summary_on">A aplicação só vai usar a rede para obter sua localização (poupa bateria)</string>
   <string name="pref_weather_use_only_network_summary_off">A aplicação usará o GPS caso não seja possível utilizar a rede para obter localização</string>
-  <string name="pref_donate_title">Gostas da extensão?</string>
+  <string name="pref_donate_title">Gostas desta extensão?</string>
   <string name="pref_donate_summary">Porque é que não me compras um café? :)</string>
   <string name="pref_pebble_enable_title">Permite a integração do Pebble</string>
   <string name="pref_pebble_enable_summary_on">A aplicação irá enviar dados para o Pebble Watch</string>

@@ -16,7 +16,7 @@
     <item>°F</item>
     <item>°C</item>
   </string-array>
-  <string name="pref_weather_speed_unit_title">Veloc. do vento</string>
+  <string name="pref_weather_speed_unit_title">Velocidade do vento</string>
   <string-array name="pref_weather_speed_units_display_names">
     <item>mph</item>
     <item>km/h</item>

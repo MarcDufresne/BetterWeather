@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="error_status">--</string>
+  <!--Erro desconhecido-->
+  <string name="error_unknown">Ocorreu um erro desconhecido</string>
+  <string name="error_unknown_expandedBody">Por favor, tente atualizar o widget ou alterar as suas definições. Vamos tentar atualizar dentro de alguns minutos.</string>
+  <!-- Couldn't get location error -->
+  <string name="error_location">Localização não encontrada</string>
+  <string name="error_location_expandedBody">Parece que não conseguimos obter a sua localização. Verifique as suas definições de localização e tente atualizar novamente.</string>
+  <!-- No internet connection -->
+  <string name="error_internet">Sem conexão à internet.</string>
+  <string name="error_internet_expandedBody">Parece que não conseguimos estabelecer ligação à internet. Verifique as definições e tente atualizar.</string>
+</resources>

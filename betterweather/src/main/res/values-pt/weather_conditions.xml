@@ -48,7 +48,7 @@
   <string name="wind_east">E</string>
   <string name="wind_southeast">SE</string>
   <string name="wind_south">S</string>
-  <string name="wind_soutwest">SO</string>
-  <string name="wind_west">O</string>
-  <string name="wind_northwest">NO</string>
+  <string name="wind_soutwest">SW</string>
+  <string name="wind_west">W</string>
+  <string name="wind_northwest">NW</string>
 </resources>

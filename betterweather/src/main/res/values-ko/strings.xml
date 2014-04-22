@@ -16,64 +16,61 @@ limitations under the License.
 <resources>
     <string name="app_name">BetterWeather</string>
     <string name="app_name_and_version" translatable="false">
-		<![CDATA[<b>BetterWeather</b>&nbsp;<font color="#888888">v%1$s</font>]]>
+		<![CDATA[<b>BetterWeather(더 좋은 날씨)</b>&nbsp;<font color="#888888">v%1$s</font>]]>
 	</string>
-    <string name="extension_title">BetterWeather</string>
-    <string name="extension_description">Shows up-to-date weather information for your location or for a set location.
-        Powered by Yahoo! Weather.
+    <string name="extension_title">더 좋은 날씨</string>
+    <string name="extension_description">여러분의 위치에 해당하는 다양한 날씨 정보를 알려줍니다. 야후 날씨 서비스 이용.
     </string>
-    <string name="title_settings">BetterWeather Settings</string>
+    <string name="title_settings">BetterWeather 설정</string>
 
     <!-- App Chooser -->
-    <string name="title_apps">Apps</string>
-    <string name="title_shortcuts">Shortcuts</string>
+    <string name="title_apps">앱들</string>
+    <string name="title_shortcuts">바로가기</string>
 
     <!-- Toasts -->
-    <string name="toast_refreshing">Refreshing BetterWeather&#8230;</string>
+    <string name="toast_refreshing">BetterWeather 갱신&#8230;</string>
 
     <!-- Weather -->
     <string name="temperature_template" translatable="false">%1$s°</string>
-    <string name="highlow_template" translatable="false">(%1$s/%2$s°)</string>
+    <string name="highlow_template" translatable="false">(%1$s°~%2$s°)</string>
     <string name="weather_expanded_title_template" translatable="false">
         %1$s — %2$s
     </string>
 
-    <string name="today_forecast_template">Today: %1$s, %2$s/%3$s°</string>
-    <string name="tomorrow_forecast_template">Tomorrow: %1$s, %2$s/%3$s°</string>
+    <string name="today_forecast_template">오늘: %1$s, %2$s°~%3$s°</string>
+    <string name="tomorrow_forecast_template">내일: %1$s, %2$s°~%3$s°</string>
 
-    <!--  Can customize the order of addresses. %1=small Location, %2=large Location
-    For example,
-        "%1$s, %2$s" ==> "New York, USA"
-        "%2$s %1$s" ==> "Korea Seoul" (East Asia Style)
-    -->
-    <string name="location_template">%1$s, %2$s</string>
-
-    <string name="wind_details_template">Wind: %1$s %4$s%2$s%3$s</string>
-    <string name="wind_chill_template">Wind chill: %1$s°</string>
-    <string name="humidity_template">Humidity: %1$s</string>
+	<!--  Can customize the order of addresses. %1=small Location, %2=large Location
+		For example,
+			"%1$s, %2$s" ==> "New York, USA"
+			"%2$s, %1$s" ==> "Korea, Seoul" (East Asia Style)
+	 -->
+	<string name="location_template">%2$s %1$s</string>
+	
+    <string name="wind_details_template">바람: %1$s %4$s%2$s%3$s</string>
+    <string name="wind_chill_template">체감온도: %1$s°</string>
+    <string name="humidity_template">습도: %1$s</string>
 
     <string name="status_none" translatable="false">––</string>
 
-    <string name="wind_speed_kmh">km/h</string>
-    <string name="wind_speed_mph">mph</string>
     <string-array name="weather_speed_unit_display_prefixes">
         <item></item>
-        <item></item>
-        <item></item>
+        <item>시속</item>
+        <item>초속</item>
     </string-array>
     <string-array name="weather_speed_units_display_names">
         <item>mph</item>
-        <item>km/h</item>
-        <item>m/s</item>
+        <item>킬로</item>
+        <item>미터</item>
     </string-array>
-
-    <string name="shortcut_pref_help_text">Disable "Refresh weather on touch" to use</string>
+    
+    <string name="shortcut_pref_help_text">사용하기 위해, \"터치 시에 날씨 갱신\" 옵션을 끄세요</string>
 
     <!-- About -->
     <string name="about_extension_text">
-        <![CDATA[Created By: <br><i>Marc-André Dufresne</i><br><br>Thanks to Roman Nurik for DashClock!<br>]]></string>
-    <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
-	
+        <![CDATA[Created By: <br><i>Marc-André Dufresne</i><br><br>Thanks to Roman Nurik for DashClock!<br><br>
+        Translated in 한국어 by 이경준 (<a href="mailto:alogblog.com@gmail.com?subject=From%20BetterWeather(더_좋은_날씨)">alogblog.com@gmail.com</a>)<br>]]></string>
+
     <string name="about_license_text" translatable="false">
         <![CDATA[Copyright 2013 Marc-André Dufresne<br>
         Licensed under the Apache License, Version 2.0 (the "License");
@@ -88,8 +85,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.]]>
     </string>
-    <string name="close">Close</string>
-    <string name="about_title">About</string>
+    <string name="close">닫기</string>
+    <string name="about_title">소개</string>
 
 
 </resources>

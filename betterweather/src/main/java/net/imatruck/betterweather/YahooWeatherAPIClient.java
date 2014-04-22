@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +42,10 @@ public class YahooWeatherAPIClient {
 
     public static class LocationInfo {
         String woeid;
-        String town;
+        String smallLocation;
+        String largeLocation;
     }
+    public static String sLang;
 
     public static BetterWeatherData getWeatherDataForLocation(LocationInfo li) throws IOException {
         HttpURLConnection connection = Utils.openUrlConnection(buildWeatherQueryUrl(li.woeid));
@@ -100,32 +103,8 @@ public class YahooWeatherAPIClient {
                     }
                 } else if (eventType == XmlPullParser.START_TAG
                         && "location".equals(xpp.getName())) {
-                    String cityOrVillage = "--";
-                    String region = null;
-                    String country = "--";
-                    for (int i = xpp.getAttributeCount() - 1; i >= 0; i--) {
-                        if ("city".equals(xpp.getAttributeName(i))) {
-                            cityOrVillage = xpp.getAttributeValue(i);
-                        } else if ("region".equals(xpp.getAttributeName(i))) {
-                            region = xpp.getAttributeValue(i);
-                        } else if ("country".equals(xpp.getAttributeName(i))) {
-                            country = xpp.getAttributeValue(i);
-                        }
-                    }
-
-                    if (TextUtils.isEmpty(region)) {
-                        // If no region is available, show the country. Otherwise, don't
-                        // show country information.
-                        region = country;
-                    }
-
-                    if (!TextUtils.isEmpty(li.town) && !li.town.equals(cityOrVillage)) {
-                        // If a town is available and it's not equivalent to the city name,
-                        // show it.
-                        cityOrVillage = cityOrVillage + ", " + li.town;
-                    }
-
-                    data.location = cityOrVillage + ", " + region;
+                    data.smallLocation = li.smallLocation;
+                    data.largeLocation = li.largeLocation;
                 } else if (eventType == XmlPullParser.START_TAG
                         && "wind".equals(xpp.getName())) {
                     for (int i = xpp.getAttributeCount() - 1; i >= 0; i--) {
@@ -178,7 +157,18 @@ public class YahooWeatherAPIClient {
             xpp.setInput(new InputStreamReader(connection.getInputStream()));
 
             boolean inWoe = false;
-            boolean inTown = false;
+            boolean name = false;
+            boolean country = false;
+            boolean admin1 = false;
+            boolean admin2 = false;
+            boolean admin3 = false;
+            String[] addrs = {"", "", "", "", ""};
+            String smallLocation = "";
+            String largeLocation = "";
+
+            li.smallLocation = "";
+            li.largeLocation = "";
+
             int eventType = xpp.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 if (eventType == XmlPullParser.START_TAG && "woeid".equals(xpp.getName())) {
@@ -187,20 +177,59 @@ public class YahooWeatherAPIClient {
                     li.woeid = xpp.getText();
                 }
 
-                if (eventType == XmlPullParser.START_TAG && xpp.getName().startsWith("locality")) {
-                    for (int i = xpp.getAttributeCount() - 1; i >= 0; i--) {
-                        if ("type".equals(xpp.getAttributeName(i))
-                                && "Town".equals(xpp.getAttributeValue(i))) {
-                            inTown = true;
+                if (eventType == XmlPullParser.START_TAG && xpp.getName().startsWith("name")) {
+                    name = true;
+                } else if (eventType == XmlPullParser.TEXT && name) {
+                    addrs[0] = xpp.getText();
+                }
+                if (eventType == XmlPullParser.START_TAG && xpp.getName().startsWith("country")) {
+                    country = true;
+                } else if (eventType == XmlPullParser.TEXT && country) {
+                    addrs[4] = xpp.getText();
+                }
+                if (eventType == XmlPullParser.START_TAG && xpp.getName().startsWith("admin1")) {
+                    admin1 = true;
+                } else if (eventType == XmlPullParser.TEXT && admin1) {
+                    addrs[3] = xpp.getText();
+                }
+                if (eventType == XmlPullParser.START_TAG && xpp.getName().startsWith("admin2")) {
+                    admin2 = true;
+                } else if (eventType == XmlPullParser.TEXT && admin2) {
+                    addrs[2] = xpp.getText();
+                }
+                if (eventType == XmlPullParser.START_TAG && xpp.getName().startsWith("admin3")) {
+                    admin3 = true;
+                } else if (eventType == XmlPullParser.TEXT && admin3) {
+                    addrs[1] = xpp.getText();
+                    for(int i=0; i<addrs.length; i++) {
+                        if (TextUtils.isEmpty(addrs[i])) {
+                            continue;
+                        } else {
+                            smallLocation = addrs[i];
+                            largeLocation = "";
+                            for(int j=i+1; j<addrs.length; j++) {
+                                if (TextUtils.isEmpty(addrs[j])) {
+                                    continue;
+                                }
+                                if (!smallLocation.equals(addrs[j])) {
+                                    largeLocation = addrs[j];
+                                    break;
+                                }
+                            }
+                            break;
                         }
                     }
-                } else if (eventType == XmlPullParser.TEXT && inTown) {
-                    li.town = xpp.getText();
+                    li.smallLocation = smallLocation;
+                    li.largeLocation = largeLocation;
                 }
 
                 if (eventType == XmlPullParser.END_TAG) {
                     inWoe = false;
-                    inTown = false;
+                    name = false;
+                    country = false;
+                    admin1 = false;
+                    admin2 = false;
+                    admin3 = false;
                 }
 
                 eventType = xpp.next();
@@ -227,7 +256,7 @@ public class YahooWeatherAPIClient {
         // GeoPlanet API
         return "http://where.yahooapis.com/v1/places.q('"
                 + l.getLatitude() + "," + l.getLongitude() + "')"
-                + "?appid=" + YahooWeatherAPIConfig.API_KEY;
+                + "?lang=" + sLang + "&appid=" + YahooWeatherAPIConfig.API_KEY;
     }
 
     public static String buildPlaceSearchUrl(String cN) throws MalformedURLException {
@@ -265,9 +294,13 @@ public class YahooWeatherAPIClient {
     private static String buildPlaceSearchStartsWithUrl(String startsWith) {
         // GeoPlanet API
         startsWith = startsWith.replaceAll("[^\\w ]+", "").replaceAll(" ", "%20");
+        try {
+            startsWith = URLEncoder.encode(startsWith, "UTF-8");
+        }
+        catch(Exception e) {}
         return "http://where.yahooapis.com/v1/places.q('" + startsWith + "');"
                 + "count=" + MAX_SEARCH_RESULTS
-                + "?appid=" + YahooWeatherAPIConfig.API_KEY;
+                + "?lang=" + sLang + "&appid=" + YahooWeatherAPIConfig.API_KEY;
     }
 
     private static final int PARSE_STATE_NONE = 0;
@@ -276,6 +309,8 @@ public class YahooWeatherAPIClient {
     private static final int PARSE_STATE_NAME = 3;
     private static final int PARSE_STATE_COUNTRY = 4;
     private static final int PARSE_STATE_ADMIN1 = 5;
+    private static final int PARSE_STATE_ADMIN2 = 6;
+    private static final int PARSE_STATE_ADMIN3 = 7;
 
     public static List<LocationSearchResult> findLocationsAutocomplete(String startsWith) {
         LOGD(TAG, "Autocompleting locations starting with '" + startsWith + "'");
@@ -289,8 +324,7 @@ public class YahooWeatherAPIClient {
             xpp.setInput(new InputStreamReader(connection.getInputStream()));
 
             LocationSearchResult result = null;
-            String name = null, country = null, admin1 = null;
-            StringBuilder sb = new StringBuilder();
+            String[] addrs = {"", "", "", "", "", ""};
 
             int state = PARSE_STATE_NONE;
             int eventType = xpp.getEventType();
@@ -303,7 +337,8 @@ public class YahooWeatherAPIClient {
                             if ("place".equals(tagName)) {
                                 state = PARSE_STATE_PLACE;
                                 result = new LocationSearchResult();
-                                name = country = admin1 = null;
+                                for(int i=0; i<addrs.length; i++)
+                                    addrs[i]= "";
                             }
                             break;
 
@@ -316,6 +351,10 @@ public class YahooWeatherAPIClient {
                                 state = PARSE_STATE_COUNTRY;
                             } else if ("admin1".equals(tagName)) {
                                 state = PARSE_STATE_ADMIN1;
+                            } else if ("admin2".equals(tagName)) {
+                                state = PARSE_STATE_ADMIN2;
+                            } else if ("admin3".equals(tagName)) {
+                                state = PARSE_STATE_ADMIN3;
                             }
                             break;
                     }
@@ -327,32 +366,57 @@ public class YahooWeatherAPIClient {
                             break;
 
                         case PARSE_STATE_NAME:
-                            name = xpp.getText();
+                            addrs[0] = xpp.getText();
                             break;
 
-                        case PARSE_STATE_COUNTRY:
-                            country = xpp.getText();
+                        case PARSE_STATE_ADMIN3:
+                            addrs[1] = xpp.getText();
+                            break;
+
+                        case PARSE_STATE_ADMIN2:
+                            addrs[2] = xpp.getText();
                             break;
 
                         case PARSE_STATE_ADMIN1:
-                            admin1 = xpp.getText();
+                            addrs[3] = xpp.getText();
+                            break;
+
+                        case PARSE_STATE_COUNTRY:
+                            addrs[4] = xpp.getText();
                             break;
                     }
 
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if ("place".equals(tagName)) {
-                        sb.setLength(0);
-                        if (!TextUtils.isEmpty(name)) {
-                            sb.append(name);
-                        }
-                        if (!TextUtils.isEmpty(admin1)) {
-                            if (sb.length() > 0) {
-                                sb.append(", ");
+                        String smallLocation = "";
+                        String largeLocation = "";
+
+                        for(int i=0; i<addrs.length; i++) {
+                            if (TextUtils.isEmpty(addrs[i])) {
+                                continue;
                             }
-                            sb.append(admin1);
+                            else {
+                                smallLocation = addrs[i];
+                                largeLocation = "";
+                                for(int j=i+1; j<addrs.length; j++) {
+                                    if (TextUtils.isEmpty(addrs[j])) {
+                                        continue;
+                                    }
+                                    if (!smallLocation.equals(addrs[j])) {
+                                        largeLocation = addrs[j];
+                                        break;
+                                    }
+                                }
+                                if (!TextUtils.isEmpty(largeLocation)) {
+                                    largeLocation = ", " + largeLocation;
+                                }
+                                break;
+                            }
                         }
-                        result.displayName = sb.toString();
-                        result.country = country;
+
+                        result.displayName = smallLocation + largeLocation;
+                        result.country = addrs[4];
+
                         results.add(result);
                         state = PARSE_STATE_NONE;
 

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">바로가기</string>
+    <string name="pref_shortcut_default">(기본값)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">일반</string>
+    <string name="pref_header_appearance">모양</string>
+    <string name="pref_header_expanded_appearance">확장된 화면에서의 모양</string>
+    <string name="pref_header_behaviour">동작</string>
+    <string name="pref_header_pebble">페블 시계</string>
+    <string name="pref_header_donate">기부</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">온도 단위</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>°F(화씨)</item>
+        <item>°C(섭씨)</item>
+    </string-array>
+    <string-array name="pref_weather_units_values" translatable="false">
+        <item>f</item>
+        <item>c</item>
+    </string-array>
+
+    <string name="pref_weather_speed_unit_title">풍속 단위</string>
+    <string-array name="pref_weather_speed_units_display_names">
+        <item>mph</item>
+        <item>km/h</item>
+        <item>m/s</item>
+    </string-array>
+    <string-array name="pref_weather_speed_units_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">현재 위치 사용하기</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather가 현재 위치값을 사용합니다</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather가 아래 설정한 위치를 사용합니다</string>
+
+    <string name="pref_weather_location_title">위치</string>
+    <string name="pref_weather_location_automatic">자동 방식</string>
+    <string name="pref_weather_location_query_hint">지역명 검색</string>
+    <string name="pref_weather_location_automatic_description">현재 위치 정보를 이용해 자동으로.</string>
+
+    <string name="pref_weather_show_today_forecast_title">오늘 예보 표시</string>
+    <string name="pref_weather_show_today_forecast_on">확장 뷰(View)에 오늘 날씨 표시</string>
+    <string name="pref_weather_show_today_forecast_off">오늘 날씨 표시 안함</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">내일 예보 표시</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">확장 뷰에 내일 날씨 표시</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">내일 날씨 표시 안함</string>
+
+    <string name="pref_weather_refresh_on_touch_title">터치 시에 날씨 갱신</string>
+    <string name="pref_weather_refresh_on_touch_on">날씨 영역을 터치하면 정보 갱신 (바로가기 실행은 비활성)</string>
+    <string name="pref_weather_refresh_on_touch_off">날씨 영역을 터치하면, 아래에서 선택한 바로가기를 실행</string>
+
+    <string name="pref_weather_refresh_interval_title">갱신 간격</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 분</item>
+        <item>30 분</item>
+        <item>45 분</item>
+        <item>한 시간</item>
+        <item>두 시간</item>
+        <item>세 시간</item>
+        <item>네 시간</item>
+        <item>자동 갱신 끄기</item>
+    </string-array>
+    <string-array name="pref_weather_refresh_interval_values" translatable="false">
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>120</item>
+        <item>180</item>
+        <item>240</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">갱신 시에 토스트(Toast) 표시</string>
+    <string name="pref_weather_show_refresh_toast_on">날씨정보 갱신 시에 토스트(Toast) 메시지로 표시합니다.</string>
+    <string name="pref_weather_show_refresh_toast_off">날씨정보 갱신 시에 그 사실을 표시하지 않습니다</string>
+
+    <string name="pref_weather_show_highlow_title">최고/최저 상태 표시</string>
+    <string name="pref_weather_show_highlow_on">최고/최저 온도를 표시합니다</string>
+    <string name="pref_weather_show_highlow_off">최고/최저 온도를 표시하지 않습니다</string>
+
+    <string name="pref_weather_invert_highlow_title">최고/최저 순서 변경</string>
+    <string name="pref_weather_invert_highlow_on">최고 온도를 먼저 표시합니다</string>
+    <string name="pref_weather_invert_highlow_off">최저 온도를 먼저 표시합니다</string>
+
+    <string name="pref_weather_icon_theme_title">날씨 상태 아이콘</string>
+    <string-array name="pref_weather_icon_theme_entries" translatable="false">
+        <item>Climacons</item>
+        <item>Weathercons</item>
+        <item>Chameleon</item>
+        <item>Google Now</item>
+    </string-array>
+    <string-array name="pref_weather_icon_theme_values" translatable="false">
+        <item>climacons</item>
+        <item>weathercons</item>
+        <item>chameleon</item>
+        <item>googlenow</item>
+    </string-array>
+
+    <string name="pref_weather_hide_location_name_title">위치명 숨김</string>
+    <string name="pref_weather_hide_location_name_summary_on">확장 뷰에 위치명을 표시하지 않습니다</string>
+    <string name="pref_weather_hide_location_name_summary_off">확장 뷰에 위치명을 표시합니다</string>
+
+    <string name="pref_weather_show_humidity_title">습도 표시</string>
+    <string name="pref_weather_show_humidity_summary_on">확장 뷰에 습도를 표시합니다</string>
+    <string name="pref_weather_show_humidity_summary_off">습도를 표시하지 않습니다</string>
+
+    <string name="pref_weather_show_wind_details_title">바람정보 표시</string>
+    <string name="pref_weather_show_wind_details_summary_on">확장 뷰에 바람정보를 표시합니다</string>
+    <string name="pref_weather_show_wind_details_summary_off">바람정보를 표시하지 않습니다</string>
+
+    <string name="pref_weather_show_wind_speed_as_label_title">바람속도 표시 방법</string>
+    <string name="pref_weather_show_wind_speed_as_label_summary_on">바람속도를 해당하는 우리말로 표시합니다</string>
+    <string name="pref_weather_show_wind_speed_as_label_summary_off">바람속도를 속도 단위로 표시합니다</string>
+
+    <string name="pref_weather_show_wind_chill_title">체감온도 표시</string>
+    <string name="pref_weather_show_wind_chill_summary_on">체감 온도 정보가 있으면 확장 뷰에 표시합니다</string>
+    <string name="pref_weather_show_wind_chill_summary_off">체감 온도를 표시하지 않습니다</string>
+
+    <string name="pref_weather_use_only_network_title">네트워크 위치 정보만 사용</string>
+    <string name="pref_weather_use_only_network_summary_on">네트워크 위치 정보만 사용합니다(배터리 절약)</string>
+    <string name="pref_weather_use_only_network_summary_off">네크워크 위치 정보가 없으면, GPS를 사용합니다</string>
+
+    <string name="pref_donate_title">이 앱이 마음에 드세요?</string>
+    <string name="pref_donate_summary">작은 기부라도 고맙습니다 :)</string>
+
+    <string name="pref_pebble_enable_title">페블과 통신 활성</string>
+    <string name="pref_pebble_enable_summary_on">연결된 페블 시계에 데이터를 보냅니다</string>
+    <string name="pref_pebble_enable_summary_off">페블 시계와 통신을 하지 않습니다</string>
+
+    <string name="pref_pebble_show_wind_chill_title">체감온도 표시</string>
+    <string name="pref_pebble_show_wind_chill_summary_on">체감온도를 페블 시계에 표시합니다</string>
+    <string name="pref_pebble_show_wind_chill_summary_off">실제온도를 페블 시계에 표시합니다</string>
+
+</resources>

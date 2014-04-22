@@ -39,7 +39,8 @@ public class BetterWeatherData {
     public String tomorrowForecastText;
     public String todayLow, todayHigh;
     public String tomorrowLow, tomorrowHigh;
-    public String location;
+    public String smallLocation;
+    public String largeLocation;
     public String windSpeed;
     public int windDirection, windChill;
     public String humidity;
@@ -479,6 +480,46 @@ public class BetterWeatherData {
             return Integer.toString(Math.round(windSpeed));
         }
         return "0";
+    }
+
+    public static int getWindSpeedLabel(String weatherUnit, String windSpeedString) {
+        int windLabel;
+        if (windSpeedString != null) {
+            float windSpeed = Float.parseFloat(windSpeedString);
+            if (weatherUnit.equals("c")) {
+                windSpeed = windSpeed / 1.609344f; // Km/h -> Mph
+            }
+            // windSpeed in mph unit.
+            // http://www.windfinder.com/wind/windspeed.htm
+            if (windSpeed < 1)
+                windLabel = R.string.wind_0;
+            else if (windSpeed < 4)
+                windLabel = R.string.wind_1;
+            else if (windSpeed < 8)
+                windLabel = R.string.wind_2;
+            else if (windSpeed < 13)
+                windLabel = R.string.wind_3;
+            else if (windSpeed < 18)
+                windLabel = R.string.wind_4;
+            else if (windSpeed < 25)
+                windLabel = R.string.wind_5;
+            else if (windSpeed < 31)
+                windLabel = R.string.wind_6;
+            else if (windSpeed < 39)
+                windLabel = R.string.wind_7;
+            else if (windSpeed < 47)
+                windLabel = R.string.wind_8;
+            else if (windSpeed < 55)
+                windLabel = R.string.wind_9;
+            else if (windSpeed < 64)
+                windLabel = R.string.wind_10;
+            else if (windSpeed < 74)
+                windLabel = R.string.wind_11;
+            else
+                windLabel = R.string.wind_12;
+            return windLabel;
+        }
+        return R.string.cond_na;
     }
 
     public static int[] getErrorTitle(BetterWeatherExtension.ErrorCodes errorCode) {

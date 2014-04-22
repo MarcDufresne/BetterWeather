@@ -45,6 +45,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static net.imatruck.betterweather.YahooWeatherAPIClient.LocationSearchResult;
 
@@ -346,6 +347,9 @@ public class WeatherLocationPreference extends Preference {
         public ResultsLoader(String query, Context context) {
             super(context);
             mQuery = query;
+
+            Locale current = context.getResources().getConfiguration().locale;
+            YahooWeatherAPIClient.sLang = current.getLanguage() + "-" + current.getCountry();
         }
 
         @Override

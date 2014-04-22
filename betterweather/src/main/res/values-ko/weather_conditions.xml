@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<resources>
+    <string name="cond_na">정보없음</string>
+    <string name="cond_tornado">회오리바람</string>
+    <string name="cond_tropical_storm">열대폭풍</string>
+    <string name="cond_hurricane">싹쓸바람</string>
+    <string name="cond_severe_thunderstorms">천둥과 강한 비바람</string>
+    <string name="cond_thunderstorms">천둥과 비바람</string>
+    <string name="cond_mixed_rain_and_snow">비와 눈</string>
+    <string name="cond_mixed_rain_and_sleet">비와 진눈깨비</string>
+    <string name="cond_mixed_snow_and_sleet">눈과 진눈깨비</string>
+    <string name="cond_freezing_drizzle">어는비</string>
+    <string name="cond_drizzle">이슬비</string>
+    <string name="cond_freezing_rain">진눈깨비</string>
+    <string name="cond_showers">소나기</string>
+    <string name="cond_snow_flurries">눈보라</string>
+    <string name="cond_light_snow_showers">약한 소낙눈</string>
+    <string name="cond_blowing_snow">날리는 눈</string>
+    <string name="cond_snow">눈</string>
+    <string name="cond_hail">우박</string>
+    <string name="cond_sleet">진눈깨비</string>
+    <string name="cond_dust">황사</string>
+    <string name="cond_foggy">안개</string>
+    <string name="cond_haze">실안개</string>
+    <string name="cond_smoky">짙은 안개</string>
+    <string name="cond_blustery">거센 바람</string>
+    <string name="cond_windy">바람</string>
+    <string name="cond_cold">추움</string>
+    <string name="cond_cloudy">흐림</string>
+    <string name="cond_mostly_cloudy">대체로 흐림</string>
+    <string name="cond_partly_cloudy">약간 흐림</string>
+    <string name="cond_clear">맑음</string>
+    <string name="cond_sunny">화창</string>
+    <string name="cond_fair">맑음</string>
+    <string name="cond_mixed_rain_and_hail">비와 우박</string>
+    <string name="cond_hot">더움</string>
+    <string name="cond_isolated_thunderstorms">국지성 강한 비바람</string>
+    <string name="cond_scattered_thunderstorms">간간이 강한 비바람</string>
+    <string name="cond_scattered_showers">간간이 소나기</string>
+    <string name="cond_heavy_snow">폭설</string>
+    <string name="cond_scattered_snow_showers">간간이 소낙눈</string>
+    <string name="cond_thundershowers">번개를 동반한 소낙비</string>
+    <string name="cond_snow_showers">소낙비</string>
+    <string name="cond_isolated_thundershowers">국지성 소낙비</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">북풍</string>
+    <string name="wind_northeast">북동풍</string>
+    <string name="wind_east">동풍</string>
+    <string name="wind_southeast">남동풍</string>
+    <string name="wind_south">남풍</string>
+    <string name="wind_soutwest">남서풍</string>
+    <string name="wind_west">서풍</string>
+    <string name="wind_northwest">북서풍</string>
+    <!-- Wind Speedd Labels -->
+    <string name="wind_0">고요</string>
+    <string name="wind_1">실바람</string>
+    <string name="wind_2">남실바람</string>
+    <string name="wind_3">산들바람</string>
+    <string name="wind_4">건들바람</string>
+    <string name="wind_5">흔들바람</string>
+    <string name="wind_6">된바람</string>
+    <string name="wind_7">센바람</string>
+    <string name="wind_8">큰바람</string>
+    <string name="wind_9">큰센바람</string>
+    <string name="wind_10">노대바람</string>
+    <string name="wind_11">왕바람</string>
+    <string name="wind_12">싹쓸바람</string>
+</resources>

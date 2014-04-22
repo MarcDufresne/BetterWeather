@@ -79,6 +79,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String PREF_WEATHER_ICON_THEME = "pref_weather_icon_theme";
     public static final String PREF_WEATHER_HIDE_LOCATION_NAME = "pref_weather_hide_location_name";
     public static final String PREF_WEATHER_SHOW_WIND_DETAILS = "pref_weather_show_wind_details";
+    public static final String PREF_WEATHER_SHOW_WIND_SPEED_AS_LABEL = "pref_weather_show_wind_speed_as_label";
     public static final String PREF_WEATHER_SHOW_WIND_CHILL = "pref_weather_show_wind_chill";
     public static final String PREF_WEATHER_SHOW_HUMIDITY = "pref_weather_show_humidity";
     public static final String PREF_WEATHER_INVERT_HIGHLOW = "pref_weather_invert_highlow";
@@ -109,6 +110,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     private static boolean sShowHighlow = false;
     private static boolean sHideLocationName = false;
     private static boolean sShowWindDetails = false;
+    private static boolean sShowWindLabel = false;
     private static boolean sShowWindChill = false;
     private static boolean sShowHumidity = false;
     private static boolean sUseOnlyNetworkLocation = false;
@@ -269,8 +271,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         LocationInfo locationInfo;
         if (!sUseCurrentLocation) {
-            locationInfo = new LocationInfo();
-            locationInfo.woeid = getSetLocationWoeid();
+            locationInfo = getSetLocationInfo();
         } else {
             locationInfo = YahooWeatherAPIClient.getLocationInfo(location);
         }
@@ -299,6 +300,9 @@ public class BetterWeatherExtension extends DashClockExtension {
         @Override
         public void onReceive(Context context, Intent intent) {
             showRefreshToast();
+            //alogblog: Update phone's locale dynamically
+            Locale current = getResources().getConfiguration().locale;
+            YahooWeatherAPIClient.sLang = current.getLanguage() + "-" + current.getCountry();
             onUpdateData(UPDATE_REASON_USER_REQUESTED);
         }
     }
@@ -334,7 +338,7 @@ public class BetterWeatherExtension extends DashClockExtension {
             BetterWeatherData weatherData = null;
             try {
                 weatherData = getWeatherForLocation(mLocation);
-                LOGD(TAG, "Using new weather data for location: " + weatherData.location + " at " + SimpleDateFormat.getTimeInstance().format(new Date()));
+                LOGD(TAG, "Using new weather data for location: " + weatherData.smallLocation + ", " + weatherData.largeLocation + " at " + SimpleDateFormat.getTimeInstance().format(new Date()));
             } catch (InvalidLocationException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -390,7 +394,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         sWeatherUnits = sp.getString(PREF_WEATHER_UNITS, sWeatherUnits);
         sSpeedUnits = Integer.parseInt(sp.getString(PREF_WEATHER_SPEED_UNITS, Integer.toString(sSpeedUnits)));
-        sSetLocation = sp.getString(PREF_WEATHER_LOCATION, sSetLocation).trim().toLowerCase(Locale.getDefault());
+        sSetLocation = sp.getString(PREF_WEATHER_LOCATION, sSetLocation).trim();
         sUseCurrentLocation = TextUtils.isEmpty(sSetLocation);
         sUseOnlyNetworkLocation = sp.getBoolean(PREF_WEATHER_USE_ONLY_NETWORK, sUseOnlyNetworkLocation);
         sShowTodayForecast = sp.getBoolean(PREF_WEATHER_SHOW_TODAY_FORECAST, sShowTodayForecast);
@@ -402,6 +406,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         sShowHumidity = sp.getBoolean(PREF_WEATHER_SHOW_HUMIDITY, sShowHumidity);
         sShowWindChill = sp.getBoolean(PREF_WEATHER_SHOW_WIND_CHILL, sShowWindChill);
         sShowWindDetails = sp.getBoolean(PREF_WEATHER_SHOW_WIND_DETAILS, sShowWindDetails);
+        sShowWindLabel = sp.getBoolean(PREF_WEATHER_SHOW_WIND_SPEED_AS_LABEL, sShowWindLabel);
         sInvertHighLowTemps = sp.getBoolean(PREF_WEATHER_INVERT_HIGHLOW, sInvertHighLowTemps);
         sPebbleEnable = sp.getBoolean(PREF_PEBBLE_ENABLE, sPebbleEnable);
         sPebbleShowWindChill = sp.getBoolean(PREF_PEBBLE_SHOW_WIND_CHILL, sPebbleShowWindChill);
@@ -409,12 +414,18 @@ public class BetterWeatherExtension extends DashClockExtension {
         LOGD(TAG, "Location from settings is: " + ((sUseCurrentLocation) ? "Automatic" : sSetLocation));
     }
 
-    public static String getSetLocationWoeid() {
-        try {
-            return sSetLocation.substring(0, sSetLocation.indexOf(","));
-        } catch (Exception e) {
-            return sSetLocation;
+    public static LocationInfo getSetLocationInfo() {
+        LocationInfo li = new LocationInfo();
+        String[] arr = sSetLocation.split(",");
+        li.woeid = arr[0];
+        if (arr.length == 3) {
+            li.smallLocation = arr[1].trim();
+            li.largeLocation = arr[2].trim();
+        } else if(arr.length == 2) {
+            li.smallLocation = arr[1].trim();
+            li.largeLocation = "";
         }
+        return li;
     }
 
     public static String getWeatherUnits() {
@@ -521,10 +532,20 @@ public class BetterWeatherExtension extends DashClockExtension {
         if (sShowHumidity || sShowWindDetails) {
             StringBuilder detailsLine = new StringBuilder();
             if (sShowWindDetails && !"".equals(weatherData.windSpeed)) {
+                String speed = "";
+                String unit = "";
+                String prefix = "";
+                if (sShowWindLabel) {
+                    speed = getString(BetterWeatherData.getWindSpeedLabel(sWeatherUnits, weatherData.windSpeed));
+                }
+                else {
+                    speed = BetterWeatherData.convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits);
+                    unit = getSpeedUnitDisplayValue(sSpeedUnits);
+                    prefix = getSpeedUnitDisplayPrefixValue(sSpeedUnits);
+                }
                 detailsLine.append(getString(R.string.wind_details_template,
-                        getString(BetterWeatherData.getWindDirectionText(weatherData.windDirection)),
-                        BetterWeatherData.convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits),
-                        getSpeedUnitDisplayValue(sSpeedUnits)));
+                    getString(BetterWeatherData.getWindDirectionText(weatherData.windDirection)), speed, unit, prefix));
+
                 if (sShowHumidity)
                     detailsLine.append(", ");
             }
@@ -555,7 +576,8 @@ public class BetterWeatherExtension extends DashClockExtension {
         if (!sHideLocationName) {
             if (sShowHumidity || sShowTodayForecast || sShowTomorrowForecast || sShowWindDetails)
                 expandedBody.append("\n");
-            expandedBody.append(weatherData.location);
+            expandedBody.append(
+                getString(R.string.location_template, weatherData.smallLocation, weatherData.largeLocation));
         }
 
         return expandedBody;
@@ -594,10 +616,17 @@ public class BetterWeatherExtension extends DashClockExtension {
     }
 
     private String getSpeedUnitDisplayValue(int speedUnitIndex) {
-        String[] units = getResources().getStringArray(R.array.pref_weather_speed_units_display_names);
+        String[] units = getResources().getStringArray(R.array.weather_speed_units_display_names);
         if (speedUnitIndex >= 0 && speedUnitIndex < units.length)
             return units[speedUnitIndex];
         return units[0];
+    }
+
+    private String getSpeedUnitDisplayPrefixValue(int speedUnitIndex) {
+        String[] prefixes = getResources().getStringArray(R.array.weather_speed_unit_display_prefixes);
+        if (speedUnitIndex >= 0 && speedUnitIndex < prefixes.length)
+            return prefixes[speedUnitIndex];
+        return prefixes[0];
     }
 
     /*

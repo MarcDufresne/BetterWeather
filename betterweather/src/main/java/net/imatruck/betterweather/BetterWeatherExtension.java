@@ -36,6 +36,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -139,6 +140,8 @@ public class BetterWeatherExtension extends DashClockExtension {
     private OnClickReceiver onClickReceiver;
 
     private boolean mOneTimeLocationListenerActive = false;
+
+    static Handler gpsFixHandler = new Handler();
 
     static {
         sLocationCriteria = new Criteria();
@@ -263,6 +266,13 @@ public class BetterWeatherExtension extends DashClockExtension {
                     disableOneTimeLocationListener();
                     mOneTimeLocationListenerActive = true;
                     lm.requestSingleUpdate(provider, mOneTimeLocationListener, null);
+                    gpsFixHandler.postDelayed(new Runnable() {
+                        public void run() {
+                            disableOneTimeLocationListener();
+                            LOGD(TAG, "We didn't get a GPS fix quick enough, we'll try again later");
+                            scheduleRefresh(0);
+                        }
+                    }, 30 * 1000);
                     LOGD(TAG, "Requested single location update");
                     if (lastLocation != null) {
                         new RefreshWeatherTask(lastLocation).execute();
@@ -393,6 +403,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         @Override
         protected BetterWeatherData doInBackground(Void... params) {
             LOGD(TAG, "Refreshing weather from RefreshWeatherTask");
+            gpsFixHandler.removeCallbacksAndMessages(null);
             BetterWeatherData weatherData = null;
             try {
                 weatherData = getWeatherForLocation(mLocation);
@@ -482,7 +493,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     private static void convertLocationToNewFormat(String oldLocationData, SharedPreferences sp) {
 
-        if(oldLocationData.contains("/"))
+        if(oldLocationData.contains("/") || sUseCurrentLocation)
             return;
 
         SharedPreferences.Editor editor = sp.edit();

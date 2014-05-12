@@ -15,7 +15,7 @@
  *
  */
 
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -33,6 +33,8 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import net.imatruck.betterweather.R;
 
 /**
  * Helper class for showing about dialogs and what not.

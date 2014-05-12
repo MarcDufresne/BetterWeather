@@ -8,7 +8,7 @@ This project was imported into GitHub, to see earlier commit history visit the [
 License
 =============
 
-	Copyright 2013 Marc-André Dufresne
+	Copyright 2013-2014 Marc-André Dufresne
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.

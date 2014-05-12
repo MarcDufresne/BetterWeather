@@ -13,15 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Copyright 2013 Marc-André Dufresne
+ * Copyright 2013-2014 Marc-André Dufresne
  *
  * This file was modified by Marc-André Dufresne to include several
  * more features.
  */
 
 package net.imatruck.betterweather;
-
-import java.util.Locale;
 
 /**
  * A helper class representing weather data, for use with {@link BetterWeatherExtension}.
@@ -31,21 +29,78 @@ public class BetterWeatherData {
     public static final int INVALID_TEMPERATURE = Integer.MIN_VALUE;
     public static final int INVALID_CONDITION = -1;
 
+    //Currently
+    /**
+     * Should be between {@value net.imatruck.betterweather.BetterWeatherData#INVALID_TEMPERATURE} and {@value Integer#MAX_VALUE}
+     */
     public int temperature = INVALID_TEMPERATURE;
+    /**
+     * Should be between -1 and 47 to follow Yahoo's values
+     *
+     * @see <a href="https://developer.yahoo.com/weather/#codes">Yahoo's API Doc</a>
+     */
     public int conditionCode = INVALID_CONDITION;
-    public int todayForecastConditionCode = INVALID_CONDITION;
-    public String conditionText;
-    public String forecastText;
-    public String tomorrowForecastText;
-    public String todayLow, todayHigh;
-    public String tomorrowLow, tomorrowHigh;
-    public String location;
+    /**
+     * Should be between 0 and {@value java.lang.Double#MAX_VALUE}, written as a double
+     */
     public String windSpeed;
-    public int windDirection, windChill;
+    /**
+     * Should be between 0 and 359 (Absolute north is 0)
+     */
+    public int windDirection;
+    /**
+     * Will be displayed if different from {@link net.imatruck.betterweather.BetterWeatherData#temperature}
+     *
+     * @see net.imatruck.betterweather.BetterWeatherData#temperature
+     */
+    public int feelsLike;
+    /**
+     * Should be between 0 and 100
+     */
     public String humidity;
+
+    //Today
+    /**
+     * Should be between -1 and 47 to follow Yahoo's values
+     *
+     * @see <a href="https://developer.yahoo.com/weather/#codes">Yahoo's API Doc</a>
+     */
+    public int todayForecastConditionCode = INVALID_CONDITION;
+    /**
+     * Should be between {@value net.imatruck.betterweather.BetterWeatherData#INVALID_TEMPERATURE} and {@value Integer#MAX_VALUE}
+     */
+    public String todayLow, todayHigh;
+
+    //Tomorrow
+    /**
+     * Should be between -1 and 47 to follow Yahoo's values
+     *
+     * @see <a href="https://developer.yahoo.com/weather/#codes">Yahoo's API Doc</a>
+     */
     public int tomorrowForecastConditionCode = INVALID_CONDITION;
+    /**
+     * Should be between {@value net.imatruck.betterweather.BetterWeatherData#INVALID_TEMPERATURE} and {@value Integer#MAX_VALUE}
+     */
+    public String tomorrowLow, tomorrowHigh;
+
+    //General
+    /**
+     * String value representing the data location
+     */
+    public String location;
+
+    //Error Management
+    public ErrorCodes errorCode = ErrorCodes.NONE;
+
+    public static enum ErrorCodes {
+        NONE, UNKNOWN, LOCATION, INTERNET, API
+    }
 
     public BetterWeatherData() {
+    }
+
+    public BetterWeatherData(ErrorCodes errorCode) {
+        this.errorCode = errorCode;
     }
 
     public boolean hasValidTemperature() {
@@ -74,7 +129,7 @@ public class BetterWeatherData {
         return R.string.wind_north;
     }
 
-    public static int getStatusTextId(int conditionCode) {
+    public static int getStatusText(int conditionCode) {
         switch (conditionCode) {
             case 0:
                 return R.string.cond_tornado;
@@ -170,310 +225,26 @@ public class BetterWeatherData {
         return R.string.cond_na;
     }
 
-    public static int getClimaconsConditionIconId(int conditionCode) {
-        // http://developer.yahoo.com/weather/
-        switch (conditionCode) {
-            case 20: // foggy
-                return R.drawable.climacons_foggy;
-            case 21: // haze
-            case 19: // dust
-            case 22: // smoky
-                return R.drawable.climacons_smoky;
-            case 25: // cold
-                return R.drawable.climacons_cold;
-            case 26: // cloudy
-                return R.drawable.climacons_cloudy;
-            case 27: // mostly cloudy (night)
-            case 29: // partly cloudy (night)
-                return R.drawable.climacons_partly_cloudy_night;
-            case 28: // mostly cloudy (day)
-            case 30: // partly cloudy (day)
-            case 44: // partly cloudy
-                return R.drawable.climacons_partly_cloudy;
-            case 31: // clear (night)
-            case 33: // fair (night)
-                return R.drawable.climacons_clear_night;
-            case 34: // fair (day)
-            case 32: // sunny
-            case 23: // blustery
-            case 36: // hot
-                return R.drawable.climacons_sunny;
-            case 0: // tornado
-            case 1: // tropical storm
-            case 2: // hurricane
-            case 24: // windy
-                return R.drawable.climacons_windy;
-            case 5: // mixed rain and snow
-            case 6: // mixed rain and sleet
-            case 7: // mixed snow and sleet
-            case 18: // sleet
-            case 8: // freezing drizzle
-            case 10: // freezing rain
-            case 14: // light snow showers
-                return R.drawable.climacons_mixed_rain_and_snow;
-            case 17: // hail
-            case 35: // mixed rain and hail
-                return R.drawable.climacons_hail;
-            case 9: // drizzle
-                return R.drawable.climacons_drizzle;
-            case 11: // showers
-            case 12: // showers
-                return R.drawable.climacons_showers;
-            case 40: // scattered showers
-                return R.drawable.climacons_scattered_showers;
-            case 3: // severe thunderstorms
-            case 4: // thunderstorms
-            case 37: // isolated thunderstorms
-            case 45: // thundershowers
-            case 47: // isolated thundershowers
-                return R.drawable.climacons_thunderstorms;
-            case 38: // scattered thunderstorms
-            case 39: // scattered thunderstorms
-                return R.drawable.climacons_scattered_thunderstorms;
-            case 15: // blowing snow
-                return R.drawable.climacons_blowing_snow;
-            case 16: // snow
-            case 41: // heavy snow
-            case 43: // heavy snow
-            case 46: // snow showers
-            case 13: // snow flurries
-            case 42: // scattered snow showers
-                return R.drawable.climacons_heavy_snow;
-        }
-
-        return R.drawable.climacons_sunny;
-    }
-
-    public static int getWeatherconsConditionIconId(int conditionCode) {
-        // http://developer.yahoo.com/weather/
-        switch (conditionCode) {
-            case 20: // foggy
-                return R.drawable.weathercons_foggy;
-            case 21: // haze
-            case 19: // dust
-            case 22: // smoky
-                return R.drawable.weathercons_smoky;
-            case 25: // cold
-                return R.drawable.weathercons_cold;
-            case 26: // cloudy
-                return R.drawable.weathercons_cloudy;
-            case 27: // mostly cloudy (night)
-                return R.drawable.weathercons_mostly_cloudy_night;
-            case 29: // partly cloudy (night)
-                return R.drawable.weathercons_partly_cloudy_night;
-            case 28: // mostly cloudy (day)
-                return R.drawable.weathercons_mostly_cloudy;
-            case 30: // partly cloudy (day)
-            case 44: // partly cloudy
-                return R.drawable.weathercons_partly_cloudy;
-            case 31: // clear (night)
-            case 33: // fair (night)
-                return R.drawable.weathercons_clear_night;
-            case 34: // fair (day)
-            case 32: // sunny
-            case 23: // blustery
-            case 36: // hot
-                return R.drawable.weathercons_sunny;
-            case 0: // tornado
-            case 1: // tropical storm
-            case 2: // hurricane
-            case 24: // windy
-                return R.drawable.weathercons_windy;
-            case 5: // mixed rain and snow
-            case 6: // mixed rain and sleet
-            case 7: // mixed snow and sleet
-            case 18: // sleet
-            case 8: // freezing drizzle
-            case 10: // freezing rain
-            case 14: // light snow showers
-                return R.drawable.weathercons_mixed_rain_and_snow;
-            case 17: // hail
-            case 35: // mixed rain and hail
-                return R.drawable.weathercons_hail;
-            case 9: // drizzle
-                return R.drawable.weathercons_drizzle;
-            case 11: // showers
-            case 12: // showers
-                return R.drawable.weathercons_showers;
-            case 40: // scattered showers
-                return R.drawable.weathercons_scattered_showers;
-            case 3: // severe thunderstorms
-            case 4: // thunderstorms
-            case 37: // isolated thunderstorms
-            case 45: // thundershowers
-            case 47: // isolated thundershowers
-                return R.drawable.weathercons_thundershowers;
-            case 38: // scattered thunderstorms
-            case 39: // scattered thunderstorms
-                return R.drawable.weathercons_scattered_thunderstorms;
-            case 15: // blowing snow
-            case 16: // snow
-            case 41: // heavy snow
-            case 43: // heavy snow
-            case 46: // snow showers
-            case 13: // snow flurries
-            case 42: // scattered snow showers
-                return R.drawable.weathercons_heavy_snow;
-        }
-
-        return R.drawable.weathercons_sunny;
-    }
-
-    public static int getChameleonConditionIconId(int conditionCode) {
-        // http://developer.yahoo.com/weather/
-        switch (conditionCode) {
-            case 20: // foggy
-            case 19: // dust
-                return R.drawable.chameleon_foggy;
-            case 21: // haze
-                return R.drawable.chameleon_haze;
-            case 26: // cloudy
-                return R.drawable.chameleon_cloudy;
-            case 27: // mostly cloudy (night)
-                return R.drawable.chameleon_mostly_cloudy_night;
-            case 29: // partly cloudy (night)
-                return R.drawable.chameleon_partly_cloudy_night;
-            case 28: // mostly cloudy (day)
-                return R.drawable.chameleon_mostly_cloudy;
-            case 30: // partly cloudy (day)
-            case 44: // partly cloudy
-                return R.drawable.chameleon_partly_cloudy;
-            case 31: // clear (night)
-            case 33: // fair (night)
-                return R.drawable.chameleon_clear_night;
-            case 34: // fair (day)
-            case 32: // sunny
-            case 23: // blustery
-            case 36: // hot
-                return R.drawable.chameleon_sunny;
-            case 0: // tornado
-            case 1: // tropical storm
-            case 2: // hurricane
-            case 24: // windy
-            case 22: // smoky
-                return R.drawable.chameleon_windy;
-            case 5: // mixed rain and snow
-            case 6: // mixed rain and sleet
-            case 7: // mixed snow and sleet
-            case 18: // sleet
-            case 8: // freezing drizzle
-            case 10: // freezing rain
-            case 14: // light snow showers
-                return R.drawable.chameleon_mixed_rain_and_snow;
-            case 17: // hail
-            case 35: // mixed rain and hail
-                return R.drawable.chameleon_hail;
-            case 9: // drizzle
-                return R.drawable.chameleon_drizzle;
-            case 11: // showers
-            case 12: // showers
-            case 40: // scattered showers
-                return R.drawable.chameleon_showers;
-            case 4: // thunderstorms
-            case 37: // isolated thunderstorms
-                return R.drawable.chameleon_thunderstorms;
-            case 45: // thundershowers
-            case 47: // isolated thundershowers
-                return R.drawable.chameleon_thundershowers;
-            case 3: // severe thunderstorms
-            case 38: // scattered thunderstorms
-            case 39: // scattered thunderstorms
-                return R.drawable.chameleon_scattered_thunderstorms;
-            case 15: // blowing snow
-            case 16: // snow
-            case 25: // cold
-            case 46: // snow showers
-            case 13: // snow flurries
-            case 42: // scattered snow showers
-                return R.drawable.chameleon_cold;
-            case 41: // heavy snow
-            case 43: // heavy snow
-                return R.drawable.chameleon_heavy_snow;
-        }
-
-        return R.drawable.chameleon_sunny;
-    }
-
-    public static int getGoogleNowConditionIconId(int conditionCode) {
-        // http://developer.yahoo.com/weather/
-        switch (conditionCode) {
-            case 20: // foggy
-            case 19: // dust
-            case 21: // haze
-                return R.drawable.googlenow_foggy;
-            case 26: // cloudy
-                return R.drawable.googlenow_cloudy;
-            case 27: // mostly cloudy (night)
-                return R.drawable.googlenow_mostly_cloudy_night;
-            case 29: // partly cloudy (night)
-                return R.drawable.googlenow_partly_cloudy_night;
-            case 28: // mostly cloudy (day)
-                return R.drawable.googlenow_mostly_cloudy;
-            case 30: // partly cloudy (day)
-            case 44: // partly cloudy
-                return R.drawable.googlenow_partly_cloudy;
-            case 31: // clear (night)
-            case 33: // fair (night)
-                return R.drawable.googlenow_clear_night;
-            case 34: // fair (day)
-            case 32: // sunny
-            case 23: // blustery
-            case 36: // hot
-                return R.drawable.googlenow_sunny;
-            case 0: // tornado
-            case 1: // tropical storm
-            case 2: // hurricane
-            case 24: // windy
-            case 22: // smoky
-                return R.drawable.googlenow_windy;
-            case 5: // mixed rain and snow
-            case 6: // mixed rain and sleet
-            case 7: // mixed snow and sleet
-            case 18: // sleet
-            case 8: // freezing drizzle
-            case 10: // freezing rain
-            case 14: // light snow showers
-            case 17: // hail
-            case 35: // mixed rain and hail
-                return R.drawable.googlenow_mixed_rain_and_sleet;
-            case 9: // drizzle
-            case 11: // showers
-            case 12: // showers
-            case 40: // scattered showers
-                return R.drawable.googlenow_rain;
-            case 4: // thunderstorms
-            case 37: // isolated thunderstorms
-            case 45: // thundershowers
-            case 47: // isolated thundershowers
-            case 3: // severe thunderstorms
-            case 38: // scattered thunderstorms
-            case 39: // scattered thunderstorms
-                return R.drawable.googlenow_storm;
-            case 15: // blowing snow
-            case 16: // snow
-            case 25: // cold
-            case 46: // snow showers
-            case 13: // snow flurries
-            case 42: // scattered snow showers
-            case 41: // heavy snow
-            case 43: // heavy snow
-                return R.drawable.googlenow_snow;
-        }
-        return R.drawable.googlenow_unknown;
-    }
-
     public static String convertSpeedUnits(String weatherUnit, String windSpeedString, int wantedUnit) {
         if (windSpeedString != null) {
             float windSpeed = Float.parseFloat(windSpeedString);
             if (weatherUnit.equals("c")) {
                 switch (wantedUnit) {
-                    case 0: windSpeed = windSpeed / 1.609344f; break; // Km/h -> Mph
-                    case 2: windSpeed = windSpeed * 0.2778f; break; // Km/h -> M/s
+                    case 0:
+                        windSpeed = windSpeed / 1.609344f;
+                        break; // Km/h -> Mph
+                    case 2:
+                        windSpeed = windSpeed * 0.2778f;
+                        break; // Km/h -> M/s
                 }
             } else {
                 switch (wantedUnit) {
-                    case 1: windSpeed = windSpeed * 1.609344f; break; // Mph -> Km/h
-                    case 2: windSpeed = windSpeed * 0.44704f; break; // Mph -> M/s
+                    case 1:
+                        windSpeed = windSpeed * 1.609344f;
+                        break; // Mph -> Km/h
+                    case 2:
+                        windSpeed = windSpeed * 0.44704f;
+                        break; // Mph -> M/s
                 }
             }
             return Integer.toString(Math.round(windSpeed));
@@ -481,7 +252,7 @@ public class BetterWeatherData {
         return "0";
     }
 
-    public static int[] getErrorTitle(BetterWeatherExtension.ErrorCodes errorCode) {
+    public static int[] getErrorMessage(ErrorCodes errorCode) {
         switch (errorCode) {
             case UNKNOWN:
                 return new int[]{R.string.error_unknown, R.string.error_unknown_expandedBody};
@@ -489,6 +260,8 @@ public class BetterWeatherData {
                 return new int[]{R.string.error_location, R.string.error_location_expandedBody};
             case INTERNET:
                 return new int[]{R.string.error_internet, R.string.error_internet_expandedBody};
+            case API:
+                return new int[]{R.string.error_api, R.string.error_api_expandedBody};
         }
 
         return new int[]{R.string.error_unknown, R.string.error_unknown_expandedBody};

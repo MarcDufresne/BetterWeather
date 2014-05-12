@@ -1,5 +1,5 @@
 <!--
-Copyright 2013 Marc-André Dufresne
+Copyright 2013-2014 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ limitations under the License.
 	</string>
     <string name="extension_title">BetterWeather</string>
     <string name="extension_description">Shows up-to-date weather information for your location or for a set location.
-        Powered by Yahoo! Weather.
+        Powered by Yahoo! Weather, Forecast and OpenWeatherMap.
     </string>
     <string name="title_settings">BetterWeather Settings</string>
 
@@ -42,15 +42,15 @@ limitations under the License.
     <string name="tomorrow_forecast_template">Tomorrow: %1$s, %2$s/%3$s°</string>
 
     <string name="wind_details_template">Wind: %1$s %2$s %3$s</string>
-    <string name="wind_chill_template">Wind chill: %1$s°</string>
+    <string name="wind_chill_template">Feels like: %1$s°</string>
     <string name="humidity_template">Humidity: %1$s</string>
 
     <string name="status_none" translatable="false">––</string>
 
-    <string name="wind_speed_kmh">km/h</string>
-    <string name="wind_speed_mph">mph</string>
-
     <string name="shortcut_pref_help_text">Disable "Refresh weather on touch" to use</string>
+
+    <string name="weather_api_key_help_text_empty">Please enter your key for this service</string>
+    <string name="weather_api_key_help_text_not_needed">No key needed for this service</string>
 
     <!-- About -->
     <string name="about_extension_text">
@@ -58,7 +58,7 @@ limitations under the License.
     <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
 	
     <string name="about_license_text" translatable="false">
-        <![CDATA[Copyright 2013 Marc-André Dufresne<br>
+        <![CDATA[Copyright 2013-2014 Marc-André Dufresne<br>
         Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at<br><br>

@@ -13,22 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Copyright 2013 Marc-André Dufresne
+ * Copyright 2013-2014 Marc-André Dufresne
  *
  * This file was modified by Marc-André Dufresne to include several
  * more features.
  */
 
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.settings;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import net.imatruck.betterweather.BetterWeatherExtension;
+import net.imatruck.betterweather.R;
+import net.imatruck.betterweather.utils.HelpUtils;
 
 @SuppressWarnings("deprecation")
 public class BetterWeatherSettingsActivity extends BaseSettingsActivity implements OnSharedPreferenceChangeListener {
@@ -44,7 +49,8 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
         super.onResume();
         getPreferenceScreen().getSharedPreferences()
                 .registerOnSharedPreferenceChangeListener(this);
-        updateShortcutPreferenceState(getPreferenceScreen().getSharedPreferences(), BetterWeatherExtension.PREF_WEATHER_REFRESH_ON_TOUCH);
+        updateShortcutPreferenceState(BetterWeatherExtension.PREF_WEATHER_REFRESH_ON_TOUCH);
+        updateWeatherAPIKeyPrefState(getPreferenceScreen().getSharedPreferences(), BetterWeatherExtension.PREF_WEATHER_API);
 
     }
 
@@ -71,6 +77,8 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
         bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_SHORTCUT));
         bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_REFRESH_INTERVAL));
         bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_ICON_THEME));
+        bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_API));
+        bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_API_KEY));
     }
 
     @Override
@@ -92,24 +100,47 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        updateShortcutPreferenceState(sharedPreferences, key);
+        if (key.equals(BetterWeatherExtension.PREF_WEATHER_REFRESH_ON_TOUCH))
+            updateShortcutPreferenceState(key);
+        if (key.equals(BetterWeatherExtension.PREF_WEATHER_API) || key.equals(BetterWeatherExtension.PREF_WEATHER_API_KEY))
+            updateWeatherAPIKeyPrefState(sharedPreferences, BetterWeatherExtension.PREF_WEATHER_API);
     }
 
-    private void updateShortcutPreferenceState(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(BetterWeatherExtension.PREF_WEATHER_REFRESH_ON_TOUCH)) {
-            Preference pref = findPreference(key);
-            if (pref instanceof CheckBoxPreference) {
-                CheckBoxPreference refreshOnTouchPref = (CheckBoxPreference) pref;
+    private void updateWeatherAPIKeyPrefState(SharedPreferences sharedPreferences, String key) {
+        Preference pref = findPreference(BetterWeatherExtension.PREF_WEATHER_API_KEY);
+        if (pref instanceof EditTextPreference) {
+            EditTextPreference apiKeyPref = (EditTextPreference) pref;
+            if (sharedPreferences.getString(key, "").equals(BetterWeatherExtension.FORECAST_WEATHER_API)) {
+                String apiKey = sharedPreferences.getString(BetterWeatherExtension.PREF_WEATHER_API_KEY, "");
 
-                Preference shortcutPref = findPreference(BetterWeatherExtension.PREF_WEATHER_SHORTCUT);
-
-                if (refreshOnTouchPref.isChecked()) {
-                    shortcutPref.setEnabled(false);
-                    shortcutPref.setSummary(R.string.shortcut_pref_help_text);
+                apiKeyPref.setEnabled(true);
+                if (apiKey.equals("")) {
+                    apiKeyPref.setSummary(R.string.weather_api_key_help_text_empty);
                 } else {
-                    shortcutPref.setEnabled(true);
-                    bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_SHORTCUT));
+                    bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_API_KEY));
                 }
+            } else {
+                apiKeyPref.setEnabled(false);
+                apiKeyPref.setSummary(R.string.weather_api_key_help_text_not_needed);
+            }
+        }
+    }
+
+    private void updateShortcutPreferenceState(String key) {
+        Preference pref = findPreference(key);
+        if (pref instanceof CheckBoxPreference) {
+            CheckBoxPreference refreshOnTouchPref = (CheckBoxPreference) pref;
+
+            Preference shortcutPref = findPreference(BetterWeatherExtension.PREF_WEATHER_SHORTCUT);
+
+            if(shortcutPref == null) return;
+
+            if (refreshOnTouchPref.isChecked()) {
+                shortcutPref.setEnabled(false);
+                shortcutPref.setSummary(R.string.shortcut_pref_help_text);
+            } else {
+                shortcutPref.setEnabled(true);
+                bindPreferenceSummaryToValue(findPreference(BetterWeatherExtension.PREF_WEATHER_SHORTCUT));
             }
         }
     }

@@ -7,7 +7,7 @@
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Configuraciones generales</string>
-    <string name="pref_header_status_appearance">Apariencia</string>
+    <string name="pref_header_appearance">Apariencia</string>
     <string name="pref_header_behaviour">Comportamiento</string>
 
     <!-- Weather -->
@@ -74,7 +74,7 @@
     <string name="pref_weather_show_wind_details_summary_on">Los detalles del viento se mostrarán en vista extendida</string>
     <string name="pref_weather_show_wind_details_summary_off">Los detalles del viento no se mostrarán</string>
 
-    <string name="pref_weather_show_wind_chill_title">Mostrar la sensación térmica del viento</string>
-    <string name="pref_weather_show_wind_chill_summary_on">La sensación térmica se mostrarán en vista extendida cuando esté disponible</string>
-    <string name="pref_weather_show_wind_chill_summary_off">La sensación térmica no se mostrará</string>
+    <string name="pref_weather_show_feels_like_title">Mostrar la sensación térmica del viento</string>
+    <string name="pref_weather_show_feels_like_summary_on">La sensación térmica se mostrarán en vista extendida cuando esté disponible</string>
+    <string name="pref_weather_show_feels_like_summary_off">La sensación térmica no se mostrará</string>
 </resources>

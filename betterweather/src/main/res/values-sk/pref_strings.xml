@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013 Marc-André Dufresne
+Copyright 2013-2014 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -92,9 +92,9 @@ limitations under the License.
     <string name="pref_weather_show_wind_details_summary_on">Podrobnosti o vetre budú zobrazené v rozšírenom zobrazení</string>
     <string name="pref_weather_show_wind_details_summary_off">Podrobnosti o vetre nebudú zobrazené</string>
 
-    <string name="pref_weather_show_wind_chill_title">Zobraziť pocitovú teplotu</string>
-    <string name="pref_weather_show_wind_chill_summary_on">Pocitová teplota bude zobrazená v rozšírenom zobrazení</string>
-    <string name="pref_weather_show_wind_chill_summary_off">Pocitová teplota nebude zobrazená</string>
+    <string name="pref_weather_show_feels_like_title">Zobraziť pocitovú teplotu</string>
+    <string name="pref_weather_show_feels_like_summary_on">Pocitová teplota bude zobrazená v rozšírenom zobrazení</string>
+    <string name="pref_weather_show_feels_like_summary_off">Pocitová teplota nebude zobrazená</string>
 
     <string name="pref_weather_use_only_network_title">Používať len sieť na určenie polohy</string>
     <string name="pref_weather_use_only_network_summary_on">Aplikácia bude používať len sieť na určenie vašej polohy (šetrí batériu)</string>
@@ -107,8 +107,8 @@ limitations under the License.
     <string name="pref_pebble_enable_summary_on">Aplikácia bude odosielať údaje do pripojených hodiniek Pebble</string>
     <string name="pref_pebble_enable_summary_off">Integrácia s hodinkami Pebble je zakázaná</string>
     
-    <string name="pref_pebble_show_wind_chill_title">Zobraziť pocitovú teplotu na hodinkách Pebble</string>
-    <string name="pref_pebble_show_wind_chill_summary_on">Pocitová teplota bude zobrazená na hodinkách Pebble</string>
-    <string name="pref_pebble_show_wind_chill_summary_off">Skutočná teplota bude zobrazená na hodinkách Pebble</string>
+    <string name="pref_pebble_show_feels_like_title">Zobraziť pocitovú teplotu na hodinkách Pebble</string>
+    <string name="pref_pebble_show_feels_like_summary_on">Pocitová teplota bude zobrazená na hodinkách Pebble</string>
+    <string name="pref_pebble_show_feels_like_summary_off">Skutočná teplota bude zobrazená na hodinkách Pebble</string>
 
 </resources>

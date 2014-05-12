@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.+'
+        classpath 'com.android.tools.build:gradle:0.9.+'
     }
 }
 apply plugin: 'android'
@@ -14,7 +14,7 @@ repositories {
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.0"
+    buildToolsVersion "19.0.3"
 
     defaultConfig {
         minSdkVersion 17
@@ -30,12 +30,17 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
     compile files('libs/android-support-v4.jar')
     compile files('libs/dashclock-api-r2.0.jar')
-    compile 'com.google.guava:guava:15.0'
+    compile 'com.google.guava:guava:+'
 }
 
 def Properties props = new Properties()

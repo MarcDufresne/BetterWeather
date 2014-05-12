@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Copyright 2013 Marc-André Dufresne
+ * Copyright 2013-2014 Marc-André Dufresne
  *
  * This file was modified by Marc-André Dufresne to include several
  * more features.
@@ -44,7 +44,12 @@ import android.widget.Toast;
 import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
 
-import net.imatruck.betterweather.YahooWeatherAPIClient.LocationInfo;
+import net.imatruck.betterweather.iconthemes.IconThemeFactory;
+import net.imatruck.betterweather.settings.AppChooserPreference;
+import net.imatruck.betterweather.settings.WeatherLocationPreference;
+import net.imatruck.betterweather.utils.LogUtils;
+import net.imatruck.betterweather.weatherapi.IWeatherAPI;
+import net.imatruck.betterweather.weatherapi.WeatherAPIFactory;
 
 import java.io.IOException;
 import java.net.URI;
@@ -53,15 +58,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import static net.imatruck.betterweather.LogUtils.LOGD;
-import static net.imatruck.betterweather.LogUtils.LOGE;
-import static net.imatruck.betterweather.LogUtils.LOGW;
+import static net.imatruck.betterweather.utils.LogUtils.LOGD;
+import static net.imatruck.betterweather.utils.LogUtils.LOGE;
+import static net.imatruck.betterweather.utils.LogUtils.LOGW;
 
 /**
  * A local weather and forecast extension.
  */
 public class BetterWeatherExtension extends DashClockExtension {
+
     private static final String TAG = LogUtils.makeLogTag(BetterWeatherExtension.class);
+
     public static final String REFRESH_INTENT_FILTER = "net.imatruck.betterweather.action.RefreshWeather";
     public static Intent REFRESH_INTENT = new Intent(REFRESH_INTENT_FILTER);
 
@@ -79,19 +86,25 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String PREF_WEATHER_ICON_THEME = "pref_weather_icon_theme";
     public static final String PREF_WEATHER_HIDE_LOCATION_NAME = "pref_weather_hide_location_name";
     public static final String PREF_WEATHER_SHOW_WIND_DETAILS = "pref_weather_show_wind_details";
-    public static final String PREF_WEATHER_SHOW_WIND_CHILL = "pref_weather_show_wind_chill";
+    public static final String PREF_WEATHER_SHOW_FEELS_LIKE = "pref_weather_show_feels_like";
     public static final String PREF_WEATHER_SHOW_HUMIDITY = "pref_weather_show_humidity";
     public static final String PREF_WEATHER_INVERT_HIGHLOW = "pref_weather_invert_highlow";
     public static final String PREF_PEBBLE_ENABLE = "pref_pebble_enable";
-    public static final String PREF_PEBBLE_SHOW_WIND_CHILL = "pref_pebble_show_wind_chill";
+    public static final String PREF_PEBBLE_SHOW_FEELS_LIKE = "pref_pebble_show_feels_like";
+    public static final String PREF_WEATHER_API = "pref_weather_api";
+    public static final String PREF_WEATHER_API_KEY = "pref_weather_api_key";
 
     public static final Uri DEFAULT_WEATHER_INTENT_URI = Uri.parse("http://www.google.com/search?q=weather");
     public static final Intent DEFAULT_WEATHER_INTENT = new Intent(Intent.ACTION_VIEW, DEFAULT_WEATHER_INTENT_URI);
 
-    private static final String CLIMACONS_ICON_THEME = "climacons";
-    private static final String WEATHERCONS_ICON_THEME = "weathercons";
-    private static final String CHAMELEON_ICON_THEME = "chameleon";
-    private static final String GOOGLENOW_ICON_THEME = "googlenow";
+    public static final String CLIMACONS_ICON_THEME = "climacons";
+    public static final String WEATHERCONS_ICON_THEME = "weathercons";
+    public static final String CHAMELEON_ICON_THEME = "chameleon";
+    public static final String GOOGLENOW_ICON_THEME = "googlenow";
+
+    public static final String YAHOO_WEATHER_API = "yahoo_weather_api";
+    public static final String FORECAST_WEATHER_API = "forecast_weather_api";
+    public static final String OPENWEATHERMAP_WEATHER_API = "openweathermap_weather_api";
 
     private static final long STALE_LOCATION_NANOS = 10l * 60000000000l; // 10 minutes
 
@@ -109,12 +122,14 @@ public class BetterWeatherExtension extends DashClockExtension {
     private static boolean sShowHighlow = false;
     private static boolean sHideLocationName = false;
     private static boolean sShowWindDetails = false;
-    private static boolean sShowWindChill = false;
+    private static boolean sShowFeelsLike = false;
     private static boolean sShowHumidity = false;
     private static boolean sUseOnlyNetworkLocation = false;
     private static boolean sInvertHighLowTemps = false;
     private static boolean sPebbleEnable = false;
-    private static boolean sPebbleShowWindChill = true;
+    private static boolean sPebbleShowFeelsLike = true;
+    private static String sWeatherAPI = YAHOO_WEATHER_API;
+    private static String sWeatherAPIKey = "";
 
     public static long lastUpdateTime;
 
@@ -125,10 +140,6 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     private boolean mOneTimeLocationListenerActive = false;
 
-    public static enum ErrorCodes {
-        NONE, UNKNOWN, LOCATION, INTERNET
-    }
-
     static {
         sLocationCriteria = new Criteria();
         sLocationCriteria.setPowerRequirement(Criteria.POWER_LOW);
@@ -137,8 +148,8 @@ public class BetterWeatherExtension extends DashClockExtension {
     }
 
 
-    /*
-     * Overridden class functions used to register handlers
+    /**
+     * Registers the {@link net.imatruck.betterweather.BetterWeatherExtension.OnClickReceiver} handler
      */
     @Override
     protected void onInitialize(boolean isReconnect) {
@@ -159,6 +170,9 @@ public class BetterWeatherExtension extends DashClockExtension {
         scheduleRefresh(0);
     }
 
+    /**
+     * Unregisters the {@link net.imatruck.betterweather.BetterWeatherExtension.OnClickReceiver} handler
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -172,10 +186,14 @@ public class BetterWeatherExtension extends DashClockExtension {
         disableOneTimeLocationListener();
     }
 
-
     /*
      * Main data flow starts here
      * Functions used to update data
+     */
+
+    /**
+     * Starts the update process, will verify the reason before continuing
+     * @param reason Update reason, provided by DashClock or this app
      */
     @Override
     protected void onUpdateData(int reason) {
@@ -195,7 +213,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         LOGD(TAG, "Updating data");
 
-        if(sPebbleEnable) {
+        if (sPebbleEnable) {
             LOGD(TAG, "Registered Pebble Data Receiver");
             Pebble.registerPebbleDataReceived(getApplicationContext());
         }
@@ -220,7 +238,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         if (TextUtils.isEmpty(provider)) {
             LOGE(TAG, "No available location providers matching criteria, scheduling refresh in 5 minutes.");
-            publishUpdate(null, ErrorCodes.LOCATION);
+            publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.LOCATION));
             scheduleRefresh(5);
             return;
         }
@@ -228,6 +246,11 @@ public class BetterWeatherExtension extends DashClockExtension {
         requestLocationUpdate(lm, provider);
     }
 
+    /**
+     * Requests a location update if setting is Automatic, else it will give a dummy location
+     * @param lm Location Manager from {@link net.imatruck.betterweather.BetterWeatherExtension#onUpdateData(int)}
+     * @param provider Provider determined in {@link net.imatruck.betterweather.BetterWeatherExtension#onUpdateData(int)}
+     */
     private void requestLocationUpdate(final LocationManager lm, final String provider) {
         if (sUseCurrentLocation) {
             final Location lastLocation = lm.getLastKnownLocation(provider);
@@ -259,41 +282,72 @@ public class BetterWeatherExtension extends DashClockExtension {
         }
     }
 
+    /**
+     * Generates a {@link net.imatruck.betterweather.LocationInfo} object from the app's settings
+     * @return LocationInfo
+     */
+    public static LocationInfo getLocationInfoFromSettings() {
+
+        return new LocationInfo(WeatherLocationPreference.getWoeidFromValue(sSetLocation),
+                Double.parseDouble(WeatherLocationPreference.getLatFromValue(sSetLocation)),
+                Double.parseDouble(WeatherLocationPreference.getLngFromValue(sSetLocation)));
+    }
+
+    /**
+     * Requests weather update from the selected API
+     * @param location Location object to get devices coords
+     * @return {@link net.imatruck.betterweather.BetterWeatherData} object with data from the selected API
+     * @throws InvalidLocationException If location is invalid
+     * @throws IOException If there's a problem parsing the data
+     */
     private static BetterWeatherData getWeatherForLocation(Location location)
             throws InvalidLocationException, IOException {
 
-        if (BuildConfig.DEBUG) {
-            LOGD(TAG, "Using location: " + location.getLatitude()
-                    + "," + location.getLongitude() + " to get weather");
-        }
-
         LocationInfo locationInfo;
         if (!sUseCurrentLocation) {
-            locationInfo = new LocationInfo();
-            locationInfo.woeid = getSetLocationWoeid();
+            locationInfo = getLocationInfoFromSettings();
         } else {
-            locationInfo = YahooWeatherAPIClient.getLocationInfo(location);
+            if (BuildConfig.DEBUG) {
+                LOGD(TAG, "Using location: " + location.getLatitude()
+                        + "," + location.getLongitude() + " to get weather");
+            }
+            locationInfo = YahooPlacesAPIClient.getLocationInfo(location);
         }
 
-        LOGD(TAG, "Using WOEID: " + locationInfo.woeid);
+        LOGD(TAG, "Using WOEID: " + locationInfo.WOEID + "(" + locationInfo.LAT + "," + locationInfo.LNG + ")");
 
-        return YahooWeatherAPIClient.getWeatherDataForLocation(locationInfo);
+        IWeatherAPI mWeatherAPI = WeatherAPIFactory.getWeatherAPIFromSetting(sWeatherAPI);
+
+        LOGD(TAG, "Using " + mWeatherAPI.getClass());
+
+        return mWeatherAPI.getWeatherDataForLocation(locationInfo);
     }
 
-    private void publishUpdate(BetterWeatherData weatherData, ErrorCodes errorCode) {
-        publishUpdate(renderExtensionData(weatherData, errorCode));
+    /**
+     * Calls {@link net.imatruck.betterweather.BetterWeatherExtension#renderExtensionData(BetterWeatherData)} and sends it to DashClock's publishUpdate
+     * @param weatherData Data from the API
+     */
+    private void publishUpdate(BetterWeatherData weatherData) {
 
-        if(sPebbleEnable) {
-            Pebble.sendWeather(getApplicationContext(), weatherData, sPebbleShowWindChill);
+        publishUpdate(renderExtensionData(weatherData));
+
+        if (sPebbleEnable) {
+            Pebble.sendWeather(getApplicationContext(), weatherData, sPebbleShowFeelsLike);
         }
 
         LOGD(TAG, "Published new data to extension");
         lastUpdateTime = System.currentTimeMillis();
         scheduleRefresh(0);
+
+        disableOneTimeLocationListener();
     }
 
     /*
      * Functions used to refresh the data, restarts the main flow
+     */
+
+    /**
+     * Calls {@link net.imatruck.betterweather.BetterWeatherExtension#onUpdateData(int)}
      */
     class OnClickReceiver extends BroadcastReceiver {
         @Override
@@ -303,6 +357,10 @@ public class BetterWeatherExtension extends DashClockExtension {
         }
     }
 
+    /**
+     * Schedule an update with a {@link android.app.PendingIntent}
+     * @param intervalOverride Override in minutes for the next refresh, if 0 use settings value
+     */
     private void scheduleRefresh(int intervalOverride) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         sRefreshInterval = Integer.parseInt(sp.getString(PREF_WEATHER_REFRESH_INTERVAL, "60"));
@@ -320,6 +378,10 @@ public class BetterWeatherExtension extends DashClockExtension {
         LOGD(TAG, "Scheduled refresh in " + realRefreshInterval + " minutes.");
     }
 
+
+    /**
+     * Calls the API and publishes the update
+     */
     private class RefreshWeatherTask extends AsyncTask<Void, Void, BetterWeatherData> {
 
         Location mLocation = null;
@@ -346,10 +408,13 @@ public class BetterWeatherExtension extends DashClockExtension {
         @Override
         protected void onPostExecute(BetterWeatherData betterWeatherData) {
             if (betterWeatherData != null)
-                publishUpdate(betterWeatherData, ErrorCodes.NONE);
+                publishUpdate(betterWeatherData);
         }
     }
 
+    /**
+     * Displays a toast if setting is enabled
+     */
     private void showRefreshToast() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         boolean showRefreshToast = sp.getBoolean(PREF_WEATHER_SHOW_REFRESH_TOAST, false);
@@ -357,8 +422,9 @@ public class BetterWeatherExtension extends DashClockExtension {
             Toast.makeText(this, getString(R.string.toast_refreshing), Toast.LENGTH_SHORT).show();
     }
 
-    /*
+    /**
      * Helper function used to determine the reason of an update
+     * @param reason Update reason
      */
     private static String getReasonText(int reason) {
 
@@ -383,14 +449,14 @@ public class BetterWeatherExtension extends DashClockExtension {
         return "Unknown reason :/";
     }
 
-    /*
+    /**
      * Methods used to get current app settings
      */
     private void getCurrentPreferences() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         sWeatherUnits = sp.getString(PREF_WEATHER_UNITS, sWeatherUnits);
         sSpeedUnits = Integer.parseInt(sp.getString(PREF_WEATHER_SPEED_UNITS, Integer.toString(sSpeedUnits)));
-        sSetLocation = sp.getString(PREF_WEATHER_LOCATION, sSetLocation).trim().toLowerCase(Locale.getDefault());
+        sSetLocation = sp.getString(PREF_WEATHER_LOCATION, sSetLocation).trim();
         sUseCurrentLocation = TextUtils.isEmpty(sSetLocation);
         sUseOnlyNetworkLocation = sp.getBoolean(PREF_WEATHER_USE_ONLY_NETWORK, sUseOnlyNetworkLocation);
         sShowTodayForecast = sp.getBoolean(PREF_WEATHER_SHOW_TODAY_FORECAST, sShowTodayForecast);
@@ -400,23 +466,40 @@ public class BetterWeatherExtension extends DashClockExtension {
         sRefreshInterval = Integer.parseInt(sp.getString(PREF_WEATHER_REFRESH_INTERVAL, "60"));
         sHideLocationName = sp.getBoolean(PREF_WEATHER_HIDE_LOCATION_NAME, sHideLocationName);
         sShowHumidity = sp.getBoolean(PREF_WEATHER_SHOW_HUMIDITY, sShowHumidity);
-        sShowWindChill = sp.getBoolean(PREF_WEATHER_SHOW_WIND_CHILL, sShowWindChill);
+        sShowFeelsLike = sp.getBoolean(PREF_WEATHER_SHOW_FEELS_LIKE, sShowFeelsLike);
         sShowWindDetails = sp.getBoolean(PREF_WEATHER_SHOW_WIND_DETAILS, sShowWindDetails);
         sInvertHighLowTemps = sp.getBoolean(PREF_WEATHER_INVERT_HIGHLOW, sInvertHighLowTemps);
         sPebbleEnable = sp.getBoolean(PREF_PEBBLE_ENABLE, sPebbleEnable);
-        sPebbleShowWindChill = sp.getBoolean(PREF_PEBBLE_SHOW_WIND_CHILL, sPebbleShowWindChill);
+        sPebbleShowFeelsLike = sp.getBoolean(PREF_PEBBLE_SHOW_FEELS_LIKE, sPebbleShowFeelsLike);
+        sWeatherAPI = sp.getString(PREF_WEATHER_API, sWeatherAPI);
+        sWeatherAPIKey = sp.getString(PREF_WEATHER_API_KEY, sWeatherAPIKey);
+
+        //Fail safe for change in format from 2.3.3 to 3.0
+        convertLocationToNewFormat(sSetLocation, sp);
 
         LOGD(TAG, "Location from settings is: " + ((sUseCurrentLocation) ? "Automatic" : sSetLocation));
     }
 
-    public static String getSetLocationWoeid() {
-        try {
-            return sSetLocation.substring(0, sSetLocation.indexOf(","));
-        } catch (Exception e) {
-            return sSetLocation;
-        }
+    private static void convertLocationToNewFormat(String oldLocationData, SharedPreferences sp) {
+
+        if(oldLocationData.matches("\\d+/\\S+,?\\s?\\S*/-?\\d{1,3}.?\\d*/-?\\d{1,3}.?\\d*"))
+            return;
+
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString(PREF_WEATHER_LOCATION, oldLocationData.replaceFirst(",", "/") + "/0.0/0.0");
+        editor.commit();
     }
 
+    /**
+     * @return App's API key
+     */
+    public static String getWeatherAPIKey() {
+        return sWeatherAPIKey;
+    }
+
+    /**
+     * @return App's weather units setting
+     */
     public static String getWeatherUnits() {
         return sWeatherUnits;
     }
@@ -424,13 +507,19 @@ public class BetterWeatherExtension extends DashClockExtension {
     /*
      * Functions used to render the extension on the main widget
      */
-    private ExtensionData renderExtensionData(BetterWeatherData weatherData, ErrorCodes errorCode) {
 
-        if (errorCode != ErrorCodes.NONE) {
+    /**
+     * Displays weather data, or an error if there's one
+     * @param weatherData Weather data from the API
+     * @return ExtensionData for DashClock
+     */
+    private ExtensionData renderExtensionData(BetterWeatherData weatherData) {
 
-            int[] errorStrings = BetterWeatherData.getErrorTitle(errorCode);
+        if (weatherData.errorCode != BetterWeatherData.ErrorCodes.NONE) {
 
-            ExtensionData extensionData = new ExtensionData()
+            int[] errorStrings = BetterWeatherData.getErrorMessage(weatherData.errorCode);
+
+            @SuppressWarnings("ResourceType") ExtensionData extensionData = new ExtensionData()
                     .visible(true)
                     .status(getString(R.string.error_status))
                     .expandedTitle(getString(errorStrings[0]))
@@ -452,7 +541,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
             int conditionIconId = getConditionIconId(weatherData.conditionCode);
 
-            String conditionText = getString(BetterWeatherData.getStatusTextId(weatherData.conditionCode));
+            @SuppressWarnings("ResourceType") String conditionText = getString(BetterWeatherData.getStatusText(weatherData.conditionCode));
 
             StringBuilder expandedBody = formatExpendedBody(weatherData);
 
@@ -473,6 +562,10 @@ public class BetterWeatherExtension extends DashClockExtension {
         }
     }
 
+    /**
+     * Creates the intent from the settings
+     * @return Intent from the settings
+     */
     private Intent prepareClickIntent() {
         Intent clickIntent = sWeatherIntent;
 
@@ -510,17 +603,23 @@ public class BetterWeatherExtension extends DashClockExtension {
         return clickIntent;
     }
 
+    /**
+     * Formats the expended body's text from the weather data
+     * @param weatherData Weather data from the API
+     * @return Formatted data
+     */
     private StringBuilder formatExpendedBody(BetterWeatherData weatherData) {
         StringBuilder expandedBody = new StringBuilder();
 
-        if (sShowWindChill && weatherData.windChill != weatherData.temperature && weatherData.windChill != -1) {
-            expandedBody.append(getString(R.string.wind_chill_template, weatherData.windChill));
+        if (sShowFeelsLike && weatherData.feelsLike != weatherData.temperature && weatherData.feelsLike != -1) {
+            expandedBody.append(getString(R.string.wind_chill_template, weatherData.feelsLike));
             expandedBody.append("\n");
         }
 
         if (sShowHumidity || sShowWindDetails) {
             StringBuilder detailsLine = new StringBuilder();
             if (sShowWindDetails && !"".equals(weatherData.windSpeed)) {
+                //noinspection ResourceType
                 detailsLine.append(getString(R.string.wind_details_template,
                         getString(BetterWeatherData.getWindDirectionText(weatherData.windDirection)),
                         BetterWeatherData.convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits),
@@ -536,8 +635,8 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         if (sShowTodayForecast) {
             if (sShowHumidity || sShowWindDetails) expandedBody.append("\n");
-            int todayForecastTextId = BetterWeatherData.getStatusTextId(weatherData.todayForecastConditionCode);
-            String todayForecastText = getString(todayForecastTextId);
+            int todayForecastTextId = BetterWeatherData.getStatusText(weatherData.todayForecastConditionCode);
+            @SuppressWarnings("ResourceType") String todayForecastText = getString(todayForecastTextId);
             expandedBody.append((sInvertHighLowTemps) ?
                     getString(R.string.today_forecast_template, todayForecastText, weatherData.todayHigh, weatherData.todayLow) :
                     getString(R.string.today_forecast_template, todayForecastText, weatherData.todayLow, weatherData.todayHigh));
@@ -545,8 +644,8 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         if (sShowTomorrowForecast) {
             if (sShowTodayForecast || sShowHumidity || sShowWindDetails) expandedBody.append("\n");
-            int tomorrowForecastTextId = BetterWeatherData.getStatusTextId(weatherData.conditionCode);
-            String tomorrowForecastText = getString(tomorrowForecastTextId);
+            int tomorrowForecastTextId = BetterWeatherData.getStatusText(weatherData.conditionCode);
+            @SuppressWarnings("ResourceType") String tomorrowForecastText = getString(tomorrowForecastTextId);
             expandedBody.append((sInvertHighLowTemps) ?
                     getString(R.string.tomorrow_forecast_template, tomorrowForecastText, weatherData.tomorrowHigh, weatherData.tomorrowLow) :
                     getString(R.string.tomorrow_forecast_template, tomorrowForecastText, weatherData.tomorrowLow, weatherData.tomorrowHigh));
@@ -555,12 +654,21 @@ public class BetterWeatherExtension extends DashClockExtension {
         if (!sHideLocationName) {
             if (sShowHumidity || sShowTodayForecast || sShowTomorrowForecast || sShowWindDetails)
                 expandedBody.append("\n");
-            expandedBody.append(weatherData.location);
+            if (!sUseCurrentLocation)
+                expandedBody.append(WeatherLocationPreference.getDisplayValue(this, sSetLocation));
+            else
+                expandedBody.append(weatherData.location);
         }
 
         return expandedBody;
     }
 
+    /**
+     * Formats the status text depending on the settings
+     * @param weatherData Weather data from the API
+     * @param temperature Temperature formatted for validity
+     * @return Formatted status text
+     */
     private String formatStatusText(BetterWeatherData weatherData, String temperature) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         sShowHighlow = sp.getBoolean(PREF_WEATHER_SHOW_HIGHLOW, sShowHighlow);
@@ -575,24 +683,23 @@ public class BetterWeatherExtension extends DashClockExtension {
         return status;
     }
 
+    /**
+     * Gets the appropriate icon from the right icon theme
+     * @param conditionCode The status code for the current condition
+     * @return Resource ID for the icon
+     */
     private int getConditionIconId(int conditionCode) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         String sIconTheme = sp.getString(PREF_WEATHER_ICON_THEME, CLIMACONS_ICON_THEME);
 
-        if (sIconTheme.equals(CLIMACONS_ICON_THEME)) {
-            return BetterWeatherData.getClimaconsConditionIconId(conditionCode);
-        } else if (sIconTheme.equals(WEATHERCONS_ICON_THEME)) {
-            return BetterWeatherData.getWeatherconsConditionIconId(conditionCode);
-        } else if (sIconTheme.equals(CHAMELEON_ICON_THEME)) {
-            return BetterWeatherData.getChameleonConditionIconId(conditionCode);
-        } else if (sIconTheme.equals(GOOGLENOW_ICON_THEME)) {
-            return BetterWeatherData.getGoogleNowConditionIconId(conditionCode);
-        } else {
-            LOGD(TAG, "Using default theme");
-            return BetterWeatherData.getClimaconsConditionIconId(conditionCode);
-        }
+        return IconThemeFactory.getIconThemeFromSetting(sIconTheme).getConditionIcon(conditionCode);
     }
 
+    /**
+     * Gets the wind speed unit from the settings
+     * @param speedUnitIndex Index to fetch
+     * @return Wind speed unit
+     */
     private String getSpeedUnitDisplayValue(int speedUnitIndex) {
         String[] units = getResources().getStringArray(R.array.pref_weather_speed_units_display_names);
         if (speedUnitIndex >= 0 && speedUnitIndex < units.length)
@@ -603,6 +710,10 @@ public class BetterWeatherExtension extends DashClockExtension {
     /*
      * Methods used for Location updates and management
      */
+
+    /**
+     * Disables the location listener
+     */
     private void disableOneTimeLocationListener() {
         if (mOneTimeLocationListenerActive) {
             LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -611,6 +722,9 @@ public class BetterWeatherExtension extends DashClockExtension {
         }
     }
 
+    /**
+     * Detects when location changes or if the service is disabled
+     */
     private LocationListener mOneTimeLocationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
@@ -631,9 +745,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         @Override
         public void onProviderDisabled(String s) {
             LOGD(TAG, "Provider disabled");
-            publishUpdate(null, ErrorCodes.LOCATION);
+            publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.LOCATION));
         }
     };
-
-
 }

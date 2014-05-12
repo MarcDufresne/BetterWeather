@@ -22,7 +22,7 @@
             android:positiveButtonText="@null"
             android:title="@string/pref_weather_speed_unit_title" />
 
-        <net.imatruck.betterweather.WeatherLocationPreference
+        <net.imatruck.betterweather.settings.WeatherLocationPreference
             android:key="pref_weather_location"
             android:title="@string/pref_weather_location_title" />
 
@@ -32,6 +32,26 @@
             android:summaryOn="@string/pref_weather_use_only_network_summary_on"
             android:summaryOff="@string/pref_weather_use_only_network_summary_off"
             android:title="@string/pref_weather_use_only_network_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pref_header_service"
+        android:title="@string/pref_header_service">
+
+        <ListPreference
+            android:title="@string/pref_weather_api_title"
+            android:entries="@array/pref_weather_api_display_names"
+            android:entryValues="@array/pref_weather_api_values"
+            android:key="pref_weather_api"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:defaultValue="yahoo_weather_api" />
+
+        <EditTextPreference
+            android:title="@string/pref_weather_api_key_title"
+            android:key="pref_weather_api_key"
+            android:defaultValue=""
+            android:summary="@string/pref_weather_api_key_summary" />
 
     </PreferenceCategory>
     <PreferenceCategory
@@ -97,10 +117,10 @@
             android:title="@string/pref_weather_show_wind_details_title" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="pref_weather_show_wind_chill"
-            android:summaryOn="@string/pref_weather_show_wind_chill_summary_on"
-            android:summaryOff="@string/pref_weather_show_wind_chill_summary_off"
-            android:title="@string/pref_weather_show_wind_chill_title" />
+            android:key="pref_weather_show_feels_like"
+            android:summaryOn="@string/pref_weather_show_feels_like_summary_on"
+            android:summaryOff="@string/pref_weather_show_feels_like_summary_off"
+            android:title="@string/pref_weather_show_feels_like_title" />
     </PreferenceCategory>
     <PreferenceCategory
         android:key="pref_weather_behaviour"
@@ -127,7 +147,7 @@
             android:summaryOn="@string/pref_weather_show_refresh_toast_on"
             android:title="@string/pref_weather_show_refresh_toast_title" />
 
-        <net.imatruck.betterweather.AppChooserPreference
+        <net.imatruck.betterweather.settings.AppChooserPreference
             android:key="pref_weather_shortcut"
             android:title="@string/pref_shortcut_title"
             app:allowUseDefault="true" />
@@ -145,10 +165,10 @@
             android:defaultValue="false" />
 
         <CheckBoxPreference
-            android:key="pref_pebble_show_wind_chill"
-            android:title="@string/pref_pebble_show_wind_chill_title"
-            android:summaryOff="@string/pref_pebble_show_wind_chill_summary_off"
-            android:summaryOn="@string/pref_pebble_show_wind_chill_summary_on"
+            android:key="pref_pebble_show_feels_like"
+            android:title="@string/pref_pebble_show_feels_like_title"
+            android:summaryOff="@string/pref_pebble_show_feels_like_summary_off"
+            android:summaryOn="@string/pref_pebble_show_feels_like_summary_on"
             android:defaultValue="true"
             android:dependency="pref_pebble_enable"/>
 

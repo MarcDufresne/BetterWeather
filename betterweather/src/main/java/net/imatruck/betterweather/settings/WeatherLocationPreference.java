@@ -12,9 +12,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * Copyright 2013-2014 Marc-André Dufresne
+ *
+ * This file was modified by Marc-André Dufresne to include several
+ * more features.
  */
 
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.settings;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -43,10 +48,13 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import net.imatruck.betterweather.R;
+import net.imatruck.betterweather.YahooPlacesAPIClient;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.imatruck.betterweather.YahooWeatherAPIClient.LocationSearchResult;
+import static net.imatruck.betterweather.YahooPlacesAPIClient.LocationSearchResult;
 
 /**
  * A preference that allows the user to choose a location, using the Yahoo! GeoPlanet API.
@@ -77,21 +85,39 @@ public class WeatherLocationPreference extends Preference {
     }
 
     public static CharSequence getDisplayValue(Context context, String value) {
-        if (TextUtils.isEmpty(value) || value.indexOf(',') < 0) {
+        if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
             return context.getString(R.string.pref_weather_location_automatic);
         }
 
-        String[] woeidAndDisplayName = value.split(",", 2);
-        return woeidAndDisplayName[1];
+        String[] locationDetails = value.split("/");
+        return locationDetails[1];
     }
 
     public static String getWoeidFromValue(String value) {
-        if (TextUtils.isEmpty(value) || value.indexOf(',') < 0) {
+        if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
             return null;
         }
 
-        String[] woeidAndDisplayName = value.split(",", 2);
-        return woeidAndDisplayName[0];
+        String[] locationDetails = value.split("/");
+        return locationDetails[0];
+    }
+
+    public static String getLatFromValue(String value) {
+        if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
+            return null;
+        }
+
+        String[] locationDetails = value.split("/");
+        return locationDetails[2];
+    }
+
+    public static String getLngFromValue(String value) {
+        if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
+            return null;
+        }
+
+        String[] locationDetails = value.split("/");
+        return locationDetails[3];
     }
 
     @Override
@@ -299,7 +325,7 @@ public class WeatherLocationPreference extends Preference {
                 }
 
                 LocationSearchResult result = mResults.get(position);
-                return result.woeid + "," + result.displayName;
+                return result.woeid + "/" + result.displayName + "/" + result.lat + "/" + result.lng;
             }
 
             @Override
@@ -337,7 +363,7 @@ public class WeatherLocationPreference extends Preference {
     }
 
     /**
-     * Loader that fetches location search results from {@link YahooWeatherAPIClient}.
+     * Loader that fetches location search results from {@link net.imatruck.betterweather.weatherapi.YahooWeatherAPIClient}.
      */
     private static class ResultsLoader extends AsyncTaskLoader<List<LocationSearchResult>> {
         private String mQuery;
@@ -350,7 +376,7 @@ public class WeatherLocationPreference extends Preference {
 
         @Override
         public List<LocationSearchResult> loadInBackground() {
-            return YahooWeatherAPIClient.findLocationsAutocomplete(mQuery);
+            return YahooPlacesAPIClient.findLocationsAutocomplete(mQuery);
         }
 
         @Override

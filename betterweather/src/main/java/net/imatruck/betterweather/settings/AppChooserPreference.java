@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.settings;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -42,6 +42,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import net.imatruck.betterweather.R;
+import net.imatruck.betterweather.utils.SimplePagedTabsHelper;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;

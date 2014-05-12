@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013 Marc-André Dufresne
+Copyright 2013-2014 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ limitations under the License.
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">General Settings</string>
+    <string name="pref_header_service">Weather Service</string>
     <string name="pref_header_appearance">General Appearance</string>
     <string name="pref_header_expanded_appearance">Expanded View Appearance</string>
     <string name="pref_header_behaviour">Behaviour</string>
@@ -59,6 +60,21 @@ limitations under the License.
     <string name="pref_weather_location_automatic">Automatic</string>
     <string name="pref_weather_location_query_hint">Find a location</string>
     <string name="pref_weather_location_automatic_description">Based on your current location.</string>
+
+    <string name="pref_weather_api_title">Weather Service</string>
+    <string-array name="pref_weather_api_display_names" translatable="false">
+        <item>Yahoo! Weather</item>
+        <item>Forecast</item>
+        <item>OpenWeatherMap</item>
+    </string-array>
+    <string-array name="pref_weather_api_values"  translatable="false">
+        <item>yahoo_weather_api</item>
+        <item>forecast_weather_api</item>
+        <item>openweathermap_weather_api</item>
+    </string-array>
+
+    <string name="pref_weather_api_key_title">Weather Service API Key</string>
+    <string name="pref_weather_api_key_summary">If the selected service needs an API key input it here</string>
 
     <string name="pref_weather_show_today_forecast_title">Show today\'s forecast</string>
     <string name="pref_weather_show_today_forecast_on">Today\'s forecast will be shown in expanded view</string>
@@ -132,9 +148,9 @@ limitations under the License.
     <string name="pref_weather_show_wind_details_summary_on">Wind details will be shown in expended view</string>
     <string name="pref_weather_show_wind_details_summary_off">Wind details will not be shown</string>
 
-    <string name="pref_weather_show_wind_chill_title">Show wind chill</string>
-    <string name="pref_weather_show_wind_chill_summary_on">Wind chill will be shown in expended view when available</string>
-    <string name="pref_weather_show_wind_chill_summary_off">Wind chill will not be shown</string>
+    <string name="pref_weather_show_feels_like_title">Show wind chill</string>
+    <string name="pref_weather_show_feels_like_summary_on">Wind chill will be shown in expended view when available</string>
+    <string name="pref_weather_show_feels_like_summary_off">Wind chill will not be shown</string>
 
     <string name="pref_weather_use_only_network_title">Use only Network Location</string>
     <string name="pref_weather_use_only_network_summary_on">The app will only use Network to get your location (Saves battery)</string>
@@ -147,8 +163,8 @@ limitations under the License.
     <string name="pref_pebble_enable_summary_on">The app will send data to the connected Pebble Watch</string>
     <string name="pref_pebble_enable_summary_off">Pebble integration is disabled</string>
 
-    <string name="pref_pebble_show_wind_chill_title">Show wind chill</string>
-    <string name="pref_pebble_show_wind_chill_summary_on">Wind chill will be shown on Pebble Watch</string>
-    <string name="pref_pebble_show_wind_chill_summary_off">Real temperature will be shown on Pebble Watch</string>
+    <string name="pref_pebble_show_feels_like_title">Show feels like</string>
+    <string name="pref_pebble_show_feels_like_summary_on">Feels like temperature will be shown on Pebble Watch</string>
+    <string name="pref_pebble_show_feels_like_summary_off">Real temperature will be shown on Pebble Watch</string>
 
 </resources>

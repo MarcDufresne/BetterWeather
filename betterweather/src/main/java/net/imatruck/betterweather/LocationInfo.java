@@ -15,16 +15,17 @@
  */
 package net.imatruck.betterweather;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+public class LocationInfo {
+    public String WOEID;
+    public double LAT, LNG;
 
-public class RefreshWeatherActivity extends Activity {
+    public LocationInfo(){
+        this("0", 0, 0);
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        sendBroadcast(new Intent(BetterWeatherExtension.REFRESH_INTENT_FILTER));
-        finish();
+    public LocationInfo(String woeid, double lat, double lng){
+        this.WOEID = woeid;
+        this.LAT = lat;
+        this.LNG = lng;
     }
 }

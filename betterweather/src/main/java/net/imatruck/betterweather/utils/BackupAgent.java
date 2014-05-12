@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.utils;
 
 import android.app.backup.BackupAgentHelper;
 import android.app.backup.SharedPreferencesBackupHelper;

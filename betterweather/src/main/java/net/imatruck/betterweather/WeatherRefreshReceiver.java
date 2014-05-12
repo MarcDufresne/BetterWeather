@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Marc-André Dufresne
+ * Copyright 2013-2014 Marc-André Dufresne
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import static net.imatruck.betterweather.LogUtils.LOGD;
+import net.imatruck.betterweather.utils.LogUtils;
+
+import static net.imatruck.betterweather.utils.LogUtils.LOGD;
 
 public class WeatherRefreshReceiver extends BroadcastReceiver {
 

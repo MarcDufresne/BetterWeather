@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013 Marc-André Dufresne
+Copyright 2013-2014 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ limitations under the License.
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Általános</string>
-    <string name="pref_header_status_appearance">Megjelenítés</string>
+    <string name="pref_header_appearance">Megjelenítés</string>
     <string name="pref_header_behaviour">Működés</string>
     <string name="pref_header_donate">Adományozás</string>
 
@@ -87,9 +87,9 @@ limitations under the License.
     <string name="pref_weather_show_wind_details_summary_on">Szél mutatása kiterjesztett nézetben</string>
     <string name="pref_weather_show_wind_details_summary_off">Szél elrejtve kiterjesztett nézetben</string>
 
-    <string name="pref_weather_show_wind_chill_title">Wind chill</string>
-    <string name="pref_weather_show_wind_chill_summary_on">Wind chill mutatása kiterjesztett nézetben</string>
-    <string name="pref_weather_show_wind_chill_summary_off">Wind chill elrejtve kiterjesztett nézetben</string>
+    <string name="pref_weather_show_feels_like_title">Wind chill</string>
+    <string name="pref_weather_show_feels_like_summary_on">Wind chill mutatása kiterjesztett nézetben</string>
+    <string name="pref_weather_show_feels_like_summary_off">Wind chill elrejtve kiterjesztett nézetben</string>
 
     <string name="pref_donate_title">Tetszik az alkalmazás?</string>
     <string name="pref_donate_summary">Miért nem hívsz meg egy bögre kávéra? :)</string>

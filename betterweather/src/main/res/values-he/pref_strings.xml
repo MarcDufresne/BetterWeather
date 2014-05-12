@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013 Marc-André Dufresne
+Copyright 2013-2014 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ limitations under the License.
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">הגדרות כלליות</string>
-    <string name="pref_header_status_appearance">מראה</string>
+    <string name="pref_header_appearance">מראה</string>
     <string name="pref_header_behaviour">התנהגות</string>
     <string name="pref_header_donate">תרומה</string>
 
@@ -88,9 +88,9 @@ limitations under the License.
     <string name="pref_weather_show_wind_details_summary_on">פרטי הרוח יוצגו בתצוגה המורחבת</string>
     <string name="pref_weather_show_wind_details_summary_off">פרטי הרוח לא יוצגו בתצוגה המורחבת</string>
 
-    <string name="pref_weather_show_wind_chill_title">הצגת צינת הרוח</string>
-    <string name="pref_weather_show_wind_chill_summary_on">צינת הרוח תוצג בתצוגה המורחבת כאשר היא זמינה</string>
-    <string name="pref_weather_show_wind_chill_summary_off">צינת הרוח לא תוצג</string>
+    <string name="pref_weather_show_feels_like_title">הצגת צינת הרוח</string>
+    <string name="pref_weather_show_feels_like_summary_on">צינת הרוח תוצג בתצוגה המורחבת כאשר היא זמינה</string>
+    <string name="pref_weather_show_feels_like_summary_off">צינת הרוח לא תוצג</string>
 
     <string name="pref_alert_network_location_message">עליך לאפשר מיקום רשת לתוצאה טובה יותר; וחיי סוללה טובים יותר!</string>
     <string name="pref_alert_network_location_open_settings">פתיחת הגדרות מיקום</string>

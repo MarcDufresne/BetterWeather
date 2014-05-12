@@ -86,9 +86,9 @@
     <string name="pref_weather_show_wind_details_summary_on">详细风速将会显示在扩展界面</string>
     <string name="pref_weather_show_wind_details_summary_off">详细风速将不会显示在扩展界面</string>
 
-    <string name="pref_weather_show_wind_chill_title">显示风感温度</string>
-    <string name="pref_weather_show_wind_chill_summary_on">风感温度将会显示在扩展界面</string>
-    <string name="pref_weather_show_wind_chill_summary_off">风感温度将不会显示在扩展界面</string>
+    <string name="pref_weather_show_feels_like_title">显示风感温度</string>
+    <string name="pref_weather_show_feels_like_summary_on">风感温度将会显示在扩展界面</string>
+    <string name="pref_weather_show_feels_like_summary_off">风感温度将不会显示在扩展界面</string>
 
     <string name="pref_weather_use_only_network_title">仅使用网络位置</string>
     <string name="pref_weather_use_only_network_summary_on">将仅使用网络获取位置信息 (省电)</string>
@@ -101,7 +101,7 @@
     <string name="pref_pebble_enable_summary_on">将发送数据到 Pebble Watch</string>
     <string name="pref_pebble_enable_summary_off">禁用 Pebble 连接</string>
 
-    <string name="pref_pebble_show_wind_chill_title">显示风感温度</string>
-    <string name="pref_pebble_show_wind_chill_summary_on">在 Pebble Watch 上将显示风感温度</string>
-    <string name="pref_pebble_show_wind_chill_summary_off">在 Pebble Watch 上将显示真实温度</string>
+    <string name="pref_pebble_show_feels_like_title">显示风感温度</string>
+    <string name="pref_pebble_show_feels_like_summary_on">在 Pebble Watch 上将显示风感温度</string>
+    <string name="pref_pebble_show_feels_like_summary_off">在 Pebble Watch 上将显示真实温度</string>
 </resources>

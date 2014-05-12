@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Marc-André Dufresne
+ * Copyright 2013-2014 Marc-André Dufresne
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@ import android.content.Intent;
 
 import com.getpebble.android.kit.PebbleKit;
 import com.getpebble.android.kit.util.PebbleDictionary;
+
+import net.imatruck.betterweather.utils.LogUtils;
 
 import java.util.UUID;
 
@@ -68,7 +70,7 @@ public class Pebble {
         appContext.sendBroadcast(new Intent(BetterWeatherExtension.REFRESH_INTENT_FILTER));
     }
 
-    public static void sendWeather(Context appContext, BetterWeatherData weatherData, boolean showWindChill) {
+    public static void sendWeather(Context appContext, BetterWeatherData weatherData, boolean showFeelsLike) {
 
         if(PebbleKit.isWatchConnected(appContext)) {
             if(PebbleKit.areAppMessagesSupported(appContext)) {
@@ -77,7 +79,7 @@ public class Pebble {
 
                     PebbleDictionary pebbleData = new PebbleDictionary();
                     pebbleData.addInt8(0, (byte) getWeatherIconId(weatherData.conditionCode));
-                    pebbleData.addString(1, getDisplayTemperature(weatherData, showWindChill));
+                    pebbleData.addString(1, getDisplayTemperature(weatherData, showFeelsLike));
 
                     PebbleKit.sendDataToPebble(appContext, APP_UUID, pebbleData);
                     LogUtils.LOGD(TAG, "Data sent to Pebble.");
@@ -95,10 +97,10 @@ public class Pebble {
 
     }
 
-    private static String getDisplayTemperature(BetterWeatherData weatherData, boolean showWindChill) {
+    private static String getDisplayTemperature(BetterWeatherData weatherData, boolean showFeelsLike) {
         StringBuilder displayTemp = new StringBuilder();
-        if(weatherData.windChill < weatherData.temperature && showWindChill) {
-            displayTemp.append(Integer.toString(weatherData.windChill)).append("\u002A");
+        if(weatherData.feelsLike < weatherData.temperature && showFeelsLike) {
+            displayTemp.append(Integer.toString(weatherData.feelsLike)).append("\u002A");
         }
         else {
             displayTemp.append(Integer.toString(weatherData.temperature)).append("\u00B0");

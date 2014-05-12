@@ -13,18 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.iconthemes;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-
-public class RefreshWeatherActivity extends Activity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        sendBroadcast(new Intent(BetterWeatherExtension.REFRESH_INTENT_FILTER));
-        finish();
-    }
+public interface IIconTheme {
+    public int getConditionIcon(int conditionCode);
 }

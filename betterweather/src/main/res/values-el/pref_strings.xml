@@ -7,7 +7,7 @@
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Γενικές Ρυθμίσεις</string>
-    <string name="pref_header_status_appearance">Εμφάνιση</string>
+    <string name="pref_header_appearance">Εμφάνιση</string>
     <string name="pref_header_behaviour">Συμπεριφορά</string>
 
     <!-- Weather -->
@@ -72,7 +72,7 @@
     <string name="pref_weather_show_wind_details_summary_on">Οι λεπτομέρειες ανέμου θα είναι ορατές σε επεκτάσιμη προβολή</string>
     <string name="pref_weather_show_wind_details_summary_off">Οι λεπτομέρειες ανέμου δεν θα είναι ορατές</string>
 
-    <string name="pref_weather_show_wind_chill_title">Εμφάνιση ψύχος αέρα</string>
-    <string name="pref_weather_show_wind_chill_summary_on">Το ψύχος αέρα θα είναι ορατό σε επεκτάσιμη προβολή όταν είναι διαθέσιμο</string>
-    <string name="pref_weather_show_wind_chill_summary_off">Το ψύχος αέρα δεν θα είναι ορατό</string>
+    <string name="pref_weather_show_feels_like_title">Εμφάνιση ψύχος αέρα</string>
+    <string name="pref_weather_show_feels_like_summary_on">Το ψύχος αέρα θα είναι ορατό σε επεκτάσιμη προβολή όταν είναι διαθέσιμο</string>
+    <string name="pref_weather_show_feels_like_summary_off">Το ψύχος αέρα δεν θα είναι ορατό</string>
 </resources>

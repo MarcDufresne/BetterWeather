@@ -7,7 +7,7 @@
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Allgemeine Einstellungen</string>
-    <string name="pref_header_status_appearance">Aussehen</string>
+    <string name="pref_header_appearance">Aussehen</string>
     <string name="pref_header_behaviour">Verhalten</string>
 
     <!-- Weather -->
@@ -79,7 +79,7 @@
     <string name="pref_weather_show_wind_details_summary_on">Wind Details werden in der erweiterten Ansicht angezeigt</string>
     <string name="pref_weather_show_wind_details_summary_off">Wind Details werden nicht angezeigt</string>
 
-    <string name="pref_weather_show_wind_chill_title">Wind Chill anzeigen</string>
-    <string name="pref_weather_show_wind_chill_summary_on">Wind Chill wird, sofern verfügbar, in der erweiterten Ansicht angezeigt</string>
-    <string name="pref_weather_show_wind_chill_summary_off">Wind Chill wird nicht angezeigt</string>
+    <string name="pref_weather_show_feels_like_title">Wind Chill anzeigen</string>
+    <string name="pref_weather_show_feels_like_summary_on">Wind Chill wird, sofern verfügbar, in der erweiterten Ansicht angezeigt</string>
+    <string name="pref_weather_show_feels_like_summary_off">Wind Chill wird nicht angezeigt</string>
 </resources>

@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.utils;
 
 import android.util.Log;
+
+import net.imatruck.betterweather.BuildConfig;
 
 /**
  * Helper methods that make logging more consistent throughout the app.

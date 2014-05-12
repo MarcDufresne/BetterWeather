@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.settings;
 
 import android.media.Ringtone;
 import android.media.RingtoneManager;

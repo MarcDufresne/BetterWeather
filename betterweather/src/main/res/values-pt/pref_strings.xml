@@ -68,9 +68,9 @@
   <string name="pref_weather_show_wind_details_title">Mostrar detalhes sobre o vento</string>
   <string name="pref_weather_show_wind_details_summary_on">Os detalhes sobre o vento serão mostrados no modo de visualização expandida</string>
   <string name="pref_weather_show_wind_details_summary_off">Os detalhes sobre o vento não serão mostrados</string>
-  <string name="pref_weather_show_wind_chill_title">Mostrar temperatura aparente</string>
-  <string name="pref_weather_show_wind_chill_summary_on">A temperatura aparente será mostrada no modo de visualização expandida</string>
-  <string name="pref_weather_show_wind_chill_summary_off">A temperatura aparente não será mostrada</string>
+  <string name="pref_weather_show_feels_like_title">Mostrar temperatura aparente</string>
+  <string name="pref_weather_show_feels_like_summary_on">A temperatura aparente será mostrada no modo de visualização expandida</string>
+  <string name="pref_weather_show_feels_like_summary_off">A temperatura aparente não será mostrada</string>
   <string name="pref_weather_use_only_network_title">Utilizar apenas localização por rede</string>
   <string name="pref_weather_use_only_network_summary_on">A aplicação só vai usar a rede para obter sua localização (poupa bateria)</string>
   <string name="pref_weather_use_only_network_summary_off">A aplicação usará o GPS caso não seja possível utilizar a rede para obter localização</string>
@@ -79,7 +79,7 @@
   <string name="pref_pebble_enable_title">Permite a integração do Pebble</string>
   <string name="pref_pebble_enable_summary_on">A aplicação irá enviar dados para o Pebble Watch</string>
   <string name="pref_pebble_enable_summary_off">Não permite a integração do Pebble</string>
-  <string name="pref_pebble_show_wind_chill_title">Mostrar temperatura aparente</string>
-  <string name="pref_pebble_show_wind_chill_summary_on">A temperatura aparente não será mostrada no Pebble Watch</string>
-  <string name="pref_pebble_show_wind_chill_summary_off">A temperatura aparente será mostrada no Pebble Watch</string>
+  <string name="pref_pebble_show_feels_like_title">Mostrar temperatura aparente</string>
+  <string name="pref_pebble_show_feels_like_summary_on">A temperatura aparente não será mostrada no Pebble Watch</string>
+  <string name="pref_pebble_show_feels_like_summary_off">A temperatura aparente será mostrada no Pebble Watch</string>
 </resources>

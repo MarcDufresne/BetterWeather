@@ -7,7 +7,7 @@
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Настройки</string>
-    <string name="pref_header_status_appearance">Внешний вид</string>
+    <string name="pref_header_appearance">Внешний вид</string>
     <string name="pref_header_behaviour">Поведение</string>
 
     <!-- Weather -->
@@ -75,7 +75,7 @@
     <string name="pref_weather_show_wind_details_summary_on">Информация о ветре будет отображаться в развернутом виде</string>
     <string name="pref_weather_show_wind_details_summary_off">Информацию о ветре не будет отображаться</string>
 
-    <string name="pref_weather_show_wind_chill_title">Отображать ощущаемую температуру</string>
-    <string name="pref_weather_show_wind_chill_summary_on">Ощущаемая температура будет отображаться в развернутом виде (если доступно)</string>
-    <string name="pref_weather_show_wind_chill_summary_off">Ощущаемая температура не будет отображаться</string>
+    <string name="pref_weather_show_feels_like_title">Отображать ощущаемую температуру</string>
+    <string name="pref_weather_show_feels_like_summary_on">Ощущаемая температура будет отображаться в развернутом виде (если доступно)</string>
+    <string name="pref_weather_show_feels_like_summary_off">Ощущаемая температура не будет отображаться</string>
 </resources>

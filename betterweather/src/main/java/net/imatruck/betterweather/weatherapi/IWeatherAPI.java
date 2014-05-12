@@ -13,26 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.weatherapi;
+
+import net.imatruck.betterweather.BetterWeatherData;
+import net.imatruck.betterweather.LocationInfo;
+
+import java.io.IOException;
 
 /**
- * Invalid location exception class
+ * Interface for Weather APIs
+ * Classes that implement this interface need to fetch weather data described in
+ * {@link BetterWeatherData} and convert the condition to the standard Yahoo!
+ * format for condition codes (from -1 to 47)
+ * See here for details: https://developer.yahoo.com/weather/#codes
  */
-public class InvalidLocationException extends Exception {
-    private static final long serialVersionUID = 1L;
 
-    public InvalidLocationException() {
-    }
+public interface IWeatherAPI {
 
-    public InvalidLocationException(String detailMessage) {
-        super(detailMessage);
-    }
-
-    public InvalidLocationException(String detailMessage, Throwable throwable) {
-        super(detailMessage, throwable);
-    }
-
-    public InvalidLocationException(Throwable throwable) {
-        super(throwable);
-    }
+    public BetterWeatherData getWeatherDataForLocation(LocationInfo locationInfo) throws IOException;
 }

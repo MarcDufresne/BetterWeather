@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.imatruck.betterweather;
+package net.imatruck.betterweather.utils;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -23,6 +23,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import net.imatruck.betterweather.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,6 +59,7 @@ public class SimplePagedTabsHelper {
 
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
+                //noinspection ResourceType
                 return mPager.findViewById(mTabContentIds.get(position));
             }
         });

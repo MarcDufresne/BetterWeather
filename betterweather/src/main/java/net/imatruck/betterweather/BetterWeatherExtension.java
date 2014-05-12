@@ -482,7 +482,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     private static void convertLocationToNewFormat(String oldLocationData, SharedPreferences sp) {
 
-        if(oldLocationData.matches("\\d+/\\S+,?\\s?\\S*/-?\\d{1,3}.?\\d*/-?\\d{1,3}.?\\d*"))
+        if(oldLocationData.contains("/"))
             return;
 
         SharedPreferences.Editor editor = sp.edit();

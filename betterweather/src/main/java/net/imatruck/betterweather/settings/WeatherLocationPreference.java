@@ -95,6 +95,8 @@ public class WeatherLocationPreference extends Preference {
 
     public static String getWoeidFromValue(String value) {
         if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
+            if(value.matches("\\d+,[0-9a-zA-Z,. ]*"))
+                return value.substring(0, value.indexOf(","));
             return null;
         }
 
@@ -104,7 +106,7 @@ public class WeatherLocationPreference extends Preference {
 
     public static String getLatFromValue(String value) {
         if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
-            return null;
+            return "0";
         }
 
         String[] locationDetails = value.split("/");
@@ -113,7 +115,7 @@ public class WeatherLocationPreference extends Preference {
 
     public static String getLngFromValue(String value) {
         if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
-            return null;
+            return "0";
         }
 
         String[] locationDetails = value.split("/");

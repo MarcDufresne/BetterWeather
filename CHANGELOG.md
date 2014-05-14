@@ -1,5 +1,8 @@
 # BetterWeather Change Log
 
+## Version 3.0.1 (40)
+  - Fixed FC when getting Lat/Long info from settings
+
 ## Version 3.0 (39):
   - Added WeatherAPI Interface
     - Added Forecast API

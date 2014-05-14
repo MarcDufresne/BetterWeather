@@ -105,18 +105,16 @@ public class WeatherLocationPreference extends Preference {
     }
 
     public static String getLatFromValue(String value) {
-        if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
+        if(!value.matches("\\d+/[0-9a-zA-Z,. ]*/\\d+[,.]?\\d*/\\d+[,.]?\\d*"))
             return "0";
-        }
 
         String[] locationDetails = value.split("/");
         return locationDetails[2];
     }
 
     public static String getLngFromValue(String value) {
-        if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
+        if(!value.matches("\\d+/[0-9a-zA-Z,. ]*/\\d+[,.]?\\d*/\\d+[,.]?\\d*"))
             return "0";
-        }
 
         String[] locationDetails = value.split("/");
         return locationDetails[3];

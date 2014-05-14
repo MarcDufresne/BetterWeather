@@ -49,9 +49,6 @@ limitations under the License.
 
     <string name="shortcut_pref_help_text">Disable "Refresh weather on touch" to use</string>
 
-    <string name="weather_api_key_help_text_empty">Please enter your key for this service</string>
-    <string name="weather_api_key_help_text_not_needed">No key needed for this service</string>
-
     <!-- About -->
     <string name="about_extension_text">
         <![CDATA[Created By: <br><i>Marc-André Dufresne</i><br><br>Thanks to Roman Nurik for DashClock!<br>]]></string>

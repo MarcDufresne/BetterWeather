@@ -47,12 +47,6 @@
             android:positiveButtonText="@null"
             android:defaultValue="yahoo_weather_api" />
 
-        <EditTextPreference
-            android:title="@string/pref_weather_api_key_title"
-            android:key="pref_weather_api_key"
-            android:defaultValue=""
-            android:summary="@string/pref_weather_api_key_summary" />
-
     </PreferenceCategory>
     <PreferenceCategory
         android:key="pref_header_appearance"

@@ -34,9 +34,6 @@
 
     <string name="pref_weather_api_title">Service Météo</string>
 
-    <string name="pref_weather_api_key_title">Clé API pour le service</string>
-    <string name="pref_weather_api_key_summary">Si le service nécessite une clé API entrez-la ici</string>
-
     <string name="pref_weather_location_title">Location</string>
     <string name="pref_weather_location_automatic">Automatique</string>
     <string name="pref_weather_location_query_hint">Trouver une location</string>

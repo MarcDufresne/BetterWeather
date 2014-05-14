@@ -104,7 +104,6 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String GOOGLENOW_ICON_THEME = "googlenow";
 
     public static final String YAHOO_WEATHER_API = "yahoo_weather_api";
-    public static final String FORECAST_WEATHER_API = "forecast_weather_api";
     public static final String OPENWEATHERMAP_WEATHER_API = "openweathermap_weather_api";
 
     private static final long STALE_LOCATION_NANOS = 10l * 60000000000l; // 10 minutes

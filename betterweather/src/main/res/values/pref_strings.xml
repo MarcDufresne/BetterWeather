@@ -64,17 +64,12 @@ limitations under the License.
     <string name="pref_weather_api_title">Weather Service</string>
     <string-array name="pref_weather_api_display_names" translatable="false">
         <item>Yahoo! Weather</item>
-        <item>Forecast</item>
         <item>OpenWeatherMap</item>
     </string-array>
     <string-array name="pref_weather_api_values"  translatable="false">
         <item>yahoo_weather_api</item>
-        <item>forecast_weather_api</item>
         <item>openweathermap_weather_api</item>
     </string-array>
-
-    <string name="pref_weather_api_key_title">Weather Service API Key</string>
-    <string name="pref_weather_api_key_summary">If the selected service needs an API key input it here</string>
 
     <string name="pref_weather_show_today_forecast_title">Show today\'s forecast</string>
     <string name="pref_weather_show_today_forecast_on">Today\'s forecast will be shown in expanded view</string>

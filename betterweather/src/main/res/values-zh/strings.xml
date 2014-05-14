@@ -21,9 +21,6 @@
 
     <string name="shortcut_pref_help_text">请关闭点击刷新功能</string>
 
-    <string name="weather_api_key_help_text_empty">请输入气象服务所需的密钥</string>
-    <string name="weather_api_key_help_text_not_needed">该气象服务无需密钥</string>
-
     <!-- About -->
     <string name="about_extension_text">
         <![CDATA[开发者：<i>Marc-André Dufresne</i><br><br>感谢Roman Nurik对DashClock的支持!<br>汉化：<i>BlackFaceSheep</i>,<a href="http://www.nolanchou.com/">NolanChou</a>]]></string>

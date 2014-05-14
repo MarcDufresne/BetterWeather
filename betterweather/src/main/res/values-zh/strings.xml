@@ -1,7 +1,8 @@
 ﻿<resources>
 
     <string name="extension_title">BetterWeather 天气</string>
-    <string name="extension_description">基于您的位置信息或设定，为您提供即时天气信息。 由雅虎天气提供支持！</string>
+    <string name="extension_description">基于您的位置信息或设定，为您提供即时天气信息。
+	由雅虎天气，Forecast，OpenWeatherMap提供支持！</string>
     <string name="title_settings">BetterWeather 设定</string>
 
     <!-- App Chooser -->
@@ -18,7 +19,10 @@
     <string name="wind_chill_template">风温: %1$s°</string>
     <string name="humidity_template">湿度: %1$s</string>
 
-    <string name="shortcut_pref_help_text">已关闭点击刷新</string>
+    <string name="shortcut_pref_help_text">请关闭点击刷新功能</string>
+
+    <string name="weather_api_key_help_text_empty">请输入气象服务所需的密钥</string>
+    <string name="weather_api_key_help_text_not_needed">该气象服务无需密钥</string>
 
     <!-- About -->
     <string name="about_extension_text">

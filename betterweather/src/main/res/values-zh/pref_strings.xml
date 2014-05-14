@@ -7,6 +7,7 @@
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">设置</string>
+	<string name="pref_header_service">气象服务</string>
 	<string name="pref_header_appearance">界面</string>
 	<string name="pref_header_expanded_appearance">扩展界面</string>
     <string name="pref_header_behaviour">操作行为</string>
@@ -35,6 +36,16 @@
     <string name="pref_weather_location_automatic">自动</string>
     <string name="pref_weather_location_query_hint">查找位置</string>
     <string name="pref_weather_location_automatic_description">根据您当前的位置</string>
+
+    <string name="pref_weather_api_title">气象服务</string>
+    <string-array name="pref_weather_api_display_names" translatable="false">
+        <item>雅虎天气</item>
+        <item>Forecast</item>
+        <item>OpenWeatherMap</item>
+    </string-array>
+
+    <string name="pref_weather_api_key_title">气象服务密钥</string>
+    <string name="pref_weather_api_key_summary">如果气象服务API需要密钥，请填于此处</string>
 
     <string name="pref_weather_show_today_forecast_title">显示今天的预报</string>
     <string name="pref_weather_show_today_forecast_on">今日预报将会显示在扩展界面</string>

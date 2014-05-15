@@ -18,7 +18,7 @@ limitations under the License.
 <resources>
     <string name="app_name">BetterWeather</string>
     <string name="extension_title">BetterWeather</string>
-    <string name="extension_description">Zobrazí aktuálne informácie o počasí pre vašu polohu alebo pre nastavenú polohu. Dáta sú získavané zo služby Yahoo! Weather.</string>
+    <string name="extension_description">Zobrazí aktuálne informácie o počasí pre vašu polohu alebo pre nastavenú polohu. Dáta sú získavané zo služieb Yahoo! Weather, Forecast a OpenWeatherMap.</string>
     <string name="title_settings">Nastavenia BetterWeather</string>
 
     <!-- App Chooser -->

@@ -23,6 +23,7 @@ limitations under the License.
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Všeobecné nastavenia</string>
+    <string name="pref_header_service">Služba počasia</string>
     <string name="pref_header_appearance">Všeobecný vzhľad</string>
     <string name="pref_header_expanded_appearance">Vzhľad rozšíreného zobrazenia</string>
     <string name="pref_header_behaviour">Správanie</string>
@@ -41,6 +42,8 @@ limitations under the License.
     <string name="pref_weather_location_automatic">Automatická</string>
     <string name="pref_weather_location_query_hint">Nájsť miesto</string>
     <string name="pref_weather_location_automatic_description">Na základe vašej aktuálnej polohy.</string>
+    
+    <string name="pref_weather_api_title">Služba počasia</string>
 
     <string name="pref_weather_show_today_forecast_title">Zobraziť predpoveď počasia na dnes</string>
     <string name="pref_weather_show_today_forecast_on">Predpoveď počasia na dnes bude zobrazená</string>

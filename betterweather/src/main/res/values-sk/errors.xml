@@ -26,4 +26,7 @@ limitations under the License.
     <!-- No internet connection -->
     <string name="error_internet">Žiadne internetové pripojenie.</string>
     <string name="error_internet_expandedBody">Nie je možné sa pripojiť k internetu. Skontrolujte nastavenia a pokúste sa vykonať aktualizáciu.</string>
+    <!-- API Key error -->
+    <string name="error_api">Chyba API.</string>
+    <string name="error_api_expandedBody">Služba nie je dostupná alebo váš API kľúč nie je správny. Skontrolujte váš kľúč a skúste to znova neskôr.</string>
 </resources>

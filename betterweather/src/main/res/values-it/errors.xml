@@ -25,4 +25,7 @@ limitations under the License.
     <!-- No internet connection -->
     <string name="error_internet">Nessuna connessione internet.</string>
     <string name="error_internet_expandedBody">"Sembra che non possa connettermi a internet, controlla le tue impostazioni e prova ad aggiornare."</string>
+    <!-- API Key error -->
+    <string name="error_api">Errore API.</string>
+    <string name="error_api_expandedBody">Il servizio non è disponibile o la tua chiave API è errata, ricontrolla la tua chiave o riprova più tardi.</string>
 </resources>

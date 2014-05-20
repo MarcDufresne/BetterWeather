@@ -32,7 +32,10 @@ import android.view.MenuItem;
 
 import net.imatruck.betterweather.BetterWeatherExtension;
 import net.imatruck.betterweather.R;
+import net.imatruck.betterweather.YahooPlacesAPIClient;
 import net.imatruck.betterweather.utils.HelpUtils;
+
+import java.util.Locale;
 
 @SuppressWarnings("deprecation")
 public class BetterWeatherSettingsActivity extends BaseSettingsActivity implements OnSharedPreferenceChangeListener {

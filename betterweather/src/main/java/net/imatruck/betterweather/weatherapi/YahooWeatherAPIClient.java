@@ -100,17 +100,8 @@ public class YahooWeatherAPIClient implements IWeatherAPI{
                     }
                 } else if (eventType == XmlPullParser.START_TAG
                         && "location".equals(xpp.getName())) {
-                    String cityOrVillage = "--";
-                    String region = null;
-                    for (int i = xpp.getAttributeCount() - 1; i >= 0; i--) {
-                        if ("city".equals(xpp.getAttributeName(i))) {
-                            cityOrVillage = xpp.getAttributeValue(i);
-                        } else if ("region".equals(xpp.getAttributeName(i))) {
-                            region = xpp.getAttributeValue(i);
-                        }
-                    }
-
-                    data.location = cityOrVillage + ", " + region;
+                    // already LocationInfo li has location name.
+                    data.location = li.DISPLAYNAME;
                 } else if (eventType == XmlPullParser.START_TAG
                         && "wind".equals(xpp.getName())) {
                     for (int i = xpp.getAttributeCount() - 1; i >= 0; i--) {

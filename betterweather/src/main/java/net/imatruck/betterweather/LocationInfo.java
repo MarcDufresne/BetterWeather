@@ -17,14 +17,16 @@ package net.imatruck.betterweather;
 
 public class LocationInfo {
     public String WOEID;
+    public String DISPLAYNAME;
     public double LAT, LNG;
 
     public LocationInfo(){
-        this("0", 0, 0);
+        this("0", "", 0, 0);
     }
 
-    public LocationInfo(String woeid, double lat, double lng){
+    public LocationInfo(String woeid, String displayname, double lat, double lng){
         this.WOEID = woeid;
+        this.DISPLAYNAME = displayname;
         this.LAT = lat;
         this.LNG = lng;
     }

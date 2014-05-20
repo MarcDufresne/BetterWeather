@@ -143,6 +143,10 @@ limitations under the License.
     <string name="pref_weather_show_wind_details_summary_on">Wind details will be shown in expended view</string>
     <string name="pref_weather_show_wind_details_summary_off">Wind details will not be shown</string>
 
+    <string name="pref_weather_show_wind_speed_as_label_title">Show wind label</string>
+    <string name="pref_weather_show_wind_speed_as_label_summary_on">Wind speed will be shown as label</string>
+    <string name="pref_weather_show_wind_speed_as_label_summary_off">Wind speed will be shown as speed unit</string>
+
     <string name="pref_weather_show_feels_like_title">Show wind chill</string>
     <string name="pref_weather_show_feels_like_summary_on">Wind chill will be shown in expended view when available</string>
     <string name="pref_weather_show_feels_like_summary_off">Wind chill will not be shown</string>

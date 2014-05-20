@@ -38,6 +38,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,7 @@ import net.imatruck.betterweather.YahooPlacesAPIClient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static net.imatruck.betterweather.YahooPlacesAPIClient.LocationSearchResult;
 
@@ -88,7 +90,6 @@ public class WeatherLocationPreference extends Preference {
         if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
             return context.getString(R.string.pref_weather_location_automatic);
         }
-
         String[] locationDetails = value.split("/");
         return locationDetails[1];
     }
@@ -104,8 +105,28 @@ public class WeatherLocationPreference extends Preference {
         return locationDetails[0];
     }
 
+    /**
+     * This method is for getting location name.
+     * @param saved pref location string.
+     * @return location name saved in setting.
+     */
+    public static String getDisplayNameFromValue(String value) {
+        if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
+            if(value.matches("\\d+,[0-9a-zA-Z,. ]*"))
+                return value.substring(value.indexOf(",")+1).trim();
+            return null;
+        }
+
+        String[] locationDetails = value.split("/");
+        return locationDetails[1];
+    }
+
     public static String getLatFromValue(String value) {
-        if(!value.matches("\\d+/[0-9a-zA-Z,. ]*/\\d+[,.]?\\d*/\\d+[,.]?\\d*"))
+        // if value is a form like "11111/SEOUL, KOREA/12.3333/45.6666", in which
+        // SEOUL, KOREA are not ASCIIs but Korean characters, then
+        // if(!value.matches("\\d+/[0-9a-zA-Z,. ]*/\\d+[,.]?\\d*/\\d+[,.]?\\d*"))
+        // fails to match lat/lon, so changed loosely.
+        if(!value.matches("\\d+/[^/]*/\\d+[,.]?\\d*/\\d+[,.]?\\d*"))
             return "0";
 
         String[] locationDetails = value.split("/");
@@ -113,7 +134,7 @@ public class WeatherLocationPreference extends Preference {
     }
 
     public static String getLngFromValue(String value) {
-        if(!value.matches("\\d+/[0-9a-zA-Z,. ]*/\\d+[,.]?\\d*/\\d+[,.]?\\d*"))
+        if(!value.matches("\\d+/[^/]*/\\d+[,.]?\\d*/\\d+[,.]?\\d*"))
             return "0";
 
         String[] locationDetails = value.split("/");

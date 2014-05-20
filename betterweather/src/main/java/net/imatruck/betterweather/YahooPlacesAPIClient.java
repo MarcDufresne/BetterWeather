@@ -29,8 +29,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static net.imatruck.betterweather.utils.LogUtils.LOGD;
 import static net.imatruck.betterweather.utils.LogUtils.LOGE;
@@ -62,27 +64,43 @@ public class YahooPlacesAPIClient {
     private static final int PARSE_STATE_ADMIN1 = 5;
     private static final int PARSE_STATE_LAT = 7;
     private static final int PARSE_STATE_LNG = 8;
+    private static final int PARSE_STATE_ADMIN2 = 9;
+    private static final int PARSE_STATE_ADMIN3 = 10;
+
+    // sLang has Yahoo lang form like "en-US, not en_US"
+    // this parameter enables for users to have location name with their language.
+    public static String sLang;
+    // Method findLocationsAutocomplete get WOEID from methodgetLocationNameFromCoords
+    // using this static variable.
+    private static String sWoeid;
 
     public static String buildPlaceSearchUrl(Location l) throws MalformedURLException {
         // GeoPlanet API
         return "http://where.yahooapis.com/v1/places.q('"
                 + l.getLatitude() + "," + l.getLongitude() + "')"
-                + "?appid=" + API_KEY;
+                + "?lang=" + sLang + "&appid=" + API_KEY;
     }
 
     private static String buildPlaceSearchStartsWithUrl(String startsWith) {
         // GeoPlanet API
         startsWith = startsWith.replaceAll("[^\\w ]+", "").replaceAll(" ", "%20");
+
+        // In searching a place name with non-ASCII characters.
+        try {
+            startsWith = URLEncoder.encode(startsWith, "UTF-8");
+        } catch(Exception e) {}
+
         return "http://where.yahooapis.com/v1/places.q('" + startsWith + "');"
                 + "count=" + MAX_SEARCH_RESULTS
-                + "?appid=" + API_KEY;
+                + "?lang=" + sLang + "&appid=" + API_KEY;
     }
 
     public static String getLocationNameFromCoords(double lat, double lng){
         LOGD(TAG, "Looking up name for location : " + lat + ", " + lng);
 
         String displayName = "N/A";
-
+        // reset WOEID.
+        sWoeid = "";
         HttpURLConnection connection = null;
         try {
             Location tempLoc = new Location("");
@@ -93,8 +111,17 @@ public class YahooPlacesAPIClient {
             XmlPullParser xpp = sXmlPullParserFactory.newPullParser();
             xpp.setInput(new InputStreamReader(connection.getInputStream()));
 
-            String name = null, admin1 = null;
-            StringBuilder sb = new StringBuilder();
+            // addrs have {'name', 'admin3', 'admin2', 'admin1', 'country'}, small -> large.
+            // Not so few places have empty *local*, and/or admin* values in Yahoo place API.
+            // So in some cases, only one name or two names with same values was shown.
+            // For example, "SEOUL" or "SEOUL, SEOUL" can be removed.
+            // So modified algorithm to get names. Not used local fields.
+            // From name to country, skip empty or same value and make "small, large" form.
+            String[] addrs = {"", "", "", "", ""};
+            String smallLocation = "";
+            String largeLocation = "";
+
+            StringBuffer sb = new StringBuffer();
 
             int state = PARSE_STATE_NONE;
             int eventType = xpp.getEventType();
@@ -106,7 +133,6 @@ public class YahooPlacesAPIClient {
                         case PARSE_STATE_NONE:
                             if ("place".equals(tagName)) {
                                 state = PARSE_STATE_PLACE;
-                                name = admin1 = null;
                             }
                             break;
 
@@ -115,32 +141,82 @@ public class YahooPlacesAPIClient {
                                 state = PARSE_STATE_NAME;
                             } else if ("admin1".equals(tagName)) {
                                 state = PARSE_STATE_ADMIN1;
+                            } else if ("admin2".equals(tagName)) {
+                                state = PARSE_STATE_ADMIN2;
+                            } else if ("admin3".equals(tagName)) {
+                                state = PARSE_STATE_ADMIN3;
+                            } else if ("country".equals(tagName)) {
+                                state = PARSE_STATE_COUNTRY;
+                            } else if ("woeid".equals(tagName)) {
+                                state = PARSE_STATE_WOEID;
                             }
+
                             break;
                     }
 
                 } else if (eventType == XmlPullParser.TEXT) {
                     switch (state) {
                         case PARSE_STATE_NAME:
-                            name = xpp.getText();
+                            addrs[0] = xpp.getText();
+                            break;
+
+                        case PARSE_STATE_ADMIN3:
+                            addrs[1] = xpp.getText();
+                            break;
+
+                        case PARSE_STATE_ADMIN2:
+                            addrs[2] = xpp.getText();
                             break;
 
                         case PARSE_STATE_ADMIN1:
-                            admin1 = xpp.getText();
+                            addrs[3] = xpp.getText();
+                            break;
+
+                        case PARSE_STATE_COUNTRY:
+                            addrs[4] = xpp.getText();
+                            break;
+
+                        case PARSE_STATE_WOEID:
+                            // This method 'getLocationNameFromCoords' itself doesnt need WOEID.
+                            // But other method 'getLocationInfo' calls it and needs WOEID.
+                            // So in this methdd, save WOEID to private static variable.
+                            sWoeid = xpp.getText();
                             break;
                     }
 
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if ("place".equals(tagName)) {
-                        sb.setLength(0);
-                        if (!TextUtils.isEmpty(name)) {
-                            sb.append(name);
+                        for(int i=0; i<addrs.length; i++) {
+                            if (TextUtils.isEmpty(addrs[i])) {
+                                // if field is empty, skip.
+                                continue;
+                            } else {
+                                smallLocation = addrs[i];
+                                largeLocation = "";
+                                for(int j=i+1; j<addrs.length; j++) {
+                                    if (TextUtils.isEmpty(addrs[j])) {
+                                        continue;
+                                    }
+                                    if (!smallLocation.equals(addrs[j])) {
+                                        // if second name is not empty and not same with previus one
+                                        // (smallLocation) then it is to be largeLocation.
+                                        largeLocation = addrs[j];
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
                         }
-                        if (!TextUtils.isEmpty(admin1)) {
+
+                        sb.setLength(0);
+                        if (!TextUtils.isEmpty(smallLocation)) {
+                            sb.append(smallLocation);
+                        }
+                        if (!TextUtils.isEmpty(largeLocation)) {
                             if (sb.length() > 0) {
                                 sb.append(", ");
                             }
-                            sb.append(admin1);
+                            sb.append(largeLocation);
                         }
                         displayName = sb.toString();
                         state = PARSE_STATE_NONE;
@@ -168,7 +244,6 @@ public class YahooPlacesAPIClient {
                 connection.disconnect();
             }
         }
-
         return displayName;
     }
 
@@ -184,10 +259,16 @@ public class YahooPlacesAPIClient {
             xpp.setInput(new InputStreamReader(connection.getInputStream()));
 
             LocationSearchResult result = null;
-            String name = null, country = null, admin1 = null;
-            StringBuilder sb = new StringBuilder();
+            // See above method 'getLocationNameFromCoords'.
+            String[] addrs = {"", "", "", "", "", ""};
 
             int state = PARSE_STATE_NONE;
+
+            // latitude and longitude values are shown in many entries.
+            // But values in <centroid>, not in <boundingBox> are relatively exact one.
+            // So using this flag, get only values in centroid entry.
+            boolean centroid = false;
+
             int eventType = xpp.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tagName = xpp.getName();
@@ -198,7 +279,9 @@ public class YahooPlacesAPIClient {
                             if ("place".equals(tagName)) {
                                 state = PARSE_STATE_PLACE;
                                 result = new LocationSearchResult();
-                                name = country = admin1 = null;
+                                // reset
+                                for(int i=0; i<addrs.length; i++)
+                                    addrs[i]= "";
                             }
                             break;
 
@@ -211,10 +294,17 @@ public class YahooPlacesAPIClient {
                                 state = PARSE_STATE_COUNTRY;
                             } else if ("admin1".equals(tagName)) {
                                 state = PARSE_STATE_ADMIN1;
-                            } else if ("latitude".equals(tagName)) {
+                            } else if (centroid && "latitude".equals(tagName)) {
                                 state = PARSE_STATE_LAT;
-                            } else if ("longitude".equals(tagName)) {
+                            } else if (centroid && "longitude".equals(tagName)) {
                                 state = PARSE_STATE_LNG;
+                            } else if ("admin2".equals(tagName)) {
+                                state = PARSE_STATE_ADMIN2;
+                            } else if ("admin3".equals(tagName)) {
+                                state = PARSE_STATE_ADMIN3;
+                            } else if ("centroid".equals(tagName)) {
+                                // We use lat/lon values in <centroid> entry.
+                                centroid = true;
                             }
                             break;
                     }
@@ -226,15 +316,23 @@ public class YahooPlacesAPIClient {
                             break;
 
                         case PARSE_STATE_NAME:
-                            name = xpp.getText();
+                            addrs[0] = xpp.getText();
                             break;
 
-                        case PARSE_STATE_COUNTRY:
-                            country = xpp.getText();
+                        case PARSE_STATE_ADMIN3:
+                            addrs[1] = xpp.getText();
+                            break;
+
+                        case PARSE_STATE_ADMIN2:
+                            addrs[2] = xpp.getText();
                             break;
 
                         case PARSE_STATE_ADMIN1:
-                            admin1 = xpp.getText();
+                            addrs[3] = xpp.getText();
+                            break;
+
+                        case PARSE_STATE_COUNTRY:
+                            addrs[4] = xpp.getText();
                             break;
 
                         case PARSE_STATE_LAT:
@@ -247,21 +345,38 @@ public class YahooPlacesAPIClient {
 
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if ("place".equals(tagName)) {
-                        sb.setLength(0);
-                        if (!TextUtils.isEmpty(name)) {
-                            sb.append(name);
-                        }
-                        if (!TextUtils.isEmpty(admin1)) {
-                            if (sb.length() > 0) {
-                                sb.append(", ");
+
+                        String smallLocation = "";
+                        String largeLocation = "";
+
+                        for (int i = 0; i < addrs.length; i++) {
+                            if (TextUtils.isEmpty(addrs[i])) {
+                                continue;
+                            } else {
+                                smallLocation = addrs[i];
+                                for (int j = i + 1; j < addrs.length; j++) {
+                                    if (TextUtils.isEmpty(addrs[j])) {
+                                        continue;
+                                    }
+                                    if (!smallLocation.equals(addrs[j])) {
+                                        largeLocation = addrs[j];
+                                        break;
+                                    }
+                                }
+                                if (!TextUtils.isEmpty(largeLocation)) {
+                                    largeLocation = ", " + largeLocation;
+                                }
+                                break;
                             }
-                            sb.append(admin1);
                         }
-                        result.displayName = sb.toString();
-                        result.country = country;
+
+                        result.displayName = smallLocation + largeLocation;
+                        result.country = addrs[4];
+
                         results.add(result);
                         state = PARSE_STATE_NONE;
-
+                    } else if("centroid".equals(tagName)) {
+                        centroid = false;
                     } else if (state != PARSE_STATE_NONE) {
                         state = PARSE_STATE_PLACE;
                     }
@@ -285,45 +400,20 @@ public class YahooPlacesAPIClient {
 
     public static LocationInfo getLocationInfo(Location location)
             throws IOException, InvalidLocationException {
-        LocationInfo li = new LocationInfo();
 
-        HttpURLConnection connection;
+        // Original routine used only WOEID/LNG/LAT values from Yahoo place API feed.
+        // However we can also use DISPLAY_NAME of location embedded in this feed,
+        // because the *LOCALIIZED* location name can be found only in place feed,
+        // not in weather feed which only has english or mixed location names.
+        double lat = location.getLatitude();
+        double lon = location.getLongitude();
+        String displayName = getLocationNameFromCoords(lat, lon);
 
-        connection = Utils.openUrlConnection(buildPlaceSearchUrl(location));
-
-        try {
-            XmlPullParser xpp = sXmlPullParserFactory.newPullParser();
-            xpp.setInput(new InputStreamReader(connection.getInputStream()));
-
-            boolean inWoe = false;
-            int eventType = xpp.getEventType();
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                if (eventType == XmlPullParser.START_TAG && "woeid".equals(xpp.getName())) {
-                    inWoe = true;
-                } else if (eventType == XmlPullParser.TEXT && inWoe) {
-                    li.WOEID = xpp.getText();
-                }
-
-                if (eventType == XmlPullParser.END_TAG) {
-                    inWoe = false;
-                }
-
-                eventType = xpp.next();
-            }
-
-            if (!TextUtils.isEmpty(li.WOEID)) {
-                li.LNG = location.getLongitude();
-                li.LAT = location.getLatitude();
-                return li;
-            }
-
-            throw new InvalidLocationException();
-
-        } catch (XmlPullParserException e) {
-            throw new IOException("Error parsing location XML response.", e);
-        } finally {
-            connection.disconnect();
+        // After calling getLocationNameFromCoords, sWoeid may have WOEID.
+        if (!TextUtils.isEmpty(sWoeid)) {
+            return new LocationInfo(sWoeid, displayName, lat, lon);
         }
+        throw new InvalidLocationException();
     }
 
     public static class LocationSearchResult {

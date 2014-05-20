@@ -59,7 +59,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import static net.imatruck.betterweather.BetterWeatherData.*;
 import static net.imatruck.betterweather.utils.LogUtils.LOGD;
 import static net.imatruck.betterweather.utils.LogUtils.LOGE;
 import static net.imatruck.betterweather.utils.LogUtils.LOGW;
@@ -250,7 +249,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         if (TextUtils.isEmpty(provider)) {
             LOGE(TAG, "No available location providers matching criteria, scheduling refresh in 5 minutes.");
-            publishUpdate(new BetterWeatherData(ErrorCodes.LOCATION));
+            publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.LOCATION));
             scheduleRefresh(5);
             return;
         }
@@ -539,9 +538,9 @@ public class BetterWeatherExtension extends DashClockExtension {
      */
     private ExtensionData renderExtensionData(BetterWeatherData weatherData) {
 
-        if (weatherData.errorCode != ErrorCodes.NONE) {
+        if (weatherData.errorCode != BetterWeatherData.ErrorCodes.NONE) {
 
-            int[] errorStrings = getErrorMessage(weatherData.errorCode);
+            int[] errorStrings = BetterWeatherData.getErrorMessage(weatherData.errorCode);
 
             @SuppressWarnings("ResourceType") ExtensionData extensionData = new ExtensionData()
                     .visible(true)
@@ -565,7 +564,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
             int conditionIconId = getConditionIconId(weatherData.conditionCode);
 
-            @SuppressWarnings("ResourceType") String conditionText = getString(getStatusText(weatherData.conditionCode));
+            @SuppressWarnings("ResourceType") String conditionText = getString(BetterWeatherData.getStatusText(weatherData.conditionCode));
 
             StringBuilder expandedBody = formatExpendedBody(weatherData);
 
@@ -635,7 +634,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     private StringBuilder formatExpendedBody(BetterWeatherData weatherData) {
         StringBuilder expandedBody = new StringBuilder();
 
-        if (sShowFeelsLike && weatherData.feelsLike != weatherData.temperature && weatherData.feelsLike != -1) {
+        if (sShowFeelsLike && weatherData.feelsLike != weatherData.temperature && weatherData.feelsLike != BetterWeatherData.INVALID_TEMPERATURE) {
             expandedBody.append(getString(R.string.wind_chill_template, weatherData.feelsLike));
             expandedBody.append("\n");
         }
@@ -647,7 +646,7 @@ public class BetterWeatherExtension extends DashClockExtension {
                 //      "Wind: SW 1 mph"
                 // Asaian users with their wind_details_template in values-*
                 //      "WIND: DIRECTION PREFIX SPEED UNIT"
-                String speed = convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits);
+                String speed = BetterWeatherData.convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits);
                 String unit = getSpeedUnitDisplayValue(sSpeedUnits);
                 String prefix = getSpeedUnitDisplayPrefixValue(sSpeedUnits);
                 @SuppressWarnings("ResourceType") String windDirection = getString(BetterWeatherData.getWindDirectionText(weatherData.windDirection));
@@ -655,7 +654,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
                 if (sShowWindLabel) {
                     // For example, "Wind: SW 1 mph (Light breeze)"
-                    @SuppressWarnings("ResourceType") String speedLabel = getString(getWindSpeedLabel(sWeatherUnits, weatherData.windSpeed));
+                    @SuppressWarnings("ResourceType") String speedLabel = getString(BetterWeatherData.getWindSpeedLabel(sWeatherUnits, weatherData.windSpeed));
                     detailsLine.append(" (").append(speedLabel).append(")");
                 }
                 if (sShowHumidity) {
@@ -672,7 +671,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         if (sShowTodayForecast) {
             if (sShowHumidity || sShowWindDetails) expandedBody.append("\n");
-            int todayForecastTextId = getStatusText(weatherData.todayForecastConditionCode);
+            int todayForecastTextId = BetterWeatherData.getStatusText(weatherData.todayForecastConditionCode);
             @SuppressWarnings("ResourceType") String todayForecastText = getString(todayForecastTextId);
             expandedBody.append((sInvertHighLowTemps) ?
                     getString(R.string.today_forecast_template, todayForecastText, weatherData.todayHigh, weatherData.todayLow) :
@@ -681,7 +680,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         if (sShowTomorrowForecast) {
             if (sShowTodayForecast || sShowHumidity || sShowWindDetails) expandedBody.append("\n");
-            int tomorrowForecastTextId = getStatusText(weatherData.conditionCode);
+            int tomorrowForecastTextId = BetterWeatherData.getStatusText(weatherData.conditionCode);
             @SuppressWarnings("ResourceType") String tomorrowForecastText = getString(tomorrowForecastTextId);
             expandedBody.append((sInvertHighLowTemps) ?
                     getString(R.string.tomorrow_forecast_template, tomorrowForecastText, weatherData.tomorrowHigh, weatherData.tomorrowLow) :
@@ -814,7 +813,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         @Override
         public void onProviderDisabled(String s) {
             LOGD(TAG, "Provider disabled");
-            publishUpdate(new BetterWeatherData(ErrorCodes.LOCATION));
+            publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.LOCATION));
         }
     };
 }

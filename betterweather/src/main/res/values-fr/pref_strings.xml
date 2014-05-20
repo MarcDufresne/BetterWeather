@@ -94,9 +94,9 @@
     <string name="pref_weather_show_wind_details_summary_on">Les détails seront affichés en mode étendu</string>
     <string name="pref_weather_show_wind_details_summary_off">Les détails ne seront pas affichés</string>
 
-    <string name="pref_weather_show_feels_like_title">Refroidissement éolien</string>
-    <string name="pref_weather_show_feels_like_summary_on">Le refroidissement sera affiché en mode étendu lorsque disponible</string>
-    <string name="pref_weather_show_feels_like_summary_off">Le refroidissement ne sera pas affiché</string>
+    <string name="pref_weather_show_feels_like_title">Temp. ressentie</string>
+    <string name="pref_weather_show_feels_like_summary_on">La temp. ressentie sera affiché en mode étendu lorsque disponible</string>
+    <string name="pref_weather_show_feels_like_summary_off">La temp. ressentie ne sera pas affiché</string>
 
     <string name="pref_weather_use_only_network_title">Utiliser la localisation réseau</string>
     <string name="pref_weather_use_only_network_summary_on">L\'application utilisera seulement la localisation réseau (Économise la batterie)</string>

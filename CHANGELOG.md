@@ -1,5 +1,13 @@
 # BetterWeather Change Log
 
+## Version 3.0.3 (42):
+  - Added localization support for western users
+  - Fixed Feels like usage and labels
+  - Added translations
+
+## Version 3.0.2 (41):
+  - Removed Forecast API
+
 ## Version 3.0.1 (40)
   - Fixed FC when getting Lat/Long info from settings
 

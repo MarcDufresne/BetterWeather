@@ -53,7 +53,7 @@ public class BetterWeatherData {
      *
      * @see net.imatruck.betterweather.BetterWeatherData#temperature
      */
-    public int feelsLike;
+    public int feelsLike = INVALID_TEMPERATURE;
     /**
      * Should be between 0 and 100
      */

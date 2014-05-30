@@ -99,19 +99,6 @@ public class YahooWeatherAPIClient implements IWeatherAPI{
                         }
                     }
                 } else if (eventType == XmlPullParser.START_TAG
-                        && "location".equals(xpp.getName())) {
-                    String cityOrVillage = "--";
-                    String region = null;
-                    for (int i = xpp.getAttributeCount() - 1; i >= 0; i--) {
-                        if ("city".equals(xpp.getAttributeName(i))) {
-                            cityOrVillage = xpp.getAttributeValue(i);
-                        } else if ("region".equals(xpp.getAttributeName(i))) {
-                            region = xpp.getAttributeValue(i);
-                        }
-                    }
-
-                    data.location = cityOrVillage + ", " + region;
-                } else if (eventType == XmlPullParser.START_TAG
                         && "wind".equals(xpp.getName())) {
                     for (int i = xpp.getAttributeCount() - 1; i >= 0; i--) {
                         if ("chill".equals(xpp.getAttributeName(i))) {
@@ -140,6 +127,8 @@ public class YahooWeatherAPIClient implements IWeatherAPI{
                 }
                 eventType = xpp.next();
             }
+
+            data.location = li.DISPLAYNAME;
 
             return data;
 

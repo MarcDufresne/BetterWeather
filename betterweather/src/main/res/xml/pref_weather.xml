@@ -47,12 +47,6 @@
             android:positiveButtonText="@null"
             android:defaultValue="yahoo_weather_api" />
 
-        <EditTextPreference
-            android:title="@string/pref_weather_api_key_title"
-            android:key="pref_weather_api_key"
-            android:defaultValue=""
-            android:summary="@string/pref_weather_api_key_summary" />
-
     </PreferenceCategory>
     <PreferenceCategory
         android:key="pref_header_appearance"
@@ -115,6 +109,13 @@
             android:summaryOn="@string/pref_weather_show_wind_details_summary_on"
             android:summaryOff="@string/pref_weather_show_wind_details_summary_off"
             android:title="@string/pref_weather_show_wind_details_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_weather_show_wind_speed_as_label"
+            android:summaryOn="@string/pref_weather_show_wind_speed_as_label_summary_on"
+            android:summaryOff="@string/pref_weather_show_wind_speed_as_label_summary_off"
+            android:title="@string/pref_weather_show_wind_speed_as_label_title"
+            android:dependency="pref_weather_show_wind_details" />
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="pref_weather_show_feels_like"

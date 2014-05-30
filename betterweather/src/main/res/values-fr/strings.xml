@@ -27,9 +27,6 @@
 
     <string name="shortcut_pref_help_text">Désactivez Cliquer pour rafraîchir pour utiliser</string>
 
-    <string name="weather_api_key_help_text_empty">Veuillez entrer votre clé pour ce service</string>
-    <string name="weather_api_key_help_text_not_needed">Aucune clé nécessaire pour ce service</string>
-
     <!-- About -->
     <string name="about_extension_text">
         <![CDATA[Créé par : <i>Marc-André Dufresne</i><br><br>Merci à Roman Nurik pour DashClock!]]></string>

@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013-2014 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
 <resources>
     <string name="cond_na">Non disponibile</string>
     <string name="cond_tornado">Tornado</string>
@@ -42,4 +58,27 @@
     <string name="cond_thundershowers">Acquazzoni con tuoni e lampi</string>
     <string name="cond_snow_showers">Brevi nevicate</string>
     <string name="cond_isolated_thundershowers">Acquazzoni isolati</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">N</string>
+    <string name="wind_northeast">NE</string>
+    <string name="wind_east">E</string>
+    <string name="wind_southeast">SE</string>
+    <string name="wind_south">S</string>
+    <string name="wind_soutwest">SW</string>
+    <string name="wind_west">W</string>
+    <string name="wind_northwest">NW</string>
+    <!-- Wind Speed Labels -->
+    <string name="wind_0">Calmo</string>
+    <string name="wind_1">Bava di vento</string>
+    <string name="wind_2">Brezza leggera</string>
+    <string name="wind_3">Brezza tesa</string>
+    <string name="wind_4">Vento moderato</string>
+    <string name="wind_5">Vento teso</string>
+    <string name="wind_6">Vento fresco</string>
+    <string name="wind_7">Vento forte</string>
+    <string name="wind_8">Burrasca</string>
+    <string name="wind_9">Burrasca forte</string>
+    <string name="wind_10">Tempesta</string>
+    <string name="wind_11">Tempesta violenta</string>
+    <string name="wind_12">Uragano</string>
 </resources>

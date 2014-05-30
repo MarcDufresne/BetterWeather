@@ -87,6 +87,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String PREF_WEATHER_ICON_THEME = "pref_weather_icon_theme";
     public static final String PREF_WEATHER_HIDE_LOCATION_NAME = "pref_weather_hide_location_name";
     public static final String PREF_WEATHER_SHOW_WIND_DETAILS = "pref_weather_show_wind_details";
+    public static final String PREF_WEATHER_SHOW_WIND_SPEED_AS_LABEL = "pref_weather_show_wind_speed_as_label";
     public static final String PREF_WEATHER_SHOW_FEELS_LIKE = "pref_weather_show_feels_like";
     public static final String PREF_WEATHER_SHOW_HUMIDITY = "pref_weather_show_humidity";
     public static final String PREF_WEATHER_INVERT_HIGHLOW = "pref_weather_invert_highlow";
@@ -104,7 +105,6 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String GOOGLENOW_ICON_THEME = "googlenow";
 
     public static final String YAHOO_WEATHER_API = "yahoo_weather_api";
-    public static final String FORECAST_WEATHER_API = "forecast_weather_api";
     public static final String OPENWEATHERMAP_WEATHER_API = "openweathermap_weather_api";
 
     private static final long STALE_LOCATION_NANOS = 10l * 60000000000l; // 10 minutes
@@ -123,6 +123,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     private static boolean sShowHighlow = false;
     private static boolean sHideLocationName = false;
     private static boolean sShowWindDetails = false;
+    private static boolean sShowWindLabel = false;
     private static boolean sShowFeelsLike = false;
     private static boolean sShowHumidity = false;
     private static boolean sUseOnlyNetworkLocation = false;
@@ -202,6 +203,13 @@ public class BetterWeatherExtension extends DashClockExtension {
     protected void onUpdateData(int reason) {
 
         LOGD(TAG, "Update reason: " + getReasonText(reason));
+
+        // Whenever updating, set sLang to Yahoo's format(en-US, not en_US)
+        // If sLang is set in elsewhere, and user changes phone's locale
+        // without entering BW setting menu, then Yahoo's place name in widget
+        // may be in wrong locale.
+        Locale current = getResources().getConfiguration().locale;
+        YahooPlacesAPIClient.sLang = current.getLanguage() + "-" + current.getCountry();
 
         if (reason != UPDATE_REASON_USER_REQUESTED &&
                 reason != UPDATE_REASON_SETTINGS_CHANGED &&
@@ -298,7 +306,9 @@ public class BetterWeatherExtension extends DashClockExtension {
      */
     public static LocationInfo getLocationInfoFromSettings() {
 
+        // Location displayName("New York, USA" form) also assigned.
         return new LocationInfo(WeatherLocationPreference.getWoeidFromValue(sSetLocation),
+                WeatherLocationPreference.getDisplayNameFromValue(sSetLocation),
                 Double.parseDouble(WeatherLocationPreference.getLatFromValue(sSetLocation)),
                 Double.parseDouble(WeatherLocationPreference.getLngFromValue(sSetLocation)));
     }
@@ -321,6 +331,7 @@ public class BetterWeatherExtension extends DashClockExtension {
                 LOGD(TAG, "Using location: " + location.getLatitude()
                         + "," + location.getLongitude() + " to get weather");
             }
+
             locationInfo = YahooPlacesAPIClient.getLocationInfo(location);
         }
 
@@ -330,7 +341,12 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         LOGD(TAG, "Using " + mWeatherAPI.getClass());
 
-        return mWeatherAPI.getWeatherDataForLocation(locationInfo);
+        BetterWeatherData data = mWeatherAPI.getWeatherDataForLocation(locationInfo);
+
+        if(data.location == null || TextUtils.isEmpty(data.location) || "N/A".equals(data.location))
+            data.location = YahooPlacesAPIClient.getLocationNameFromCoords(locationInfo.LAT, locationInfo.LNG);
+
+        return data;
     }
 
     /**
@@ -479,6 +495,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         sShowHumidity = sp.getBoolean(PREF_WEATHER_SHOW_HUMIDITY, sShowHumidity);
         sShowFeelsLike = sp.getBoolean(PREF_WEATHER_SHOW_FEELS_LIKE, sShowFeelsLike);
         sShowWindDetails = sp.getBoolean(PREF_WEATHER_SHOW_WIND_DETAILS, sShowWindDetails);
+        sShowWindLabel = sp.getBoolean(PREF_WEATHER_SHOW_WIND_SPEED_AS_LABEL, sShowWindLabel);
         sInvertHighLowTemps = sp.getBoolean(PREF_WEATHER_INVERT_HIGHLOW, sInvertHighLowTemps);
         sPebbleEnable = sp.getBoolean(PREF_PEBBLE_ENABLE, sPebbleEnable);
         sPebbleShowFeelsLike = sp.getBoolean(PREF_PEBBLE_SHOW_FEELS_LIKE, sPebbleShowFeelsLike);
@@ -622,7 +639,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     private StringBuilder formatExpendedBody(BetterWeatherData weatherData) {
         StringBuilder expandedBody = new StringBuilder();
 
-        if (sShowFeelsLike && weatherData.feelsLike != weatherData.temperature && weatherData.feelsLike != -1) {
+        if (sShowFeelsLike && weatherData.feelsLike != weatherData.temperature && weatherData.feelsLike != BetterWeatherData.INVALID_TEMPERATURE) {
             expandedBody.append(getString(R.string.wind_chill_template, weatherData.feelsLike));
             expandedBody.append("\n");
         }
@@ -630,13 +647,26 @@ public class BetterWeatherExtension extends DashClockExtension {
         if (sShowHumidity || sShowWindDetails) {
             StringBuilder detailsLine = new StringBuilder();
             if (sShowWindDetails && !"".equals(weatherData.windSpeed)) {
-                //noinspection ResourceType
-                detailsLine.append(getString(R.string.wind_details_template,
-                        getString(BetterWeatherData.getWindDirectionText(weatherData.windDirection)),
-                        BetterWeatherData.convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits),
-                        getSpeedUnitDisplayValue(sSpeedUnits)));
-                if (sShowHumidity)
-                    detailsLine.append(", ");
+                // Western users.
+                //      "Wind: SW 1 mph"
+                // Asaian users with their wind_details_template in values-*
+                //      "WIND: DIRECTION PREFIX SPEED UNIT"
+                String speed = BetterWeatherData.convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits);
+                String unit = getSpeedUnitDisplayValue(sSpeedUnits);
+                String prefix = getSpeedUnitDisplayPrefixValue(sSpeedUnits);
+                @SuppressWarnings("ResourceType") String windDirection = getString(BetterWeatherData.getWindDirectionText(weatherData.windDirection));
+                detailsLine.append(getString(R.string.wind_details_template, windDirection, speed, unit, prefix));
+
+                if (sShowWindLabel) {
+                    // For example, "Wind: SW 1 mph (Light breeze)"
+                    @SuppressWarnings("ResourceType") String speedLabel = getString(BetterWeatherData.getWindSpeedLabel(sWeatherUnits, weatherData.windSpeed));
+                    detailsLine.append(" (").append(speedLabel).append(")");
+                }
+                if (sShowHumidity) {
+                    // if sShowWindLabel, then detailsLine can be a little long.
+                    detailsLine.append(sShowWindLabel ? "\n" : ", ");
+                }
+
             }
             if (sShowHumidity)
                 detailsLine.append(getString(R.string.humidity_template, weatherData.humidity)).append("%");
@@ -665,10 +695,27 @@ public class BetterWeatherExtension extends DashClockExtension {
         if (!sHideLocationName) {
             if (sShowHumidity || sShowTodayForecast || sShowTomorrowForecast || sShowWindDetails)
                 expandedBody.append("\n");
-            if (!sUseCurrentLocation)
-                expandedBody.append(WeatherLocationPreference.getDisplayValue(this, sSetLocation));
-            else
-                expandedBody.append(weatherData.location);
+
+            // Irrespective of sUseCurrentLocation, weatherData.location has its value,
+            // because getLocationInfoFromSettings called before calling this formatExpendedBody() method
+            // we prepared location field from settings already.
+            String displayLocationName = weatherData.location;
+
+            // displayLocationName shown in pref setting has always "small, large" format.
+            // However asian users can customize location name in WIDGET with location_template
+            // having a form like "%2$s %1$s", in which %1$s is small, %2$s is large location name.
+            String[] locs = displayLocationName.split(",");
+            String smallLocation, largeLocation;
+            if (locs.length == 2) {
+                smallLocation = locs[0].trim();
+                largeLocation = locs[1].trim();
+            }
+            else {
+                smallLocation = displayLocationName;
+                largeLocation = "";
+            }
+            expandedBody.append(getString(R.string.location_template, smallLocation, largeLocation));
+
         }
 
         return expandedBody;
@@ -712,10 +759,25 @@ public class BetterWeatherExtension extends DashClockExtension {
      * @return Wind speed unit
      */
     private String getSpeedUnitDisplayValue(int speedUnitIndex) {
-        String[] units = getResources().getStringArray(R.array.pref_weather_speed_units_display_names);
+        // array R.array.pref_weather_speed_units_display_names is for use in pref menu.
+        // array R.array.weather_speed_units_display_names is for use in widget.
+        // For asian users, two arrays may be not same, so it is modified.
+        String[] units = getResources().getStringArray(R.array.weather_speed_units_display_names);
         if (speedUnitIndex >= 0 && speedUnitIndex < units.length)
             return units[speedUnitIndex];
         return units[0];
+    }
+
+    /**
+     * Gets the wind speed unit prefix for asian users
+     * @param speedUnitIndex Index to fetch
+     * @return Wind speed unit prefix
+     */
+    private String getSpeedUnitDisplayPrefixValue(int speedUnitIndex) {
+        String[] prefixes = getResources().getStringArray(R.array.weather_speed_units_display_prefix_names);
+        if (speedUnitIndex >= 0 && speedUnitIndex < prefixes.length)
+            return prefixes[speedUnitIndex];
+        return prefixes[0];
     }
 
     /*

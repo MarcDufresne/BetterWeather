@@ -23,6 +23,7 @@ limitations under the License.
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Všeobecné nastavenia</string>
+    <string name="pref_header_service">Služba počasia</string>
     <string name="pref_header_appearance">Všeobecný vzhľad</string>
     <string name="pref_header_expanded_appearance">Vzhľad rozšíreného zobrazenia</string>
     <string name="pref_header_behaviour">Správanie</string>
@@ -41,6 +42,8 @@ limitations under the License.
     <string name="pref_weather_location_automatic">Automatická</string>
     <string name="pref_weather_location_query_hint">Nájsť miesto</string>
     <string name="pref_weather_location_automatic_description">Na základe vašej aktuálnej polohy.</string>
+    
+    <string name="pref_weather_api_title">Služba počasia</string>
 
     <string name="pref_weather_show_today_forecast_title">Zobraziť predpoveď počasia na dnes</string>
     <string name="pref_weather_show_today_forecast_on">Predpoveď počasia na dnes bude zobrazená</string>
@@ -68,7 +71,7 @@ limitations under the License.
 
     <string name="pref_weather_show_refresh_toast_title">Zobraziť toast po aktualizácii</string>
     <string name="pref_weather_show_refresh_toast_on">Toast bude zobrazený po aktualizácii</string>
-    <string name="pref_weather_show_refresh_toast_off">Toast väzba nebude zobrazený po aktualizácii</string>
+    <string name="pref_weather_show_refresh_toast_off">Toast nebude zobrazený po aktualizácii</string>
 
     <string name="pref_weather_show_highlow_title">Zobraziť vysoké/nízke teploty</string>
     <string name="pref_weather_show_highlow_on">Vysoké/nízke teploty budú zobrazené</string>
@@ -100,7 +103,7 @@ limitations under the License.
     <string name="pref_weather_use_only_network_summary_on">Aplikácia bude používať len sieť na určenie vašej polohy (šetrí batériu)</string>
     <string name="pref_weather_use_only_network_summary_off">Aplikácia bude používať GPS (ak sieť nie je dostupná)</string>
 
-    <string name="pref_donate_title">Páči sa Vám čo vidíte?</string>
+    <string name="pref_donate_title">Páči sa vám táto aplikácia?</string>
     <string name="pref_donate_summary">Prečo mi nekúpite šálku kávy? :)</string>
     
     <string name="pref_pebble_enable_title">Povoliť integráciu s hodinkami Pebble</string>

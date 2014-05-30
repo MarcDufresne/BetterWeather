@@ -53,7 +53,7 @@ public class BetterWeatherData {
      *
      * @see net.imatruck.betterweather.BetterWeatherData#temperature
      */
-    public int feelsLike;
+    public int feelsLike = INVALID_TEMPERATURE;
     /**
      * Should be between 0 and 100
      */
@@ -250,6 +250,49 @@ public class BetterWeatherData {
             return Integer.toString(Math.round(windSpeed));
         }
         return "0";
+    }
+
+    /**
+     * Convert wind speed to descrptive label.
+     *
+     * @see <a href="http://www.windfinder.com/wind/windspeed.htm">Wind speed labels</a>
+     */
+    public static int getWindSpeedLabel(String weatherUnit, String windSpeedString) {
+        if (windSpeedString != null) {
+            float windSpeed = Float.parseFloat(windSpeedString);
+            if (weatherUnit.equals("c")) {
+                windSpeed = windSpeed / 1.609344f; // Km/h -> Mph
+            }
+            // windSpeed in mph unit.
+            //
+            if (windSpeed < 1)
+                return R.string.wind_0;
+            else if (windSpeed < 4)
+                return R.string.wind_1;
+            else if (windSpeed < 8)
+                return R.string.wind_2;
+            else if (windSpeed < 13)
+                return R.string.wind_3;
+            else if (windSpeed < 18)
+                return R.string.wind_4;
+            else if (windSpeed < 25)
+                return R.string.wind_5;
+            else if (windSpeed < 31)
+                return R.string.wind_6;
+            else if (windSpeed < 39)
+                return R.string.wind_7;
+            else if (windSpeed < 47)
+                return R.string.wind_8;
+            else if (windSpeed < 55)
+                return R.string.wind_9;
+            else if (windSpeed < 64)
+                return R.string.wind_10;
+            else if (windSpeed < 74)
+                return R.string.wind_11;
+            else
+                return R.string.wind_12;
+        }
+        return R.string.cond_na;
     }
 
     public static int[] getErrorMessage(ErrorCodes errorCode) {

@@ -67,4 +67,18 @@ limitations under the License.
     <string name="wind_soutwest">SW</string>
     <string name="wind_west">W</string>
     <string name="wind_northwest">NW</string>
+    <!-- Wind Speedd Labels -->
+    <string name="wind_0">Calm</string>
+    <string name="wind_1">Light air</string>
+    <string name="wind_2">Light breeze</string>
+    <string name="wind_3">Gentle breeze</string>
+    <string name="wind_4">Moderate breeze</string>
+    <string name="wind_5">Fresh breeze</string>
+    <string name="wind_6">Strong breeze</string>
+    <string name="wind_7">Near gale</string>
+    <string name="wind_8">Gale</string>
+    <string name="wind_9">Severe gale</string>
+    <string name="wind_10">Storm</string>
+    <string name="wind_11">Violent storm</string>
+    <string name="wind_12">Hurricane</string>
 </resources>

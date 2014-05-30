@@ -23,9 +23,6 @@ public class WeatherAPIFactory {
         if(apiSetting.equals(BetterWeatherExtension.YAHOO_WEATHER_API)){
             return new YahooWeatherAPIClient();
         }
-        else if(apiSetting.equals(BetterWeatherExtension.FORECAST_WEATHER_API)){
-            return new ForecastWeatherAPIClient();
-        }
         else if (apiSetting.equals(BetterWeatherExtension.OPENWEATHERMAP_WEATHER_API)) {
             return new OpenWeatherMapWeatherAPIClient();
         }

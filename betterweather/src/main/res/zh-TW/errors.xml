@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013-2014 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+    <string name="error_status">--</string>
+    <!-- Unknown error -->
+    <string name="error_unknown">發生未知錯誤。</string>
+    <string name="error_unknown_expandedBody">請刷新widget或更改設定，資訊稍後將取得更新。</string>
+    <!-- Couldn't get location error -->
+    <string name="error_location">無法取得位置資訊。</string>
+    <string name="error_location_expandedBody">可能無法取得您的位置資訊，請檢查手機設定並重試。</string>
+    <!-- No internet connection -->
+    <string name="error_internet">沒有網路連線。</string>
+    <string name="error_internet_expandedBody">無法取得網路連線，請檢查手機並重試。</string>
+    <!-- API Key error -->
+    <string name="error_api">API錯誤。</string>
+    <string name="error_api_expandedBody">該氣象服務的API key有誤，請檢查後重試。</string>
+</resources>

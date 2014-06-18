@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding= "utf-8"?>
+<resources>
+
+    <!-- App Chooser -->
+    <string name="pref_shortcut_title">快速操作</string>
+    <string name="pref_shortcut_default">(預設)</string>
+
+    <!-- Weather Settings Category -->
+    <string name="pref_header_general">設定</string>
+	<string name="pref_header_service">氣象資訊來源</string>
+	<string name="pref_header_appearance">外觀</string>
+	<string name="pref_header_expanded_appearance">擴展頁面</string>
+    <string name="pref_header_behaviour">操作行為</string>
+    <string name="pref_header_pebble">Pebble Watch智慧型手表</string>
+    <string name="pref_header_donate">捐贈</string>
+
+    <!-- Weather -->
+    <string name="pref_weather_units_title">溫度單位</string>
+    <string-array name="pref_weather_units_display_names">
+        <item>華氏度 F</item>
+        <item>攝氏度 C</item>
+    </string-array>
+
+    <string name="pref_weather_speed_unit_title">風速單位</string>
+    <string-array name="pref_weather_speed_units_display_names">
+        <item>mph</item>
+        <item>km/h</item>
+        <item>m/s</item>
+    </string-array>
+
+    <string name="pref_weather_location_choice_title">根據位置資訊</string>
+    <string name="pref_weather_location_use_current_on">BetterWeather 將會使用您的位置資訊</string>
+    <string name="pref_weather_location_use_current_off">BetterWeather 將會使用如下位置資訊</string>
+
+    <string name="pref_weather_location_title">位置</string>
+    <string name="pref_weather_location_automatic">自動</string>
+    <string name="pref_weather_location_query_hint">搜尋位置</string>
+    <string name="pref_weather_location_automatic_description">根據您目前的位置</string>
+
+    <string name="pref_weather_api_title">天氣資訊來源</string>
+
+    <string name="pref_weather_show_today_forecast_title">顯示今日氣象預報</string>
+    <string name="pref_weather_show_today_forecast_on">今日氣象預報將顯示於擴展頁面</string>
+    <string name="pref_weather_show_today_forecast_off">今日預報將不會顯示於擴展頁面</string>
+
+    <string name="pref_weather_show_tomorrow_forecast_title">顯示明日氣象預報</string>
+    <string name="pref_weather_show_tomorrow_forecast_on">明日氣象預報將顯示於擴展頁面</string>
+    <string name="pref_weather_show_tomorrow_forecast_off">明日氣象預報將不會顯示於擴展頁面</string>
+
+    <string name="pref_weather_refresh_on_touch_title">點擊更新天氣資訊</string>
+    <string name="pref_weather_refresh_on_touch_on">點擊圖示時更新天氣資訊 (停用此設定並啟用快速操作)</string>
+    <string name="pref_weather_refresh_on_touch_off">點擊圖示時將會執行所選操作</string>
+
+    <string name="pref_weather_refresh_interval_title">更新資訊時間間隔</string>
+    <string-array name="pref_weather_refresh_interval_entries">
+        <item>15 分鐘</item>
+        <item>30 分鐘</item>
+        <item>45 分鐘</item>
+        <item>1 小時</item>
+        <item>2 小時</item>
+        <item>3 小時</item>
+        <item>4 小時</item>
+        <item>關閉自動更新</item>
+    </string-array>
+
+    <string name="pref_weather_show_refresh_toast_title">更新資訊時是否顯示提示訊息</string>
+    <string name="pref_weather_show_refresh_toast_on">更新資訊後顯示提示訊息</string>
+    <string name="pref_weather_show_refresh_toast_off">更新資訊後不顯示提示訊息</string>
+
+    <string name="pref_weather_show_highlow_title">是否顯示最高/最低氣溫</string>
+    <string name="pref_weather_show_highlow_on">顯示最高/最低氣溫</string>
+    <string name="pref_weather_show_highlow_off">不顯示最高/最低氣溫</string>
+
+    <string name="pref_weather_invert_highlow_title">交換最高/最低氣溫顯示</string>
+    <string name="pref_weather_invert_highlow_on">先顯示最高氣溫</string>
+    <string name="pref_weather_invert_highlow_off">先顯示最低氣溫</string>
+
+    <string name="pref_weather_icon_theme_title">天氣狀態圖示主題</string>
+
+    <string name="pref_weather_hide_location_name_title">是否顯示位置資訊</string>
+    <string name="pref_weather_hide_location_name_summary_on">不顯示位置於擴展頁面</string>
+    <string name="pref_weather_hide_location_name_summary_off">顯示位置於擴展頁面</string>
+
+    <string name="pref_weather_show_humidity_title">是否顯示濕度</string>
+    <string name="pref_weather_show_humidity_summary_on">濕度資訊將顯示於擴展頁面</string>
+    <string name="pref_weather_show_humidity_summary_off">濕度資訊將不會顯示於擴展頁面</string>
+
+    <string name="pref_weather_show_wind_details_title">顯示風速資訊</string>
+    <string name="pref_weather_show_wind_details_summary_on">風速資訊將顯示於擴展頁面</string>
+    <string name="pref_weather_show_wind_details_summary_off">風速資訊將不會顯示再擴展頁面</string>
+
+    <string name="pref_weather_show_feels_like_title">顯示體感溫度</string>
+    <string name="pref_weather_show_feels_like_summary_on">體感溫度將顯示於擴展頁面</string>
+    <string name="pref_weather_show_feels_like_summary_off">體感溫度將不會顯示於擴展頁面</string>
+
+    <string name="pref_weather_use_only_network_title">使用網路資訊輔助定位</string>
+    <string name="pref_weather_use_only_network_summary_on">僅適用網路取得所在位置資訊 (省電)</string>
+    <string name="pref_weather_use_only_network_summary_off">無法透過網路取得位置資訊時使用GPS衛星定位</string>
+
+    <string name="pref_donate_title">喜歡這個APP嗎?</string>
+    <string name="pref_donate_summary">請我喝杯咖啡吧? :)</string>
+
+    <string name="pref_pebble_enable_title">Pebble 連線</string>
+    <string name="pref_pebble_enable_summary_on">傳送數據到 Pebble Watch</string>
+    <string name="pref_pebble_enable_summary_off">停用 Pebble 連線</string>
+
+    <string name="pref_pebble_show_feels_like_title">顯示體感溫度</string>
+    <string name="pref_pebble_show_feels_like_summary_on">在 Pebble Watch 上顯示體感溫度</string>
+    <string name="pref_pebble_show_feels_like_summary_off">在 Pebble Watch 上顯示實際溫度</string>
+</resources>

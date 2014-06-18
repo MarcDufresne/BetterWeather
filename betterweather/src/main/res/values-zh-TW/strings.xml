@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="extension_title">BetterWeather 天氣</string>
+    <string name="extension_description">根據您的位置資訊或設定，為您提供即時天氣資訊。
+	天氣資訊由Yahoo天氣，Forecast，OpenWeatherMap提供！</string>
+    <string name="title_settings">BetterWeather 設定</string>
+
+    <!-- App Chooser -->
+    <string name="title_shortcuts">快速操作</string>
+
+    <!-- Toasts -->
+    <string name="toast_refreshing">更新資訊中&#8230;</string>
+
+    <!-- Weather -->
+    <string name="today_forecast_template">今天: %1$s, %2$s/%3$s°</string>
+    <string name="tomorrow_forecast_template">明天: %1$s, %2$s/%3$s°</string>
+
+    <string name="wind_details_template">風: %1$s %2$s %3$s</string>
+    <string name="wind_chill_template">風溫: %1$s°</string>
+    <string name="humidity_template">濕度: %1$s</string>
+
+    <string name="shortcut_pref_help_text">請關閉點擊更新資訊功能</string>
+
+    <!-- About -->
+    <string name="about_extension_text">
+        <![CDATA[開發者：<i>Marc-André Dufresne</i><br><br>感謝Roman Nurik對DashClock的支援!<br>中文化：<i>Chi-Heng Yang</i>,<a href="https://sites.google.com/site/chihengyang/">Chi-Heng Yang</a>]]></string>
+    <string name="close">關閉</string>
+    <string name="about_title">關於</string>
+
+</resources>

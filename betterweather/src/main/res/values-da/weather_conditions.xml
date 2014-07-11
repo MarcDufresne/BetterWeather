@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013-2014 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<resources>
+    <string name="cond_na">Ikke tilgængelig</string>
+    <string name="cond_tornado">Tornado</string>
+    <string name="cond_tropical_storm">Tropisk Storm</string>
+    <string name="cond_hurricane">Orkan</string>
+    <string name="cond_severe_thunderstorms">Svær torden</string>
+    <string name="cond_thunderstorms">Torden</string>
+    <string name="cond_mixed_rain_and_snow">Blandet regn og sne</string>
+    <string name="cond_mixed_rain_and_sleet">Blandet regn og slud</string>
+    <string name="cond_mixed_snow_and_sleet">Blandet sne og slud</string>
+    <string name="cond_freezing_drizzle">Frysende støvregn</string>
+    <string name="cond_drizzle">Støvregn</string>
+    <string name="cond_freezing_rain">Isslag</string>
+    <string name="cond_showers">Regnbyger</string>
+    <string name="cond_snow_flurries">Snefnug</string>
+    <string name="cond_light_snow_showers">Lette snebyger</string>
+    <string name="cond_blowing_snow">Snefygning</string>
+    <string name="cond_snow">Sne</string>
+    <string name="cond_hail">Hagl</string>
+    <string name="cond_sleet">Slud</string>
+    <string name="cond_dust">Støv</string>
+    <string name="cond_foggy">Tåget</string>
+    <string name="cond_haze">Uklart</string>
+    <string name="cond_smoky">Smoky</string>
+    <string name="cond_blustery">Blustery</string>
+    <string name="cond_windy">Blæsende</string>
+    <string name="cond_cold">Koldt</string>
+    <string name="cond_cloudy">Skyet</string>
+    <string name="cond_mostly_cloudy">Mest skyet</string>
+    <string name="cond_partly_cloudy">Delvist skyet</string>
+    <string name="cond_clear">Klart</string>
+    <string name="cond_sunny">Solrigt</string>
+    <string name="cond_fair">Fair</string>
+    <string name="cond_mixed_rain_and_hail">Blandet regn og hagl</string>
+    <string name="cond_hot">Varmt</string>
+    <string name="cond_isolated_thunderstorms">Isolated thunderstorms</string>
+    <string name="cond_scattered_thunderstorms">Spredt torden</string>
+    <string name="cond_scattered_showers">Spredte byger</string>
+    <string name="cond_heavy_snow">Kraftig sne</string>
+    <string name="cond_scattered_snow_showers">Spredte snebyger</string>
+    <string name="cond_thundershowers">Tordenbyger</string>
+    <string name="cond_snow_showers">Snebyger</string>
+    <string name="cond_isolated_thundershowers">Isolated thundershowers</string>
+    <!-- Wind Directions -->
+    <string name="wind_north">N</string>
+    <string name="wind_northeast">NØ</string>
+    <string name="wind_east">Ø</string>
+    <string name="wind_southeast">SØ</string>
+    <string name="wind_south">S</string>
+    <string name="wind_soutwest">SV</string>
+    <string name="wind_west">V</string>
+    <string name="wind_northwest">NV</string>
+    <!-- Wind Speed Labels -->
+    <string name="wind_0">Rolig</string>
+    <string name="wind_1">Svag vind</string>
+    <string name="wind_2">Let vind</string>
+    <string name="wind_3">Blid vind</string>
+    <string name="wind_4">Moderat vind</string>
+    <string name="wind_5">Frisk vind</string>
+    <string name="wind_6">Stærk vind</string>
+    <string name="wind_7">Nær kuling</string>
+    <string name="wind_8">Kuling</string>
+    <string name="wind_9">Svær kuling</string>
+    <string name="wind_10">Storm</string>
+    <string name="wind_11">Voldsom storm</string>
+    <string name="wind_12">Orkan</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2013-2014 Marc-André Dufresne
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+    <string name="error_status">--</string>
+    <!-- Unknown error -->
+    <string name="error_unknown">En ukendt fejl opstod.</string>
+    <string name="error_unknown_expandedBody">Prøv at opdatere widgetten eller ændre indstillingerne. Vi prøver at opdatere om få minutter.</string>
+    <!-- Couldn't get location error -->
+    <string name="error_location">Placering ikke fundet.</string>
+    <string name="error_location_expandedBody">Det lader til at vi ikke kunne se din lokation. Tjek dine Android lokations-indstillinger og prøv at opdatere igen.</string>
+    <!-- No internet connection -->
+    <string name="error_internet">Ingen internet forbindelse.</string>
+    <string name="error_internet_expandedBody">Det ser ud til at vi ikke kan forbinde til internettet. Tjek dine indstillinger og prøv at opdatere.</string>
+    <!-- API Key error -->
+    <string name="error_api">API fejl.</string>
+    <string name="error_api_expandedBody">Tjenesten kan være utilgængelig eller din API nøgle kan være forkert. Dobbelt-tjek din nøgle eller prøv igen senere.</string>
+</resources>

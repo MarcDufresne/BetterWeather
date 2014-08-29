@@ -2,7 +2,8 @@
 
     <string name="extension_title">BetterWeather 天气</string>
     <string name="extension_description">基于您的位置信息或设定，为您提供即时天气信息。
-	由雅虎天气，Forecast，OpenWeatherMap提供支持！</string>
+        由雅虎天气，Forecast，OpenWeatherMap提供支持！
+    </string>
     <string name="title_settings">BetterWeather 设定</string>
 
     <!-- App Chooser -->

@@ -51,4 +51,18 @@
     <string name="wind_soutwest">西南风</string>
     <string name="wind_west">西风</string>
     <string name="wind_northwest">西北风</string>
+    <!-- Wind Speedd Labels -->
+    <string name="wind_0">0#无风</string>
+    <string name="wind_1">1#软风</string>
+    <string name="wind_2">2#轻风</string>
+    <string name="wind_3">3#微风</string>
+    <string name="wind_4">4#和风</string>
+    <string name="wind_5">5#劲风</string>
+    <string name="wind_6">6#强风</string>
+    <string name="wind_7">7#疾风</string>
+    <string name="wind_8">8#大风</string>
+    <string name="wind_9">9#烈风</string>
+    <string name="wind_10">10#狂风</string>
+    <string name="wind_11">11#暴风</string>
+    <string name="wind_12">12#飓风</string>
 </resources>

@@ -85,9 +85,13 @@
     <string name="pref_weather_show_humidity_summary_on">湿度信息将会显示在扩展界面</string>
     <string name="pref_weather_show_humidity_summary_off">湿度信息将不会显示在扩展界面</string>
 
-    <string name="pref_weather_show_wind_details_title">显示详细风速</string>
-    <string name="pref_weather_show_wind_details_summary_on">详细风速将会显示在扩展界面</string>
-    <string name="pref_weather_show_wind_details_summary_off">详细风速将不会显示在扩展界面</string>
+    <string name="pref_weather_show_wind_details_title">显示风速</string>
+    <string name="pref_weather_show_wind_details_summary_on">风速将会显示在扩展界面</string>
+    <string name="pref_weather_show_wind_details_summary_off">风速将不会显示在扩展界面</string>
+
+    <string name="pref_weather_show_wind_speed_as_label_title">显示风速等级</string>
+    <string name="pref_weather_show_wind_speed_as_label_summary_on">显示风速等级信息</string>
+    <string name="pref_weather_show_wind_speed_as_label_summary_off">仅以风速单位显示</string>
 
     <string name="pref_weather_show_feels_like_title">显示风感温度</string>
     <string name="pref_weather_show_feels_like_summary_on">风感温度将会显示在扩展界面</string>

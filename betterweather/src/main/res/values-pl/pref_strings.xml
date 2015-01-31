@@ -7,8 +7,12 @@
 
     <!-- Weather Settings Category -->
     <string name="pref_header_general">Ustawienia ogólne</string>
+    <string name="pref_header_service">Weather Service</string>
     <string name="pref_header_appearance">Wygląd</string>
+    <string name="pref_header_expanded_appearance">Widok rozszerzony</string>
     <string name="pref_header_behaviour">Zachowanie</string>
+    <string name="pref_header_pebble">Pebble Watch</string>
+    <string name="pref_header_donate">Wspomóż</string>
 
     <!-- Weather -->
     <string name="pref_weather_units_title">Jednostka temperatury</string>
@@ -25,6 +29,8 @@
     <string name="pref_weather_location_automatic">automatyczny</string>
     <string name="pref_weather_location_query_hint">Znajdź lokalizację</string>
     <string name="pref_weather_location_automatic_description">Na podstawie bieżącej lokalizacji.</string>
+
+    <string name="pref_weather_api_title">Usługa pogodowa</string>
 
     <string name="pref_weather_show_today_forecast_title">Wyświetl dzisiejszą prognozę pogody</string>
     <string name="pref_weather_show_today_forecast_on">Dzisiejsza prognoza pogody będzie widoczna w widoku rozszerzonym</string>
@@ -58,6 +64,10 @@
     <string name="pref_weather_show_highlow_on">Wysoka/Niska temperatura będzie widoczna w statusie</string>
     <string name="pref_weather_show_highlow_off">Wysoka/Niska temperatura nie będzie widoczna w statusie</string>
 
+    <string name="pref_weather_invert_highlow_title">Odwróć Wysoką/Niską</string>
+    <string name="pref_weather_invert_highlow_on">Wysoka temperatura będzie pierwsza</string>
+    <string name="pref_weather_invert_highlow_off">Niska temperatura będzie pierwsza</string>
+
     <string name="pref_weather_icon_theme_title">Ikony statusu pogody</string>
 
     <string name="pref_weather_hide_location_name_title">Ukryj nazwę lokalizacji</string>
@@ -72,7 +82,26 @@
     <string name="pref_weather_show_wind_details_summary_on">Informacje o wietrze będą widoczne w widoku rozszerzonym</string>
     <string name="pref_weather_show_wind_details_summary_off">Informacje o wietrze nie będą widoczne</string>
 
+    <string name="pref_weather_show_wind_speed_as_label_title">Pokaż opis wiatru</string>
+    <string name="pref_weather_show_wind_speed_as_label_summary_on">Prędkość wiatru zostanie pokazana jako opis</string>
+    <string name="pref_weather_show_wind_speed_as_label_summary_off">Prędkość wiatru zostanie pokazana jako jednostka prędkości</string>
+
     <string name="pref_weather_show_feels_like_title">Wyświetl temp. odczuwalną</string>
     <string name="pref_weather_show_feels_like_summary_on">Temp. odczuwalna będzie widoczna w widoku rozszerzonym</string>
     <string name="pref_weather_show_feels_like_summary_off">Temp. odczuwalna nie będzie widoczna</string>
+
+    <string name="pref_weather_use_only_network_title">Użyj tylko lokalizacji po sieci</string>
+    <string name="pref_weather_use_only_network_summary_on">Aplikacja użyje tylko sieci GSM żeby okreslić Twoją lokalizacje (oszczędza baterię)</string>
+    <string name="pref_weather_use_only_network_summary_off">Aplikacja użyje GPS jeśli sieć GSM nie jest dostępna</string>
+
+    <string name="pref_donate_title">Lubisz to co widzisz?</string>
+    <string name="pref_donate_summary">Czemu nie kupisz mi kubka kawy? :)</string>
+
+    <string name="pref_pebble_enable_title">Włącz integracje z Pebble</string>
+    <string name="pref_pebble_enable_summary_on">Aplikacja będzie wysyłać do podłączonego zegarka Pebble</string>
+    <string name="pref_pebble_enable_summary_off">Integracja z Pebble jest wyłączona</string>
+
+    <string name="pref_pebble_show_feels_like_title">Wyświetl temp. odczuwalną</string>
+    <string name="pref_pebble_show_feels_like_summary_on">Temp. odczuwalna będzie widoczna w zegarku Pebble</string>
+    <string name="pref_pebble_show_feels_like_summary_off">Temp. odczuwalna nie będzie widoczna w zegarku Pebble</string>
 </resources>

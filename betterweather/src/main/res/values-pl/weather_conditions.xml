@@ -51,4 +51,18 @@
     <string name="wind_soutwest">pd.-zach.</string>
     <string name="wind_west">zach.</string>
     <string name="wind_northwest">pn.-zach.</string>
+    <!-- Wind Speedd Labels -->
+    <string name="wind_0">Spokój</string>
+    <string name="wind_1">Powiew</string>
+    <string name="wind_2">Lekki</string>
+    <string name="wind_3">Łagodny</string>
+    <string name="wind_4">Umiarkowany</string>
+    <string name="wind_5">Rześki</string>
+    <string name="wind_6">Mocny</string>
+    <string name="wind_7">Prawie wichura</string>
+    <string name="wind_8">Wichura</string>
+    <string name="wind_9">Ekstremalna wichura</string>
+    <string name="wind_10">Burza</string>
+    <string name="wind_11">Potężna burza</string>
+    <string name="wind_12">Huragan</string>
 </resources>

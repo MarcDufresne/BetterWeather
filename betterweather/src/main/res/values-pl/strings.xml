@@ -3,7 +3,7 @@
 
     <string name="extension_title">BetterWeather</string>
     <string name="extension_description">Wyświetla aktualną prognozę pogody dla twojej lub określonej w ustawieniach lokalizacji.
-        Prognoza pogody dzięki Yahoo! Weather.
+        Prognoza pogody dzięki Yahoo! Weather i OpenWeatherMap.
     </string>
     <string name="title_settings">Ustawienia BetterWeather</string>
 
@@ -25,10 +25,13 @@
     <string name="wind_speed_kmh">km/h</string>
     <string name="wind_speed_mph">mph</string>
 
+    <string name="shortcut_pref_help_text">Żeby użyć wyłącz "Odśwież prognozę pogody po dotknięciu"</string>
+
+
 
     <!-- About -->
     <string name="about_extension_text">
-        <![CDATA[Created By: <br><i>Marc-André Dufresne</i><br><br>Thanks to Roman Nurik for DashClock!<br><br>Tłumaczenie na język polski: <a href="https://github.com/jakubsynowiec" title="Jakub Synowiec" style="text-decoration: none;">Jakub Synowiec</a><br>]]></string>
+        <![CDATA[Created By: <br><i>Marc-André Dufresne</i><br><br>Thanks to Roman Nurik for DashClock!<br><br>Tłumaczenie na język polski: <a href="https://github.com/jakubsynowiec" title="Jakub Synowiec" style="text-decoration: none;">Jakub Synowiec</a>, <a href="https://github.com/kwiateusz" title="kwiateusz" style="text-decoration: none;">kwiateusz</a><br>]]></string>
     <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
     <string name="close">Zamknij</string>
     <string name="about_title">O rozszerzeniu</string>

@@ -33,3 +33,5 @@ signing.properties
 *.ipr
 *~
 *.swp
+
+api_owm

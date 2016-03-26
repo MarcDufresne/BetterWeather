@@ -1,64 +1,48 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
-    }
-}
-apply plugin: 'android'
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 19
-    }
-
-    signingConfigs {
-        release
+        targetSdkVersion 23
     }
 
     buildTypes {
-        release {
-            signingConfig signingConfigs.release
+        debug {
+            debuggable true
+            minifyEnabled false
         }
-    }
-
-    lintOptions{
-        checkReleaseBuilds false
-        abortOnError false
+        release {
+            minifyEnabled false
+            debuggable false
+        }
     }
 }
 
 dependencies {
-    compile files('libs/android-support-v4.jar')
-    compile files('libs/dashclock-api-r2.0.jar')
-    compile 'com.google.guava:guava:+'
+    compile 'com.android.support:support-v4:23.2.1'
+    compile 'com.google.android.apps.dashclock:dashclock-api:2.0.0'
+    compile 'com.google.guava:guava:19.0'
 }
 
-def Properties props = new Properties()
-def propFile = new File('signing.properties')
-if (propFile.canRead()){
-    props.load(new FileInputStream(propFile))
-
-    if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
-            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
-    } else {
-        println 'signing.properties found but some entries are missing'
-        android.buildTypes.release.signingConfig = null
-    }
-}else {
-    println 'signing.properties not found'
-    android.buildTypes.release.signingConfig = null
-}
+//def Properties props = new Properties()
+//def propFile = new File('signing.properties')
+//if (propFile.canRead()){
+//    props.load(new FileInputStream(propFile))
+//
+//    if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+//            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+//        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+//        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+//        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+//        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+//    } else {
+//        println 'signing.properties found but some entries are missing'
+//        android.buildTypes.release.signingConfig = null
+//    }
+//}else {
+//    println 'signing.properties not found'
+//    android.buildTypes.release.signingConfig = null
+//}

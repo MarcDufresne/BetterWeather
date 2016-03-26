@@ -9,12 +9,17 @@ android {
         targetSdkVersion 23
     }
 
+    String owm_api_key = new File('api_owm').text
+
     buildTypes {
+
         debug {
+            buildConfigField "String", "OWM_API_KEY", owm_api_key
             debuggable true
             minifyEnabled false
         }
         release {
+            buildConfigField "String", "OWM_API_KEY", owm_api_key
             minifyEnabled false
             debuggable false
         }

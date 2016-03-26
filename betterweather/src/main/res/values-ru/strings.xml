@@ -18,7 +18,7 @@
     <string name="today_forecast_template">Сегодня: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">Завтра: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">Ветер: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">Ветер: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">Ощущается: %1$s°</string>
     <string name="humidity_template">Влажность: %1$s</string>
 

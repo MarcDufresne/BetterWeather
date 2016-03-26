@@ -17,7 +17,7 @@
     <string name="today_forecast_template">Vandaag: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">Morgen: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">Wind: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">Wind: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">Gevoelstemperatuur: %1$s°</string>
     <string name="humidity_template">Vochtigheid: %1$s</string>
 

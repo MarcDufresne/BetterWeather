@@ -33,7 +33,7 @@ limitations under the License.
     <string name="today_forecast_template">Ma: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">Holnap: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">Szél: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">Szél: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">Wind chill: %1$s°</string>
     <string name="humidity_template">Páratartalom: %1$s</string>
 

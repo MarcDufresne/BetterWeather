@@ -21,12 +21,14 @@
 
 package net.imatruck.betterweather;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -39,6 +41,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -248,10 +251,8 @@ public class BetterWeatherExtension extends DashClockExtension {
             provider = lm.getBestProvider(sLocationCriteria, true);
 
         if (TextUtils.isEmpty(provider)) {
-            LOGE(TAG, "No available location providers matching criteria, scheduling refresh in 5 minutes.");
-            publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.LOCATION));
-            scheduleRefresh(5);
-            return;
+            LOGE(TAG, "No available location providers matching criteria, maybe permission is disabled.");
+            provider = null;
         }
 
         requestLocationUpdate(lm, provider);
@@ -263,7 +264,12 @@ public class BetterWeatherExtension extends DashClockExtension {
      * @param provider Provider determined in {@link net.imatruck.betterweather.BetterWeatherExtension#onUpdateData(int)}
      */
     private void requestLocationUpdate(final LocationManager lm, final String provider) {
-        if (sUseCurrentLocation) {
+        if (provider != null && sUseCurrentLocation) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                handleMissingPermission();
+                return;
+            }
             final Location lastLocation = lm.getLastKnownLocation(provider);
             if (lastLocation == null ||
                     (SystemClock.elapsedRealtimeNanos() - lastLocation.getElapsedRealtimeNanos())
@@ -292,12 +298,20 @@ public class BetterWeatherExtension extends DashClockExtension {
             } else {
                 new RefreshWeatherTask(lastLocation).execute();
             }
-        } else {
+        } else if (!sUseCurrentLocation) {
             LOGD(TAG, "Using set location");
             disableOneTimeLocationListener();
             Location dummyLocation = new Location(provider);
             new RefreshWeatherTask(dummyLocation).execute();
+        } else {
+            handleMissingPermission();
         }
+    }
+
+    private void handleMissingPermission() {
+        LOGE(TAG, "Trying to use current location but no provider was found, maybe the location permission was not granted");
+        publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.LOCATION));
+        scheduleRefresh(5);
     }
 
     /**
@@ -343,7 +357,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         BetterWeatherData data = mWeatherAPI.getWeatherDataForLocation(locationInfo);
 
-        if(data.location == null || TextUtils.isEmpty(data.location) || "N/A".equals(data.location))
+        if (data.location == null || TextUtils.isEmpty(data.location) || "N/A".equals(data.location))
             data.location = YahooPlacesAPIClient.getLocationNameFromCoords(locationInfo.LAT, locationInfo.LNG);
 
         return data;
@@ -424,9 +438,7 @@ public class BetterWeatherExtension extends DashClockExtension {
             try {
                 weatherData = getWeatherForLocation(mLocation);
                 LOGD(TAG, "Using new weather data for location: " + weatherData.location + " at " + SimpleDateFormat.getTimeInstance().format(new Date()));
-            } catch (InvalidLocationException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (InvalidLocationException | IOException e) {
                 e.printStackTrace();
             }
             return weatherData;
@@ -436,6 +448,9 @@ public class BetterWeatherExtension extends DashClockExtension {
         protected void onPostExecute(BetterWeatherData betterWeatherData) {
             if (betterWeatherData != null)
                 publishUpdate(betterWeatherData);
+            else {
+                publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.API));
+            }
         }
     }
 
@@ -510,7 +525,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     private static void convertLocationToNewFormat(String oldLocationData, SharedPreferences sp) {
 
-        if(oldLocationData.contains("/") || sUseCurrentLocation)
+        if (oldLocationData.contains("/") || sUseCurrentLocation)
             return;
 
         SharedPreferences.Editor editor = sp.edit();
@@ -709,8 +724,7 @@ public class BetterWeatherExtension extends DashClockExtension {
             if (locs.length == 2) {
                 smallLocation = locs[0].trim();
                 largeLocation = locs[1].trim();
-            }
-            else {
+            } else {
                 smallLocation = displayLocationName;
                 largeLocation = "";
             }
@@ -790,6 +804,10 @@ public class BetterWeatherExtension extends DashClockExtension {
     private void disableOneTimeLocationListener() {
         if (mOneTimeLocationListenerActive) {
             LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                LOGE(TAG, "Location permission was not granted, cannot remove location updates");
+                return;
+            }
             lm.removeUpdates(mOneTimeLocationListener);
             mOneTimeLocationListenerActive = false;
         }

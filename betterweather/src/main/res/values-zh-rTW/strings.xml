@@ -15,7 +15,7 @@
     <string name="today_forecast_template">今天: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">明天: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">風: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">風: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">風溫: %1$s°</string>
     <string name="humidity_template">濕度: %1$s</string>
 

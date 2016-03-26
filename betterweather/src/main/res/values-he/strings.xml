@@ -31,7 +31,7 @@ limitations under the License.
     <string name="today_forecast_template">היום: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">מחר: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">רוח: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">רוח: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">צינת הרוח: %1$s°</string>
     <string name="humidity_template">לחות: %1$s</string>
 

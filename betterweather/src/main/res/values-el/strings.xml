@@ -17,7 +17,7 @@
     <string name="today_forecast_template">Σήμερα: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">Αύριο: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">Άνεμοι: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">Άνεμοι: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">Ψύχος Αέρα: %1$s°</string>
     <string name="humidity_template">Υγρασία: %1$s</string>
 

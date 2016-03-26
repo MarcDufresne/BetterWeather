@@ -20,7 +20,6 @@
               android:layout_height="match_parent">
 
     <EditText android:id="@+id/location_query"
-              android:background="@drawable/ab_transparent_dark_holo"
               android:paddingLeft="24dp"
               android:paddingRight="24dp"
               android:layout_width="match_parent"

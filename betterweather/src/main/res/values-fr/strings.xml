@@ -18,7 +18,7 @@
     <string name="today_forecast_template">Aujourd\'hui: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">Demain: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">Vent: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">Vent: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">Refroidissement: %1$s°</string>
     <string name="humidity_template">Humidité: %1$s</string>
 

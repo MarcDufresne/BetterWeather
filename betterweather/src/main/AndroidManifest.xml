@@ -42,6 +42,7 @@
         <activity
                 android:name=".settings.BetterWeatherSettingsActivity"
                 android:exported="true"
+                android:theme="@android:style/Theme.DeviceDefault.Light"
                 android:label="@string/title_settings"/>
 
         <activity

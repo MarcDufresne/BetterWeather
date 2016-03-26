@@ -32,7 +32,7 @@ limitations under the License.
     <string name="today_forecast_template">Dnes: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">Zajtra: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">Vietor: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">Vietor: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">Pocitová teplota: %1$s°</string>
     <string name="humidity_template">Vlhkosť: %1$s</string>
 

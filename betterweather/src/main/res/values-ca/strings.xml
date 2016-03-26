@@ -32,7 +32,7 @@ limitations under the License.
     <string name="today_forecast_template">Avui: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">Demà: %1$s, %2$s/%3$s°</string>
 
-    <string name="wind_details_template">Vent: %1$s %2$s %3$s</string>
+    <string name="wind_details_template">Vent: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">Sensació de fredor: %1$s°</string>
     <string name="humidity_template">Humitat: %1$s</string>
 

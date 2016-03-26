@@ -21,11 +21,11 @@ limitations under the License.
     <string name="error_unknown_expandedBody">Please try to refresh the widget or change your settings. We\'ll try to refresh in a couple of minutes.</string>
     <!-- Couldn't get location error -->
     <string name="error_location">Location not found.</string>
-    <string name="error_location_expandedBody">It seems we could not get your location, you can check your Android location access settings and try to refresh.</string>
+    <string name="error_location_expandedBody">It seems we could not get your location, you can check your Android location access settings or permissions and try to refresh.</string>
     <!-- No internet connection -->
     <string name="error_internet">No internet connection.</string>
     <string name="error_internet_expandedBody">Looks like we can\'t connect to the internet, check your settings and try to refresh.</string>
     <!-- API Key error -->
     <string name="error_api">API error.</string>
-    <string name="error_api_expandedBody">The service may be unavailable or your API key might be wrong, double check your key or try again later.</string>
+    <string name="error_api_expandedBody">The service may be unavailable at the moment, please try again later.</string>
 </resources>

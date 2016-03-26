@@ -21,6 +21,7 @@
 
 package net.imatruck.betterweather.settings;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -29,16 +30,17 @@ import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.Preference;
+import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,10 +53,10 @@ import android.widget.TextView;
 
 import net.imatruck.betterweather.R;
 import net.imatruck.betterweather.YahooPlacesAPIClient;
+import net.imatruck.betterweather.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import static net.imatruck.betterweather.YahooPlacesAPIClient.LocationSearchResult;
 
@@ -62,6 +64,11 @@ import static net.imatruck.betterweather.YahooPlacesAPIClient.LocationSearchResu
  * A preference that allows the user to choose a location, using the Yahoo! GeoPlanet API.
  */
 public class WeatherLocationPreference extends Preference {
+
+    private static final String TAG = LogUtils.makeLogTag(WeatherLocationPreference.class);
+
+    private static final int LOCATION_REQUEST_CODE = 12;
+
     public WeatherLocationPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -107,7 +114,7 @@ public class WeatherLocationPreference extends Preference {
 
     /**
      * This method is for getting location name.
-     * @param saved pref location string.
+     * @param value pref location string.
      * @return location name saved in setting.
      */
     public static String getDisplayNameFromValue(String value) {
@@ -217,9 +224,8 @@ public class WeatherLocationPreference extends Preference {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Force Holo Light since ?android:actionBarXX would use dark action bar
             Context layoutContext = new ContextThemeWrapper(getActivity(),
-                    android.R.style.Theme_Holo_Light);
+                    android.R.style.Theme_DeviceDefault_Light_Dialog);
 
             LayoutInflater layoutInflater = LayoutInflater.from(layoutContext);
             View rootView = layoutInflater.inflate(R.layout.dialog_weather_location_chooser, null);
@@ -233,6 +239,12 @@ public class WeatherLocationPreference extends Preference {
                 public void onItemClick(AdapterView<?> listView, View view,
                                         int position, long itemId) {
                     String value = mSearchResultsAdapter.getPrefValueAt(position);
+                    if (value == null || "".equals(value)) {
+                        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                                ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+                        }
+                    }
                     mPreference.setValue(value);
                     dismiss();
                 }

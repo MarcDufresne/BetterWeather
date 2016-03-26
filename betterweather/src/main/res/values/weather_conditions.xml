@@ -67,7 +67,7 @@ limitations under the License.
     <string name="wind_soutwest">SW</string>
     <string name="wind_west">W</string>
     <string name="wind_northwest">NW</string>
-    <!-- Wind Speedd Labels -->
+    <!-- Wind Speed Labels -->
     <string name="wind_0">Calm</string>
     <string name="wind_1">Light air</string>
     <string name="wind_2">Light breeze</string>

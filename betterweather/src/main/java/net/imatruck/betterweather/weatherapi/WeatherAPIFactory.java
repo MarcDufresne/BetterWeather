@@ -20,14 +20,11 @@ import net.imatruck.betterweather.BetterWeatherExtension;
 public class WeatherAPIFactory {
 
     public static IWeatherAPI getWeatherAPIFromSetting(String apiSetting){
-        if(apiSetting.equals(BetterWeatherExtension.YAHOO_WEATHER_API)){
-            return new YahooWeatherAPIClient();
-        }
-        else if (apiSetting.equals(BetterWeatherExtension.OPENWEATHERMAP_WEATHER_API)) {
+        if (apiSetting.equals(BetterWeatherExtension.OPENWEATHERMAP_WEATHER_API)) {
             return new OpenWeatherMapWeatherAPIClient();
         }
 
-        return new YahooWeatherAPIClient();
+        return new OpenWeatherMapWeatherAPIClient();
     }
 
 }

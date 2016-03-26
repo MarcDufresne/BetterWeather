@@ -34,4 +34,6 @@ signing.properties
 *~
 *.swp
 
+.DS_Store
+
 api_owm

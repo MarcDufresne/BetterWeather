@@ -17,6 +17,7 @@ package net.imatruck.betterweather.weatherapi;
 
 import net.imatruck.betterweather.BetterWeatherData;
 import net.imatruck.betterweather.BetterWeatherExtension;
+import net.imatruck.betterweather.BuildConfig;
 import net.imatruck.betterweather.LocationInfo;
 import net.imatruck.betterweather.YahooPlacesAPIClient;
 import net.imatruck.betterweather.utils.JsonReader;
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Random;
 
 import static net.imatruck.betterweather.utils.LogUtils.LOGW;
 
@@ -36,8 +38,8 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
 
     private static final String TAG = LogUtils.makeLogTag(OpenWeatherMapWeatherAPIClient.class);
 
-    private static final String REQUEST_URL_CURRENT = "http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&units=%s";
-    private static final String REQUEST_URL_FORECAST = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=%s&lon=%s&cnt=2&units=%s";
+    private static final String REQUEST_URL_CURRENT = "http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&units=%s&APPID=%s";
+    private static final String REQUEST_URL_FORECAST = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=%s&lon=%s&cnt=2&units=%s&APPID=%s";
 
     @Override
     public BetterWeatherData getWeatherDataForLocation(LocationInfo locationInfo) throws IOException {
@@ -47,10 +49,12 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
         JSONObject responseCurrent;
         JSONObject responseForecast;
 
+        String API_KEY = BuildConfig.OWM_API_KEY[new Random().nextInt(BuildConfig.OWM_API_KEY.length)];
+
         try {
             String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
-            responseCurrent = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_CURRENT, locationInfo.LAT, locationInfo.LNG, weatherUnit));
-            responseForecast = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_FORECAST, locationInfo.LAT, locationInfo.LNG, weatherUnit));
+            responseCurrent = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_CURRENT, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
+            responseForecast = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_FORECAST, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
         }
         catch (JSONException je){
             return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);

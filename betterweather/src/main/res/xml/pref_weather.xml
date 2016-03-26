@@ -45,7 +45,7 @@
             android:key="pref_weather_api"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
-            android:defaultValue="yahoo_weather_api" />
+            android:defaultValue="openweathermap_weather_api" />
 
     </PreferenceCategory>
     <PreferenceCategory

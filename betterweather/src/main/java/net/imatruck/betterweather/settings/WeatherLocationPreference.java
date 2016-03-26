@@ -396,7 +396,7 @@ public class WeatherLocationPreference extends Preference {
     }
 
     /**
-     * Loader that fetches location search results from {@link net.imatruck.betterweather.weatherapi.YahooWeatherAPIClient}.
+     * Loader that fetches location search results from {@link net.imatruck.betterweather.YahooPlacesAPIClient}.
      */
     private static class ResultsLoader extends AsyncTaskLoader<List<LocationSearchResult>> {
         private String mQuery;

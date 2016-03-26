@@ -63,11 +63,9 @@ limitations under the License.
 
     <string name="pref_weather_api_title">Weather Service</string>
     <string-array name="pref_weather_api_display_names" translatable="false">
-        <item>Yahoo! Weather</item>
         <item>OpenWeatherMap</item>
     </string-array>
     <string-array name="pref_weather_api_values"  translatable="false">
-        <item>yahoo_weather_api</item>
         <item>openweathermap_weather_api</item>
     </string-array>
 

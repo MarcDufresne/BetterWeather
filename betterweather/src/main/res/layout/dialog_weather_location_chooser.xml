@@ -24,7 +24,7 @@
               android:paddingRight="24dp"
               android:layout_width="match_parent"
               android:layout_height="48dp"
-              android:inputType="text"
+              android:inputType="textPostalAddress"
               android:textStyle="italic"
               android:hint="@string/pref_weather_location_query_hint" />
 

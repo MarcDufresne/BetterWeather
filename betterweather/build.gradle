@@ -14,16 +14,19 @@ android {
     }
 
     String owm_api_key = new File('api_owm').text
+    String analytics_endpoint = new File('analytics_endpoint').text
 
     buildTypes {
 
         debug {
             buildConfigField "String[]", "OWM_API_KEY", owm_api_key
+            buildConfigField "String", "ANALYTICS_ENDPOINT", analytics_endpoint
             debuggable true
             minifyEnabled false
         }
         release {
             buildConfigField "String[]", "OWM_API_KEY", owm_api_key
+            buildConfigField "String", "ANALYTICS_ENDPOINT", analytics_endpoint
             minifyEnabled false
             debuggable false
         }
@@ -34,4 +37,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.2.1'
     compile 'com.google.android.apps.dashclock:dashclock-api:2.0.0'
     compile 'com.google.guava:guava:19.0'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }

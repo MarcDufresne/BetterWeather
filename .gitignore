@@ -37,3 +37,4 @@ signing.properties
 .DS_Store
 
 api_owm
+analytics_endpoint

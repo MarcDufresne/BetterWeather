@@ -62,6 +62,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 import static net.imatruck.betterweather.utils.LogUtils.LOGD;
 import static net.imatruck.betterweather.utils.LogUtils.LOGE;
 import static net.imatruck.betterweather.utils.LogUtils.LOGW;
@@ -452,11 +458,49 @@ public class BetterWeatherExtension extends DashClockExtension {
                     scheduleRefresh(1);
                     return;
                 }
+                if (betterWeatherData.errorCode == BetterWeatherData.ErrorCodes.NONE) {
+                    new SendAnalyticsTask(sWeatherAPI).execute();
+                }
                 publishUpdate(betterWeatherData);
             }
             else {
                 publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.API));
             }
+        }
+    }
+
+    private class SendAnalyticsTask extends AsyncTask<String, Void, Void> {
+
+        String mService = null;
+        OkHttpClient mHttpClient;
+        private final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+        public SendAnalyticsTask(String service) {
+            mHttpClient = new OkHttpClient();
+            mService = service;
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+            try {
+                LOGD(TAG, "Sending analytics");
+                String response = post(BuildConfig.ANALYTICS_ENDPOINT, "{\"service\":\"" + mService + "\"}");
+                LOGD(TAG, "Analytics response: " + response);
+            }
+            catch (IOException ioe){
+                LOGD(TAG, "Could not send analytics");
+            }
+            return null;
+        }
+
+        String post(String url, String json) throws IOException {
+            RequestBody body = RequestBody.create(JSON, json);
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+            Response response = mHttpClient.newCall(request).execute();
+            return response.body().string();
         }
     }
 
@@ -536,7 +580,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(PREF_WEATHER_LOCATION, oldLocationData.replaceFirst(",", "/") + "/0.0/0.0");
-        editor.commit();
+        editor.apply();
     }
 
     /**
@@ -670,7 +714,7 @@ public class BetterWeatherExtension extends DashClockExtension {
             if (sShowWindDetails && !"".equals(weatherData.windSpeed)) {
                 // Western users.
                 //      "Wind: SW 1 mph"
-                // Asaian users with their wind_details_template in values-*
+                // Asian users with their wind_details_template in values-*
                 //      "WIND: DIRECTION PREFIX SPEED UNIT"
                 String speed = BetterWeatherData.convertSpeedUnits(sWeatherUnits, weatherData.windSpeed, sSpeedUnits);
                 String unit = getSpeedUnitDisplayValue(sSpeedUnits);

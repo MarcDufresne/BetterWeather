@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Random;
 
+import static net.imatruck.betterweather.utils.LogUtils.LOGD;
 import static net.imatruck.betterweather.utils.LogUtils.LOGW;
 
 public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
@@ -49,28 +50,70 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
         JSONObject responseCurrent;
         JSONObject responseForecast;
 
-        String API_KEY = BuildConfig.OWM_API_KEY[new Random().nextInt(BuildConfig.OWM_API_KEY.length)];
-
         try {
-            String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
-            responseCurrent = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_CURRENT, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
-            responseForecast = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_FORECAST, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
+            responseCurrent = getCurrentData(locationInfo, 0);
+            responseForecast = getForecastData(locationInfo, 0);
         }
-        catch (JSONException je){
-            return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);
-        }
-        catch (FileNotFoundException fnfe){
+        catch (IOException ioe) {
             return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);
         }
 
-        if (parseCurrentConditionsData(data, responseCurrent))
+        if (parseCurrentConditionsData(data, responseCurrent)) {
+            LOGW(TAG, "Could not parse current weather data");
             return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);
+        }
 
         parseForecastData(data, responseForecast);
 
         data.location = YahooPlacesAPIClient.getLocationNameFromCoords(locationInfo.LAT, locationInfo.LNG);
 
         return data;
+    }
+
+    private JSONObject getCurrentData(LocationInfo locationInfo, int retryCount) throws IOException {
+
+        JSONObject responseCurrent;
+
+        String API_KEY = BuildConfig.OWM_API_KEY[retryCount];
+
+        try {
+            String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
+            responseCurrent = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_CURRENT, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
+        }
+        catch (JSONException je){
+            throw new IOException();
+        }
+        catch (FileNotFoundException fnfe){
+            LOGD(TAG, "Could not retrieve current weather info, retry #" + retryCount);
+            if (retryCount < BuildConfig.OWM_API_KEY.length)
+                return getCurrentData(locationInfo, ++retryCount);
+            throw new IOException();
+        }
+
+        return responseCurrent;
+    }
+
+    private JSONObject getForecastData(LocationInfo locationInfo, int retryCount) throws IOException {
+
+        JSONObject responseForecast;
+
+        String API_KEY = BuildConfig.OWM_API_KEY[retryCount];
+
+        try {
+            String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
+            responseForecast = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_FORECAST, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
+        }
+        catch (JSONException je){
+            throw new IOException();
+        }
+        catch (FileNotFoundException fnfe){
+            LOGD(TAG, "Could not retrieve forecast weather info, retry #" + retryCount);
+            if (retryCount < BuildConfig.OWM_API_KEY.length)
+                return getForecastData(locationInfo, ++retryCount);
+            throw new IOException();
+        }
+
+        return responseForecast;
     }
 
     private boolean parseCurrentConditionsData(BetterWeatherData data, JSONObject response) {

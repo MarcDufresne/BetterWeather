@@ -446,8 +446,14 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         @Override
         protected void onPostExecute(BetterWeatherData betterWeatherData) {
-            if (betterWeatherData != null)
+            if (betterWeatherData != null) {
+                if (betterWeatherData.errorCode == BetterWeatherData.ErrorCodes.API) {
+                    LOGD(TAG, "API Error encountered, trying again in one minute");
+                    scheduleRefresh(1);
+                    return;
+                }
                 publishUpdate(betterWeatherData);
+            }
             else {
                 publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.API));
             }

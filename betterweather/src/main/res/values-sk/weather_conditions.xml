@@ -23,7 +23,7 @@
     <string name="cond_foggy">Hmlisto</string>
     <string name="cond_haze">Opar/hmla</string>
     <string name="cond_smoky">Nejasno</string>
-    <string name="cond_blustery">Búrlivo</string>
+    <string name="cond_breezy">Búrlivo</string>
     <string name="cond_windy">Veterno</string>
     <string name="cond_cold">Chladno</string>
     <string name="cond_cloudy">Oblačno</string>
@@ -48,7 +48,7 @@
     <string name="wind_east">V</string>
     <string name="wind_southeast">JV</string>
     <string name="wind_south">J</string>
-    <string name="wind_soutwest">JZ</string>
+    <string name="wind_southwest">JZ</string>
     <string name="wind_west">Z</string>
     <string name="wind_northwest">SZ</string>
 </resources>

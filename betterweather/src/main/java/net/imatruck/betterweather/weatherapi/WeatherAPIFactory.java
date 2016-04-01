@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2014 Marc-André Dufresne
+ * Copyright 2013-2016 Marc-André Dufresne
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,11 @@ public class WeatherAPIFactory {
         if (apiSetting.equals(BetterWeatherExtension.OPENWEATHERMAP_WEATHER_API)) {
             return new OpenWeatherMapWeatherAPIClient();
         }
+        if (apiSetting.equals(BetterWeatherExtension.YAHOO_WEATHER_API)) {
+            return new YahooWeatherAPIClient();
+        }
 
-        return new OpenWeatherMapWeatherAPIClient();
+        return new YahooWeatherAPIClient();
     }
 
 }

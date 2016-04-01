@@ -23,7 +23,7 @@
     <string name="cond_foggy">Ομιχλώδης</string>
     <string name="cond_haze">Καταχνιά</string>
     <string name="cond_smoky">Καπνώδης</string>
-    <string name="cond_blustery">Θορυβώδης</string>
+    <string name="cond_breezy">Θορυβώδης</string>
     <string name="cond_windy">Θυελώδης</string>
     <string name="cond_cold">Ψύχος</string>
     <string name="cond_cloudy">Νεφελώδης</string>
@@ -48,7 +48,7 @@
     <string name="wind_east">Α</string>
     <string name="wind_southeast">ΝΑ</string>
     <string name="wind_south">Ν</string>
-    <string name="wind_soutwest">ΝΔ</string>
+    <string name="wind_southwest">ΝΔ</string>
     <string name="wind_west">Δ</string>
     <string name="wind_northwest">ΒΔ</string>
 </resources>

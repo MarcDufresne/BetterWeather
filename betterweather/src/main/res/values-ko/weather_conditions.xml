@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013-2014 Marc-André Dufresne
+Copyright 2013-2016 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ limitations under the License.
     <string name="cond_foggy">안개</string>
     <string name="cond_haze">실안개</string>
     <string name="cond_smoky">짙은 안개</string>
-    <string name="cond_blustery">거센 바람</string>
+    <string name="cond_breezy">거센 바람</string>
     <string name="cond_windy">바람</string>
     <string name="cond_cold">추움</string>
     <string name="cond_cloudy">흐림</string>
@@ -64,7 +64,7 @@ limitations under the License.
     <string name="wind_east">동풍</string>
     <string name="wind_southeast">남동풍</string>
     <string name="wind_south">남풍</string>
-    <string name="wind_soutwest">남서풍</string>
+    <string name="wind_southwest">남서풍</string>
     <string name="wind_west">서풍</string>
     <string name="wind_northwest">북서풍</string>
     <!-- Wind Speedd Labels -->

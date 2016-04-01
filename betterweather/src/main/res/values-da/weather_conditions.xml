@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013-2014 Marc-André Dufresne
+Copyright 2013-2016 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ limitations under the License.
     <string name="cond_foggy">Tåget</string>
     <string name="cond_haze">Uklart</string>
     <string name="cond_smoky">Smoky</string>
-    <string name="cond_blustery">Blustery</string>
+    <string name="cond_breezy">Blustery</string>
     <string name="cond_windy">Blæsende</string>
     <string name="cond_cold">Koldt</string>
     <string name="cond_cloudy">Skyet</string>
@@ -64,7 +64,7 @@ limitations under the License.
     <string name="wind_east">Ø</string>
     <string name="wind_southeast">SØ</string>
     <string name="wind_south">S</string>
-    <string name="wind_soutwest">SV</string>
+    <string name="wind_southwest">SV</string>
     <string name="wind_west">V</string>
     <string name="wind_northwest">NV</string>
     <!-- Wind Speed Labels -->

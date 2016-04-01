@@ -23,7 +23,7 @@
     <string name="cond_foggy">Neblina</string>
     <string name="cond_haze">Calina</string>
     <string name="cond_smoky">Ahumado</string>
-    <string name="cond_blustery">Tempestuoso</string>
+    <string name="cond_breezy">Tempestuoso</string>
     <string name="cond_windy">Ventoso</string>
     <string name="cond_cold">Frío</string>
     <string name="cond_cloudy">Nublado</string>
@@ -48,7 +48,7 @@
     <string name="wind_east">E</string>
     <string name="wind_southeast">S.E</string>
     <string name="wind_south">S</string>
-    <string name="wind_soutwest">S.O</string>
+    <string name="wind_southwest">S.O</string>
     <string name="wind_west">O</string>
     <string name="wind_northwest">N.O</string>
 </resources>

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Copyright 2013-2014 Marc-André Dufresne
+ * Copyright 2013-2016 Marc-André Dufresne
  *
  * This file was modified by Marc-André Dufresne to include several
  * more features.
@@ -92,7 +92,7 @@ public class BetterWeatherData {
     //Error Management
     public ErrorCodes errorCode = ErrorCodes.NONE;
 
-    public static enum ErrorCodes {
+    public enum ErrorCodes {
         NONE, UNKNOWN, LOCATION, INTERNET, API
     }
 
@@ -120,7 +120,7 @@ public class BetterWeatherData {
         if (wDir >= 157 && wDir < 203)
             return R.string.wind_south;
         if (wDir >= 203 && wDir < 247)
-            return R.string.wind_soutwest;
+            return R.string.wind_southwest;
         if (wDir >= 247 && wDir < 293)
             return R.string.wind_west;
         if (wDir >= 293 && wDir < 337)
@@ -177,7 +177,7 @@ public class BetterWeatherData {
             case 22:
                 return R.string.cond_smoky;
             case 23:
-                return R.string.cond_blustery;
+                return R.string.cond_breezy;
             case 24:
                 return R.string.cond_windy;
             case 25:

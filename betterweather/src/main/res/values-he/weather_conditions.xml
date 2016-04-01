@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013-2014 Marc-André Dufresne
+Copyright 2013-2016 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ limitations under the License.
     <string name="cond_foggy">ערפילי</string>
     <string name="cond_haze">אובך</string>
     <string name="cond_smoky">מעושן</string>
-    <string name="cond_blustery">סוער</string>
+    <string name="cond_breezy">סוער</string>
     <string name="cond_windy">סוער</string>
     <string name="cond_cold">קר</string>
     <string name="cond_cloudy">מעונן</string>
@@ -64,7 +64,7 @@ limitations under the License.
     <string name="wind_east">מ</string>
     <string name="wind_southeast">דמ"ז</string>
     <string name="wind_south">ד</string>
-    <string name="wind_soutwest">דמ"ע</string>
+    <string name="wind_southwest">דמ"ע</string>
     <string name="wind_west">מ</string>
     <string name="wind_northwest">צמ"ע</string>
 </resources>

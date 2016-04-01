@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013-2014 Marc-André Dufresne
+Copyright 2013-2016 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ limitations under the License.
     <string name="cond_foggy">köd</string>
     <string name="cond_haze">pára</string>
     <string name="cond_smoky">füstös</string>
-    <string name="cond_blustery">viharos</string>
+    <string name="cond_breezy">viharos</string>
     <string name="cond_windy">szeles</string>
     <string name="cond_cold">hideg</string>
     <string name="cond_cloudy">felhős</string>
@@ -64,7 +64,7 @@ limitations under the License.
     <string name="wind_east">K</string>
     <string name="wind_southeast">DK</string>
     <string name="wind_south">D</string>
-    <string name="wind_soutwest">DNY</string>
+    <string name="wind_southwest">DNY</string>
     <string name="wind_west">NY</string>
     <string name="wind_northwest">ÉNY</string>
 </resources>

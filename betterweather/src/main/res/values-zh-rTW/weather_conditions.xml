@@ -23,7 +23,7 @@
     <string name="cond_foggy">有霧</string>
     <string name="cond_haze">有霾</string>
     <string name="cond_smoky">有煙</string>
-    <string name="cond_blustery">大風</string>
+    <string name="cond_breezy">大風</string>
     <string name="cond_windy">有風</string>
     <string name="cond_cold">冷</string>
     <string name="cond_cloudy">有雲</string>
@@ -48,7 +48,7 @@
     <string name="wind_east">東風</string>
     <string name="wind_southeast">東南風</string>
     <string name="wind_south">南風</string>
-    <string name="wind_soutwest">西南風</string>
+    <string name="wind_southwest">西南風</string>
     <string name="wind_west">西風</string>
     <string name="wind_northwest">西北風</string>
 	<!-- Wind Speedd Labels -->

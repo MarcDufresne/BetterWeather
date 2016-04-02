@@ -29,6 +29,8 @@ public class IconThemeFactory {
             return new ChameleonIconTheme();
         } else if (iconThemeSetting.equals(BetterWeatherExtension.GOOGLENOW_ICON_THEME)) {
             return new GoogleNowIconTheme();
+        } else if (iconThemeSetting.equals(BetterWeatherExtension.METEOCONS_ICON_THEME)) {
+            return new MeteoconsIconTheme();
         }
 
         return new ClimaconsIconTheme();

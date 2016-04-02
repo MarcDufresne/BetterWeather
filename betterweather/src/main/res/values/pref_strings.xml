@@ -123,12 +123,14 @@ limitations under the License.
         <item>Weathercons</item>
         <item>Chameleon</item>
         <item>Google Now</item>
+        <item>Meteocons</item>
     </string-array>
     <string-array name="pref_weather_icon_theme_values" translatable="false">
         <item>climacons</item>
         <item>weathercons</item>
         <item>chameleon</item>
         <item>googlenow</item>
+        <item>meteocons</item>
     </string-array>
 
     <string name="pref_weather_hide_location_name_title">Hide location name</string>

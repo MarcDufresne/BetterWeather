@@ -112,6 +112,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String WEATHERCONS_ICON_THEME = "weathercons";
     public static final String CHAMELEON_ICON_THEME = "chameleon";
     public static final String GOOGLENOW_ICON_THEME = "googlenow";
+    public static final String METEOCONS_ICON_THEME = "meteocons";
 
     public static final String YAHOO_WEATHER_API = "yahoo_weather_api";
     public static final String OPENWEATHERMAP_WEATHER_API = "openweathermap_weather_api";

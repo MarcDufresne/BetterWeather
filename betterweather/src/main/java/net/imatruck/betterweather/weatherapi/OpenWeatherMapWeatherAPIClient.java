@@ -76,7 +76,9 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
 
         try {
             String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
-            responseCurrent = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_CURRENT, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
+            String formattedURL = String.format(Locale.getDefault(), REQUEST_URL_CURRENT, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY);
+            LOGD(TAG, "Using URL: " + formattedURL);
+            responseCurrent = JsonReader.readJsonFromUrl(formattedURL);
         } catch (JSONException je) {
             throw new IOException();
         } catch (FileNotFoundException fnfe) {
@@ -97,7 +99,9 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
 
         try {
             String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
-            responseForecast = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_FORECAST, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
+            String formattedURL = String.format(Locale.getDefault(), REQUEST_URL_FORECAST, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY);
+            LOGD(TAG, "Using URL: " + formattedURL);
+            responseForecast = JsonReader.readJsonFromUrl(formattedURL);
         } catch (JSONException je) {
             throw new IOException();
         } catch (FileNotFoundException fnfe) {

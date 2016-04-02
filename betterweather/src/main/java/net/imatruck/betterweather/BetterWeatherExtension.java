@@ -368,8 +368,13 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         BetterWeatherData data = mWeatherAPI.getWeatherDataForLocation(locationInfo);
 
-        if (data != null && (data.location == null || TextUtils.isEmpty(data.location) || "N/A".equals(data.location)))
-            data.location = YahooPlacesAPIClient.getLocationNameFromCoords(locationInfo.LAT, locationInfo.LNG);
+        if (data != null) {
+            if (!sUseCurrentLocation) {
+                data.location = locationInfo.DISPLAYNAME;
+            } else if (data.location == null || TextUtils.isEmpty(data.location) || "N/A".equals(data.location)) {
+                data.location = YahooPlacesAPIClient.getLocationNameFromCoords(locationInfo.LAT, locationInfo.LNG);
+            }
+        }
 
         return data;
     }

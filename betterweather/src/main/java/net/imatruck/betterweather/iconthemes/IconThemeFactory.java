@@ -19,18 +19,15 @@ import net.imatruck.betterweather.BetterWeatherExtension;
 
 public class IconThemeFactory {
 
-    public static IIconTheme getIconThemeFromSetting(String iconThemeSetting){
+    public static IIconTheme getIconThemeFromSetting(String iconThemeSetting) {
 
-        if(iconThemeSetting.equals(BetterWeatherExtension.CLIMACONS_ICON_THEME)){
+        if (iconThemeSetting.equals(BetterWeatherExtension.CLIMACONS_ICON_THEME)) {
             return new ClimaconsIconTheme();
-        }
-        else if (iconThemeSetting.equals(BetterWeatherExtension.WEATHERCONS_ICON_THEME)){
+        } else if (iconThemeSetting.equals(BetterWeatherExtension.WEATHERCONS_ICON_THEME)) {
             return new WeatherconsIconTheme();
-        }
-        else if (iconThemeSetting.equals(BetterWeatherExtension.CHAMELEON_ICON_THEME)){
+        } else if (iconThemeSetting.equals(BetterWeatherExtension.CHAMELEON_ICON_THEME)) {
             return new ChameleonIconTheme();
-        }
-        else if (iconThemeSetting.equals(BetterWeatherExtension.GOOGLENOW_ICON_THEME)){
+        } else if (iconThemeSetting.equals(BetterWeatherExtension.GOOGLENOW_ICON_THEME)) {
             return new GoogleNowIconTheme();
         }
 

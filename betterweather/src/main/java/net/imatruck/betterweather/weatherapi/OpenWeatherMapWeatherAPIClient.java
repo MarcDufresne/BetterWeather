@@ -30,7 +30,6 @@ import org.json.JSONObject;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Locale;
-import java.util.Random;
 
 import static net.imatruck.betterweather.utils.LogUtils.LOGD;
 import static net.imatruck.betterweather.utils.LogUtils.LOGW;
@@ -53,8 +52,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
         try {
             responseCurrent = getCurrentData(locationInfo, 0);
             responseForecast = getForecastData(locationInfo, 0);
-        }
-        catch (IOException ioe) {
+        } catch (IOException ioe) {
             return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);
         }
 
@@ -79,11 +77,9 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
         try {
             String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
             responseCurrent = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_CURRENT, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
-        }
-        catch (JSONException je){
+        } catch (JSONException je) {
             throw new IOException();
-        }
-        catch (FileNotFoundException fnfe){
+        } catch (FileNotFoundException fnfe) {
             LOGD(TAG, "Could not retrieve current weather info, retry #" + retryCount);
             if (retryCount < BuildConfig.OWM_API_KEY.length)
                 return getCurrentData(locationInfo, ++retryCount);
@@ -102,11 +98,9 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
         try {
             String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
             responseForecast = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL_FORECAST, locationInfo.LAT, locationInfo.LNG, weatherUnit, API_KEY));
-        }
-        catch (JSONException je){
+        } catch (JSONException je) {
             throw new IOException();
-        }
-        catch (FileNotFoundException fnfe){
+        } catch (FileNotFoundException fnfe) {
             LOGD(TAG, "Could not retrieve forecast weather info, retry #" + retryCount);
             if (retryCount < BuildConfig.OWM_API_KEY.length)
                 return getForecastData(locationInfo, ++retryCount);
@@ -119,7 +113,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
     private boolean parseCurrentConditionsData(BetterWeatherData data, JSONObject response) {
         JSONObject currentWeather = null, currentMain = null, currentWind = null;
 
-        if(response != null) {
+        if (response != null) {
             try {
                 currentWeather = response.getJSONArray("weather").getJSONObject(0);
                 currentMain = response.getJSONObject("main");
@@ -129,7 +123,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
             }
         }
 
-        if(currentMain != null) {
+        if (currentMain != null) {
             try {
                 data.temperature = data.feelsLike = (int) Math.round(currentMain.getDouble("temp"));
                 data.humidity = currentMain.getInt("humidity") + "";
@@ -138,7 +132,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
             }
         }
 
-        if(currentWeather != null) {
+        if (currentWeather != null) {
             try {
                 data.conditionCode = convertToConditionCode(currentWeather.getInt("id"), currentWeather.getString("icon").contains("n"));
             } catch (JSONException je) {
@@ -146,7 +140,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
             }
         }
 
-        if(currentWind != null) {
+        if (currentWind != null) {
             try {
                 data.windSpeed = currentWind.getDouble("speed") + "";
                 data.windDirection = currentWind.getInt("deg");
@@ -160,7 +154,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
     private void parseForecastData(BetterWeatherData data, JSONObject response) {
         JSONObject todayWeather = null, todayMain = null, tomorrowWeather = null, tomorrowMain = null;
 
-        if(response != null) {
+        if (response != null) {
             try {
                 JSONArray list = response.getJSONArray("list");
                 todayMain = list.getJSONObject(0);
@@ -172,7 +166,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
             }
         }
 
-        if(todayMain != null && todayWeather != null) {
+        if (todayMain != null && todayWeather != null) {
             try {
                 data.todayForecastConditionCode = convertToConditionCode(todayWeather.getInt("id"), false);
                 data.todayHigh = (int) Math.round(todayMain.getJSONObject("temp").getDouble("max")) + "";
@@ -182,7 +176,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
             }
         }
 
-        if(tomorrowMain != null && tomorrowWeather != null) {
+        if (tomorrowMain != null && tomorrowWeather != null) {
             try {
                 data.tomorrowForecastConditionCode = convertToConditionCode(tomorrowWeather.getInt("id"), false);
                 data.tomorrowHigh = (int) Math.round(tomorrowMain.getJSONObject("temp").getDouble("max")) + "";
@@ -193,8 +187,8 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
         }
     }
 
-    private int convertToConditionCode(int conditionCode, boolean isNight){
-        switch(conditionCode) {
+    private int convertToConditionCode(int conditionCode, boolean isNight) {
+        switch (conditionCode) {
             case 200: //thunderstorm with light rain
             case 201: //thunderstorm with rain
             case 231: //thunderstorm with drizzle

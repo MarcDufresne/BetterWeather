@@ -19,7 +19,7 @@ import net.imatruck.betterweather.BetterWeatherExtension;
 
 public class WeatherAPIFactory {
 
-    public static IWeatherAPI getWeatherAPIFromSetting(String apiSetting){
+    public static IWeatherAPI getWeatherAPIFromSetting(String apiSetting) {
         if (apiSetting.equals(BetterWeatherExtension.OPENWEATHERMAP_WEATHER_API)) {
             return new OpenWeatherMapWeatherAPIClient();
         }

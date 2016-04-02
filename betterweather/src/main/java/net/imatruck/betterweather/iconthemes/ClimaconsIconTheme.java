@@ -17,7 +17,7 @@ package net.imatruck.betterweather.iconthemes;
 
 import net.imatruck.betterweather.R;
 
-public class ClimaconsIconTheme implements IIconTheme{
+public class ClimaconsIconTheme implements IIconTheme {
     @Override
     public int getConditionIcon(int conditionCode) {
         switch (conditionCode) {

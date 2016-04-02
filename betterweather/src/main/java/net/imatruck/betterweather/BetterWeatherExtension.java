@@ -206,6 +206,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Starts the update process, will verify the reason before continuing
+     *
      * @param reason Update reason, provided by DashClock or this app
      */
     @Override
@@ -266,7 +267,8 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Requests a location update if setting is Automatic, else it will give a dummy location
-     * @param lm Location Manager from {@link net.imatruck.betterweather.BetterWeatherExtension#onUpdateData(int)}
+     *
+     * @param lm       Location Manager from {@link net.imatruck.betterweather.BetterWeatherExtension#onUpdateData(int)}
      * @param provider Provider determined in {@link net.imatruck.betterweather.BetterWeatherExtension#onUpdateData(int)}
      */
     private void requestLocationUpdate(final LocationManager lm, final String provider) {
@@ -322,6 +324,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Generates a {@link net.imatruck.betterweather.LocationInfo} object from the app's settings
+     *
      * @return LocationInfo
      */
     public static LocationInfo getLocationInfoFromSettings() {
@@ -335,10 +338,11 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Requests weather update from the selected API
+     *
      * @param location Location object to get devices coords
      * @return {@link net.imatruck.betterweather.BetterWeatherData} object with data from the selected API
      * @throws InvalidLocationException If location is invalid
-     * @throws IOException If there's a problem parsing the data
+     * @throws IOException              If there's a problem parsing the data
      */
     private static BetterWeatherData getWeatherForLocation(Location location)
             throws InvalidLocationException, IOException {
@@ -363,7 +367,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         BetterWeatherData data = mWeatherAPI.getWeatherDataForLocation(locationInfo);
 
-        if (data.location == null || TextUtils.isEmpty(data.location) || "N/A".equals(data.location))
+        if (data != null && (data.location == null || TextUtils.isEmpty(data.location) || "N/A".equals(data.location)))
             data.location = YahooPlacesAPIClient.getLocationNameFromCoords(locationInfo.LAT, locationInfo.LNG);
 
         return data;
@@ -371,6 +375,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Calls {@link net.imatruck.betterweather.BetterWeatherExtension#renderExtensionData(BetterWeatherData)} and sends it to DashClock's publishUpdate
+     *
      * @param weatherData Data from the API
      */
     private void publishUpdate(BetterWeatherData weatherData) {
@@ -405,6 +410,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Schedule an update with a {@link android.app.PendingIntent}
+     *
      * @param intervalOverride Override in minutes for the next refresh, if 0 use settings value
      */
     private void scheduleRefresh(int intervalOverride) {
@@ -443,7 +449,6 @@ public class BetterWeatherExtension extends DashClockExtension {
             BetterWeatherData weatherData = null;
             try {
                 weatherData = getWeatherForLocation(mLocation);
-                LOGD(TAG, "Using new weather data for location: " + weatherData.location + " at " + SimpleDateFormat.getTimeInstance().format(new Date()));
             } catch (InvalidLocationException | IOException e) {
                 e.printStackTrace();
             }
@@ -453,17 +458,18 @@ public class BetterWeatherExtension extends DashClockExtension {
         @Override
         protected void onPostExecute(BetterWeatherData betterWeatherData) {
             if (betterWeatherData != null) {
+                LOGD(TAG, "Using new weather data for location: " + betterWeatherData.location + " at " +
+                        SimpleDateFormat.getTimeInstance().format(new Date()));
                 if (betterWeatherData.errorCode == BetterWeatherData.ErrorCodes.API) {
-                    LOGD(TAG, "API Error encountered, trying again in one minute");
-                    scheduleRefresh(1);
+                    LOGD(TAG, "API Error encountered, trying again in 5 minutes");
+                    scheduleRefresh(5);
                     return;
                 }
                 if (betterWeatherData.errorCode == BetterWeatherData.ErrorCodes.NONE) {
                     new SendAnalyticsTask(sWeatherAPI).execute();
                 }
                 publishUpdate(betterWeatherData);
-            }
-            else {
+            } else {
                 publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.API));
             }
         }
@@ -486,8 +492,7 @@ public class BetterWeatherExtension extends DashClockExtension {
                 LOGD(TAG, "Sending analytics");
                 String response = post(BuildConfig.ANALYTICS_ENDPOINT, "{\"service\":\"" + mService + "\"}");
                 LOGD(TAG, "Analytics response: " + response);
-            }
-            catch (IOException ioe){
+            } catch (IOException ioe) {
                 LOGD(TAG, "Could not send analytics");
             }
             return null;
@@ -516,6 +521,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Helper function used to determine the reason of an update
+     *
      * @param reason Update reason
      */
     private static String getReasonText(int reason) {
@@ -603,6 +609,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Displays weather data, or an error if there's one
+     *
      * @param weatherData Weather data from the API
      * @return ExtensionData for DashClock
      */
@@ -657,6 +664,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Creates the intent from the settings
+     *
      * @return Intent from the settings
      */
     private Intent prepareClickIntent() {
@@ -698,6 +706,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Formats the expended body's text from the weather data
+     *
      * @param weatherData Weather data from the API
      * @return Formatted data
      */
@@ -787,6 +796,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Formats the status text depending on the settings
+     *
      * @param weatherData Weather data from the API
      * @param temperature Temperature formatted for validity
      * @return Formatted status text
@@ -807,6 +817,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Gets the appropriate icon from the right icon theme
+     *
      * @param conditionCode The status code for the current condition
      * @return Resource ID for the icon
      */
@@ -819,6 +830,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Gets the wind speed unit from the settings
+     *
      * @param speedUnitIndex Index to fetch
      * @return Wind speed unit
      */
@@ -834,6 +846,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
     /**
      * Gets the wind speed unit prefix for asian users
+     *
      * @param speedUnitIndex Index to fetch
      * @return Wind speed unit prefix
      */

@@ -32,7 +32,6 @@ import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import static net.imatruck.betterweather.utils.LogUtils.LOGD;
 import static net.imatruck.betterweather.utils.LogUtils.LOGE;
@@ -46,6 +45,7 @@ public class YahooPlacesAPIClient {
     public static final String API_KEY = "dj0yJmk9TWp2Y3IyMmdhbFp4JmQ9WVdrOVJFMXJVa2s1TlRBbWNHbzlNVFExTXpjd09ETTJNZy0tJnM9Y29uc3VtZXJzZWNyZXQmeD02MA--";
 
     private static XmlPullParserFactory sXmlPullParserFactory;
+
     static {
         try {
             sXmlPullParserFactory = XmlPullParserFactory.newInstance();
@@ -88,14 +88,15 @@ public class YahooPlacesAPIClient {
         // In searching a place name with non-ASCII characters.
         try {
             startsWith = URLEncoder.encode(startsWith, "UTF-8");
-        } catch(Exception e) {}
+        } catch (Exception e) {
+        }
 
         return "http://where.yahooapis.com/v1/places.q('" + startsWith + "');"
                 + "count=" + MAX_SEARCH_RESULTS
                 + "?lang=" + sLang + "&appid=" + API_KEY;
     }
 
-    public static String getLocationNameFromCoords(double lat, double lng){
+    public static String getLocationNameFromCoords(double lat, double lng) {
         LOGD(TAG, "Looking up name for location : " + lat + ", " + lng);
 
         String displayName = "N/A";
@@ -186,14 +187,14 @@ public class YahooPlacesAPIClient {
 
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if ("place".equals(tagName)) {
-                        for(int i=0; i<addrs.length; i++) {
+                        for (int i = 0; i < addrs.length; i++) {
                             if (TextUtils.isEmpty(addrs[i])) {
                                 // if field is empty, skip.
                                 continue;
                             } else {
                                 smallLocation = addrs[i];
                                 largeLocation = "";
-                                for(int j=i+1; j<addrs.length; j++) {
+                                for (int j = i + 1; j < addrs.length; j++) {
                                     if (TextUtils.isEmpty(addrs[j])) {
                                         continue;
                                     }
@@ -229,17 +230,13 @@ public class YahooPlacesAPIClient {
                 eventType = xpp.next();
             }
 
-        }
-        catch (XmlPullParserException xppe){
+        } catch (XmlPullParserException xppe) {
             LOGW(TAG, "Error parsing place name XML");
-        }
-        catch (MalformedURLException mue) {
+        } catch (MalformedURLException mue) {
             LOGW(TAG, "Error parsing place name XML");
-        }
-        catch (IOException ioe) {
+        } catch (IOException ioe) {
             LOGW(TAG, "Error parsing place name XML");
-        }
-        finally {
+        } finally {
             if (connection != null) {
                 connection.disconnect();
             }
@@ -280,8 +277,8 @@ public class YahooPlacesAPIClient {
                                 state = PARSE_STATE_PLACE;
                                 result = new LocationSearchResult();
                                 // reset
-                                for(int i=0; i<addrs.length; i++)
-                                    addrs[i]= "";
+                                for (int i = 0; i < addrs.length; i++)
+                                    addrs[i] = "";
                             }
                             break;
 
@@ -375,7 +372,7 @@ public class YahooPlacesAPIClient {
 
                         results.add(result);
                         state = PARSE_STATE_NONE;
-                    } else if("centroid".equals(tagName)) {
+                    } else if ("centroid".equals(tagName)) {
                         centroid = false;
                     } else if (state != PARSE_STATE_NONE) {
                         state = PARSE_STATE_PLACE;

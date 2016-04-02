@@ -103,7 +103,7 @@ public class WeatherLocationPreference extends Preference {
 
     public static String getWoeidFromValue(String value) {
         if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
-            if(value.matches("\\d+,[0-9a-zA-Z,. ]*"))
+            if (value.matches("\\d+,[0-9a-zA-Z,. ]*"))
                 return value.substring(0, value.indexOf(","));
             return null;
         }
@@ -114,13 +114,14 @@ public class WeatherLocationPreference extends Preference {
 
     /**
      * This method is for getting location name.
+     *
      * @param value pref location string.
      * @return location name saved in setting.
      */
     public static String getDisplayNameFromValue(String value) {
         if (TextUtils.isEmpty(value) || value.indexOf('/') < 0) {
-            if(value.matches("\\d+,[0-9a-zA-Z,. ]*"))
-                return value.substring(value.indexOf(",")+1).trim();
+            if (value.matches("\\d+,[0-9a-zA-Z,. ]*"))
+                return value.substring(value.indexOf(",") + 1).trim();
             return null;
         }
 
@@ -133,7 +134,7 @@ public class WeatherLocationPreference extends Preference {
         // SEOUL, KOREA are not ASCIIs but Korean characters, then
         // if(!value.matches("\\d+/[0-9a-zA-Z,. ]*/\\d+[,.]?\\d*/\\d+[,.]?\\d*"))
         // fails to match lat/lon, so changed loosely.
-        if(!value.matches("\\d+/[^/]*/-?\\d+[,.]?\\d*/-?\\d+[,.]?\\d*"))
+        if (!value.matches("\\d+/[^/]*/-?\\d+[,.]?\\d*/-?\\d+[,.]?\\d*"))
             return "0";
 
         String[] locationDetails = value.split("/");
@@ -141,7 +142,7 @@ public class WeatherLocationPreference extends Preference {
     }
 
     public static String getLngFromValue(String value) {
-        if(!value.matches("\\d+/[^/]*/-?\\d+[,.]?\\d*/-?\\d+[,.]?\\d*"))
+        if (!value.matches("\\d+/[^/]*/-?\\d+[,.]?\\d*/-?\\d+[,.]?\\d*"))
             return "0";
 
         String[] locationDetails = value.split("/");

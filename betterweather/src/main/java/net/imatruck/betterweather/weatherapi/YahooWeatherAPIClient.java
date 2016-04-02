@@ -30,6 +30,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Locale;
 
+import static net.imatruck.betterweather.utils.LogUtils.LOGD;
 import static net.imatruck.betterweather.utils.LogUtils.LOGW;
 
 public class YahooWeatherAPIClient implements IWeatherAPI {
@@ -42,14 +43,17 @@ public class YahooWeatherAPIClient implements IWeatherAPI {
     public BetterWeatherData getWeatherDataForLocation(LocationInfo locationInfo) throws IOException {
 
         JSONObject response;
+        String formattedUrl = String.format(Locale.getDefault(), REQUEST_URL, locationInfo.WOEID, BetterWeatherExtension.getWeatherUnits());
+        formattedUrl = formattedUrl.replace(" ", "%20");
 
         try {
-            response = JsonReader.readJsonFromUrl(String.format(Locale.getDefault(), REQUEST_URL, locationInfo.WOEID, BetterWeatherExtension.getWeatherUnits()));
-        }
-        catch (JSONException je) {
+            LOGD(TAG, String.format(Locale.getDefault(), "Using URL: %s", formattedUrl));
+            response = JsonReader.readJsonFromUrl(formattedUrl);
+        } catch (JSONException je) {
+            LOGW(TAG, "Could not read JSON from API");
             return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);
-        }
-        catch (FileNotFoundException fe) {
+        } catch (FileNotFoundException fe) {
+            LOGW(TAG, "Error communicating with API");
             return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);
         }
 
@@ -64,13 +68,13 @@ public class YahooWeatherAPIClient implements IWeatherAPI {
         if (response != null) {
             try {
                 weatherInfo = response.getJSONObject("query").getJSONObject("results").getJSONObject("channel");
-                forecast = weatherInfo.getJSONArray("forecast");
             } catch (JSONException e) {
-                return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);
+                LOGW(TAG, "Could not read weather info from response");
             }
         }
 
         if (weatherInfo != null) {
+
             try {
                 JSONObject condition = weatherInfo.getJSONObject("item").getJSONObject("condition");
                 data.temperature = data.feelsLike = condition.getInt("temp");
@@ -89,9 +93,15 @@ public class YahooWeatherAPIClient implements IWeatherAPI {
 
             try {
                 JSONObject atmosphere = weatherInfo.getJSONObject("atmosphere");
-                data.humidity = atmosphere.getDouble("humidity") + "";
+                data.humidity = (int) atmosphere.getDouble("humidity") + "";
             } catch (JSONException e) {
                 LOGW(TAG, "Error parsing humidity");
+            }
+
+            try {
+                forecast = weatherInfo.getJSONObject("item").getJSONArray("forecast");
+            } catch (JSONException e) {
+                LOGW(TAG, "Could not read forecast data");
             }
 
             if (forecast != null) {
@@ -116,14 +126,13 @@ public class YahooWeatherAPIClient implements IWeatherAPI {
 
             try {
                 JSONObject location = weatherInfo.getJSONObject("location");
-                data.location = String.format(Locale.getDefault(), "%s, %s, %s",
-                        location.getString("city"), location.getString("region"), location.getString("country"));
+                data.location = String.format(Locale.getDefault(), "%s, %s",
+                        location.getString("city").trim(), location.getString("region").trim());
             } catch (JSONException e) {
                 LOGW(TAG, "Error parsing location name");
             }
 
-        }
-        else {
+        } else {
             return new BetterWeatherData(BetterWeatherData.ErrorCodes.API);
         }
 

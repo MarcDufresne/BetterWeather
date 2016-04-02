@@ -20,7 +20,7 @@ limitations under the License.
 	</string>
     <string name="extension_title">BetterWeather</string>
     <string name="extension_description">Shows up-to-date weather information for your location or for a set location.
-        Powered by OpenWeatherMap.
+        Powered by OpenWeatherMap and Yahoo! Weather.
     </string>
     <string name="title_settings">BetterWeather Settings</string>
 

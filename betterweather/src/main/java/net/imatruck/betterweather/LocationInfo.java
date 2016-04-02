@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2014 Marc-André Dufresne
+ * Copyright 2013-2016 Marc-André Dufresne
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,11 @@ public class LocationInfo {
     public String DISPLAYNAME;
     public double LAT, LNG;
 
-    public LocationInfo(){
+    public LocationInfo() {
         this("0", "", 0, 0);
     }
 
-    public LocationInfo(String woeid, String displayname, double lat, double lng){
+    public LocationInfo(String woeid, String displayname, double lat, double lng) {
         this.WOEID = woeid;
         this.DISPLAYNAME = displayname;
         this.LAT = lat;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2014 Marc-André Dufresne
+ * Copyright 2013-2016 Marc-André Dufresne
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,15 @@ import net.imatruck.betterweather.BetterWeatherExtension;
 
 public class IconThemeFactory {
 
-    public static IIconTheme getIconThemeFromSetting(String iconThemeSetting){
+    public static IIconTheme getIconThemeFromSetting(String iconThemeSetting) {
 
-        if(iconThemeSetting.equals(BetterWeatherExtension.CLIMACONS_ICON_THEME)){
+        if (iconThemeSetting.equals(BetterWeatherExtension.CLIMACONS_ICON_THEME)) {
             return new ClimaconsIconTheme();
-        }
-        else if (iconThemeSetting.equals(BetterWeatherExtension.WEATHERCONS_ICON_THEME)){
+        } else if (iconThemeSetting.equals(BetterWeatherExtension.WEATHERCONS_ICON_THEME)) {
             return new WeatherconsIconTheme();
-        }
-        else if (iconThemeSetting.equals(BetterWeatherExtension.CHAMELEON_ICON_THEME)){
+        } else if (iconThemeSetting.equals(BetterWeatherExtension.CHAMELEON_ICON_THEME)) {
             return new ChameleonIconTheme();
-        }
-        else if (iconThemeSetting.equals(BetterWeatherExtension.GOOGLENOW_ICON_THEME)){
+        } else if (iconThemeSetting.equals(BetterWeatherExtension.GOOGLENOW_ICON_THEME)) {
             return new GoogleNowIconTheme();
         }
 

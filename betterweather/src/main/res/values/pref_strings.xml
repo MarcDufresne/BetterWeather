@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Copyright 2013-2014 Marc-André Dufresne
+Copyright 2013-2016 Marc-André Dufresne
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -64,9 +64,11 @@ limitations under the License.
     <string name="pref_weather_api_title">Weather Service</string>
     <string-array name="pref_weather_api_display_names" translatable="false">
         <item>OpenWeatherMap</item>
+        <item>Yahoo! Weather</item>
     </string-array>
     <string-array name="pref_weather_api_values"  translatable="false">
         <item>openweathermap_weather_api</item>
+        <item>yahoo_weather_api</item>
     </string-array>
 
     <string name="pref_weather_show_today_forecast_title">Show today\'s forecast</string>

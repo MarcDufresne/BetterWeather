@@ -23,7 +23,7 @@
     <string name="cond_foggy">Mistig</string>
     <string name="cond_haze">Heiig</string>
     <string name="cond_smoky">Smog</string>
-    <string name="cond_blustery">Windvlagen</string>
+    <string name="cond_breezy">Windvlagen</string>
     <string name="cond_windy">Winderig</string>
     <string name="cond_cold">Koud</string>
     <string name="cond_cloudy">Bewolkt</string>
@@ -48,7 +48,7 @@
     <string name="wind_east">O</string>
     <string name="wind_southeast">ZO</string>
     <string name="wind_south">Z</string>
-    <string name="wind_soutwest">ZW</string>
+    <string name="wind_southwest">ZW</string>
     <string name="wind_west">W</string>
     <string name="wind_northwest">NW</string>
 </resources>

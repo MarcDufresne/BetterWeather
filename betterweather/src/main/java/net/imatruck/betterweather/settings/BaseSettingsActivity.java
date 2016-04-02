@@ -103,7 +103,7 @@ public abstract class BaseSettingsActivity extends PreferenceActivity {
 
                 preference.setSummary(AppChooserPreference.getDisplayValue(preference.getContext(), stringValue));
 
-            } else if(preference instanceof WeatherLocationPreference) {
+            } else if (preference instanceof WeatherLocationPreference) {
                 preference.setSummary(WeatherLocationPreference.getDisplayValue(preference.getContext(), stringValue));
             } else {
                 // For all other preferences, set the summary to the value's

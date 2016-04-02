@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2014 Marc-André Dufresne
+ * Copyright 2013-2016 Marc-André Dufresne
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,18 +46,18 @@ public class Pebble {
     private static final int ICON_CLEAR_NIGHT = 9;
     private static final int ICON_UNKNOWN = 10;
 
-    public static void registerPebbleDataReceived(Context appContext){
+    public static void registerPebbleDataReceived(Context appContext) {
         PebbleKit.registerReceivedDataHandler(appContext, getDataReceiver());
     }
 
     private static PebbleKit.PebbleDataReceiver getDataReceiver() {
-        if(dataReceiver == null) {
+        if (dataReceiver == null) {
             dataReceiver = new PebbleKit.PebbleDataReceiver(APP_UUID) {
                 @Override
                 public void receiveData(Context context, int transactionId, PebbleDictionary data) {
                     PebbleKit.sendAckToPebble(context, transactionId);
 
-                    if(data.getInteger(0) == 1) {
+                    if (data.getInteger(0) == 1) {
                         requestWeatherUpdate(context);
                     }
                 }
@@ -72,9 +72,9 @@ public class Pebble {
 
     public static void sendWeather(Context appContext, BetterWeatherData weatherData, boolean showFeelsLike) {
 
-        if(PebbleKit.isWatchConnected(appContext)) {
-            if(PebbleKit.areAppMessagesSupported(appContext)) {
-                try{
+        if (PebbleKit.isWatchConnected(appContext)) {
+            if (PebbleKit.areAppMessagesSupported(appContext)) {
+                try {
                     LogUtils.LOGD(TAG, "Pebble is connected!");
 
                     PebbleDictionary pebbleData = new PebbleDictionary();
@@ -86,12 +86,10 @@ public class Pebble {
                 } catch (NullPointerException npe) {
                     npe.printStackTrace();
                 }
-            }
-            else {
+            } else {
                 LogUtils.LOGD(TAG, "Pebble doesn't support AppMessage.");
             }
-        }
-        else {
+        } else {
             LogUtils.LOGD(TAG, "Pebble not connected.");
         }
 
@@ -99,10 +97,9 @@ public class Pebble {
 
     private static String getDisplayTemperature(BetterWeatherData weatherData, boolean showFeelsLike) {
         StringBuilder displayTemp = new StringBuilder();
-        if(weatherData.feelsLike < weatherData.temperature && showFeelsLike) {
+        if (weatherData.feelsLike < weatherData.temperature && showFeelsLike) {
             displayTemp.append(Integer.toString(weatherData.feelsLike)).append("\u002A");
-        }
-        else {
+        } else {
             displayTemp.append(Integer.toString(weatherData.temperature)).append("\u00B0");
         }
         return displayTemp.append(BetterWeatherExtension.getWeatherUnits().toUpperCase()).toString();
@@ -110,7 +107,7 @@ public class Pebble {
 
     private static int getWeatherIconId(int conditionCode) {
 
-        switch(conditionCode){
+        switch (conditionCode) {
             case 20: // foggy
             case 19: // dust
             case 21: // haze

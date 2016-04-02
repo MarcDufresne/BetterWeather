@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2014 Marc-André Dufresne
+ * Copyright 2013-2016 Marc-André Dufresne
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package net.imatruck.betterweather.iconthemes;
 
 import net.imatruck.betterweather.R;
 
-public class ClimaconsIconTheme implements IIconTheme{
+public class ClimaconsIconTheme implements IIconTheme {
     @Override
     public int getConditionIcon(int conditionCode) {
         switch (conditionCode) {

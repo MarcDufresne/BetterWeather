@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2014 Marc-André Dufresne
+ * Copyright 2013-2016 Marc-André Dufresne
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,15 @@ import net.imatruck.betterweather.BetterWeatherExtension;
 
 public class WeatherAPIFactory {
 
-    public static IWeatherAPI getWeatherAPIFromSetting(String apiSetting){
+    public static IWeatherAPI getWeatherAPIFromSetting(String apiSetting) {
         if (apiSetting.equals(BetterWeatherExtension.OPENWEATHERMAP_WEATHER_API)) {
             return new OpenWeatherMapWeatherAPIClient();
         }
+        if (apiSetting.equals(BetterWeatherExtension.YAHOO_WEATHER_API)) {
+            return new YahooWeatherAPIClient();
+        }
 
-        return new OpenWeatherMapWeatherAPIClient();
+        return new YahooWeatherAPIClient();
     }
 
 }

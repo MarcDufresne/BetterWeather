@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Copyright 2013-2014 Marc-André Dufresne
+ * Copyright 2013-2016 Marc-André Dufresne
  *
  * This file was modified by Marc-André Dufresne to include several
  * more features.
@@ -32,10 +32,7 @@ import android.view.MenuItem;
 
 import net.imatruck.betterweather.BetterWeatherExtension;
 import net.imatruck.betterweather.R;
-import net.imatruck.betterweather.YahooPlacesAPIClient;
 import net.imatruck.betterweather.utils.HelpUtils;
-
-import java.util.Locale;
 
 @SuppressWarnings("deprecation")
 public class BetterWeatherSettingsActivity extends BaseSettingsActivity implements OnSharedPreferenceChangeListener {
@@ -111,7 +108,7 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
 
             Preference shortcutPref = findPreference(BetterWeatherExtension.PREF_WEATHER_SHORTCUT);
 
-            if(shortcutPref == null) return;
+            if (shortcutPref == null) return;
 
             if (refreshOnTouchPref.isChecked()) {
                 shortcutPref.setEnabled(false);

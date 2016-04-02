@@ -23,7 +23,7 @@
     <string name="cond_foggy">Nebelig</string>
     <string name="cond_haze">Dunst</string>
     <string name="cond_smoky">Smog</string>
-    <string name="cond_blustery">Stürmisch</string>
+    <string name="cond_breezy">Stürmisch</string>
     <string name="cond_windy">Windig</string>
     <string name="cond_cold">Kalt</string>
     <string name="cond_cloudy">Bedeckt</string>
@@ -49,7 +49,7 @@
     <string name="wind_southeast">SO</string>
 
     <string name="wind_south">S</string>
-    <string name="wind_soutwest">SW</string>
+    <string name="wind_southwest">SW</string>
     <string name="wind_west">W</string>
     <string name="wind_northwest">NW</string>
 </resources>

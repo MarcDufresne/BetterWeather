@@ -23,7 +23,7 @@
     <string name="cond_foggy">Brumeux</string>
     <string name="cond_haze">Brume</string>
     <string name="cond_smoky">Brumeux</string>
-    <string name="cond_blustery">Vents forts</string>
+    <string name="cond_breezy">Vents forts</string>
     <string name="cond_windy">Venteux</string>
     <string name="cond_cold">Froid</string>
     <string name="cond_cloudy">Nuageux</string>
@@ -48,7 +48,7 @@
     <string name="wind_east">E</string>
     <string name="wind_southeast">SE</string>
     <string name="wind_south">S</string>
-    <string name="wind_soutwest">SO</string>
+    <string name="wind_southwest">SO</string>
     <string name="wind_west">O</string>
     <string name="wind_northwest">NO</string>
 </resources>

@@ -23,7 +23,7 @@
     <string name="cond_foggy">Mgła</string>
     <string name="cond_haze">Mglisto</string>
     <string name="cond_smoky">Smog</string>
-    <string name="cond_blustery">Zawierucha</string>
+    <string name="cond_breezy">Zawierucha</string>
     <string name="cond_windy">Wietrznie</string>
     <string name="cond_cold">Zimno</string>
     <string name="cond_cloudy">Pochmurnie</string>
@@ -48,7 +48,7 @@
     <string name="wind_east">wsch.</string>
     <string name="wind_southeast">pd.-wsch.</string>
     <string name="wind_south">pd.</string>
-    <string name="wind_soutwest">pd.-zach.</string>
+    <string name="wind_southwest">pd.-zach.</string>
     <string name="wind_west">zach.</string>
     <string name="wind_northwest">pn.-zach.</string>
     <!-- Wind Speedd Labels -->

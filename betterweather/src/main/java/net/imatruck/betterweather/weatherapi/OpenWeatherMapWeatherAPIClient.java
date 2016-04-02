@@ -72,7 +72,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
 
         JSONObject responseCurrent;
 
-        String API_KEY = BuildConfig.OWM_API_KEY[retryCount];
+        String API_KEY = getApiKey(retryCount);
 
         try {
             String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
@@ -95,7 +95,7 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
 
         JSONObject responseForecast;
 
-        String API_KEY = BuildConfig.OWM_API_KEY[retryCount];
+        String API_KEY = getApiKey(retryCount);
 
         try {
             String weatherUnit = (BetterWeatherExtension.getWeatherUnits().equals("c")) ? "metric" : "imperial";
@@ -112,6 +112,14 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
         }
 
         return responseForecast;
+    }
+
+    private static String getApiKey(int count) {
+        try {
+            return BuildConfig.OWM_API_KEY[count];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return "";
+        }
     }
 
     private boolean parseCurrentConditionsData(BetterWeatherData data, JSONObject response) {

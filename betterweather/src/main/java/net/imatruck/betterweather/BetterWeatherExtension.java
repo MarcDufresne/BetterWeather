@@ -765,7 +765,7 @@ public class BetterWeatherExtension extends DashClockExtension {
 
         if (sShowTomorrowForecast) {
             if (sShowTodayForecast || sShowHumidity || sShowWindDetails) expandedBody.append("\n");
-            int tomorrowForecastTextId = BetterWeatherData.getStatusText(weatherData.conditionCode);
+            int tomorrowForecastTextId = BetterWeatherData.getStatusText(weatherData.tomorrowForecastConditionCode);
             @SuppressWarnings("ResourceType") String tomorrowForecastText = getString(tomorrowForecastTextId);
             expandedBody.append((sInvertHighLowTemps) ?
                     getString(R.string.tomorrow_forecast_template, tomorrowForecastText, weatherData.tomorrowHigh, weatherData.tomorrowLow) :

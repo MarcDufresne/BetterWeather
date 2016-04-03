@@ -41,12 +41,12 @@ public class MeteoconsIconTheme implements IIconTheme {
                 return R.drawable.meteocons_clear_night;
             case 34: // fair (day)
             case 32: // sunny
-            case 23: // blustery
             case 36: // hot
                 return R.drawable.meteocons_clear_day;
             case 0: // tornado
             case 1: // tropical storm
             case 2: // hurricane
+            case 23: // blustery
             case 24: // windy
                 return R.drawable.meteocons_windy;
             case 5: // mixed rain and snow

@@ -15,9 +15,7 @@ limitations under the License.
 -->
 <resources>
     <string name="app_name">BetterWeather</string>
-    <string name="app_name_and_version" translatable="false">
-		<![CDATA[<b>BetterWeather</b>&nbsp;<font color="#888888">v%1$s</font>]]>
-	</string>
+
     <string name="extension_title">BetterWeather</string>
     <string name="extension_description">Viser up-to-date vejr information for din lokation eller for en valgt lokation.
         Drevet af Yahoo! Weather og OpenWeatherMap.
@@ -30,13 +28,6 @@ limitations under the License.
 
     <!-- Toasts -->
     <string name="toast_refreshing">Opdaterer BetterWeather&#8230;</string>
-
-    <!-- Weather -->
-    <string name="temperature_template" translatable="false">%1$s°</string>
-    <string name="highlow_template" translatable="false">(%1$s/%2$s°)</string>
-    <string name="weather_expanded_title_template" translatable="false">
-        %1$s — %2$s
-    </string>
 
     <string name="today_forecast_template">I dag: %1$s, %2$s/%3$s°</string>
     <string name="tomorrow_forecast_template">I morgen: %1$s, %2$s/%3$s°</string>
@@ -55,8 +46,6 @@ limitations under the License.
     <string name="wind_details_template">Vind: %1$s %4$s%2$s %3$s</string>
     <string name="wind_chill_template">Føles som: %1$s°</string>
     <string name="humidity_template">Fugtighed: %1$s</string>
-
-    <string name="status_none" translatable="false">––</string>
 
     <!-- Normal western users have *empty* speed unit prefix names(%4$s in above location_template).
             For example, "Wind: SW <empty>3 mph"
@@ -85,21 +74,7 @@ limitations under the License.
     <string name="about_extension_text">
         <![CDATA[Created By: <br><i>Marc-André Dufresne</i><br><br>Thanks to Roman Nurik for DashClock!<br>]]></string>
     <!-- Add "Translated in LANGUAGE by YOUR NAME" after the last "<br>" in "about_extension_text" -->
-	
-    <string name="about_license_text" translatable="false">
-        <![CDATA[Copyright 2013-2016 Marc-André Dufresne<br>
-        Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at<br><br>
 
-<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a><br><br>
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.]]>
-    </string>
     <string name="close">Luk</string>
     <string name="about_title">Om</string>
 

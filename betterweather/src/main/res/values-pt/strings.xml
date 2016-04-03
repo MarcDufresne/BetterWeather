@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">BetterWeather</string>
-  <string name="app_name_and_version" translatable="false"><![CDATA[<b>BetterWeather</b>&nbsp;<font color="#888888">v%1$s</font>]]></string>
   <string name="extension_title">BetterWeather</string>
   <string name="extension_description">Mostra informações metereológicas atualizadas para a sua localização ou para localizações definidas.
 Dados fornecidos pela Yahoo! Weather</string>
@@ -17,7 +16,6 @@ Dados fornecidos pela Yahoo! Weather</string>
   <string name="wind_details_template">Vento: %1$s %4$s%2$s %3$s</string>
   <string name="wind_chill_template">Temp. aparente: %1$s°</string>
   <string name="humidity_template">Humidade: %1$s</string>
-  <string name="status_none" translatable="false">––</string>
   <string name="wind_speed_kmh">km/h</string>
   <string name="wind_speed_mph">mph</string>
   <string name="shortcut_pref_help_text">Desativar "atualizar" com o toque</string>

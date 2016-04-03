@@ -15,9 +15,7 @@ limitations under the License.
 -->
 <resources>
     <string name="app_name">BetterWeather</string>
-    <string name="app_name_and_version" translatable="false">
-		<![CDATA[<b>BetterWeather (더 좋은 날씨)</b>&nbsp;<font color="#888888">v%1$s</font>]]>
-	</string>
+
     <string name="extension_title">더 좋은 날씨</string>
     <string name="extension_description">여러분의 위치에 해당하는 다양한 날씨 정보를 알려줍니다.
         Yahoo! Weather와 OpenWeatherMap 서비스 이용.

@@ -29,11 +29,13 @@ android {
             buildConfigField "String", "ANALYTICS_ENDPOINT", analytics_endpoint
             minifyEnabled false
             debuggable false
+            multiDexEnabled true
         }
     }
 }
 
 dependencies {
+    compile 'com.android.support:multidex:1.0.0'
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.android.support:support-v4:23.2.1'
     compile 'com.google.android.apps.dashclock:dashclock-api:2.0.0'

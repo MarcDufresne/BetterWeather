@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
+    <uses-permission android:name="com.android.vending.BILLING" />
+
     <application
             android:allowBackup="true"
             android:backupAgent=".utils.BackupAgent"
@@ -50,6 +52,10 @@
                 android:exported="true"
                 android:theme="@android:style/Theme.DeviceDefault.Light"
                 android:label="@string/title_settings"/>
+
+        <activity android:name=".settings.DonationDialogActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog"
+            android:excludeFromRecents="true" />
 
         <activity
                 android:name="net.imatruck.betterweather.RefreshWeatherActivity"

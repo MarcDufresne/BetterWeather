@@ -1,12 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 24
+    buildToolsVersion '24.0.2'
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 23
+        targetSdkVersion 24
+
+        applicationId "net.imatruck.betterweather"
     }
 
     lintOptions {
@@ -14,19 +16,16 @@ android {
     }
 
     String owm_api_key = new File('api_owm').text
-    String analytics_endpoint = new File('analytics_endpoint').text
 
     buildTypes {
 
         debug {
             buildConfigField "String[]", "OWM_API_KEY", owm_api_key
-            buildConfigField "String", "ANALYTICS_ENDPOINT", analytics_endpoint
             debuggable true
             minifyEnabled false
         }
         release {
             buildConfigField "String[]", "OWM_API_KEY", owm_api_key
-            buildConfigField "String", "ANALYTICS_ENDPOINT", analytics_endpoint
             minifyEnabled false
             debuggable false
             multiDexEnabled true
@@ -35,10 +34,15 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:multidex:1.0.0'
-    compile 'com.google.android.gms:play-services:8.4.0'
-    compile 'com.android.support:support-v4:23.2.1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.android.gms:play-services:9.4.0'
+    compile 'com.google.firebase:firebase-core:9.0.2'
+    compile 'com.google.firebase:firebase-config:9.0.2'
+    compile 'com.google.firebase:firebase-crash:9.0.2'
+    compile 'com.android.support:support-v4:24.2.0'
     compile 'com.google.android.apps.dashclock:dashclock-api:2.0.0'
     compile 'com.google.guava:guava:19.0'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

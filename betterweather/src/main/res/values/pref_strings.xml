@@ -167,5 +167,6 @@ limitations under the License.
     <string name="pref_pebble_show_feels_like_title">Show feels like</string>
     <string name="pref_pebble_show_feels_like_summary_on">Feels like temperature will be shown on Pebble Watch</string>
     <string name="pref_pebble_show_feels_like_summary_off">Real temperature will be shown on Pebble Watch</string>
+    <string name="pref_weather_location_default">0/No location set/0/0</string>
 
 </resources>

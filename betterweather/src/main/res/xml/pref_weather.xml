@@ -37,6 +37,13 @@ limitations under the License.
             android:positiveButtonText="@null"
             android:title="@string/pref_weather_speed_unit_title" />
 
+        <SwitchPreference
+            android:key="pref_weather_automatic_location"
+            android:defaultValue="false"
+            android:summaryOn="@string/pref_weather_automatic_location_summary_on"
+            android:summaryOff="@string/pref_weather_automatic_location_summary_off"
+            android:title="@string/pref_weather_automatic_location_title" />
+
         <net.imatruck.betterweather.settings.WeatherLocationPreference
             android:key="pref_weather_location"
             android:title="@string/pref_weather_location_title" />

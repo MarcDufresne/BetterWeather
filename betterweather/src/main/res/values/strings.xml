@@ -102,6 +102,9 @@ limitations under the License.]]>
     </string>
     <string name="close">Close</string>
     <string name="about_title">About</string>
+    <string name="pref_weather_automatic_location_summary_on">Current location will be used</string>
+    <string name="pref_weather_automatic_location_summary_off">Set location will be used</string>
+    <string name="pref_weather_automatic_location_title">Use automatic location</string>
 
 
 </resources>

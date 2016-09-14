@@ -47,6 +47,7 @@ import android.widget.Toast;
 
 import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import net.imatruck.betterweather.iconthemes.IconThemeFactory;
 import net.imatruck.betterweather.settings.AppChooserPreference;
@@ -85,6 +86,7 @@ public class BetterWeatherExtension extends DashClockExtension {
     public static final String PREF_WEATHER_UNITS = "pref_weather_units";
     public static final String PREF_WEATHER_SPEED_UNITS = "pref_weather_speed_units";
     public static final String PREF_WEATHER_LOCATION = "pref_weather_location";
+    public static final String PREF_WEATHER_AUTOMATIC_LOCATION = "pref_weather_automatic_location";
     public static final String PREF_WEATHER_USE_ONLY_NETWORK = "pref_weather_use_only_network";
     public static final String PREF_WEATHER_SHOW_TODAY_FORECAST = "pref_weather_show_today_forecast";
     public static final String PREF_WEATHER_SHOW_TOMORROW_FORECAST = "pref_weather_show_tomorrow_forecast";
@@ -161,6 +163,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         sLocationCriteria.setCostAllowed(false);
     }
 
+    private FirebaseAnalytics mFirebaseAnalytics = null;
 
     /**
      * Registers the {@link net.imatruck.betterweather.BetterWeatherExtension.OnClickReceiver} handler
@@ -168,6 +171,8 @@ public class BetterWeatherExtension extends DashClockExtension {
     @Override
     protected void onInitialize(boolean isReconnect) {
         super.onInitialize(isReconnect);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         if (onClickReceiver != null) {
             try {
@@ -214,13 +219,6 @@ public class BetterWeatherExtension extends DashClockExtension {
     protected void onUpdateData(int reason) {
 
         LOGD(TAG, "Update reason: " + getReasonText(reason));
-
-        // Whenever updating, set sLang to Yahoo's format(en-US, not en_US)
-        // If sLang is set in elsewhere, and user changes phone's locale
-        // without entering BW setting menu, then Yahoo's place name in widget
-        // may be in wrong locale.
-        Locale current = getResources().getConfiguration().locale;
-        YahooPlacesAPIClient.sLang = current.getLanguage() + "-" + current.getCountry();
 
         if (reason != UPDATE_REASON_USER_REQUESTED &&
                 reason != UPDATE_REASON_SETTINGS_CHANGED &&
@@ -357,10 +355,10 @@ public class BetterWeatherExtension extends DashClockExtension {
                         + "," + location.getLongitude() + " to get weather");
             }
 
-            locationInfo = YahooPlacesAPIClient.getLocationInfo(location);
+            locationInfo = new LocationInfo("0", "", location.getLatitude(), location.getLongitude());
         }
 
-        LOGD(TAG, "Using WOEID: " + locationInfo.WOEID + "(" + locationInfo.LAT + "," + locationInfo.LNG + ")");
+        LOGD(TAG, "Using location: " + locationInfo.LAT + "," + locationInfo.LNG);
 
         IWeatherAPI mWeatherAPI = WeatherAPIFactory.getWeatherAPIFromSetting(sWeatherAPI);
 
@@ -371,8 +369,8 @@ public class BetterWeatherExtension extends DashClockExtension {
         if (data != null) {
             if (!sUseCurrentLocation) {
                 data.location = locationInfo.DISPLAYNAME;
-            } else if (data.location == null || TextUtils.isEmpty(data.location) || "N/A".equals(data.location)) {
-                data.location = YahooPlacesAPIClient.getLocationNameFromCoords(locationInfo.LAT, locationInfo.LNG);
+            } else if (data.location == null || TextUtils.isEmpty(data.location)) {
+                data.location = "N/A";
             }
         }
 
@@ -472,46 +470,14 @@ public class BetterWeatherExtension extends DashClockExtension {
                     return;
                 }
                 if (betterWeatherData.errorCode == BetterWeatherData.ErrorCodes.NONE) {
-                    new SendAnalyticsTask(sWeatherAPI).execute();
+                    Bundle analytics = new Bundle();
+                    analytics.putString("service", sWeatherAPI);
+                    mFirebaseAnalytics.logEvent("weather_update", analytics);
                 }
                 publishUpdate(betterWeatherData);
             } else {
                 publishUpdate(new BetterWeatherData(BetterWeatherData.ErrorCodes.API));
             }
-        }
-    }
-
-    private class SendAnalyticsTask extends AsyncTask<String, Void, Void> {
-
-        String mService = null;
-        OkHttpClient mHttpClient;
-        private final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-        public SendAnalyticsTask(String service) {
-            mHttpClient = new OkHttpClient();
-            mService = service;
-        }
-
-        @Override
-        protected Void doInBackground(String... params) {
-            try {
-                LOGD(TAG, "Sending analytics");
-                String response = post(BuildConfig.ANALYTICS_ENDPOINT, "{\"service\":\"" + mService + "\"}");
-                LOGD(TAG, "Analytics response: " + response);
-            } catch (IOException ioe) {
-                LOGD(TAG, "Could not send analytics");
-            }
-            return null;
-        }
-
-        String post(String url, String json) throws IOException {
-            RequestBody body = RequestBody.create(JSON, json);
-            Request request = new Request.Builder()
-                    .url(url)
-                    .post(body)
-                    .build();
-            Response response = mHttpClient.newCall(request).execute();
-            return response.body().string();
         }
     }
 
@@ -561,14 +527,14 @@ public class BetterWeatherExtension extends DashClockExtension {
         sWeatherUnits = sp.getString(PREF_WEATHER_UNITS, sWeatherUnits);
         sSpeedUnits = Integer.parseInt(sp.getString(PREF_WEATHER_SPEED_UNITS, Integer.toString(sSpeedUnits)));
         sSetLocation = sp.getString(PREF_WEATHER_LOCATION, sSetLocation).trim();
-        sUseCurrentLocation = TextUtils.isEmpty(sSetLocation);
+        sUseCurrentLocation = sp.getBoolean(PREF_WEATHER_AUTOMATIC_LOCATION, sUseCurrentLocation);
         sUseOnlyNetworkLocation = sp.getBoolean(PREF_WEATHER_USE_ONLY_NETWORK, sUseOnlyNetworkLocation);
         sShowTodayForecast = sp.getBoolean(PREF_WEATHER_SHOW_TODAY_FORECAST, sShowTodayForecast);
         sShowTomorrowForecast = sp.getBoolean(PREF_WEATHER_SHOW_TOMORROW_FORECAST, sShowTomorrowForecast);
         sRefreshOnTouch = sp.getBoolean(PREF_WEATHER_REFRESH_ON_TOUCH, sRefreshOnTouch);
         sWeatherIntent = AppChooserPreference.getIntentValue(sp.getString(PREF_WEATHER_SHORTCUT, null), DEFAULT_WEATHER_INTENT);
         sRefreshInterval = Integer.parseInt(sp.getString(PREF_WEATHER_REFRESH_INTERVAL, "60"));
-        sHideLocationName = sp.getBoolean(PREF_WEATHER_HIDE_LOCATION_NAME, sHideLocationName);
+        sHideLocationName = sUseCurrentLocation || sp.getBoolean(PREF_WEATHER_HIDE_LOCATION_NAME, sHideLocationName);
         sShowHumidity = sp.getBoolean(PREF_WEATHER_SHOW_HUMIDITY, sShowHumidity);
         sShowFeelsLike = sp.getBoolean(PREF_WEATHER_SHOW_FEELS_LIKE, sShowFeelsLike);
         sShowWindDetails = sp.getBoolean(PREF_WEATHER_SHOW_WIND_DETAILS, sShowWindDetails);
@@ -639,7 +605,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         } else {
 
             String temperature = weatherData.hasValidTemperature()
-                    ? getString(R.string.temperature_template, weatherData.temperature)
+                    ? getString(R.string.temperature_template, "" + weatherData.temperature)
                     : getString(R.string.status_none);
 
 
@@ -720,7 +686,7 @@ public class BetterWeatherExtension extends DashClockExtension {
         StringBuilder expandedBody = new StringBuilder();
 
         if (sShowFeelsLike && weatherData.feelsLike != weatherData.temperature && weatherData.feelsLike != BetterWeatherData.INVALID_TEMPERATURE) {
-            expandedBody.append(getString(R.string.wind_chill_template, weatherData.feelsLike));
+            expandedBody.append(getString(R.string.wind_chill_template, "" + weatherData.feelsLike));
             expandedBody.append("\n");
         }
 
@@ -776,25 +742,7 @@ public class BetterWeatherExtension extends DashClockExtension {
             if (sShowHumidity || sShowTodayForecast || sShowTomorrowForecast || sShowWindDetails)
                 expandedBody.append("\n");
 
-            // Irrespective of sUseCurrentLocation, weatherData.location has its value,
-            // because getLocationInfoFromSettings called before calling this formatExpendedBody() method
-            // we prepared location field from settings already.
-            String displayLocationName = weatherData.location;
-
-            // displayLocationName shown in pref setting has always "small, large" format.
-            // However asian users can customize location name in WIDGET with location_template
-            // having a form like "%2$s %1$s", in which %1$s is small, %2$s is large location name.
-            String[] locs = displayLocationName.split(",");
-            String smallLocation, largeLocation;
-            if (locs.length == 2) {
-                smallLocation = locs[0].trim();
-                largeLocation = locs[1].trim();
-            } else {
-                smallLocation = displayLocationName;
-                largeLocation = "";
-            }
-            expandedBody.append(getString(R.string.location_template, smallLocation, largeLocation));
-
+           expandedBody.append(weatherData.location);
         }
 
         return expandedBody;

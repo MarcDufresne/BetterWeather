@@ -37,13 +37,13 @@ public class YahooWeatherAPIClient implements IWeatherAPI {
 
     private static final String TAG = LogUtils.makeLogTag(YahooWeatherAPIClient.class);
 
-    private static final String REQUEST_URL = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid=%s and u='%s'&format=json";
+    private static final String REQUEST_URL = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text=\"(%s,%s)\") and u='%s'&format=json";
 
     @Override
     public BetterWeatherData getWeatherDataForLocation(LocationInfo locationInfo) throws IOException {
 
         JSONObject response;
-        String formattedUrl = String.format(Locale.getDefault(), REQUEST_URL, locationInfo.WOEID, BetterWeatherExtension.getWeatherUnits());
+        String formattedUrl = String.format(Locale.getDefault(), REQUEST_URL, locationInfo.LAT, locationInfo.LNG, BetterWeatherExtension.getWeatherUnits());
         formattedUrl = formattedUrl.replace(" ", "%20");
 
         try {
@@ -122,14 +122,6 @@ public class YahooWeatherAPIClient implements IWeatherAPI {
                 } catch (JSONException e) {
                     LOGW(TAG, "Error parsing tomorrow's forecast");
                 }
-            }
-
-            try {
-                JSONObject location = weatherInfo.getJSONObject("location");
-                data.location = String.format(Locale.getDefault(), "%s, %s",
-                        location.getString("city").trim(), location.getString("region").trim());
-            } catch (JSONException e) {
-                LOGW(TAG, "Error parsing location name");
             }
 
         } else {

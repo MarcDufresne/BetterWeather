@@ -19,7 +19,6 @@ import net.imatruck.betterweather.BetterWeatherData;
 import net.imatruck.betterweather.BetterWeatherExtension;
 import net.imatruck.betterweather.BuildConfig;
 import net.imatruck.betterweather.LocationInfo;
-import net.imatruck.betterweather.YahooPlacesAPIClient;
 import net.imatruck.betterweather.utils.JsonReader;
 import net.imatruck.betterweather.utils.LogUtils;
 
@@ -62,8 +61,6 @@ public class OpenWeatherMapWeatherAPIClient implements IWeatherAPI {
         }
 
         parseForecastData(data, responseForecast);
-
-        data.location = YahooPlacesAPIClient.getLocationNameFromCoords(locationInfo.LAT, locationInfo.LNG);
 
         return data;
     }

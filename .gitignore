@@ -38,3 +38,4 @@ signing.properties
 
 api_owm
 analytics_endpoint
+betterweather/google-services.json

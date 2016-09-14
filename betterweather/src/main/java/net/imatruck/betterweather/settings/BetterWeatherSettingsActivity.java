@@ -21,21 +21,42 @@
 
 package net.imatruck.betterweather.settings;
 
+import android.Manifest;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
+import android.preference.SwitchPreference;
+import android.support.v4.app.ActivityCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.common.math.DoubleMath;
+
 import net.imatruck.betterweather.BetterWeatherExtension;
 import net.imatruck.betterweather.R;
 import net.imatruck.betterweather.utils.HelpUtils;
+import net.imatruck.betterweather.utils.LogUtils;
+
+import static net.imatruck.betterweather.utils.LogUtils.LOGD;
+import static net.imatruck.betterweather.utils.LogUtils.LOGW;
 
 @SuppressWarnings("deprecation")
 public class BetterWeatherSettingsActivity extends BaseSettingsActivity implements OnSharedPreferenceChangeListener {
+
+    private static String TAG = LogUtils.makeLogTag(BetterWeatherSettingsActivity.class);
+    private static int PLACE_AUTOCOMPLETE_REQ_CODE = 1;
+    private static int LOCATION_REQUEST_CODE = 3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +70,44 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
         getPreferenceScreen().getSharedPreferences()
                 .registerOnSharedPreferenceChangeListener(this);
         updateShortcutPreferenceState(BetterWeatherExtension.PREF_WEATHER_REFRESH_ON_TOUCH);
+        updateLocationPrefState(BetterWeatherExtension.PREF_WEATHER_AUTOMATIC_LOCATION);
 
+        Preference locationPreference = findPreference(BetterWeatherExtension.PREF_WEATHER_LOCATION);
+        locationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                try {
+                    Intent autocompleteIntent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build(BetterWeatherSettingsActivity.this);
+                    startActivityForResult(autocompleteIntent, PLACE_AUTOCOMPLETE_REQ_CODE);
+                } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+                    LOGW(TAG, "Could not start place autocomplete activity");
+                    return false;
+                }
+                return true;
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_AUTOCOMPLETE_REQ_CODE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                LOGD(TAG, "Got '" + place.getName() + "' from autocomplete");
+                LatLng latlng = place.getLatLng();
+                String prefValue = "0/" + place.getName() + "/" + latlng.latitude + "/" + latlng.longitude;
+
+                WeatherLocationPreference locationPreference = (WeatherLocationPreference) findPreference(BetterWeatherExtension.PREF_WEATHER_LOCATION);
+                locationPreference.setValue(prefValue);
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(this, data);
+                LOGD(TAG, "Autocomplete returned error status: " + status.getStatusMessage());
+            } else {
+                LOGD(TAG, "User cancelled operation");
+            }
+        }
     }
 
     @Override
@@ -99,6 +157,33 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(BetterWeatherExtension.PREF_WEATHER_REFRESH_ON_TOUCH))
             updateShortcutPreferenceState(key);
+        else if (key.equals(BetterWeatherExtension.PREF_WEATHER_AUTOMATIC_LOCATION))
+            updateLocationPrefState(key);
+    }
+
+    private void updateLocationPrefState(String key) {
+        SwitchPreference autoLocPref = (SwitchPreference) findPreference(key);
+        WeatherLocationPreference locationPref = (WeatherLocationPreference) findPreference(BetterWeatherExtension.PREF_WEATHER_LOCATION);
+        CheckBoxPreference hideNamePref = (CheckBoxPreference) findPreference(BetterWeatherExtension.PREF_WEATHER_HIDE_LOCATION_NAME);
+
+        if (autoLocPref.isChecked()) {
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+            }
+
+            locationPref.setEnabled(false);
+            locationPref.setValue("");
+            hideNamePref.setEnabled(false);
+            hideNamePref.setChecked(true);
+        } else {
+            locationPref.setEnabled(true);
+            locationPref.setValue(getString(R.string.pref_weather_location_default));
+            hideNamePref.setEnabled(true);
+            hideNamePref.setChecked(false);
+        }
+
     }
 
     private void updateShortcutPreferenceState(String key) {

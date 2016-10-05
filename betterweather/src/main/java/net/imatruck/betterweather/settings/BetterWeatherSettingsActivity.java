@@ -70,7 +70,7 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
         getPreferenceScreen().getSharedPreferences()
                 .registerOnSharedPreferenceChangeListener(this);
         updateShortcutPreferenceState(BetterWeatherExtension.PREF_WEATHER_REFRESH_ON_TOUCH);
-        updateLocationPrefState(BetterWeatherExtension.PREF_WEATHER_AUTOMATIC_LOCATION);
+        updateLocationPrefState(BetterWeatherExtension.PREF_WEATHER_AUTOMATIC_LOCATION, false);
 
         Preference locationPreference = findPreference(BetterWeatherExtension.PREF_WEATHER_LOCATION);
         locationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -158,10 +158,10 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
         if (key.equals(BetterWeatherExtension.PREF_WEATHER_REFRESH_ON_TOUCH))
             updateShortcutPreferenceState(key);
         else if (key.equals(BetterWeatherExtension.PREF_WEATHER_AUTOMATIC_LOCATION))
-            updateLocationPrefState(key);
+            updateLocationPrefState(key, true);
     }
 
-    private void updateLocationPrefState(String key) {
+    private void updateLocationPrefState(String key, boolean touchLocationSetting) {
         SwitchPreference autoLocPref = (SwitchPreference) findPreference(key);
         WeatherLocationPreference locationPref = (WeatherLocationPreference) findPreference(BetterWeatherExtension.PREF_WEATHER_LOCATION);
         CheckBoxPreference hideNamePref = (CheckBoxPreference) findPreference(BetterWeatherExtension.PREF_WEATHER_HIDE_LOCATION_NAME);
@@ -179,7 +179,9 @@ public class BetterWeatherSettingsActivity extends BaseSettingsActivity implemen
             hideNamePref.setChecked(true);
         } else {
             locationPref.setEnabled(true);
-            locationPref.setValue(getString(R.string.pref_weather_location_default));
+            if (touchLocationSetting) {
+                locationPref.setValue(getString(R.string.pref_weather_location_default));
+            }
             hideNamePref.setEnabled(true);
             hideNamePref.setChecked(false);
         }
